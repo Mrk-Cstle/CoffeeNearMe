@@ -11,6 +11,7 @@
     body {
         background-color: #D76614;
     }
+
     .text-logo {
         display: flex;
         height: 80px;
@@ -19,6 +20,7 @@
         margin-right: 60px;
         margin-left: 20px;
     }
+
     .logo {
         background-color: #000000;
         margin-top: 20px;
@@ -27,12 +29,15 @@
         height: 350px;
         width: 350px;
     }
+
     .row {
         display: block;
     }
+
     .form-control {
         background-color: #806D61;
     }
+
     .btn {
         margin-top: 30px;
         width: 100px;
@@ -40,13 +45,15 @@
         background-color: #806D61;
         color: #FFFFFF;
     }
+
     .image {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         position: relative;
-        
+
     }
+
     .Area {
         display: flex;
         background-color: #1E1E1E;
@@ -57,32 +64,35 @@
         padding: 40px;
     }
 </style>
+
 <body>
     <div class="Area">
-        <div class="row g-2 mb-3">
-            <div>
-                <img class="text-logo" src="assets/images/logotext _nobg.png">
+        <form action="pages/action/logindb.php" method="post">
+            <div class="row g-2 mb-3">
+                <div>
+                    <img class="text-logo" src="assets/images/logotext _nobg.png">
+                </div>
+                <div class="user col-10">
+                    <label class="form-label" style="color:#FFFFFF;">Username</label>
+                    <input type="Username" name="user_name" class="form-control">
+                </div>
+                <div class="pass col-10 mb-3">
+                    <label class="form-label" style="color:#FFFFFF;">Password</label>
+                    <input type="Password" name="password" class="form-control">
+                </div>
+                <div>
+                    <button type="submit" class="btn">Login</button>
+                </div>
             </div>
-            <div class="user col-10">
-                <label class="form-label" style="color:#FFFFFF;">Username</label>
-                <input type="Username" class="form-control">
-            </div>
-            <div class="pass col-10 mb-3">
-                <label class="form-label" style="color:#FFFFFF;">Password</label>
-                <input type="Password" class="form-control">
-            </div>   
-            <div>
-                <button type="button" class="btn">Login</button>
-            </div>
-        </div>
+        </form>
         <div>
             <div class="image col-12">
                 <img class="logo" src="assets/images/logo_no_bg.png">
             </div>
         </div>
-    </div> 
-   <!-- <a href="pages/adduser.php">add user</a> -->
-    
+    </div>
+    <!-- <a href="pages/adduser.php">add user</a> -->
+
 </body>
 
 </html>
