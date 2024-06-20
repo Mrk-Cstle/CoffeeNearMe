@@ -1,23 +1,31 @@
 <?php
+header("Content-Type: application/json");
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate and sanitize input (you can add more validation as needed)
-    $full_name = htmlspecialchars($_POST['full_name']);
-    $user_name = htmlspecialchars($_POST['user_name']);
-    $passwords = htmlspecialchars($_POST['password']);
-    $full_name = htmlspecialchars($_POST['full_name']); // Ensure this field is collected from the form
-    $user_name = htmlspecialchars($_POST['user_name']); // Ensure this field is collected from the form
-    $contact_number = htmlspecialchars($_POST['contact_number']);
-    $address = htmlspecialchars($_POST['address']);
+    // // Validate and sanitize input (you can add more validation as needed)
+    // $full_name = htmlspecialchars($_POST['full_name']);
+    // $user_name = htmlspecialchars($_POST['user_name']);
+    // $passwords = htmlspecialchars($_POST['password']);
+    // $full_name = htmlspecialchars($_POST['full_name']); // Ensure this field is collected from the form
+    // $user_name = htmlspecialchars($_POST['user_name']); // Ensure this field is collected from the form
+    // $contact_number = htmlspecialchars($_POST['contact_number']);
+    // $address = htmlspecialchars($_POST['address']);
 
     // Include database connection details (replace with your actual database credentials)
     include '../include/dbConnection.php';
 
     // Check connection
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die(json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]));
     }
 
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $user_name = $data['user_name'];
+    $full_name = $data['full_name'];
+    $passwords = $data['password'];
+    $address = $data['address'];
+    $contact_number = $data['contact_number'];
     // Password hashing
     $hashedPassword = password_hash($passwords, PASSWORD_DEFAULT);
 
@@ -33,11 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Execute the statement
     try {
         $stmt->execute();
-        echo "New record created successfully";
+        echo json_encode(["status" => "success", "message" => "New record created successfully"]);
     } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
+        echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
     }
-
     // Close the statement and connection
     $stmt->close();
     $conn->close();

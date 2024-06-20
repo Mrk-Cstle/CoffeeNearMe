@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Table</title>
 </head>
 <style>
@@ -81,22 +82,26 @@
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <div class="user input-group mb-3 d-block"> Username
-                  <input type="text" class="t-input form-control w-75" aria-label="Username">
+                <div class="user input-group mb-3 d-block"> Full Name
+                  <input type="text" class="t-input form-control w-75" aria-label="full_name" id="full_name">
                 </div>
-                <div class="name input-group mb-3 d-block"> Name
-                  <input type="text" class="t-input form-control w-75" aria-label="Name">
+                <div class="user input-group mb-3 d-block"> Username
+                  <input type="text" class="t-input form-control w-75" aria-label="user_name" id="user_name">
+                </div>
+                <div class="name input-group mb-3 d-block"> Password
+                  <input type="text" class="t-input form-control w-75" aria-label="Name" id="password">
+                </div>
+
+                <div class="contact input-group mb-3 d-block"> Contact
+                  <input type="text" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
                 </div>
                 <div class="address input-group mb-3 d-block"> Address
-                  <input type="text" class="t-input form-control w-75" aria-label="Address">
-                </div>
-                <div class="contact input-group mb-3 d-block"> Contact
-                  <input type="text" class="t-input form-control w-75" aria-label="Contact">
+                  <input type="text" class="t-input form-control w-75" aria-label="Address" id="address">
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-dark">Save changes</button>
+                <button type="button" class="btn btn-dark" id="saveChanges">Save changes</button>
               </div>
             </div>
           </div>
@@ -145,6 +150,50 @@
     myModal.addEventListener('shown.bs.modal', () => {
       myInput.focus()
     })
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#saveChanges').click(function() {
+        // Collect the input data
+        var full_name = $('#full_name').val();
+        var user_name = $('#user_name').val();
+        var password = $('#password').val();
+        var address = $('#address').val();
+        var contact_number = $('#contact_number').val();
+
+        // Prepare the data to be sent
+        var userData = {
+          full_name: full_name,
+          user_name: user_name,
+          password: password,
+          address: address,
+          contact_number: contact_number
+        };
+
+        // Send the data using AJAX
+        $.ajax({
+          type: 'POST',
+          url: 'action/adduser_db.php', // replace with your server endpoint
+          data: JSON.stringify(userData),
+          contentType: 'application/json',
+          success: function(response) {
+            // Handle the response from the server
+            console.log(response);
+            // Optionally close the modal
+            if (response.status === 'success') {
+              alert(response.message);
+            } else {
+              alert('Error: ' + response.message);
+            }
+            $('#Modal').modal('hide');
+          },
+          error: function(error) {
+            // Handle any errors
+            console.error(error);
+          }
+        });
+      });
+    });
   </script>
 </body>
 
