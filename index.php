@@ -30,6 +30,14 @@
         width: 350px;
     }
 
+    .usr {
+        border: #000000;
+    }
+
+    .pss {
+        border: #000000;
+    }
+
     .row {
         display: block;
     }
@@ -44,6 +52,10 @@
         margin-left: 100px;
         background-color: #806D61;
         color: #FFFFFF;
+    }
+
+    .btn:hover {
+        background-color:#806D60;
     }
 
     .image {
@@ -74,11 +86,11 @@
                 </div>
                 <div class="user col-10">
                     <label class="form-label" style="color:#FFFFFF;">Username</label>
-                    <input type="Username" name="user_name" class="form-control">
+                    <input type="Username" name="user_name" class="usr form-control">
                 </div>
                 <div class="pass col-10 mb-3">
                     <label class="form-label" style="color:#FFFFFF;">Password</label>
-                    <input type="Password" name="password" class="form-control">
+                    <input type="Password" name="password" class="pss form-control">
                 </div>
                 <div>
                     <button type="submit" class="btn">Login</button>
