@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "Login successful. Welcome, " . $full_name .  $user_id .  $user_name .  $account_type . "!";
             // Redirect to a protected page or dashboard
-            // header("Location: dashboard.php");
+            header("Location: ../home.php");
             exit;
         } else {
 
