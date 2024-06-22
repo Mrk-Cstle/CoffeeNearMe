@@ -19,13 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die(json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]));
     }
 
+    // Function to sanitize input data
+    function sanitizeInput($data)
+    {
+        return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+    }
+
     $data = json_decode(file_get_contents('php://input'), true);
 
-    $user_name = $data['user_name'];
-    $full_name = $data['full_name'];
-    $passwords = $data['password'];
-    $address = $data['address'];
-    $contact_number = $data['contact_number'];
+
+
+    // Extract and sanitize data
+    $user_name = sanitizeInput($data['user_name']);
+    $full_name = sanitizeInput($data['full_name']);
+    $passwords = sanitizeInput($data['password']);
+    $address = sanitizeInput($data['address']);
+    $contact_number = sanitizeInput($data['contact_number']);
     // Password hashing
     $hashedPassword = password_hash($passwords, PASSWORD_DEFAULT);
 
