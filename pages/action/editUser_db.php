@@ -12,9 +12,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact_number = $_POST['contact_number'];
     $address = $_POST['address'];
 
+    // Check if any data is updated
+    $sql_check = "SELECT * FROM user WHERE user_id = $user_id";
+    $result_check = $conn->query($sql_check);
 
-     // Password hashing
-     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    if ($result_check->num_rows > 0) {
+        $row_check = $result_check->fetch_assoc();
+        
+        // Compare existing data with updated data
+        if (
+            $row_check['account_type'] == $account_type &&
+            $row_check['full_name'] == $full_name &&
+            $row_check['user_name'] == $user_name &&
+            $row_check['password'] == $password &&
+            $row_check['contact_number'] == $contact_number &&
+            $row_check['address'] == $address
+        ) {
+            // Nothing changed
+            echo json_encode(array('status' => 'nothing_changed'));
+            exit();
+        }
+    }
+
+    // Password hashing
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare update query
     $sql = "UPDATE user SET 
@@ -24,16 +45,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             password = '$hashedPassword',
             contact_number = '$contact_number',
             address = '$address'
- 
             WHERE user_id = $user_id";
 
     if ($conn->query($sql) === TRUE) {
-        echo "User updated successfully.";
-        // Redirect to the list of users or wherever appropriate
-        header("Location: ../editUser.php"); // Redirect to user list page after successful update
-        exit();
+        // Record updated successfully
+        echo json_encode(array('status' => 'success'));
     } else {
-        echo "Error updating user: " . $conn->error;
+        // Error updating user
+        echo json_encode(array('status' => 'error', 'message' => $conn->error));
     }
 }
 
