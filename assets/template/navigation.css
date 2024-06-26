@@ -329,11 +329,6 @@
   
   }
   
-.main-menu:hover,nav.main-menu.expanded {
-width:250px;
-overflow:visible;
-}
-
 .top-logo {
   margin-top: 10px;
   margin-left: 45px;
@@ -348,11 +343,7 @@ top:0;
 bottom:0;
 height:100%;
 left:0;
-width:62px;
-overflow:hidden;
--webkit-transition:width .05s linear;
-transition:width .05s linear;
--webkit-transform:translateZ(0) scale(1,1);
+width:250px;
 z-index:1000;
 }
 
@@ -376,9 +367,6 @@ color:#999;
 font-family: arial;
 font-size: 16px;
 text-decoration:none;
--webkit-transform:translateZ(0) scale(1,1);
--webkit-transition:all .1s linear;
-transition:all .1s linear;
 }
 
 .main-menu .nav-icon {
