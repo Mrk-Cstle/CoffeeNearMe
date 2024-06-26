@@ -3,6 +3,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $ingredients_name = htmlspecialchars($_POST['name']);
+    $ingredients_category = htmlspecialchars($_POST['category']);
     $ingredients_qty = htmlspecialchars($_POST['qty']);
     $ingredients_ideal = htmlspecialchars($_POST['ideal_qty']);
     $ingredients_picture = htmlspecialchars($_POST['picture']);
@@ -14,11 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("INSERT INTO ingredients (raw_name,quantity,ideal_quantity,picture) VALUES (?,?,?,?)");
+    $stmt = $conn->prepare("INSERT INTO ingredients (raw_name,category,quantity,ideal_quantity,picture) VALUES (?,?,?,?,?)");
     if (!$stmt) {
         die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
     }
-    $stmt->bind_param("siis", $ingredients_name, $ingredients_qty, $ingredients_ideal, $ingredients_picture);
+    $stmt->bind_param("ssiis", $ingredients_name, $ingredients_category, $ingredients_qty, $ingredients_ideal, $ingredients_picture);
 
     try {
         $stmt->execute();

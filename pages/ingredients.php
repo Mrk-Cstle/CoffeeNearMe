@@ -15,6 +15,28 @@
         <label for="qty">Quantity</label>
         <input type="number" name="qty" id="qty" placeholder="Enter Quantity">
         <br><br>
+        <label for="qty">Category</label>
+        <select name="category" id="category">
+            <?php
+
+            include '../pages/include/dbConnection.php';
+
+            // Read all rows from the database
+            $sql = "SELECT * FROM ingredients_category  ";
+            $result = $conn->query($sql);
+
+            if (!$result) {
+                die("Invalid query: " . $conn->error);
+            }
+
+            // Read data for each row
+            while ($row = $result->fetch_assoc()) {
+                echo '<option value ="' . $row["category"] . '">' . $row["category"] . '</option> ';
+            }
+            ?>
+        </select>
+
+        <br><br>
         <label for="ideal_qty">Ideal Quantity</label>
         <input type="text" name="ideal_qty" id="ideal_qty" placeholder="Enter Ideal Quantity">
         <br><br>
