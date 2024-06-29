@@ -222,6 +222,7 @@ $result = $stmt->get_result();
   .pagination li a:hover {
     text-decoration: none;
   }
+
   .vbtn {
     -webkit-text-fill-color: #fff;
   }
@@ -377,12 +378,12 @@ $result = $stmt->get_result();
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
-    const myModal = document.getElementById('myModal');
-    const myInput = document.getElementById('myInput');
+    // const myModal = document.getElementById('myModal');
+    // const myInput = document.getElementById('myInput');
 
-    myModal.addEventListener('shown.bs.modal', () => {
-      myInput.focus();
-    });
+    // myModal.addEventListener('shown.bs.modal', () => {
+    //   myInput.focus();
+    // });
 
     $(document).ready(function() {
       $('#saveChanges').click(function() {
