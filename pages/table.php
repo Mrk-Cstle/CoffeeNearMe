@@ -37,15 +37,18 @@ $result = $stmt->get_result();
   <title>Table</title>
 </head>
 <style>
+  body {
+    background-color: #d9d9d9;
+  }
+
   .container {
-    padding: 100px;
+    padding: 50px;
     margin-left: 420px;
-    margin-top: 50px;
+    margin-top: 120px;
   }
 
   .table {
     border: 1px solid;
-    outline: 3px solid;
     margin-top: 60px;
     text-align: center;
     font-size: 18px;
@@ -78,7 +81,7 @@ $result = $stmt->get_result();
     -webkit-text-fill-color: #fff;
   }
 
-  .userfooter .modal-footer {
+  .userfooter {
     border: rgba(0, 0, 0, 0.6);
   }
 
@@ -165,35 +168,6 @@ $result = $stmt->get_result();
     width: 100%;
   }
 
-
-
-  .container {
-    padding: 100px;
-  }
-
-  .table {
-    border: 1px solid;
-    outline: 3px solid;
-    margin-top: 60px;
-    text-align: center;
-    font-size: 18px;
-    -webkit-text-fill-color: #d76614;
-  }
-
-  .search {
-    height: 10%;
-    width: 40%;
-    display: flex;
-    float: right;
-  }
-
-  .btn {
-    background-color: #d76614;
-    color: #fff;
-    border: none;
-  }
-
-
   .t-input {
     background-color: rgba(0, 0, 0, 0.3);
     border: #d76614;
@@ -239,9 +213,7 @@ $result = $stmt->get_result();
 
   .pagination .currentpage a:hover {
     background-color: #2d2b2b;
-
   }
-
 
   .pagination li a {
     color: #fff;
@@ -249,6 +221,9 @@ $result = $stmt->get_result();
 
   .pagination li a:hover {
     text-decoration: none;
+  }
+  .vbtn {
+    -webkit-text-fill-color: #fff;
   }
 </style>
 
@@ -307,11 +282,11 @@ $result = $stmt->get_result();
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
-          <th scope="col">Username</th>
-          <th scope="col">Fullname</th>
-          <th scope="col">Address</th>
-          <th scope="col">Contact Number</th>
-          <th scope="col">Action</th>
+          <th style="background-color: #2c2c2c;" scope="col">Username</th>
+          <th style="background-color: #2c2c2c;" scope="col">Fullname</th>
+          <th style="background-color: #2c2c2c;" scope="col">Address</th>
+          <th style="background-color: #2c2c2c;" scope="col">Contact Number</th>
+          <th style="background-color: #2c2c2c;" scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -322,7 +297,7 @@ $result = $stmt->get_result();
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact_number']; ?></td>
             <td>
-              <a class='btn btn-primary btn-sm' href='editUser.php?id=<?php echo $row['user_id']; ?>'>View</a>
+              <a class='vbtn btn btn-dark btn-sm' href='editUser.php?id=<?php echo $row['user_id']; ?>'>View</a>
             </td>
           </tr>
         <?php endwhile; ?>
