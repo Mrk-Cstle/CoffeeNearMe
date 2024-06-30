@@ -97,6 +97,29 @@
     -webkit-text-fill-color: #d76614;
   }
 
+  .add-content {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .add{
+    -webkit-text-fill-color: #fff;
+    border: rgba(0, 0, 0, 0.6);
+  }
+
+  .add-body {
+    margin-left: 90px;
+    -webkit-text-fill-color: #fff;
+  }
+
+  .add-footer {
+    border: rgba(0, 0, 0, 0.6);
+  }
+
+  .add-title  {
+    margin-left: 145px;
+  }
+
+
   .vbtn {
     -webkit-text-fill-color: #FFF;
   }
@@ -106,7 +129,7 @@
 
         <div>
           <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
-          <button type="button" class="topbtn btn btn-dark me-1">Add Ingredients</button>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>
           <button type="button" class="topbtn btn btn-dark me-1">Filter</button>
           <form class="search form-inline">
             <!-- Modal -->
@@ -142,6 +165,38 @@
                   </div>
                   <div class="plusfooter modal-footer">
                     <button type="button" class="btn btn-dark">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="add-content modal-content">
+                  <div class="add modal-header">
+                    <h1 class="add-title modal-title fs-4" id="ModalLabel">Add Ingredients</h1>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="add-body modal-body">
+                    <div class="add-ingredient input-group mb-3 d-block">
+                      Ingredients
+                      <input type="text" class="t-input form-control w-75" aria-label="full_name" id="full_name">
+                    </div>
+                    <div class="add-category input-group mb-3 d-block">
+                      Category
+                      <input type="text" class="t-input form-control w-75" aria-label="user_name" id="user_name">
+                    </div>
+                    <div class="add-quantity input-group mb-3 d-block">
+                      Quantity
+                      <input type="text" class="t-input form-control w-75" aria-label="Name" id="password">
+                    </div>
+                    <div class="add-ideal input-group mb-3 d-block">
+                      Ideal Quantity
+                      <input type="text" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
+                    </div>
+                  </div>
+                  <div class="add-footer modal-footer">
+                    <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" id="saveChanges">Add</button>
                   </div>
                 </div>
               </div>
