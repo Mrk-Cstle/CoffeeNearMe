@@ -101,6 +101,29 @@
     -webkit-text-fill-color: #d76614;
   }
 
+  .add-content {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .add {
+    -webkit-text-fill-color: #fff;
+    border: rgba(0, 0, 0, 0.6);
+  }
+
+  .add-body {
+    margin-left: 90px;
+    -webkit-text-fill-color: #fff;
+  }
+
+  .add-footer {
+    border: rgba(0, 0, 0, 0.6);
+  }
+
+  .add-title {
+    margin-left: 145px;
+  }
+
+
   .vbtn {
     -webkit-text-fill-color: #FFF;
   }
@@ -111,7 +134,7 @@
 
     <div>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
-      <button type="button" class="topbtn btn btn-dark me-1">Add Ingredients</button>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>
       <button type="button" class="topbtn btn btn-dark me-1">Filter</button>
       <form class="search form-inline">
         <!-- Modal -->
@@ -152,28 +175,75 @@
             </div>
           </div>
         </div>
+        <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="add-content modal-content">
+              <div class="add modal-header">
+                <h1 class="add-title modal-title fs-4" id="ModalLabel">Add Ingredients</h1>
+                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="add-body modal-body">
+                <div class="add-ingredient input-group mb-3 d-block">
+                  Ingredients
+                  <input type="text" class="t-input form-control w-75" aria-label="ingredients" id="ingredients">
+                </div>
+                <div class="add-category input-group mb-3 d-block">
+                  Category
+
+                  <select class="t-input form-control w-75" aria-label="category" name="category" id="category">
+                    <?php
+
+                    include '../pages/include/dbConnection.php';
+
+                    // Read all rows from the database
+                    $sql = "SELECT * FROM ingredients_category  ";
+                    $result = $conn->query($sql);
+
+                    if (!$result) {
+                      die("Invalid query: " . $conn->error);
+                    }
+
+                    // Read data for each row
+                    while ($row = $result->fetch_assoc()) {
+                      echo '<option value ="' . $row["category"] . '">' . $row["category"] . '</option> ';
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="add-quantity input-group mb-3 d-block">
+                  Quantity
+                  <input type="text" class="t-input form-control w-75" aria-label="qty" id="qty">
+                </div>
+                <div class="add-ideal input-group mb-3 d-block">
+                  Ideal Quantity
+                  <input type="text" class="t-input form-control w-75" aria-label="ideal_qty" id="ideal_qty">
+                </div>
+              </div>
+              <div class="add-footer modal-footer">
+                <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-dark" id="saveChanges">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
         <input class="form-control mr-sm-2 me-1" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
-    <table class="table table-hover table-bordered">
+    <table class=" table table-hover table-bordered">
       <thead>
         <tr>
-          <th style="background-color: #2c2c2c;" scope="col">Username</th>
-          <th style="background-color: #2c2c2c;" scope="col">Fullname</th>
-          <th style="background-color: #2c2c2c;" scope="col">Address</th>
+          <th style="background-color: #2c2c2c;" scope="col">Picture</th>
+          <th style="background-color: #2c2c2c;" scope="col">Ingredient</th>
+          <th style="background-color: #2c2c2c;" scope="col">Quantity</th>
+          <th style="background-color: #2c2c2c;" scope="col">Ideal Quantity</th>
           <th style="background-color: #2c2c2c;" scope="col">Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>qwe</td>
-          <td>asd</td>
-          <td>zxc</td>
-          <td>
-            <a class='vbtn btn btn-dark btn-sm' href="#">View</a>
-          </td>
-        </tr>
+      <tbody class="ingredients-tbl">
+
+
+
       </tbody>
     </table>
   </div>
@@ -267,6 +337,112 @@
         });
       }
       loadCategories();
+
+
+      //for ingredients ajax
+
+      function loadIngredients() {
+        var data = {
+
+          action: 'reload'
+        };
+        $.ajax({
+          type: 'POST',
+          url: 'action/ingredients_db.php', // Replace with correct path to fetch categories
+          contentType: 'application/json',
+          data: JSON.stringify(data),
+          success: function(response) {
+
+            if (response.status === 'success') {
+              var ingredients = response.ingredients;
+              var listItems = '';
+              ingredients.forEach(function(ingredient) {
+                listItems += `
+                   <tr >
+                            <td>${ingredient.picture}</td>
+                            <td>${ingredient.raw_name}</td>
+                            <td>${ingredient.quantity}</td>
+                            <td>${ingredient.ideal_quantity}</td>
+                            
+                            
+                            <td>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class='vbtn btn btn-primary btn-sm' href='ingredients_edit.php?id=$row[ingredients_id]'>Edit</a>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn vbtn btn btn-dark btn-sm' >Delete</a>
+                            </td>
+                        </tr>
+
+          `;
+              });
+              $('.ingredients-tbl').html(listItems); // Update DOM with new categories
+              console.error('loading categories: ' + response.message);
+
+            } else {
+              console.error('Error loading categories: ' + response.message);
+            }
+          },
+          error: function(xhr, status, error) {
+            console.error('Error loading categories:', status, error);
+            console.log('XHR object:', xhr); // Log the entire XHR object for more details
+            if (xhr.responseText) {
+              console.log('Response text:', xhr.responseText); // Log the response text if available
+            }
+            // Handle any additional error details as needed
+          }
+        });
+      }
+      $(document).on('click', '.deletebtn', function() {
+
+        var ingredients_id = $(this).data('ingredients-id');
+        var data = {
+          ingredients_id: ingredients_id,
+          action: 'delete'
+        }
+        ingredientsAjaxRequest(data);
+      });
+
+      $('#saveChanges').click(function() {
+        var ingredients = $('#ingredients').val();
+        var category = $('#category').val();
+        var qty = $('#qty').val();
+        var ideal_qty = $('#ideal_qty').val();
+
+        var data = {
+          ingredients: ingredients,
+          category: category,
+          qty: qty,
+          ideal_qty: ideal_qty,
+          action: 'add'
+        }
+        ingredientsAjaxRequest(data);
+      });
+
+      function ingredientsAjaxRequest(data) {
+        $.ajax({
+          type: 'POST',
+          url: 'action/ingredients_db.php', // replace with your server endpoint
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+
+          success: function(response) {
+
+            console.log(response);
+            // Optionally close the modal
+            if (response.status === 'success') {
+              loadIngredients()
+              alert(response.message);
+              loadIngredients();
+            } else {
+              alert('Error: ' + response.message);
+            }
+            $('#Category').modal('hide');
+          },
+          error: function(error) {
+            // Handle any errors
+            console.error(error);
+          }
+        });
+      }
+      loadIngredients();
     });
   </script>
 </body>
