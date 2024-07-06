@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Table 2</title>
 </head>
 <style>
@@ -304,11 +305,29 @@
       $(document).on('click', '.dots', function() {
 
         var categoryId = $(this).data('category-id');
-        var data = {
-          categoryId: categoryId,
-          action: 'delete'
-        }
-        sendAjaxRequest(data);
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              categoryId: categoryId,
+              action: 'delete'
+            };
+            sendAjaxRequest(data);
+          }
+          // var data = {
+          //   categoryId: categoryId,
+          //   action: 'delete'
+          // }
+          // sendAjaxRequest(data);
+        });
       });
 
       function sendAjaxRequest(data) {
@@ -323,10 +342,22 @@
             console.log(response);
             // Optionally close the modal
             if (response.status === 'success') {
+              Swal.fire({
+                title: 'Success',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
               loadCategories();
-              alert(response.message);
+
             } else {
-              alert('Error: ' + response.message);
+
+              Swal.fire({
+                title: 'Error',
+                text: response.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
             }
             $('#Category').modal('hide');
           },
@@ -356,12 +387,15 @@
             if (response.status === 'success') {
               var ingredients = response.ingredients;
               var listItems = '';
+
               ingredients.forEach(function(ingredient) {
+                var lowStock = ingredient.quantity < 0.8 * ingredient.ideal_quantity;
+                var BackgroundColor = lowStock ? '#FA8072' : '';
                 listItems += `
-                   <tr >
+                    <tr >
                             <td>${ingredient.picture}</td>
-                            <td>${ingredient.raw_name}</td>
-                            <td>${ingredient.quantity}</td>
+                            <td style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
+                            <td >${ingredient.quantity}</td>
                             <td>${ingredient.ideal_quantity}</td>
                             
                             
@@ -393,11 +427,33 @@
       $(document).on('click', '.deletebtn', function() {
 
         var ingredients_id = $(this).data('ingredients-id');
-        var data = {
-          ingredients_id: ingredients_id,
-          action: 'delete'
-        }
-        ingredientsAjaxRequest(data);
+        // var data = {
+        //   ingredients_id: ingredients_id,
+        //   action: 'delete'
+        // }
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              ingredients_id: ingredients_id,
+              action: 'delete'
+            }
+            ingredientsAjaxRequest(data);
+          }
+          // var data = {
+          //   categoryId: categoryId,
+          //   action: 'delete'
+          // }
+          // sendAjaxRequest(data);
+        });
+        // ingredientsAjaxRequest(data);
       });
 
       $('#saveChanges').click(function() {
@@ -428,13 +484,23 @@
             console.log(response);
             // Optionally close the modal
             if (response.status === 'success') {
-              loadIngredients()
-              alert(response.message);
+              Swal.fire({
+                title: 'Success',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+
               loadIngredients();
             } else {
-              alert('Error: ' + response.message);
+              Swal.fire({
+                title: 'Error',
+                text: response.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
             }
-            $('#Category').modal('hide');
+            $('#Add').modal('hide');
           },
           error: function(error) {
             // Handle any errors
