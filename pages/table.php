@@ -1,10 +1,16 @@
 <?php
 include './include/dbConnection.php';
 
-$mysqli = mysqli_connect('localhost', 'root', '', 'coffeenearme');
+$mysqli = new mysqli('localhost', 'root', '', 'coffeenearme');
+
+if ($mysqli->connect_error) {
+  die("Connection failed: " . $mysqli->connect_error);
+}
 
 // Get the total number of records from our table "user".
-$total_users = $mysqli->query('SELECT COUNT(*) as total FROM user')->fetch_assoc()['total'];
+$stmt = $mysqli->prepare('SELECT COUNT(*) as total FROM user');
+$stmt->execute();
+$total_users = $stmt->get_result()->fetch_assoc()['total'];
 
 // Check if the page number is specified and check if it's a number, if not return the default page number which is 1.
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
@@ -22,6 +28,11 @@ $stmt->bind_param('ii', $calc_page, $num_results_on_page);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
+
+
+
+
 <!DOCTYPE html>
 
 <?php include '../assets/template/navigation.php'; ?>
@@ -33,6 +44,14 @@ $result = $stmt->get_result();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- SweetAlert CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+  <!-- jQuery (ensure it is included before SweetAlert) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- SweetAlert JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
   <title>Table</title>
 </head>
@@ -298,7 +317,21 @@ $result = $stmt->get_result();
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact_number']; ?></td>
             <td>
-              <a class='vbtn btn btn-dark btn-sm' href='editUser.php?id=<?php echo $row['user_id']; ?>'>View</a>
+              <a class='btn btn-primary btn-sm view-btn'
+                href='#View'
+                data-bs-toggle='modal'
+                data-user_id='<?php echo $row['user_id']; ?>'
+                data-user_name='<?php echo $row['user_name']; ?>'
+                data-full_name='<?php echo $row['full_name']; ?>'
+                data-address='<?php echo $row['address']; ?>'
+                data-contact_number='<?php echo $row['contact_number']; ?>'
+                data-account_type='<?php echo $row['account_type']; ?>'
+                data-password='<?php echo $row['password']; ?>'
+                data-account_date='<?php echo $row['account_date']; ?>'>
+                View
+              </a>
+
+
             </td>
           </tr>
         <?php endwhile; ?>
@@ -321,69 +354,69 @@ $result = $stmt->get_result();
       </ul>
     <?php endif; ?>
 
-    <button type="button" data-bs-toggle="modal" data-bs-target="#View" class="view btn btn-dark">View</button>
+    <form id="view" method="POST">
+      <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="viewcontent modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="Modal"></h1>
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="viewbody modal-body">
+              <div class="area">
+                <img src="../assets/images/1x1.jpg" class="fprofile">
+                <div class="row gx-5">
+                  <div class="col">
+                    <div class="fname">
+                      <div class="input-group mb-3 d-block">Fullname
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="full_name">
+                      </div>
 
-    <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="viewcontent modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-4" id="Modal"></h1>
-            <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="viewbody modal-body">
-            <div class="area">
-              <img src="../assets/images/1x1.jpg" class="fprofile">
-              <div class="row gx-5">
-                <div class="col">
-                  <div class="fname">
-                    <div class="input-group mb-3 d-block">Fullname
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
-                    </div>
-
-                    <div class="input-group mb-3 d-block mt-4">Account Type
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
+                      <div class="input-group mb-3 d-block mt-4">Account Type
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="info col-6">
-                    <div class="input-group mb-3">Username
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Password
-                      <input type="password" class="input form-control w-100 mt-2" aria-label="Username">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Address
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Contact Number
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Account Date
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username">
+                  <div class="col">
+                    <div class="info col-6">
+                      <div class="input-group mb-3">Username
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="user_name">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Password
+                        <input type="password" class="input form-control w-100 mt-2" aria-label="Username" name="password">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Address
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="address">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Contact Number
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Account Date
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="viewfooter modal-footer">
-            <button type="button" class="btn btn-dark me-3" data-bs-dismiss="modal">Delete</button>
-            <button type="button" class="btn btn-dark">Update</button>
+            <div class="viewfooter modal-footer">
+              <button type="button" class="btn btn-dark me-3 delete-btn" data-bs-dismiss="modal">Delete</button>
+              <button type="button" class="btn btn-dark update-btn">Update</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
+  </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
-    // const myModal = document.getElementById('myModal');
+    //const myModal = document.getElementById('myModal');
     // const myInput = document.getElementById('myInput');
 
-    // myModal.addEventListener('shown.bs.modal', () => {
-    //   myInput.focus();
-    // });
+    //myModal.addEventListener('shown.bs.modal', () => {
+    //  myInput.focus();
+    //});
 
     $(document).ready(function() {
       $('#saveChanges').click(function() {
@@ -427,7 +460,283 @@ $result = $stmt->get_result();
         });
       });
     });
+
+
+
+    //View Modal Scrip
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all elements with class 'view-btn'
+      var viewButtons = document.querySelectorAll('.view-btn');
+
+      viewButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          // Extract data from the button's data attributes
+          var user_name = this.getAttribute('data-user_name');
+          var full_name = this.getAttribute('data-full_name');
+          var address = this.getAttribute('data-address');
+          var contact_number = this.getAttribute('data-contact_number');
+          var account_type = this.getAttribute('data-account_type');
+          var password = this.getAttribute('data-password');
+          var account_date = this.getAttribute('data-account_date');
+
+          // Update modal content with the extracted data
+          document.querySelector('.viewcontent .modal-title').textContent = full_name; // Update modal title
+
+          document.querySelector('.viewcontent input[name="full_name"]').value = full_name;
+          document.querySelector('.viewcontent input[name="user_name"]').value = user_name;
+          document.querySelector('.viewcontent input[name="address"]').value = address;
+          document.querySelector('.viewcontent input[name="contact_number"]').value = contact_number;
+          document.querySelector('.viewcontent input[name="account_type"]').value = account_type;
+          document.querySelector('.viewcontent input[name="password"]').value = password;
+          document.querySelector('.viewcontent input[name="account_date"]').value = account_date;
+        });
+      });
+    });
+
+
+
+    //Script for Update and Delete Button
+
+    $(document).ready(function() {
+      $('.view-btn').click(function() {
+        // Set user_id on #View modal
+        $('#View').data('user_id', $(this).data('user_id'));
+      });
+
+      // Store original values when the page loads
+      var originalData = {
+        full_name: '',
+        user_name: '',
+        password: '',
+        address: '',
+        contact_number: '',
+        account_type: '',
+        account_date: ''
+      };
+
+      // Flag to track changes
+      var changesMade = false;
+
+      // Function to initialize originalData with current values
+      function initializeOriginalData() {
+        originalData.full_name = $('input[name="full_name"]').val().trim();
+        originalData.user_name = $('input[name="user_name"]').val().trim();
+        originalData.password = $('input[name="password"]').val().trim();
+        originalData.address = $('input[name="address"]').val().trim();
+        originalData.contact_number = $('input[name="contact_number"]').val().trim();
+        originalData.account_type = $('input[name="account_type"]').val().trim();
+        originalData.account_date = $('input[name="account_date"]').val().trim();
+      }
+
+      // Call initializeOriginalData when the page loads
+      $(document).ready(function() {
+        initializeOriginalData();
+
+        // Debounce function to limit the rate of execution
+        function debounce(func, delay) {
+          var timer;
+          return function() {
+            var context = this;
+            var args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+              func.apply(context, args);
+            }, delay);
+          };
+        }
+
+        // Debounce function for checking changes
+        var checkChanges = debounce(function() {
+          // Collect updated data
+          var updatedData = {
+            full_name: $('input[name="full_name"]').val().trim(),
+            user_name: $('input[name="user_name"]').val().trim(),
+            password: $('input[name="password"]').val().trim(),
+            address: $('input[name="address"]').val().trim(),
+            contact_number: $('input[name="contact_number"]').val().trim(),
+            account_type: $('input[name="account_type"]').val().trim(),
+            account_date: $('input[name="account_date"]').val().trim()
+          };
+
+          // Check if any data has changed
+          var hasChanges =
+            updatedData.full_name !== originalData.full_name ||
+            updatedData.user_name !== originalData.user_name ||
+            updatedData.password !== originalData.password ||
+            updatedData.address !== originalData.address ||
+            updatedData.contact_number !== originalData.contact_number ||
+            updatedData.account_type !== originalData.account_type ||
+            updatedData.account_date !== originalData.account_date;
+
+          // Update changesMade flag
+          changesMade = hasChanges;
+
+          // Enable/disable update button based on changes
+          $('.update-btn').prop('disabled', !hasChanges);
+        }, 300); // 300ms debounce delay
+
+        // Bind input change event to checkChanges function
+        $('input[name="full_name"], input[name="user_name"], input[name="password"], input[name="address"], input[name="contact_number"], input[name="account_type"], input[name="account_date"]').on('input', checkChanges);
+
+        // Initialize originalData when clicking the view button
+        $('#View').click(function() {
+          initializeOriginalData();
+          changesMade = false; // Reset changesMade flag
+        });
+
+        // Click handler for update button
+        $('.update-btn').click(function() {
+          // If no changes made, show info alert and return
+          if (!changesMade) {
+            Swal.fire({
+              icon: 'info',
+              title: 'No Changes Made',
+              text: 'You have not made any changes.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
+            });
+            return;
+          }
+
+          // Confirm update with user
+          Swal.fire({
+            title: 'Confirm Update',
+            text: 'Are you sure you want to update the user data?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, update it!'
+          }).then(function(result) {
+            if (result.isConfirmed) {
+              // Proceed with update
+              var user_id = $('#View').data('user_id');
+              var updatedData = {
+                full_name: $('input[name="full_name"]').val().trim(),
+                user_name: $('input[name="user_name"]').val().trim(),
+                password: $('input[name="password"]').val().trim(),
+                address: $('input[name="address"]').val().trim(),
+                contact_number: $('input[name="contact_number"]').val().trim(),
+                account_type: $('input[name="account_type"]').val().trim(),
+                account_date: $('input[name="account_date"]').val().trim(),
+                user_id: user_id
+              };
+
+              // Send AJAX request
+              $.ajax({
+                  type: 'POST',
+                  url: 'action/update_user.php',
+                  data: JSON.stringify(updatedData),
+                  contentType: 'application/json'
+                })
+                .then(function(response) {
+                  console.log(response);
+
+                  if (typeof response === 'string') {
+                    response = JSON.parse(response);
+                  }
+
+                  if (response.status === 'success') {
+                    Swal.fire({
+                      title: 'Success',
+                      text: response.message,
+                      icon: 'success',
+                      confirmButtonText: 'OK'
+                    });
+
+                    // Update originalData after successful update
+                    initializeOriginalData(); // Update originalData with new values
+                    changesMade = false; // Reset changesMade flag
+                  } else {
+                    Swal.fire({
+                      icon: 'info',
+                      title: 'Update Failed',
+                      text: response.message,
+                      confirmButtonColor: '#d33',
+                      confirmButtonText: 'OK'
+                    });
+                  }
+                })
+                .fail(function(xhr, status, error) {
+                  console.error('AJAX Error:', error);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Update Failed',
+                    text: 'Failed to update user. Please try again later.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                  });
+                });
+            }
+          });
+        });
+      });
+
+
+
+
+    });
+
+
+
+
+
+
+    $('.delete-btn').click(function() {
+      var user_id = $('#View').data('user_id');
+
+      Swal.fire({
+        icon: 'warning',
+        title: 'Are you sure?',
+        text: 'You are about to delete this user.',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type: 'POST',
+            url: 'action/delete_user.php',
+            data: {
+              user_id: user_id
+            },
+            success: function(response) {
+              console.log(response);
+              if (response.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Deleted!',
+                  text: 'User deleted successfully.',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'OK'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    location.reload(); // Reload the page or update specific elements
+                  }
+                });
+              }
+            },
+            error: function(error) {
+              console.error('Error deleting user:', error);
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to delete user. Please try again later.',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+        }
+      });
+    });
   </script>
+
+
+
 </body>
 
 </html>
