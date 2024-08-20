@@ -419,6 +419,7 @@ $result = $stmt->get_result();
     //});
 
     $(document).ready(function() {
+
       $('#saveChanges').click(function() {
         // Collect the input data
         var full_name = $('#full_name').val();
@@ -428,38 +429,128 @@ $result = $stmt->get_result();
         var contact_number = $('#contact_number').val();
 
         // Prepare the data to be sent
-        var userData = {
+        var data = {
           full_name: full_name,
           user_name: user_name,
           password: password,
           address: address,
-          contact_number: contact_number
-        };
+          contact_number: contact_number,
+          action: 'add'
+        }
+        userAjaxRequest(data);
 
-        // Send the data using AJAX
+      });
+      $('.delete-btn').click(function() {
+        var user_id = $('#View').data('user_id');
+
+        Swal.fire({
+          icon: 'warning',
+          title: 'Are you sure?',
+          text: 'You are about to delete this user.',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'Cancel'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              user_id: user_id,
+              action: 'delete'
+            }
+            userAjaxRequest(data);
+
+          }
+        });
+      });
+
+
+      function userAjaxRequest(data) {
         $.ajax({
           type: 'POST',
-          url: 'action/adduser_db.php', // replace with your server endpoint
-          data: JSON.stringify(userData),
+          url: 'action/user_db.php', // replace with your server endpoint
+          data: JSON.stringify(data),
           contentType: 'application/json',
+
           success: function(response) {
-            // Handle the response from the server
+
             console.log(response);
             // Optionally close the modal
             if (response.status === 'success') {
-              alert(response.message);
+              Swal.fire({
+                title: 'Success',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+
+              // loadIngredients();
             } else {
-              alert('Error: ' + response.message);
+              Swal.fire({
+                title: 'Error',
+                text: response.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
             }
-            $('#Modal').modal('hide');
+            $('#Add').modal('hide');
           },
           error: function(error) {
             // Handle any errors
             console.error(error);
           }
         });
-      });
+      }
     });
+
+
+
+
+
+    ///////
+
+    // $(document).ready(function() {
+    //   $('#saveChanges').click(function() {
+    //     // Collect the input data
+    //     var full_name = $('#full_name').val();
+    //     var user_name = $('#user_name').val();
+    //     var password = $('#password').val();
+    //     var address = $('#address').val();
+    //     var contact_number = $('#contact_number').val();
+
+    //     // Prepare the data to be sent
+    //     var userData = {
+    //       full_name: full_name,
+    //       user_name: user_name,
+    //       password: password,
+    //       address: address,
+    //       contact_number: contact_number
+    //     };
+
+    //     // Send the data using AJAX
+    //     $.ajax({
+    //       type: 'POST',
+    //       url: 'action/adduser_db.php', // replace with your server endpoint
+    //       data: JSON.stringify(userData),
+    //       contentType: 'application/json',
+    //       success: function(response) {
+    //         // Handle the response from the server
+    //         console.log(response);
+    //         // Optionally close the modal
+    //         if (response.status === 'success') {
+    //           alert(response.message);
+    //         } else {
+    //           alert('Error: ' + response.message);
+    //         }
+    //         $('#Modal').modal('hide');
+    //       },
+    //       error: function(error) {
+    //         // Handle any errors
+    //         console.error(error);
+    //       }
+    //     });
+    //   });
+    // });
 
 
 
@@ -683,56 +774,56 @@ $result = $stmt->get_result();
 
 
 
-    $('.delete-btn').click(function() {
-      var user_id = $('#View').data('user_id');
+    // $('.delete-btn').click(function() {
+    //   var user_id = $('#View').data('user_id');
 
-      Swal.fire({
-        icon: 'warning',
-        title: 'Are you sure?',
-        text: 'You are about to delete this user.',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'Cancel'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          $.ajax({
-            type: 'POST',
-            url: 'action/delete_user.php',
-            data: {
-              user_id: user_id
-            },
-            success: function(response) {
-              console.log(response);
-              if (response.status == 'success') {
-                Swal.fire({
-                  icon: 'success',
-                  title: 'Deleted!',
-                  text: 'User deleted successfully.',
-                  confirmButtonColor: '#3085d6',
-                  confirmButtonText: 'OK'
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    location.reload(); // Reload the page or update specific elements
-                  }
-                });
-              }
-            },
-            error: function(error) {
-              console.error('Error deleting user:', error);
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Failed to delete user. Please try again later.',
-                confirmButtonColor: '#d33',
-                confirmButtonText: 'OK'
-              });
-            }
-          });
-        }
-      });
-    });
+    //   Swal.fire({
+    //     icon: 'warning',
+    //     title: 'Are you sure?',
+    //     text: 'You are about to delete this user.',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#d33',
+    //     cancelButtonColor: '#3085d6',
+    //     confirmButtonText: 'Yes, delete it!',
+    //     cancelButtonText: 'Cancel'
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       $.ajax({
+    //         type: 'POST',
+    //         url: 'action/delete_user.php',
+    //         data: {
+    //           user_id: user_id
+    //         },
+    //         success: function(response) {
+    //           console.log(response);
+    //           if (response.status == 'success') {
+    //             Swal.fire({
+    //               icon: 'success',
+    //               title: 'Deleted!',
+    //               text: 'User deleted successfully.',
+    //               confirmButtonColor: '#3085d6',
+    //               confirmButtonText: 'OK'
+    //             }).then((result) => {
+    //               if (result.isConfirmed) {
+    //                 location.reload(); // Reload the page or update specific elements
+    //               }
+    //             });
+    //           }
+    //         },
+    //         error: function(error) {
+    //           console.error('Error deleting user:', error);
+    //           Swal.fire({
+    //             icon: 'error',
+    //             title: 'Error',
+    //             text: 'Failed to delete user. Please try again later.',
+    //             confirmButtonColor: '#d33',
+    //             confirmButtonText: 'OK'
+    //           });
+    //         }
+    //       });
+    //     }
+    //   });
+    // });
   </script>
 
 

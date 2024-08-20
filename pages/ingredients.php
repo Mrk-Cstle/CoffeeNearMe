@@ -400,7 +400,7 @@
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class='vbtn btn btn-primary btn-sm' href='ingredients_edit.php?id=$row[ingredients_id]'>Edit</a>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class='vbtn btn btn-primary btn-sm' href='ingredients_edit.php?id=${ingredient.ingredients_id}'>Edit</a>
                                 <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn vbtn btn btn-dark btn-sm' >Delete</a>
                             </td>
                         </tr>

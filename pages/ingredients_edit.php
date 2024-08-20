@@ -17,7 +17,8 @@
 
         // Fetch existing user data from database
         include '../pages/include/dbConnection.php';
-        $sql = "SELECT * FROM ingredients WHERE ingredients_id = $ingredients_id";
+        $sql = "SELECT * FROM ingredients WHERE ingredients_id = 
+        $ingredients_id";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
