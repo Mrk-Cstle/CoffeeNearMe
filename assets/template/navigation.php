@@ -96,10 +96,10 @@
             </a>
          </li>
          <li>
-            <a href="#">
+            <a href="ingredients.php">
                <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
-                  Dashboard
+                  Ingredients
                </span>
             </a>
          </li>

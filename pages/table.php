@@ -4,7 +4,7 @@ include './include/dbConnection.php';
 $mysqli = new mysqli('localhost', 'root', '', 'coffeenearme');
 
 if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+  die("Connection failed: " . $mysqli->connect_error);
 }
 
 // Get the total number of records from our table "user".
@@ -30,7 +30,7 @@ $result = $stmt->get_result();
 ?>
 
 
-  
+
 
 
 <!DOCTYPE html>
@@ -44,27 +44,30 @@ $result = $stmt->get_result();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <!-- SweetAlert CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <!-- SweetAlert CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-<!-- jQuery (ensure it is included before SweetAlert) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- jQuery (ensure it is included before SweetAlert) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- SweetAlert JS -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  <!-- SweetAlert JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
   <title>Table</title>
 </head>
 <style>
+  body {
+    background-color: #d9d9d9;
+  }
+
   .container {
-    padding: 100px;
+    padding: 50px;
     margin-left: 420px;
-    margin-top: 50px;
+    margin-top: 120px;
   }
 
   .table {
     border: 1px solid;
-    outline: 3px solid;
     margin-top: 60px;
     text-align: center;
     font-size: 18px;
@@ -97,7 +100,7 @@ $result = $stmt->get_result();
     -webkit-text-fill-color: #fff;
   }
 
-  .userfooter .modal-footer {
+  .userfooter {
     border: rgba(0, 0, 0, 0.6);
   }
 
@@ -184,35 +187,6 @@ $result = $stmt->get_result();
     width: 100%;
   }
 
-
-
-  .container {
-    padding: 100px;
-  }
-
-  .table {
-    border: 1px solid;
-    outline: 3px solid;
-    margin-top: 60px;
-    text-align: center;
-    font-size: 18px;
-    -webkit-text-fill-color: #d76614;
-  }
-
-  .search {
-    height: 10%;
-    width: 40%;
-    display: flex;
-    float: right;
-  }
-
-  .btn {
-    background-color: #d76614;
-    color: #fff;
-    border: none;
-  }
-
-
   .t-input {
     background-color: rgba(0, 0, 0, 0.3);
     border: #d76614;
@@ -258,9 +232,7 @@ $result = $stmt->get_result();
 
   .pagination .currentpage a:hover {
     background-color: #2d2b2b;
-
   }
-
 
   .pagination li a {
     color: #fff;
@@ -268,6 +240,10 @@ $result = $stmt->get_result();
 
   .pagination li a:hover {
     text-decoration: none;
+  }
+
+  .vbtn {
+    -webkit-text-fill-color: #fff;
   }
 </style>
 
@@ -326,11 +302,11 @@ $result = $stmt->get_result();
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
-          <th scope="col">Username</th>
-          <th scope="col">Fullname</th>
-          <th scope="col">Address</th>
-          <th scope="col">Contact Number</th>
-          <th scope="col">Action</th>
+          <th style="background-color: #2c2c2c;" scope="col">Username</th>
+          <th style="background-color: #2c2c2c;" scope="col">Fullname</th>
+          <th style="background-color: #2c2c2c;" scope="col">Address</th>
+          <th style="background-color: #2c2c2c;" scope="col">Contact Number</th>
+          <th style="background-color: #2c2c2c;" scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -341,19 +317,19 @@ $result = $stmt->get_result();
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact_number']; ?></td>
             <td>
-            <a class='btn btn-primary btn-sm view-btn' 
-            href='#View' 
-            data-bs-toggle='modal' 
-            data-user_id='<?php echo $row['user_id']; ?>' 
-            data-user_name='<?php echo $row['user_name']; ?>' 
-            data-full_name='<?php echo $row['full_name']; ?>' 
-            data-address='<?php echo $row['address']; ?>' 
-            data-contact_number='<?php echo $row['contact_number']; ?>' 
-            data-account_type='<?php echo $row['account_type']; ?>' 
-            data-password='<?php echo $row['password']; ?>' 
-            data-account_date='<?php echo $row['account_date']; ?>'>
-            View
-           </a>
+              <a class='btn btn-primary btn-sm view-btn'
+                href='#View'
+                data-bs-toggle='modal'
+                data-user_id='<?php echo $row['user_id']; ?>'
+                data-user_name='<?php echo $row['user_name']; ?>'
+                data-full_name='<?php echo $row['full_name']; ?>'
+                data-address='<?php echo $row['address']; ?>'
+                data-contact_number='<?php echo $row['contact_number']; ?>'
+                data-account_type='<?php echo $row['account_type']; ?>'
+                data-password='<?php echo $row['password']; ?>'
+                data-account_date='<?php echo $row['account_date']; ?>'>
+                View
+              </a>
 
 
             </td>
@@ -378,65 +354,65 @@ $result = $stmt->get_result();
       </ul>
     <?php endif; ?>
 
-          <form id="view" method="POST">
-    <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="viewcontent modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-4" id="Modal"></h1>
-            <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="viewbody modal-body">
-            <div class="area">
-              <img src="../assets/images/1x1.jpg" class="fprofile">
-              <div class="row gx-5">
-                <div class="col">
-                  <div class="fname">
-                    <div class="input-group mb-3 d-block">Fullname
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="full_name">
-                    </div>
+    <form id="view" method="POST">
+      <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="viewcontent modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="Modal"></h1>
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="viewbody modal-body">
+              <div class="area">
+                <img src="../assets/images/1x1.jpg" class="fprofile">
+                <div class="row gx-5">
+                  <div class="col">
+                    <div class="fname">
+                      <div class="input-group mb-3 d-block">Fullname
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="full_name">
+                      </div>
 
-                    <div class="input-group mb-3 d-block mt-4">Account Type
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type">
+                      <div class="input-group mb-3 d-block mt-4">Account Type
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="col">
-                  <div class="info col-6">
-                    <div class="input-group mb-3">Username
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="user_name" >
-                    </div>
-                    <div class="input-group mb-3 mt-3">Password
-                      <input type="password" class="input form-control w-100 mt-2" aria-label="Username" name="password">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Address 
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="address">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Contact Number
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number">
-                    </div>
-                    <div class="input-group mb-3 mt-3">Account Date
-                      <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date">
+                  <div class="col">
+                    <div class="info col-6">
+                      <div class="input-group mb-3">Username
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="user_name">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Password
+                        <input type="password" class="input form-control w-100 mt-2" aria-label="Username" name="password">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Address
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="address">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Contact Number
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number">
+                      </div>
+                      <div class="input-group mb-3 mt-3">Account Date
+                        <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="viewfooter modal-footer">
-            <button type="button" class="btn btn-dark me-3 delete-btn" data-bs-dismiss="modal" >Delete</button>
-            <button type="button" class="btn btn-dark update-btn">Update</button>
+            <div class="viewfooter modal-footer">
+              <button type="button" class="btn btn-dark me-3 delete-btn" data-bs-dismiss="modal">Delete</button>
+              <button type="button" class="btn btn-dark update-btn">Update</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
   </form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
     //const myModal = document.getElementById('myModal');
-   // const myInput = document.getElementById('myInput');
+    // const myInput = document.getElementById('myInput');
 
     //myModal.addEventListener('shown.bs.modal', () => {
     //  myInput.focus();
@@ -487,93 +463,93 @@ $result = $stmt->get_result();
 
 
 
-      //View Modal Scrip
+    //View Modal Scrip
 
-      document.addEventListener('DOMContentLoaded', function() {
-    // Get all elements with class 'view-btn'
-    var viewButtons = document.querySelectorAll('.view-btn');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all elements with class 'view-btn'
+      var viewButtons = document.querySelectorAll('.view-btn');
 
-    viewButtons.forEach(function(button) {
+      viewButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            // Extract data from the button's data attributes
-            var user_name = this.getAttribute('data-user_name');
-            var full_name = this.getAttribute('data-full_name');
-            var address = this.getAttribute('data-address');
-            var contact_number = this.getAttribute('data-contact_number');
-            var account_type = this.getAttribute('data-account_type');
-            var password = this.getAttribute('data-password');
-            var account_date = this.getAttribute('data-account_date');
+          // Extract data from the button's data attributes
+          var user_name = this.getAttribute('data-user_name');
+          var full_name = this.getAttribute('data-full_name');
+          var address = this.getAttribute('data-address');
+          var contact_number = this.getAttribute('data-contact_number');
+          var account_type = this.getAttribute('data-account_type');
+          var password = this.getAttribute('data-password');
+          var account_date = this.getAttribute('data-account_date');
 
-            // Update modal content with the extracted data
-            document.querySelector('.viewcontent .modal-title').textContent = full_name; // Update modal title
+          // Update modal content with the extracted data
+          document.querySelector('.viewcontent .modal-title').textContent = full_name; // Update modal title
 
-            document.querySelector('.viewcontent input[name="full_name"]').value = full_name;
-            document.querySelector('.viewcontent input[name="user_name"]').value = user_name;
-            document.querySelector('.viewcontent input[name="address"]').value = address;
-            document.querySelector('.viewcontent input[name="contact_number"]').value = contact_number;
-            document.querySelector('.viewcontent input[name="account_type"]').value = account_type;
-            document.querySelector('.viewcontent input[name="password"]').value = password;
-            document.querySelector('.viewcontent input[name="account_date"]').value = account_date;
+          document.querySelector('.viewcontent input[name="full_name"]').value = full_name;
+          document.querySelector('.viewcontent input[name="user_name"]').value = user_name;
+          document.querySelector('.viewcontent input[name="address"]').value = address;
+          document.querySelector('.viewcontent input[name="contact_number"]').value = contact_number;
+          document.querySelector('.viewcontent input[name="account_type"]').value = account_type;
+          document.querySelector('.viewcontent input[name="password"]').value = password;
+          document.querySelector('.viewcontent input[name="account_date"]').value = account_date;
         });
+      });
     });
-});
 
 
 
     //Script for Update and Delete Button
 
     $(document).ready(function() {
-    $('.view-btn').click(function() {
+      $('.view-btn').click(function() {
         // Set user_id on #View modal
         $('#View').data('user_id', $(this).data('user_id'));
-    });
+      });
 
-  // Store original values when the page loads
-var originalData = {
-    full_name: '',
-    user_name: '',
-    password: '',
-    address: '',
-    contact_number: '',
-    account_type: '',
-    account_date: ''
-};
+      // Store original values when the page loads
+      var originalData = {
+        full_name: '',
+        user_name: '',
+        password: '',
+        address: '',
+        contact_number: '',
+        account_type: '',
+        account_date: ''
+      };
 
-// Flag to track changes
-var changesMade = false;
+      // Flag to track changes
+      var changesMade = false;
 
-// Function to initialize originalData with current values
-function initializeOriginalData() {
-    originalData.full_name = $('input[name="full_name"]').val().trim();
-    originalData.user_name = $('input[name="user_name"]').val().trim();
-    originalData.password = $('input[name="password"]').val().trim();
-    originalData.address = $('input[name="address"]').val().trim();
-    originalData.contact_number = $('input[name="contact_number"]').val().trim();
-    originalData.account_type = $('input[name="account_type"]').val().trim();
-    originalData.account_date = $('input[name="account_date"]').val().trim();
-}
+      // Function to initialize originalData with current values
+      function initializeOriginalData() {
+        originalData.full_name = $('input[name="full_name"]').val().trim();
+        originalData.user_name = $('input[name="user_name"]').val().trim();
+        originalData.password = $('input[name="password"]').val().trim();
+        originalData.address = $('input[name="address"]').val().trim();
+        originalData.contact_number = $('input[name="contact_number"]').val().trim();
+        originalData.account_type = $('input[name="account_type"]').val().trim();
+        originalData.account_date = $('input[name="account_date"]').val().trim();
+      }
 
-// Call initializeOriginalData when the page loads
-$(document).ready(function() {
-    initializeOriginalData();
+      // Call initializeOriginalData when the page loads
+      $(document).ready(function() {
+        initializeOriginalData();
 
-    // Debounce function to limit the rate of execution
-    function debounce(func, delay) {
-        var timer;
-        return function() {
+        // Debounce function to limit the rate of execution
+        function debounce(func, delay) {
+          var timer;
+          return function() {
             var context = this;
             var args = arguments;
             clearTimeout(timer);
             timer = setTimeout(function() {
-                func.apply(context, args);
+              func.apply(context, args);
             }, delay);
-        };
-    }
+          };
+        }
 
-    // Debounce function for checking changes
-    var checkChanges = debounce(function() {
-        // Collect updated data
-        var updatedData = {
+        // Debounce function for checking changes
+        var checkChanges = debounce(function() {
+          // Collect updated data
+          var updatedData = {
             full_name: $('input[name="full_name"]').val().trim(),
             user_name: $('input[name="user_name"]').val().trim(),
             password: $('input[name="password"]').val().trim(),
@@ -581,10 +557,10 @@ $(document).ready(function() {
             contact_number: $('input[name="contact_number"]').val().trim(),
             account_type: $('input[name="account_type"]').val().trim(),
             account_date: $('input[name="account_date"]').val().trim()
-        };
+          };
 
-        // Check if any data has changed
-        var hasChanges =
+          // Check if any data has changed
+          var hasChanges =
             updatedData.full_name !== originalData.full_name ||
             updatedData.user_name !== originalData.user_name ||
             updatedData.password !== originalData.password ||
@@ -593,38 +569,38 @@ $(document).ready(function() {
             updatedData.account_type !== originalData.account_type ||
             updatedData.account_date !== originalData.account_date;
 
-        // Update changesMade flag
-        changesMade = hasChanges;
+          // Update changesMade flag
+          changesMade = hasChanges;
 
-        // Enable/disable update button based on changes
-        $('.update-btn').prop('disabled', !hasChanges);
-    }, 300); // 300ms debounce delay
+          // Enable/disable update button based on changes
+          $('.update-btn').prop('disabled', !hasChanges);
+        }, 300); // 300ms debounce delay
 
-    // Bind input change event to checkChanges function
-    $('input[name="full_name"], input[name="user_name"], input[name="password"], input[name="address"], input[name="contact_number"], input[name="account_type"], input[name="account_date"]').on('input', checkChanges);
+        // Bind input change event to checkChanges function
+        $('input[name="full_name"], input[name="user_name"], input[name="password"], input[name="address"], input[name="contact_number"], input[name="account_type"], input[name="account_date"]').on('input', checkChanges);
 
-    // Initialize originalData when clicking the view button
-    $('#View').click(function() {
-        initializeOriginalData();
-        changesMade = false; // Reset changesMade flag
-    });
+        // Initialize originalData when clicking the view button
+        $('#View').click(function() {
+          initializeOriginalData();
+          changesMade = false; // Reset changesMade flag
+        });
 
-    // Click handler for update button
-    $('.update-btn').click(function() {
-        // If no changes made, show info alert and return
-        if (!changesMade) {
+        // Click handler for update button
+        $('.update-btn').click(function() {
+          // If no changes made, show info alert and return
+          if (!changesMade) {
             Swal.fire({
-                icon: 'info',
-                title: 'No Changes Made',
-                text: 'You have not made any changes.',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'OK'
+              icon: 'info',
+              title: 'No Changes Made',
+              text: 'You have not made any changes.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: 'OK'
             });
             return;
-        }
+          }
 
-        // Confirm update with user
-        Swal.fire({
+          // Confirm update with user
+          Swal.fire({
             title: 'Confirm Update',
             text: 'Are you sure you want to update the user data?',
             icon: 'question',
@@ -632,130 +608,131 @@ $(document).ready(function() {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, update it!'
-        }).then(function(result) {
+          }).then(function(result) {
             if (result.isConfirmed) {
-                // Proceed with update
-                var user_id = $('#View').data('user_id');
-                var updatedData = {
-                    full_name: $('input[name="full_name"]').val().trim(),
-                    user_name: $('input[name="user_name"]').val().trim(),
-                    password: $('input[name="password"]').val().trim(),
-                    address: $('input[name="address"]').val().trim(),
-                    contact_number: $('input[name="contact_number"]').val().trim(),
-                    account_type: $('input[name="account_type"]').val().trim(),
-                    account_date: $('input[name="account_date"]').val().trim(),
-                    user_id: user_id
-                };
+              // Proceed with update
+              var user_id = $('#View').data('user_id');
+              var updatedData = {
+                full_name: $('input[name="full_name"]').val().trim(),
+                user_name: $('input[name="user_name"]').val().trim(),
+                password: $('input[name="password"]').val().trim(),
+                address: $('input[name="address"]').val().trim(),
+                contact_number: $('input[name="contact_number"]').val().trim(),
+                account_type: $('input[name="account_type"]').val().trim(),
+                account_date: $('input[name="account_date"]').val().trim(),
+                user_id: user_id
+              };
 
-                // Send AJAX request
-                $.ajax({
-                    type: 'POST',
-                    url: 'action/update_user.php',
-                    data: JSON.stringify(updatedData),
-                    contentType: 'application/json'
+              // Send AJAX request
+              $.ajax({
+                  type: 'POST',
+                  url: 'action/update_user.php',
+                  data: JSON.stringify(updatedData),
+                  contentType: 'application/json'
                 })
                 .then(function(response) {
-                    console.log(response);
+                  console.log(response);
 
-                    if (typeof response === 'string') {
-                        response = JSON.parse(response);
-                    }
+                  if (typeof response === 'string') {
+                    response = JSON.parse(response);
+                  }
 
-                    if (response.status === 'success') {
-                        Swal.fire({
-                            title: 'Success',
-                            text: response.message,
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        });
+                  if (response.status === 'success') {
+                    Swal.fire({
+                      title: 'Success',
+                      text: response.message,
+                      icon: 'success',
+                      confirmButtonText: 'OK'
+                    });
 
-                        // Update originalData after successful update
-                        initializeOriginalData(); // Update originalData with new values
-                        changesMade = false; // Reset changesMade flag
-                    } else {
-                        Swal.fire({
-                            icon: 'info',
-                            title: 'Update Failed',
-                            text: response.message,
-                            confirmButtonColor: '#d33',
-                            confirmButtonText: 'OK'
-                        });
-                    }
+                    // Update originalData after successful update
+                    initializeOriginalData(); // Update originalData with new values
+                    changesMade = false; // Reset changesMade flag
+                  } else {
+                    Swal.fire({
+                      icon: 'info',
+                      title: 'Update Failed',
+                      text: response.message,
+                      confirmButtonColor: '#d33',
+                      confirmButtonText: 'OK'
+                    });
+                  }
                 })
                 .fail(function(xhr, status, error) {
-                    console.error('AJAX Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Update Failed',
-                        text: 'Failed to update user. Please try again later.',
-                        confirmButtonColor: '#d33',
-                        confirmButtonText: 'OK'
-                    });
+                  console.error('AJAX Error:', error);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Update Failed',
+                    text: 'Failed to update user. Please try again later.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                  });
                 });
             }
+          });
         });
+      });
+
+
+
+
     });
-});
-
-
-
-
-});
 
 
 
 
 
 
-$('.delete-btn').click(function() {
-  var user_id = $('#View').data('user_id');
+    $('.delete-btn').click(function() {
+      var user_id = $('#View').data('user_id');
 
-  Swal.fire({
-    icon: 'warning',
-    title: 'Are you sure?',
-    text: 'You are about to delete this user.',
-    showCancelButton: true,
-    confirmButtonColor: '#d33',
-    cancelButtonColor: '#3085d6',
-    confirmButtonText: 'Yes, delete it!',
-    cancelButtonText: 'Cancel'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        type: 'POST',
-        url: 'action/delete_user.php',
-        data: { user_id: user_id },
-        success: function(response) {
-          console.log(response);
-          if (response.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Deleted!',
-              text: 'User deleted successfully.',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: 'OK'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                location.reload(); // Reload the page or update specific elements
+      Swal.fire({
+        icon: 'warning',
+        title: 'Are you sure?',
+        text: 'You are about to delete this user.',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type: 'POST',
+            url: 'action/delete_user.php',
+            data: {
+              user_id: user_id
+            },
+            success: function(response) {
+              console.log(response);
+              if (response.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Deleted!',
+                  text: 'User deleted successfully.',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'OK'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    location.reload(); // Reload the page or update specific elements
+                  }
+                });
               }
-            });
-          } 
-        },
-        error: function(error) {
-          console.error('Error deleting user:', error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Failed to delete user. Please try again later.',
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'OK'
+            },
+            error: function(error) {
+              console.error('Error deleting user:', error);
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to delete user. Please try again later.',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+              });
+            }
           });
         }
       });
-    }
-  });
-});
-
+    });
   </script>
 
 
@@ -763,5 +740,3 @@ $('.delete-btn').click(function() {
 </body>
 
 </html>
-
-
