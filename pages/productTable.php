@@ -52,6 +52,15 @@ tbody {
     border-radius: 10px;
     margin: 10px;
 }
+#btn-action{
+    background-color: #D76614;
+    color: white;
+    width: 80px;
+    height: 40px;
+    border: 2px solid #D76614;
+    border-radius: 10px;
+    margin: 10px;
+}
 
 #categoryModal{
     background-color: #2D2B2B;
@@ -102,6 +111,7 @@ background-color: #D76614 !important;
                             <td>Product Name</td>
                             <td>Price</td>
                             <td>Picture</td>
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,18 +120,24 @@ background-color: #D76614 !important;
                             <td>Nescafe</td>
                             <td>₱120</td>
                             <td id="picture"><img src="../assets/images/1x1.jpg" class="fprofile"></td>
+                            <td><button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                            <button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
                         </tr>
                         <tr>
                             <td>Coffee</td>
                             <td>Nescafe</td>
                             <td>₱120</td>
                             <td id="picture"><img src="../assets/images/Maloi.jpg" class="fprofile"></td>
+                            <td><button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                            <button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
                         </tr>
                         <tr>
                             <td>Coffee</td>
                             <td>Nescafe</td>
                             <td>₱120</td>
                             <td id="picture"><img src="../assets/images/Maloi.jpg" class="fprofile"></td>
+                            <td><button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                            <button type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
