@@ -134,13 +134,14 @@
   .vbtn {
     -webkit-text-fill-color: #FFF;
     font-size: 15px;
+    width: 70px;
   }
 
   /*Edit Modal Form CSS*/
   #editModal{
     border: 2px solid #d76614;
     border-radius: 25px;
-    height: 686px;
+    height: 666px;
     width: 650px;
     background-color: #2c2c2c;
     position: absolute;
@@ -150,7 +151,7 @@
   }
   #modal-body{
     background-color: #d9d9d9;
-    height: 550px;
+    height: 530px;
   }
   #modal-header{
     background-color: #d9d9d9;
@@ -512,7 +513,6 @@
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class='vbtn btn btn-primary btn-sm' href='ingredients_edit.php?id=$row[ingredients_id]'>Edit</a>
                                 <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-primary btn-sm"  href='ingredients_edit.php?id=$row[ingredients_id]' data-toggle="modal" data-target="#editModal">Edit</a>
                                 <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn vbtn btn btn-dark btn-sm' >Delete</a>
                             </td>
