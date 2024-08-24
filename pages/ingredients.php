@@ -141,8 +141,8 @@
   #editModal{
     border: 2px solid #d76614;
     border-radius: 25px;
-    height: 666px;
-    width: 650px;
+    height: 585px;
+    width: 1050px;
     background-color: #2c2c2c;
     position: absolute;
     top: 50%;
@@ -151,26 +151,53 @@
   }
   #modal-body{
     background-color: #d9d9d9;
-    height: 530px;
+    height: 430px;
+    width: 750px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 288px;
+    display: flex;
   }
   #modal-header{
     background-color: #d9d9d9;
-    
-    
+    width: 750px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 40px;
   }
   .modal-title{
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: italic;
-    margin-left: 155px;
+    margin-left: 5px;
   }
   .form-group{
-    margin-left: 20px;
+    margin-left: 60px;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-style: italic;
     font-size: 18px;
-    margin-top: 40px;
+    margin-top: 20px;
+  }
+  .ingredientProfile{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+    margin-left: 14px;
+  }
+  #ingredientPicture{
+    border: 2px solid white;
+    height: 190px;
+    width: 190px;
+    border-radius: 10px;
+    background-color: #FEFAE0;
+    margin-left: 15px;
+    margin-top: 15px;
   }
   #name{
     margin-left: 5px;
@@ -197,10 +224,23 @@
     width: 345px;
   }
   .btnn{
-    margin-top: 155px;
+    margin-top: 120px;
     float: right;
+    height: 15px;
   } 
+  #btn{
+    height: 35px;
+    margin: 5px;
+  }
 
+  .borderr{
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: white;
+    height: 300px;
+    width: 450px;
+    margin-left: 65px;
+  }
 </style>
 
 <body>
@@ -332,6 +372,11 @@
                         </div>
                         <div class="modal-body" id="modal-body">
                             <form action="action/addingredients_db.php" method="post" class="form">
+                            <div class="" id="ingredientPicture">
+                            <img src="../assets/images/1x1.jpg" class="ingredientProfile">          
+                                </div>
+                                <div>
+                                  <div class="borderr">
                                 <div class="form-group">
                                     <label for="name">Ingredients Name</label>
                                     <input type="text" name="name" id="name" placeholder="Enter Ingredients Name" required>
@@ -344,13 +389,10 @@
                                     <label for="ideal_qty">Ideal Quantity</label>
                                     <input type="text" name="ideal_qty" id="ideal_qty" placeholder="Enter Ideal Quantity" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="picture">Picture</label>
-                                    <input type="text" name="picture" id="picture" placeholder="Enter Ingredients Picture" required>
-                                </div>
                                 <div class="btnn">
-                                <button type="submit" class="btn btn-dark" id="btn">Close</button>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn btn btn-dark' id="btn" >Delete</a>
                                 <button type="submit" class="btn btn-dark" id="btn">Update</button>
+                                </div>
                                 </div>
                             </form>
                         </div>
@@ -384,7 +426,7 @@
                 listItems += `
             <li class='items list-group-item'>
               ${category.category}
-              <a href='#' data-category-id='${category.category_id}'  class='dots bi bi-three-dots-vertical text-dark category-delete'></a>
+              <a href='#' data-category-id='${category.category_id}'  class='dots bi bi-trash text-dark category-delete'></a>
             </li>
           `;
               });
@@ -513,8 +555,7 @@
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-primary btn-sm"  href='ingredients_edit.php?id=$row[ingredients_id]' data-toggle="modal" data-target="#editModal">Edit</a>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn vbtn btn btn-dark btn-sm' >Delete</a>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-dark btn-sm"  href='ingredients_edit.php?id=$row[ingredients_id]' data-toggle="modal" data-target="#editModal">View</a>
                             </td>
                         </tr>
 

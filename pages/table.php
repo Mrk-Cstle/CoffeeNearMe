@@ -71,7 +71,7 @@ $result = $stmt->get_result();
     margin-top: 60px;
     text-align: center;
     font-size: 18px;
-    -webkit-text-fill-color: #d76614;
+    -webkit-text-fill-color: #d76614; 
   }
 
   .search {
@@ -82,8 +82,22 @@ $result = $stmt->get_result();
   }
 
   .btn {
-    background-color: #d76614;
+    background-color: #2d2b2b;
+    color: white;
     border: none;
+    font-weight: bolder;
+    height: 35px;
+    text-align: center;
+  }
+  .btnnnn{
+    background-color: #d76614;
+    color: white;
+    border: none;
+    font-style: italic;
+    font-weight: bold;
+    height: 35px;
+    text-align: center;
+    width: 120px;
   }
 
   .usercontent {
@@ -93,7 +107,7 @@ $result = $stmt->get_result();
   .modal-header {
     -webkit-text-fill-color: #fff;
     border: rgba(0, 0, 0, 0.6);
-  }
+  } 
 
   .userbody {
     margin-left: 90px;
@@ -105,7 +119,7 @@ $result = $stmt->get_result();
   }
 
   .modal-title {
-    margin-left: 190px;
+    margin-left: 200px;
   }
 
   .t-input {
@@ -166,17 +180,17 @@ $result = $stmt->get_result();
   }
 
   .update {
-    background-color: #d76614;
+    background-color: #2d2b2b;
     border: none;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .delete {
-    background-color: #d76614;
+    background-color: #2d2b2b;
     border: none;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .viewcontent {
@@ -245,6 +259,30 @@ $result = $stmt->get_result();
   .vbtn {
     -webkit-text-fill-color: #fff;
   }
+  .btnn{
+    font-size: 16px;
+    margin-bottom: 155px;
+    border: 2px solid #2c2c2c;
+    border-radius: 5px;
+    background-color: #d76614;
+    color: #fff;
+    height: 40px;
+    width: 80px;
+    margin-right: 15px;
+  }
+  .headerrr{
+    background-color: #2c2c2c;
+  }
+  .pooter{
+    background-color: #2c2c2c;
+    height: 75px;
+    border: #2c2c2c;
+  }
+  .bodyyy{
+    background-color: #2c2c2c;
+  }
+
+  
 </style>
 
 
@@ -289,8 +327,8 @@ $result = $stmt->get_result();
                 </div>
               </div>
               <div class="userfooter modal-footer">
-                <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-dark" id="saveChanges">Save changes</button>
+                <button type="button" class="btnnnn btn-dark me-2" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btnnnn btn-dark" id="saveChanges">Save changes</button>
               </div>
             </div>
           </div>
@@ -317,7 +355,7 @@ $result = $stmt->get_result();
             <td><?php echo $row['address']; ?></td>
             <td><?php echo $row['contact_number']; ?></td>
             <td>
-              <a class='btn btn-primary btn-sm view-btn'
+              <a class='btn btn-dark  view-btn '
                 href='#View'
                 data-bs-toggle='modal'
                 data-user_id='<?php echo $row['user_id']; ?>'
@@ -358,11 +396,11 @@ $result = $stmt->get_result();
       <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="viewcontent modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-4" id="Modal"></h1>
+            <div class="modal-header headerrr">
+              <h1 class="modal-title fs-4" id="Modal">Edit User</h1>
               <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="viewbody modal-body">
+            <div class="viewbody modal-body bodyyy">
               <div class="area">
                 <img src="../assets/images/1x1.jpg" class="fprofile">
                 <div class="row gx-5">
@@ -399,9 +437,9 @@ $result = $stmt->get_result();
                 </div>
               </div>
             </div>
-            <div class="viewfooter modal-footer">
-              <button type="button" class="btn btn-dark me-3 delete-btn" data-bs-dismiss="modal">Delete</button>
-              <button type="button" class="btn btn-dark update-btn">Update</button>
+            <div class="viewfooter modal-footer pooter">
+              <button type="button" class=" btn-dark delete-btn btnn" data-bs-dismiss="modal">Delete</button>
+              <button type="button" class=" btn-dark update-btn btnn">Update</button>
             </div>
           </div>
         </div>
@@ -481,7 +519,7 @@ $result = $stmt->get_result();
           var account_date = this.getAttribute('data-account_date');
 
           // Update modal content with the extracted data
-          document.querySelector('.viewcontent .modal-title').textContent = full_name; // Update modal title
+          
 
           document.querySelector('.viewcontent input[name="full_name"]').value = full_name;
           document.querySelector('.viewcontent input[name="user_name"]').value = user_name;
