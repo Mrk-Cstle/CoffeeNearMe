@@ -94,6 +94,63 @@ try {
         // Close the statement and connection
         $stmt->close();
         $conn->close();
+    } elseif ($action === 'edit') {
+
+        $ingredients_names = sanitizeInput($data['ingredients_names']);
+        $ingredients_qtys = sanitizeInput($data['ingredients_qtys']);
+        $ingredients_idealqtys = sanitizeInput($data['ingredients_idealqtys']);
+        $ingredients_id = sanitizeInput($data['ingredients_id']);
+
+
+        include '../include/dbConnection.php';
+
+        $select_sql = "SELECT * FROM ingredients WHERE ingredients_id = ?";
+        $select_stmt = $conn->prepare($select_sql);
+        $select_stmt->bind_param("i", $ingredients_id);
+        $select_stmt->execute();
+
+        $result = $select_stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Check if any data has been fetched
+        if ($row) {
+            // Extract specific columns from the result set
+            $db_raw_name = $row['raw_name'];
+            $db_qty = $row['quantity'];
+            $db_ideal_qty = $row['ideal_quantity'];
+            $db_picture = $row['picture'];
+        }
+
+
+        if ($ingredients_names == $db_raw_name && $ingredients_qtys == $db_qty && $ingredients_idealqtys == $db_ideal_qty) {
+            // No changes, so skip the update
+            echo json_encode(["status" => "error", "message" => "No changes to update. "]);
+            echo "";
+        } else {
+            // Prepare update query
+
+            $sql = "UPDATE ingredients SET 
+            raw_name = ? ,quantity = ? ,ideal_quantity = ?
+ 
+            WHERE ingredients_id = $ingredients_id";
+
+            $stmt = $conn->prepare($sql);
+
+            // Bind parameters to statement
+            $stmt->bind_param("sii", $ingredients_names, $ingredients_qtys, $ingredients_idealqtys);
+
+            try {
+                $stmt->execute();
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "New record created successfully"
+                ]);
+            } catch (Exception $e) {
+                echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
+            }
+            $stmt->close();
+            $conn->close();
+        }
     } else {
     }
 } catch (Exception $e) {

@@ -382,37 +382,39 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" id="modal-body">
-              <form action="action/addingredients_db.php" method="post" class="form">
-                <div class="" id="ingredientPicture">
-                  <img src="../assets/images/1x1.jpg" class="ingredientProfile">
-                </div>
-                <div>
-                  <div class="borderr">
-                    <div class="form-group">
-                      <label for="name">Ingredients Name</label>
-                      <input type="text" name="name" id="name" placeholder="Enter Ingredients Name" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="qty">Quantity</label>
-                      <input type="number" name="qty" id="qty" placeholder="Enter Quantity" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="ideal_qty">Ideal Quantity</label>
-                      <input type="text" name="ideal_qty" id="ideal_qty" placeholder="Enter Ideal Quantity" required>
-                    </div>
-                    <div class="btnn">
-                      <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn btn btn-dark' id="btn">Delete</a>
-                      <button type="submit" class="btn btn-dark" id="btn">Update</button>
-                    </div>
+            <div class="form modal-body" id="modal-body">
+
+              <div class="" id="ingredientPicture">
+                <img src="../assets/images/1x1.jpg" class="ingredientProfile">
+              </div>
+              <div>
+                <div class="borderr">
+                  <div class="form-group">
+                    <input type="hidden" id="ingredient-id" name="ingredient_id">
+                    <label for="names">Ingredients Name</label>
+                    <input type="text" name="names" id="names" placeholder="Enter Ingredients Name" required>
                   </div>
-              </form>
+                  <div class="form-group">
+                    <label for="qtys">Quantity</label>
+                    <input type="number" name="qtys" id="qtys" placeholder="Enter Quantity" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="ideal_qtys">Ideal Quantity</label>
+                    <input type="number" name="ideal_qtys" id="ideal_qtys" placeholder="Enter Ideal Quantity" required>
+                  </div>
+                  <div class="btnn">
+                    <a class='deletebtn btn btn-dark' id="btn">Delete</a>
+
+                    <a class="updatebtn btn btn-dark" id="btn">Update</a>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Bootstrap and jQuery JS -->
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Bootstrap and jQuery JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </table>
   </div>
   <script>
@@ -561,13 +563,14 @@
                 listItems += `
                     <tr >
                             <td>${ingredient.picture}</td>
-                            <td style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
-                            <td >${ingredient.quantity}</td>
-                            <td>${ingredient.ideal_quantity}</td>
+                           
+                            <td class="ingredient-name">${ingredient.raw_name}</td>
+                            <td class="ingredient-quantity">${ingredient.quantity}</td>
+                            <td class="ingredient-ideal-quantity">${ingredient.ideal_quantity}</td>
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-dark btn-sm"  href='ingredients_edit.php?id=$row[ingredients_id]' data-toggle="modal" data-target="#editModal">View</a>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
                             </td>
                         </tr>
 
@@ -590,13 +593,74 @@
           }
         });
       }
+
+      //For Edit Ingredients
+      $(document).on('click', '.vbtn', function() {
+        // Get data attributes from the clicked link
+        var $row = $(this).closest('tr');
+
+        var ingredientId = $(this).data('ingredients-id');
+        var ingredientName = $row.find('.ingredient-name').text().trim();
+        var ingredientQuantity = $row.find('.ingredient-quantity').text().trim();
+        var ingredientIdealQuantity = $row.find('.ingredient-ideal-quantity').text().trim();
+
+        // Populate the modal fields with the data
+
+        $('#ingredient-id').val(ingredientId);
+        $('#names').val(ingredientName);
+        $('#qtys').val(ingredientQuantity);
+        $('#ideal_qtys').val(ingredientIdealQuantity);
+
+
+      });
+
+      $(document).on('click', '.updatebtn', function() {
+
+
+
+        // Retrieve the value of the input field
+        var ingredients_id = $('#ingredient-id').val();
+        var ingredients_names = $('#names').val();
+        var ingredients_qtys = $('#qtys').val();
+        var ingredients_idealqtys = $('#ideal_qtys').val();
+
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              ingredients_id: ingredients_id,
+              ingredients_names: ingredients_names,
+              ingredients_qtys: ingredients_qtys,
+              ingredients_idealqtys: ingredients_idealqtys,
+              action: 'edit'
+            }
+            ingredientsAjaxRequest(data);
+          }
+
+
+
+        });
+
+
+      });
+
+
       $(document).on('click', '.deletebtn', function() {
 
-        var ingredients_id = $(this).data('ingredients-id');
-        // var data = {
-        //   ingredients_id: ingredients_id,
-        //   action: 'delete'
-        // }
+
+
+        // Retrieve the value of the input field
+        var ingredients_id = $('#ingredient-id').val();
+
+
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -613,13 +677,15 @@
             }
             ingredientsAjaxRequest(data);
           }
-          // var data = {
-          //   categoryId: categoryId,
-          //   action: 'delete'
-          // }
-          // sendAjaxRequest(data);
+          $('#ingredient-id').val("");
+          $('#names').val("");
+          $('#qtys').val("");
+          $('#ideal_qtys').val("");
+
+
         });
-        // ingredientsAjaxRequest(data);
+
+
       });
 
       $('#saveChanges').click(function() {
