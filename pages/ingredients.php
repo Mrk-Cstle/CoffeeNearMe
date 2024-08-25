@@ -10,6 +10,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
   <title>Table 2</title>
 </head>
 <style>
@@ -127,6 +133,125 @@
 
   .vbtn {
     -webkit-text-fill-color: #FFF;
+    font-size: 15px;
+    width: 70px;
+  }
+
+  /*Edit Modal Form CSS*/
+  #editModal {
+    border: 2px solid #d76614;
+    border-radius: 25px;
+    height: 585px;
+    width: 1050px;
+    background-color: #2c2c2c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #modal-body {
+    background-color: #d9d9d9;
+    height: 430px;
+    width: 750px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 288px;
+    display: flex;
+  }
+
+  #modal-header {
+    background-color: #d9d9d9;
+    width: 750px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 40px;
+  }
+
+  .modal-title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    margin-left: 5px;
+  }
+
+  .form-group {
+    margin-left: 60px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .ingredientProfile {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+    margin-left: 14px;
+  }
+
+  #ingredientPicture {
+    border: 2px solid white;
+    height: 190px;
+    width: 190px;
+    border-radius: 10px;
+    background-color: #FEFAE0;
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+
+  #name {
+    margin-left: 5px;
+    border: 2px solid #d76614;
+    border-radius: 10px;
+    width: 250px;
+  }
+
+  #qty {
+    margin-left: 5px;
+    border: 2px solid #d76614;
+    border-radius: 10px;
+    width: 333px;
+  }
+
+  #ideal_qty {
+    margin-left: 5px;
+    border: 2px solid #d76614;
+    border-radius: 10px;
+    width: 282px;
+  }
+
+  #picture {
+    margin-left: 5px;
+    border: 2px solid #d76614;
+    border-radius: 10px;
+    width: 345px;
+  }
+
+  .btnn {
+    margin-top: 120px;
+    float: right;
+    height: 15px;
+  }
+
+  #btn {
+    height: 35px;
+    margin: 5px;
+  }
+
+  .borderr {
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: white;
+    height: 300px;
+    width: 450px;
+    margin-left: 65px;
   }
 </style>
 
@@ -246,6 +371,48 @@
 
 
       </tbody>
+
+      <!-- Modal Ingredient Edit -->
+      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header" id="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Ingredients Edit</h5>
+              <button type="button" class="btn btn-dark close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+              <form action="action/addingredients_db.php" method="post" class="form">
+                <div class="" id="ingredientPicture">
+                  <img src="../assets/images/1x1.jpg" class="ingredientProfile">
+                </div>
+                <div>
+                  <div class="borderr">
+                    <div class="form-group">
+                      <label for="name">Ingredients Name</label>
+                      <input type="text" name="name" id="name" placeholder="Enter Ingredients Name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="qty">Quantity</label>
+                      <input type="number" name="qty" id="qty" placeholder="Enter Quantity" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="ideal_qty">Ideal Quantity</label>
+                      <input type="text" name="ideal_qty" id="ideal_qty" placeholder="Enter Ideal Quantity" required>
+                    </div>
+                    <div class="btnn">
+                      <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn btn btn-dark' id="btn">Delete</a>
+                      <button type="submit" class="btn btn-dark" id="btn">Update</button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Bootstrap and jQuery JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </table>
   </div>
   <script>
@@ -271,7 +438,7 @@
                 listItems += `
             <li class='items list-group-item'>
               ${category.category}
-              <a href='#' data-category-id='${category.category_id}'  class='dots bi bi-three-dots-vertical text-dark category-delete'></a>
+              <a href='#' data-category-id='${category.category_id}'  class='dots bi bi-trash text-dark category-delete'></a>
             </li>
           `;
               });
@@ -400,8 +567,7 @@
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class='vbtn btn btn-primary btn-sm' href='ingredients_edit.php?id=${ingredient.ingredients_id}'>Edit</a>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class='deletebtn vbtn btn btn-dark btn-sm' >Delete</a>
+                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-dark btn-sm"  href='ingredients_edit.php?id=$row[ingredients_id]' data-toggle="modal" data-target="#editModal">View</a>
                             </td>
                         </tr>
 
