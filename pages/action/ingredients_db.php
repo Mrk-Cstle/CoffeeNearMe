@@ -15,8 +15,29 @@ try {
 
         include '../include/dbConnection.php';
 
-        // Read all rows from the database
-        $sql = "SELECT * FROM ingredients ";
+        $category = sanitizeInput($data['categoryFilter']);
+        $searchQuery = sanitizeInput($data['searchQuery']);
+        $page  = sanitizeInput($data['page']);
+        $itemsPerPage = sanitizeInput($data['itemsPerPage']);
+
+        // Calculate the offset for the query
+        $offset = ($page - 1) * $itemsPerPage;
+
+        $sql = "SELECT * FROM ingredients WHERE 1=1";
+        if (!empty($category)) {
+            $sql .= " AND category = '$category'";
+        }
+        if (!empty($searchQuery)) {
+            $sql .= " AND raw_name LIKE '%$searchQuery%'";
+        }
+
+
+
+
+        $result = $conn->query($sql);
+        $totalItems = $result->num_rows;
+
+        $sql .= " LIMIT $offset, $itemsPerPage";
         $result = $conn->query($sql);
 
         if (!$result) {
@@ -31,7 +52,14 @@ try {
         }
         $conn->close();
 
-        echo json_encode(["status" => "success", "message" => 'success', "ingredients" => $ingredients]);
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
+        echo json_encode([
+            "status" => "success",
+            "message" => 'success',
+            "ingredients" => $ingredients,
+            "totalPages" => $totalPages
+        ]);
     } elseif ($action === 'delete') {
 
 
@@ -78,6 +106,7 @@ try {
 
 
 
+
         $stmt = $conn->prepare("INSERT INTO ingredients (raw_name,category,quantity,ideal_quantity) VALUES (?,?,?,?)");
         if (!$stmt) {
             die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
@@ -100,6 +129,7 @@ try {
         $ingredients_qtys = sanitizeInput($data['ingredients_qtys']);
         $ingredients_idealqtys = sanitizeInput($data['ingredients_idealqtys']);
         $ingredients_id = sanitizeInput($data['ingredients_id']);
+        $ingredients_categorys = sanitizeInput($data['ingredients_categorys']);
 
 
         include '../include/dbConnection.php';
@@ -119,10 +149,11 @@ try {
             $db_qty = $row['quantity'];
             $db_ideal_qty = $row['ideal_quantity'];
             $db_picture = $row['picture'];
+            $db_categorys = $row['category'];
         }
 
 
-        if ($ingredients_names == $db_raw_name && $ingredients_qtys == $db_qty && $ingredients_idealqtys == $db_ideal_qty) {
+        if ($ingredients_names == $db_raw_name && $ingredients_qtys == $db_qty && $ingredients_idealqtys == $db_ideal_qty && $ingredients_categorys == $db_categorys) {
             // No changes, so skip the update
             echo json_encode(["status" => "error", "message" => "No changes to update. "]);
             echo "";
@@ -130,14 +161,14 @@ try {
             // Prepare update query
 
             $sql = "UPDATE ingredients SET 
-            raw_name = ? ,quantity = ? ,ideal_quantity = ?
+            raw_name = ? ,quantity = ? ,ideal_quantity = ?, category = ?
  
             WHERE ingredients_id = $ingredients_id";
 
             $stmt = $conn->prepare($sql);
 
             // Bind parameters to statement
-            $stmt->bind_param("sii", $ingredients_names, $ingredients_qtys, $ingredients_idealqtys);
+            $stmt->bind_param("siis", $ingredients_names, $ingredients_qtys, $ingredients_idealqtys, $ingredients_categorys);
 
             try {
                 $stmt->execute();
