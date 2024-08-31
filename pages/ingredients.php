@@ -105,11 +105,12 @@
   .t-input {
     background-color: rgba(0, 0, 0, 0.3);
     border: #d76614;
-    -webkit-text-fill-color: #d76614;
+    -webkit-text-fill-color: #000;
+    font-weight: normal;
   }
 
   .add-content {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: #d9d9d9
   }
 
   .add {
@@ -119,7 +120,8 @@
 
   .add-body {
     margin-left: 90px;
-    -webkit-text-fill-color: #fff;
+    font-weight: bold;
+    -webkit-text-fill-color: #000;
   }
 
   .add-footer {
@@ -139,11 +141,11 @@
 
   /*Edit Modal Form CSS*/
   #editModal{
-    border: 2px solid #d76614;
+    border: 2px solid #fff;
     border-radius: 25px;
-    height: 585px;
-    width: 1050px;
-    background-color: #2c2c2c;
+    height: 550px;
+    width: 950px;
+    background-color: #d9d9d9;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -174,6 +176,10 @@
     font-weight: 700;
     font-style: italic;
     margin-left: 5px;
+    -webkit-text-fill-color: #000;
+  }
+  #editModalLabel{
+    margin-left: 306px;
   }
   .form-group{
     margin-left: 60px;
@@ -201,19 +207,19 @@
   }
   #name{
     margin-left: 5px;
-    border: 2px solid #d76614;
+    border: 2px solid #000;
     border-radius: 10px;
     width: 250px;
   }
   #qty{
     margin-left: 5px;
-    border: 2px solid #d76614;
+    border: 2px solid #000;
     border-radius: 10px;
     width: 333px;
   }
   #ideal_qty{
     margin-left: 5px;
-    border: 2px solid #d76614;
+    border: 2px solid #000;
     border-radius: 10px;
     width: 282px;
   }
@@ -241,6 +247,14 @@
     width: 450px;
     margin-left: 65px;
   }
+  #category{
+    border: 2px solid #000;
+  }
+  #ingredients{
+    border: 2px solid #000;
+  }
+
+
 </style>
 
 <body>
@@ -292,8 +306,8 @@
         <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="add-content modal-content">
-              <div class="add modal-header">
-                <h1 class="add-title modal-title fs-4" id="ModalLabel">Add Ingredients</h1>
+              <div class="add modal-header header-Modal">
+                <h1 class="add-title modal-title fs-4" id="modalLabel">Add Ingredients</h1>
                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="add-body modal-body">
