@@ -122,11 +122,18 @@
 
       //for ingredients ajax
 
-       var urlParams = new URLSearchParams(window.location.search);
+     var urlParams = new URLSearchParams(window.location.search);
     var currentPage = urlParams.has('page') ? parseInt(urlParams.get('page')) : 1;
-      var totalPages = 1;
+    var totalPages = 1;
 
-      
+      // Set the filter and search input values from the URL if they exist
+    if (urlParams.has('category')) {
+        $('#categoryFilter').val(urlParams.get('category'));
+    }
+
+    if (urlParams.has('search')) {
+        $('#searchInput').val(urlParams.get('search'));
+    }
 
       //for filter
       $('#categoryFilter').change(function () {
@@ -186,7 +193,7 @@
                 var BackgroundColor = lowStock ? '#FA8072' : '';
                 listItems += `
                     <tr >
-                            <td>${ingredient.picture}</td>
+                            <td class="ingredients-img" data-ingredients-img="${ingredient.picture}"><img style="width: 200px;, height: auto;" class="ingredients-img" src="uploads/${ingredient.picture}"></td>
                            <td style="display: none;" class="ingredient-category">${ingredient.category}</td>
                             <td class="ingredient-name" style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
                             
@@ -225,8 +232,20 @@
           }
         });
       }
-      function updateUrl() {
+     function updateUrl() {
+        var categoryFilter = $('#categoryFilter').val();
+        var searchQuery = $('#searchInput').val();
+        
         var newUrl = window.location.pathname + '?page=' + currentPage;
+
+        if (categoryFilter) {
+            newUrl += '&category=' + encodeURIComponent(categoryFilter);
+        }
+
+        if (searchQuery) {
+            newUrl += '&search=' + encodeURIComponent(searchQuery);
+        }
+
         window.history.replaceState({ path: newUrl }, '', newUrl);
     }
       
@@ -239,8 +258,11 @@
         var ingredientId = $(this).data('ingredients-id');
         var ingredientName = $row.find('.ingredient-name').text().trim();
         var ingredientQuantity = $row.find('.ingredient-quantity').text().trim();
-          var ingredientIdealQuantity = $row.find('.ingredient-ideal-quantity').text().trim();
+        var ingredientIdealQuantity = $row.find('.ingredient-ideal-quantity').text().trim();
         var ingredientCategory = $row.find('.ingredient-category').text().trim();
+        var ingredientImage = $row.find('.ingredients-img').data('ingredients-img');
+        
+        console.log(ingredientImage)
 
         // Populate the modal fields with the data
 
@@ -250,7 +272,10 @@
         $('#ideal_qtys').val(ingredientIdealQuantity);
           
         $('#categorys').val(`<option value="${ingredientCategory}">${ingredientCategory}</option>`).val(ingredientCategory);
-
+        $('.imageButton').data('ingredients-id', ingredientId);
+        var imgsrc = "uploads/"+ ingredientImage;
+        $('.ingredientProfile').attr('src', imgsrc);
+        
 
       });
 

@@ -407,7 +407,12 @@
             <div class="form modal-body" id="modal-body">
 
               <div class="" id="ingredientPicture">
-                <img src="../assets/images/1x1.jpg" class="ingredientProfile">
+
+                <img src="" class="ingredientProfile">
+                <form class="ingredients-image" role="form" autocomplete="off" enctype="multipart/form-data">
+                  <input type="file" name="ingredients_image" id="ingredients_image" placeholder="Enter something">
+                  <button class="imageButton" type="submit" data-ingredients-id="">Submit</button>
+                </form>
               </div>
               <div>
                 <div class="borderr">
@@ -473,6 +478,7 @@
 
   </div>
   <script src="script/ingredients.js"></script>
+  <script src="script/imageupload.js"></script>
 </body>
 
 </html>

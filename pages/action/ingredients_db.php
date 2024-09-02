@@ -69,7 +69,23 @@ try {
 
         include '../include/dbConnection.php';
 
+        $sql = "SELECT picture FROM ingredients WHERE ingredients_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $ingredients_id);
+        $stmt->execute();
+        $stmt->bind_result($fileName);
+        $stmt->fetch();
+        $stmt->close();
+        if ($fileName) {
+            // Construct the full path to the image file
+            $uploadDir = '../uploads/';
+            $filePath = $uploadDir . $fileName;
 
+            // Check if the file exists and delete it
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
 
         // Prepare the SQL statement with a placeholder
         $stmt = $conn->prepare("DELETE FROM ingredients WHERE ingredients_id = ?");

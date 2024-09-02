@@ -22,16 +22,7 @@ if ($conn->connect_error) {
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Check if all required fields are present in $data
-if (!isset($data['user_id']) || !isset($data['full_name']) || !isset($data['user_name']) || !isset($data['password'])
-    || !isset($data['address']) || !isset($data['contact_number']) || !isset($data['account_type']) || !isset($data['account_date'])) 
-{
-    $response = array(
-        'status' => 'error',
-        'message' => 'Missing required fields.'
-    );
-    echo json_encode($response);
-    exit; // Stop further execution
-}
+
 
 // Extract data
 $user_id = $data['user_id'];
@@ -83,4 +74,3 @@ if ($stmt->execute()) {
 }
 
 echo json_encode($response);
-?>
