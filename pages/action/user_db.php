@@ -44,13 +44,31 @@ try {
         $user_id = sanitizeInput($data['user_id']);
 
 
+        $sql = "SELECT picture FROM user WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $user_id);
+        $stmt->execute();
+        $stmt->bind_result($fileName);
+        $stmt->fetch();
+        $stmt->close();
+        if ($fileName) {
+            // Construct the full path to the image file
+            $uploadDir = '../uploads/user/';
+            $filePath = $uploadDir . $fileName;
+
+            // Check if the file exists and delete it
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
         $stmt = $conn->prepare("DELETE FROM user WHERE user_id =?");
         $stmt->bind_param("i", $user_id);
 
 
         try {
             $stmt->execute();
-            echo json_encode(["status" => "success", "message" => "New record created successfully"]);
+            echo json_encode(["status" => "success", "message" => "Record deleted successfully"]);
         } catch (Exception $e) {
             echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
         }

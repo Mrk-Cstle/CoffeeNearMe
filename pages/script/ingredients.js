@@ -191,9 +191,15 @@
               ingredients.forEach(function(ingredient) {
                 var lowStock = ingredient.quantity < 0.8 * ingredient.ideal_quantity;
                 var BackgroundColor = lowStock ? '#FA8072' : '';
+                 let pictureHtml = '';
+                                if (ingredient.picture) {
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}">`;
+                                } else {
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png">`; // or provide alternative HTML
+                                }
                 listItems += `
                     <tr >
-                            <td class="ingredients-img" data-ingredients-img="${ingredient.picture}"><img style="width: 200px;, height: auto;" class="ingredients-img" src="uploads/${ingredient.picture}"></td>
+                            <td>${pictureHtml}</td>
                            <td style="display: none;" class="ingredient-category">${ingredient.category}</td>
                             <td class="ingredient-name" style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
                             

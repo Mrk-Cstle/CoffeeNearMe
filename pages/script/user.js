@@ -62,11 +62,17 @@
                             var userlist = '';
                             
                             
-                            users.forEach(function (user) {
+                          users.forEach(function (user) {
+                               let pictureHtml = '';
+                                if (user.picture) {
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/${user.picture}">`;
+                                } else {
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
+                                }
                                 userlist += `
                                 <tr>
                                 <td style="display: none;" class="users-id">${user.user_id}</td>
-                                <td></td>
+                                <td>${pictureHtml}</td>
                                 <td>${user.full_name}</td>
                                 <td>${user.address}</td>
                                 <td>${user.contact_number}</td>

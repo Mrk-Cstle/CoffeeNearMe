@@ -334,7 +334,7 @@
         </div>
 
 
-        <form id="view" method="POST">
+        <form class="user-image" id="view" method="POST">
             <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="viewcontent modal-content">
@@ -345,9 +345,20 @@
                         <div class="viewbody modal-body bodyyy">
                             <div class="area">
                                 <img src="../assets/images/1x1.jpg" class="fprofile">
+
+
                                 <div class="row gx-5">
                                     <div class="col">
+
                                         <div class="fname">
+
+
+                                            <input type="file" name="users_image" id="users_image">
+                                            <button type="submit" class="user-imagebtn">Submit</button>
+
+
+
+
                                             <input type="hidden" id="users-id" name="users_id">
                                             <div class="input-group mb-3 
                                             d-block">Fullname
@@ -391,8 +402,11 @@
     </div>
     </form>
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="script/user.js"></script>
+    <script src="script/imageupload.js">
+    </script>
 
 
 

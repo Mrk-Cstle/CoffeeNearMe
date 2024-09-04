@@ -104,7 +104,7 @@
             </a>
          </li>
          <li>
-            <a href="table.php">
+            <a href="user.php">
                <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
                   Users

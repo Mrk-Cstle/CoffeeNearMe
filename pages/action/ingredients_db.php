@@ -78,7 +78,7 @@ try {
         $stmt->close();
         if ($fileName) {
             // Construct the full path to the image file
-            $uploadDir = '../uploads/';
+            $uploadDir = '../uploads/ingredients/';
             $filePath = $uploadDir . $fileName;
 
             // Check if the file exists and delete it
