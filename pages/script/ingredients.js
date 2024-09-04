@@ -193,9 +193,9 @@
                 var BackgroundColor = lowStock ? '#FA8072' : '';
                  let pictureHtml = '';
                                 if (ingredient.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}">`;
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
                                 }
                 listItems += `
                     <tr >
@@ -279,7 +279,7 @@
           
         $('#categorys').val(`<option value="${ingredientCategory}">${ingredientCategory}</option>`).val(ingredientCategory);
         $('.imageButton').data('ingredients-id', ingredientId);
-        var imgsrc = "uploads/"+ ingredientImage;
+        var imgsrc = "uploads/ingredients/"+ ingredientImage;
         $('.ingredientProfile').attr('src', imgsrc);
         
 

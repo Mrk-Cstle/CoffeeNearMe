@@ -88,10 +88,10 @@
             </a>
          </li>
          <li>
-            <a href="#">
+            <a href="product.php">
                <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
-                  Dashboard
+                  Product
                </span>
             </a>
          </li>

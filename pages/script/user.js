@@ -272,9 +272,16 @@ loadUser();
                     $('input[name="address"]').val(userData.address);
                     $('input[name="contact_number"]').val(userData.contact_number);
                     $('input[name="account_date"]').val(userData.account_date);
-                    $('input[name="users_id"]').val(userData.user_id);
-
+                  $('input[name="users_id"]').val(userData.user_id);
                   
+                if (userData.picture) {
+                                var imgSrc = "uploads/user/" + userData.picture; // Assuming the image path is relative to your project structure
+                                $('.fprofile').attr('src', imgSrc);
+                            } else {
+                                // Use a default image if no picture is found
+                                $('.fprofile').attr('src', 'uploads/user/default.png'); // You can specify your default image path here
+                            }
+                                  
            
                 } else {
                     console.error('Failed to fetch user data');
