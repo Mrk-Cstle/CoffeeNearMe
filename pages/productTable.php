@@ -107,6 +107,7 @@ background-color: #D76614 !important;
     float: right;
     border: 1px white;
     background-color: white;
+    margin-left: 630px;
 }
 /* Button Styling */
 .topbtn {
@@ -165,6 +166,11 @@ background-color: #D76614 !important;
 /* Add New Category Modal Styling */
 .pluscontent {
   background-color: #fff;
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .plusheader {
