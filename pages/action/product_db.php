@@ -122,6 +122,109 @@ try {
                 echo json_encode(['status' => 'error', 'message' => 'User not found']);
             }
         }
+    } elseif ($action === "edit") {
+        include '../include/dbConnection.php';
+        $productId = sanitizeInput($data['productId']);
+        $productName = sanitizeInput($data['productName']);
+        $productCategory = sanitizeInput($data['productCategory']);
+        $productPrice = sanitizeInput($data['productPrice']);
+
+
+
+
+        // Prepare query to fetch existing data
+        $select_sql = "SELECT * FROM product WHERE product_id = ?";
+        $select_stmt = $conn->prepare($select_sql);
+        $select_stmt->bind_param("i", $productId);
+        $select_stmt->execute();
+
+        $result = $select_stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        // Check if any data has been fetched
+        if ($row) {
+            // Extract specific columns from the result set
+            $db_product_name = $row['product_name'];
+            $db_category = $row['product_category'];
+            $db_price = $row['price'];
+            $db_picture = $row['picture'];
+        }
+
+
+        if ($db_product_name == $productName && $db_category == $productCategory && $db_price == $productPrice) {
+            // No changes, so skip the update
+            echo "No changes to update.";
+        } else {
+            // Prepare update query
+
+            $sql = "UPDATE product SET 
+            product_name = ? ,product_category = ? ,price = ?
+ 
+            WHERE product_id = $productId";
+
+            $stmt = $conn->prepare($sql);
+
+            // Bind parameters to statement
+            $stmt->bind_param("ssi", $productName, $productCategory, $productPrice);
+
+            if ($stmt->execute()) {
+                echo json_encode(["status" => "success", "message" => "New record created successfully"]);
+            } else {
+                echo "Error updating record: " . $stmt->error;
+            }
+            $stmt->close();
+            $conn->close();
+        }
+    } elseif ($action === 'delete') {
+
+
+
+        $productId = sanitizeInput($data['productId']);
+
+
+        include '../include/dbConnection.php';
+
+        $sql = "SELECT picture FROM product WHERE product_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $productId);
+        $stmt->execute();
+        $stmt->bind_result($fileName);
+        $stmt->fetch();
+        $stmt->close();
+        if ($fileName) {
+            // Construct the full path to the image file
+            $uploadDir = '../uploads/product/';
+            $filePath = $uploadDir . $fileName;
+
+            // Check if the file exists and delete it
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        // Prepare the SQL statement with a placeholder
+        $stmt = $conn->prepare("DELETE FROM product WHERE product_id = ?");
+
+
+        $stmt->bind_param("i", $productId);
+
+        try {
+            $stmt->execute();
+            if ($stmt->affected_rows > 0) {
+
+                echo json_encode(["status" => "success", "message" => "Record deleted successfully"]);
+            } else {
+
+                echo json_encode(["status" => "error", "message" => "No record found to delete"]);
+            }
+        } catch (Exception $e) {
+            echo json_encode(["status" => "error", "message" => "Error deleting record: " . $stmt->error]);
+        }
+
+
+
+        $stmt->close();
+        $conn->close();
     }
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);

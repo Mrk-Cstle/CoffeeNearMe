@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2024 at 03:41 PM
+-- Generation Time: Sep 12, 2024 at 08:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,10 +41,9 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `ideal_quantity`, `picture`) VALUES
-(1, 'tae', '', 1, 2, 'qwe'),
-(5, 'asdasd', 'asd', 1, 100, ''),
-(7, 'asdasdas', 'asd', 1, 1, ''),
-(8, 'dx', 'zxx', 0, 0, '');
+(30, 'Arabica', 'Coffee', 1, 1, '30.jpg'),
+(34, 'qwe', 'Food', 2, 2131, ''),
+(37, 'Robusta', 'Coffee', 2000, 2500, '');
 
 -- --------------------------------------------------------
 
@@ -62,9 +61,9 @@ CREATE TABLE `ingredients_category` (
 --
 
 INSERT INTO `ingredients_category` (`category_id`, `category`) VALUES
-(1, 'asdasd'),
-(2, 'asd'),
-(3, 'zxx');
+(7, 'Food'),
+(8, 'Coffee'),
+(9, 'try');
 
 -- --------------------------------------------------------
 
@@ -80,6 +79,33 @@ CREATE TABLE `product` (
   `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`, `picture`) VALUES
+(74, 'Coffee', 'Water Based', 150, NULL),
+(75, 'Spanish Latte', 'Water Based', 120, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_category`
+--
+
+CREATE TABLE `product_category` (
+  `category_id` int(100) NOT NULL,
+  `category` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_category`
+--
+
+INSERT INTO `product_category` (`category_id`, `category`) VALUES
+(11, 'Water Based'),
+(14, 'Hot');
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +118,17 @@ CREATE TABLE `product_ingredients` (
   `ingredients_id` int(100) NOT NULL,
   `quantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_ingredients`
+--
+
+INSERT INTO `product_ingredients` (`product_raw_id`, `product_id`, `ingredients_id`, `quantity`) VALUES
+(22, 75, 30, 20),
+(23, 74, 30, 2),
+(24, 74, 30, 2),
+(25, 75, 34, 200),
+(26, 74, 30, 20);
 
 -- --------------------------------------------------------
 
@@ -116,15 +153,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `account_type`, `full_name`, `user_name`, `password`, `contact_number`, `address`, `picture`, `account_date`) VALUES
-(9, '', 'asdasd', 'asdasd', '$2y$10$NH02nC2YEDBvetMAFpaOo.WxKQfoFzZrgX6OiUBL4KH1cjP9tI1Z6', 2147483647, '269 Sta Rosa 1', NULL, '2024-06-19'),
-(10, '', 'qweqwe', 'qweqwe', '$2y$10$4Zal1IUHJCyUljSItHEA0.23s1WFuurueWLzCjjSdu8p.mY3DdPqu', 2147483647, '269 Sta Rosa 1', NULL, '2024-06-19'),
-(16, '', 'asdasdasd', 'asdasdasd', '$2y$10$EHmkGqmCq6zyEkE5AfkJpOR0HIxTIvwrpz1lxjeuKiuiW.nsqlj1K', 1232, '123', NULL, '2024-06-19'),
-(18, '', '', '', '$2y$10$LTLsz/pO6xLK.b6ko1hbCe9ezgLeke3WIJTOZYMopSgHRVkPsngUm', 0, '', NULL, '2024-06-21'),
-(22, '', 'asdaa', 'asdaa', '$2y$10$W0XoBV21Yfng2KgilQbOJuwPueNR2m2n0Najv2OH3YW6CMJ2NwX9u', 0, 'eq', NULL, '2024-08-19'),
-(24, '', 'admin', 'admin', '$2y$10$ZlBGamcaLFX1gFIqTgbrAON5h.jQXCoa20dBvrtfvsxBQOnBl1906', 0, 'aweq', NULL, '2024-08-19'),
-(27, '', 'asdqwe', 'qwe', '$2y$10$JoZ6qhR9MOtbAaZe6M.rWe3MM8wljMx.fi9o1ppHUv8i6l4jRzGFC', 0, 'qweqwe', NULL, '2024-08-20'),
-(28, '', 'asd', '1', '$2y$10$TxB/fkLdKMzyByW.zaY3teKjZUXdf7RXMhYCs98Kh8X3GLpo5r5Be', 0, 'awe', NULL, '2024-08-20'),
-(31, '', '', 'w', '$2y$10$yx01uLcPxArXF7wHOaCj.e/8ZfdmK3MB1tTmhh3yRAThk4IuxBkhC', 0, '', NULL, '2024-08-20');
+(45, 'admin', 'qwe', '22222', '$2y$10$9irpUPBnsJM52Kc36eRWjuUESD4OOM2xSLVWFYt0ujCdEPORJ3haS', 0, '', '45.png', '2024-08-31'),
+(49, '', '', 'qweasdqawea', '$2y$10$y6KQRHfYwy7CxB4Ybkw6mulHeHli66.gU.JnQ86OMgBnQ7PW0w.Du', 0, '', '49.jpg', '2024-09-02'),
+(52, '', 'q', '', '$2y$10$irsPKj9aFs3hrWthEhbvsOlYBqc5EBisLzmI40ZU0/FjVjOh5mCAG', 0, '', NULL, '2024-09-03'),
+(57, '', '', 'qwe', '$2y$10$ft2w4jTj/pQqQ4l1J51BG.tECTLWH9PunsVfJ0mgqkNrRmnuh3/Wu', 0, '', NULL, '2024-09-03'),
+(64, '', 'qwe', 'qweq', '$2y$10$HCewu3EkK.oz5lt.Fnnl5OjPCYtifewpoCOrlXW2ry1amlVinixGG', 0, 'w', NULL, '2024-09-04');
 
 --
 -- Indexes for dumped tables
@@ -151,6 +184,12 @@ ALTER TABLE `product`
   ADD UNIQUE KEY `product_name` (`product_name`);
 
 --
+-- Indexes for table `product_category`
+--
+ALTER TABLE `product_category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- Indexes for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
@@ -173,31 +212,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `ingredients_category`
 --
 ALTER TABLE `ingredients_category`
-  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+
+--
+-- AUTO_INCREMENT for table `product_category`
+--
+ALTER TABLE `product_category`
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
-  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Constraints for dumped tables

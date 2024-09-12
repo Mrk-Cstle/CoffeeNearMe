@@ -213,7 +213,7 @@ $(document).ready(function () {
 $(document).on('click', '.view-btn', function () {
            var $row = $(this).closest('tr');
           var productsid = $row.find('.products-id').text().trim();;
-          
+  
            var data = {
                     productsid: productsid,
                     action: 'editmodal'
@@ -230,10 +230,16 @@ $(document).on('click', '.view-btn', function () {
 
                    
                     $('input[name="productName"]').val(Data.product_name);
-                    $('input[name="productCategory"]').val(Data.product_category);
+                  
                     $('input[name="productPrice"]').val(Data.price);
-                    
+                     $('#productCategory').val(`<option value="${Data.product_category}">${Data.product_category}</option>`).val(Data.product_category);
                   $('input[name="productId"]').val(Data.product_id);
+
+                   if (typeof loadProductIngredients === 'function') {
+                    loadProductIngredients();
+                } else {
+                    console.error('loadProductIngredients function is not available.');
+                }
                   
                 if (Data.picture) {
                                 var imgSrc = "uploads/product/" + Data.picture; // Assuming the image path is relative to your project structure
@@ -264,9 +270,89 @@ $(document).on('click', '.view-btn', function () {
 
 
 
+  
+$(document).on('click', '.updatebtn', function() {
 
 
 
+        // Retrieve the value of the input field
+        var productId = $('#productId').val();
+        var productName = $('#productName').val();
+        var productCategory = $('#productCategory').val();
+        var productPrice = $('#productPrice').val();
+        
+
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, update it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              productId: productId,
+              productName: productName,
+              productCategory: productCategory,
+              productPrice: productPrice,
+              
+              action: 'edit'
+            }
+            productAjaxRequest(data);
+          }
+
+
+
+        });
+
+
+      });
+ $(document).on('click', '.deletebtn', function() {
+
+
+
+        // Retrieve the value of the input field
+        var productId = $('#productId').val();
+
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var data = {
+              productId: productId,
+              action: 'delete'
+            }
+            productAjaxRequest(data);
+          }
+          $('#productName').val("");
+          $('#productCategory').val("");
+          $('#productPrice').val("");
+         
+
+
+        });
+
+
+      });
+
+
+
+  
+  
+  
+  
+  
+  
 //////category js
 
 
@@ -369,7 +455,13 @@ $(document).on('click', '.category-delete', function() {
                 text: response.message,
                 icon: 'success',
                 confirmButtonText: 'OK'
-              });
+              }).then((result) => {
+                        // Check if the user confirmed the alert
+                        if (result.isConfirmed) {
+                            // Reload the page after the alert is closed
+                            location.reload(true);
+                        }
+                    });
               loadCategories();
 
             } else {

@@ -610,10 +610,8 @@
 
                     <div class="ingredientBodyModal modal-body">
                       <ul class="ingredientBodyMowdal product-ingredients">
-                        <li class="ingredientLi list-group-item">Example Ingredient
-                          <span class="spanquantity">10</span>
-                          <a href="#" class="trashIcon bi bi-trash text-dark"></a>
-                        </li>
+
+
                       </ul>
                     </div>
 
@@ -629,15 +627,33 @@
                   <div class="productInput">
                     <input type="hidden" id="productId" name="productId">
                     <label for="prodName" class="productLabel">Product Name:</label>
-                    <input type="text" name="productName" class="productName">
+                    <input type="text" name="productName" id="productName" class="productName">
                   </div>
                   <div class="productInput">
                     <label for="prodCategory" class="productLabel">Product Category: </label>
-                    <input type="text" name="productCategory" class="productCategory">
+                    <select class="t-input form-control w-75" aria-label="category" name="productCategory" id="productCategory">
+                      <?php
+                      include '../pages/include/dbConnection.php';
+
+                      // Read all rows from the database
+                      $sql = "SELECT * FROM product_category";
+                      $result = $conn->query($sql);
+
+                      if (!$result) {
+                        die("Invalid query: " . $conn->error);
+                      }
+
+                      // Read data for each row
+                      while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . $row["category"] . '">' . $row["category"] . '</option>';
+                      }
+                      ?>
+                    </select>
+
                   </div>
                   <div class="productInput">
                     <label for="prodPrice" class="productLabel">Product Price:</label>
-                    <input type="text" name="productPrice" class="productPrice">
+                    <input type="text" id="productPrice" name="productPrice" class="productPrice">
                   </div>
                 </div>
               </div>
@@ -645,8 +661,8 @@
           </div>
         </div>
         <div class="modal-footer viewIngredient">
-          <button type="button" class="btnIngredient btn btn-secondary" data-dismiss="modal">Delete</button>
-          <button type="button" class="btnIngredient btn btn-secondary" data-bs-dismiss="modal">Update</button>
+          <button type="button" class="btnIngredient deletebtn  btn btn-secondary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btnIngredient updatebtn btn btn-secondary" data-bs-dismiss="modal">Update</button>
         </div>
       </div>
     </div>
@@ -657,20 +673,39 @@
     <div class="modal-dialog">
       <div class="modal-content plusIconModalContent">
         <div class="modal-header">
-          <h5 class="modal-title" id="ingredientModalLabel">Add Product</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="ingredientModalLabel">Add Ingredients</h5>
+          <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#viewProductModal" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body fade-up plusIconModal">
           <form id="ingredientForm">
             <div class="mb-3">
               <label for="ingredientName" class="form-label ">Product</label>
-              <input type="text" class="form-control plusInput" id="ingredientName" placeholder="Enter ingredient">
+
+              <select class="t-input form-control w-75" aria-label="category" name="product_ingredients" id="product_ingredients">
+                <?php
+                include '../pages/include/dbConnection.php';
+
+                // Read all rows from the database
+                $sql = "SELECT * FROM ingredients";
+                $result = $conn->query($sql);
+
+                if (!$result) {
+                  die("Invalid query: " . $conn->error);
+                }
+
+                // Read data for each row
+                while ($row = $result->fetch_assoc()) {
+                  echo '<option value="' . $row["ingredients_id"] . '">' . $row["raw_name"] . '</option>';
+                }
+                ?>
+              </select>
+
             </div>
             <div class="mb-3">
               <label for="ingredientQuantity" class="form-label ">Quantity</label>
-              <input type="text" class="form-control plusInput" id="ingredientQuantity" placeholder="Enter quantity">
+              <input type="text" class="form-control plusInput" id="productingredientQuantity" placeholder="Enter quantity">
             </div>
-            <button type="submit" class="btn btn-dark btn-plus">Add</button>
+            <button id="add_ingredientsbtn" data-bs-toggle="modal" data-bs-target="#viewProductModal" class="btn btn-dark btn-plus">Add</button>
           </form>
         </div>
       </div>
@@ -690,10 +725,8 @@
         </div>
         <div class="category modal-body">
           <ul class="list-group">
-            <!-- Category items will be dynamically inserted here -->
-            <!-- Example: -->
 
-          </ul> <br>
+          </ul>
         </div>
       </div>
     </div>
@@ -715,7 +748,7 @@
           </div>
         </div>
         <div class="plusfooter modal-footer">
-          <button type="button" class="btn btn-dark" id="add_category">Add</button>
+          <button type="button" class="btn btn-dark" id="add_category" data-bs-target="#Category" data-bs-toggle="modal">Add</button>
         </div>
       </div>
     </div>
@@ -790,7 +823,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <script src="script/product.js"></script>
+  <script src="script/product_ingredients.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
