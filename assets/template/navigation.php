@@ -80,7 +80,7 @@
       <img class="top-logo" src="../assets/images/logotext _nobg.png">
       <ul>
          <li>
-            <a href="home.php">
+            <a href="adminDashboard.php">
                <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
                   Dashboard
