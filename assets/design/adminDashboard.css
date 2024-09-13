@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #D9D9D9;
+}
+.salesandInventory{
+    display: inline-flex;
+}
+
+/* SALES OVERVIEW CSS */
+.salesOverview{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 200px;
+    width: 800px;
+    margin-top: 100px;
+    margin-left: 30px;
+    background-color: #fff;
+
+}
+#salesHead{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.salesBord{
+    display: flex;
+}
+.salesImage{
+    height: 50px;
+    width: 50px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+#salesNum{
+    margin-left: 60px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+#salesPara{
+    margin-left: 50px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.paragraphSales{
+    display: flex;
+}
+
+/* INVENTORY SUM CSS */
+
+.inventorySummary{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 200px;
+    width: 650px;
+    margin-top: 100px;
+    margin-left: 30px;
+    background-color: #fff;
+    
+}
+#inventoryHead{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.inventoryBord{
+    display: flex;
+}
+.inventImage{
+    height: 50px;
+    width: 50px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+#inventNum{
+    margin-left: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+#inventPara{
+    margin-left: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.paragraphInvent{
+    display: flex;
+}
+
+.purchaseandProduct{
+    display: inline-flex;
+}
+
+
+/*Top Selling Product and Low Stocks*/
+.topSellingandLowStockProduct{
+    display: inline-flex;
+}
+
+/*Top Selling Products CSS*/
+.topSellingDiv{
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 400px;
+    width: 800px;
+    margin-top: 40px;
+    margin-left: 30px;
+}
+#topHead{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 100px;
+    font-weight: normal;
+}
+.heading{
+    display: flex;
+    margin-top: 30px;
+}
+#head{
+    font-size: 20px;
+    margin-left: 100px;
+}
+#borderDown{
+    border-bottom: 1px solid rgb(185, 179, 179);
+    margin-top: 10px;
+
+}
+.bodySell{
+    display: flex;
+}
+#bodyP1{
+    margin-top: 20px;
+    margin-left: 80px;
+}
+#bodyP2{
+    margin-top: 20px;
+    margin-left: 120px;
+}
+#bodyP3{
+    margin-top: 20px;
+    margin-left: 180px;
+}
+#bodyP4{
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+/*Low Stocks CSS*/
+.lowStockDiv{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 400px;
+    width: 650px;
+    margin-top: 40px;
+    margin-left: 30px;
+    background-color: #fff;
+}
+#lowHead{
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.lowHeading{
+    display: flex;
+    margin-top: 15px;
+}
+.lowBody{
+    display: flex;
+}
+.lowImage{
+    height: 70px;
+    width: 70px;
+    margin-left: 80px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+#lowP1{
+    margin-top: 40px;
+    margin-left: 150px;
+}
+#lowP2{
+    margin-top: 40px;
+    margin-left: 165px;
+}
+
+
+
+
+.borderRight{
+    border-right: 1px solid rgb(185, 179, 179);;
+    margin-left: 40px;
+    height: 90px;
+    margin-top: 15px;
+}
+
+
+
+/*CHARTS CSS*/
+
+.charts{
+    display: inline-flex;
+}
+/*Bar Chart CSS*/
+
+
+.barChart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 490px;
+    width: 800px;
+    margin-top: 40px;
+    margin-left: 30px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.chartBar-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+}
+
+.barChartHeadOne {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.canvasBar-container {
+    border: 2px solid #333; /* Border for the whole graph */
+    border-radius: 15px; /* Border radius for the graph */
+    padding: 20px;
+    background-color: #fff; /* Background color of the chart container */
+}
+
+canvas {
+    border-radius: 15px; /* Border radius for the bars */
+}
+
+/*LINE CHARTS CSS*/
+
+
+.lineAreaChart{
+    display: inline-flex;
+    
+}
+.chartLine-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 490px;
+    width: 650px;
+    margin-top: 40px;
+    margin-left: 30px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.lneChart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+}
+
+#salesHead{
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.canvasLine-container {
+    border: 2px solid #333; /* Border for the whole chart area */
+    border-radius: 15px; /* Border radius for the chart area */
+    padding: 20px;
+    background-color: #fff; /* Background color of the chart container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
+    height: 345px;
+    width: 500px;
+}
+
+canvas {
+    display: block;
+    border-radius: 15px; /* Border radius for the chart area */
+    height: 600px;
+    width: 600px;
+}
