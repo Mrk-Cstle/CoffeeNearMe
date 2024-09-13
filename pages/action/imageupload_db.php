@@ -91,4 +91,49 @@ if ($action === 'ingredients') {
     // Send the response as JSON
 
     echo json_encode($response);
+} elseif ($action === 'product') {
+    include '../include/dbConnection.php';
+    $uploadDir = '../uploads/product/';
+
+    // Get the ingredient ID
+    $productId = $_POST['id'];
+
+    // Extract the file extension from the original file name
+    $fileExtension = pathinfo($_FILES['product_image']['name'], PATHINFO_EXTENSION);
+
+    // Create a new file name using the ingredient ID
+    $newFileName = $productId . '.' . $fileExtension;
+
+    // Set the full path for the new file
+    $uploadFile = $uploadDir . $newFileName;
+
+    // Create the upload directory if it doesn't exist
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
+    }
+
+    if (move_uploaded_file($_FILES['product_image']['tmp_name'], $uploadFile)) {
+        // Prepare and execute the SQL query to update image details in the database
+        $sql = "UPDATE product SET picture = ? WHERE product_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('si', $newFileName, $productId);
+
+        try {
+            $stmt->execute();
+            $response = [
+                "status" => "success",
+                "message" => "File uploaded and database updated successfully"
+            ];
+        } catch (Exception $e) {
+            $response = ["status" => "error", "message" => "Database error: " . $e->getMessage()];
+        }
+
+        $stmt->close();
+    } else {
+        $response = ["status" => "error", "message" => "File upload failed"];
+    }
+
+    // Send the response as JSON
+
+    echo json_encode($response);
 }

@@ -26,6 +26,20 @@ $(document).on('submit', '.user-image', function (event) {
     imageAjaxRequest(formData); // Call your AJAX function
 });
 
+   
+    
+    $(document).on('submit', '.product-image', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+   
+    var productId = $('#productId').val(); // Get the user ID
+    var formData = new FormData(this); // Create a FormData object from the form
+    formData.append("action", "product"); // Append additional data
+    formData.append("id", productId); // Append the user ID
+
+   // Debugging
+    imageAjaxRequest(formData); // Call your AJAX function
+});
 
     function imageAjaxRequest(formData) {
         $.ajax({

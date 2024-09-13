@@ -586,7 +586,7 @@
         </div>
         <div class="modal-body">
           <div class="viewProduct">
-            <form action="">
+            <form class="product-image" role="form" autocomplete="off" enctype="multipart/form-data">
               <div class="productBody">
                 <div class="ingredientBody">
                   <div class="ingredientHeader">
@@ -622,6 +622,10 @@
                 <div class="productPicture">
                   <img src="../assets/images/1x1.jpg" class="productImg">
                 </div>
+
+
+                <input type="file" name="product_image" id="product_image" placeholder="Enter something">
+                <button class="imageButton" type="submit" data-ingredients-id="">Submit</button>
 
                 <div class="productDetails">
                   <div class="productInput">
@@ -827,7 +831,7 @@
   <script src="script/product.js"></script>
   <script src="script/product_ingredients.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+  <script src="script/imageupload.js"></script>
 </body>
 
 </html>
