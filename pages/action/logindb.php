@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the password
         if (password_verify($inputpassword, $hashedPassword)) {
             // Password is correct, start a session
+            $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $user_id;
             $_SESSION['full_name'] = $full_name;
             $_SESSION['user_name'] = $user_name;

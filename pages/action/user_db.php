@@ -143,7 +143,6 @@ try {
     } elseif ($action === 'edit') {
         include '../include/dbConnection.php';
 
-
         $user_id = sanitizeInput($data['user_id']);
         $full_name = sanitizeInput($data['full_name']);
         $user_name = sanitizeInput($data['user_name']);
@@ -152,7 +151,7 @@ try {
         $contact_number = sanitizeInput($data['contact_number']);
         $account_type = sanitizeInput($data['account_type']);
         $account_date = sanitizeInput($data['account_date']);
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $sql = "SELECT * FROM user WHERE user_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
@@ -169,32 +168,78 @@ try {
             $dbcontact_number = $row['contact_number'];
             $dbaccount_type = $row['account_type'];
             $dbaccount_date = $row['account_date'];
-        }
 
-        if ($user_id == $dbuser_id && $full_name == $dbfull_name && $user_name == $dbuser_name && $password == $dbpassword && $address == $dbaddress && $contact_number == $dbcontact_number && $account_type == $dbaccount_type && $dbaccount_date == $account_date) {
+            // Check if any field has changed
+            // Verify the input password with the stored hash
+            $noChanges = (
+                $full_name == $dbfull_name &&
+                $user_name == $dbuser_name &&
+                $password == $dbpassword &&
+                $address == $dbaddress &&
+                $contact_number == $dbcontact_number &&
+                $account_type == $dbaccount_type &&
+                $account_date == $dbaccount_date
+            );
 
-            echo json_encode(["status" => "error", "message" => "No changes to update. "]);
-        } else {
-            $sql = "UPDATE user SET full_name=?, user_name=?, password=?, address=?, contact_number=?, account_type=? WHERE user_id=?";
-            $stmt = $conn->prepare($sql);
+            if ($noChanges) {
+                echo json_encode(["status" => "error", "message" => "No changes to update."]);
+            } else {
+                // Dynamically build the SQL query based on changes
+                $updateFields = [];
+                $updateValues = [];
 
+                if ($full_name != $dbfull_name) {
+                    $updateFields[] = "full_name = ?";
+                    $updateValues[] = $full_name;
+                }
+                if ($user_name != $dbuser_name) {
+                    $updateFields[] = "user_name = ?";
+                    $updateValues[] = $user_name;
+                }
+                if ($password != $dbpassword) {
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $updateFields[] = "password = ?";
+                    $updateValues[] = $hashedPassword;
+                }
+                if ($address != $dbaddress) {
+                    $updateFields[] = "address = ?";
+                    $updateValues[] = $address;
+                }
+                if ($contact_number != $dbcontact_number) {
+                    $updateFields[] = "contact_number = ?";
+                    $updateValues[] = $contact_number;
+                }
+                if ($account_type != $dbaccount_type) {
+                    $updateFields[] = "account_type = ?";
+                    $updateValues[] = $account_type;
+                }
 
+                // Prepare the update query
+                $updateFields = implode(", ", $updateFields);
+                $updateValues[] = $user_id;  // Add user_id for the WHERE clause
 
+                $sql = "UPDATE user SET $updateFields WHERE user_id = ?";
+                $stmt = $conn->prepare($sql);
 
-            $stmt->bind_param('ssssssi', $full_name, $user_name, $hashedPassword, $address, $contact_number, $account_type, $user_id);
+                // Bind the parameters dynamically
+                $types = str_repeat('s', count($updateValues) - 1) . 'i';  // 's' for strings, 'i' for user_id (integer)
+                $stmt->bind_param($types, ...$updateValues);
 
-            try {
-                $stmt->execute();
-                echo json_encode([
-                    "status" => "success",
-                    "message" => "Record updated successfully"
-                ]);
-            } catch (Exception $e) {
-                echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
+                try {
+                    $stmt->execute();
+                    echo json_encode([
+                        "status" => "success",
+                        "message" => "Record updated successfully"
+                    ]);
+                } catch (Exception $e) {
+                    echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
+                }
+
+                $stmt->close();
             }
-            $stmt->close();
-            $conn->close();
         }
+
+        $conn->close();
     }
 } catch (Exception $e) {
     echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
