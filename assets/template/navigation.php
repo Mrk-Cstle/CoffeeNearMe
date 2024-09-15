@@ -48,7 +48,7 @@ checkLogin();
          <!--=============== NAV MENU ===============-->
          <div class="nav__menu" id="nav-menu">
             <ul class="nav__list me-5">
-               <li><a href="#" class="nav__link">
+               <li><a href="posProduct.php" class="nav__link">
                      <h3 class="bi bi-cart"></h3>
                   </a></li>
 
