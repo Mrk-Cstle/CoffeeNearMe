@@ -137,14 +137,15 @@
     -webkit-text-fill-color: #FFF;
     font-size: 15px;
     width: 70px;
+    margin-top: 60px;
   }
 
   /*Edit Modal Form CSS*/
   #editModal {
-    border: 2px solid #fff;
+    border: 2px solid #d9d9d9;
     border-radius: 25px;
-    height: 550px;
-    width: 950px;
+    height: 590px;
+    width: 1070px;
     background-color: #d9d9d9;
     position: absolute;
     top: 50%;
@@ -208,7 +209,7 @@
     height: 190px;
     width: 190px;
     border-radius: 10px;
-    background-color: #FEFAE0;
+    background-color: #fff;
     margin-left: 15px;
     margin-top: 15px;
   }
@@ -258,7 +259,7 @@
     background-color: white;
     height: 300px;
     width: 450px;
-    margin-left: 65px;
+    margin-left: 125px;
   }
 
   #category {
@@ -268,6 +269,22 @@
   #ingredients {
     border: 2px solid #000;
   }
+
+  #ingredients_image{
+    margin-top: 50px;
+  }
+  .imageButton{
+    margin-top: 20px;
+    border: 2px solid #d76614;
+    background-color: #d76614;
+    color: white;
+    height: 35px;
+    width: 80px;
+    border-radius: 10px;
+  }
+  
+
+
 </style>
 
 <body>
@@ -425,8 +442,10 @@
 
                 <img src="" class="ingredientProfile">
                 <form class="ingredients-image" role="form" autocomplete="off" enctype="multipart/form-data">
+                  <div class="ingr_mage">
                   <input type="file" name="ingredients_image" id="ingredients_image" placeholder="Enter something">
                   <button class="imageButton" type="submit" data-ingredients-id="">Submit</button>
+                  </div>
                 </form>
               </div>
               <div>

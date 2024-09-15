@@ -53,6 +53,7 @@
         font-weight: bolder;
         height: 35px;
         text-align: center;
+        margin-top: 58px;
     }
 
     .btnnnn {
@@ -236,6 +237,7 @@
         height: 40px;
         width: 80px;
         margin-right: 15px;
+        
     }
 
     .headerrr {
@@ -250,6 +252,11 @@
 
     .bodyyy {
         background-color: #2c2c2c;
+    }
+
+    #search-user{
+        height: 40px;
+        margin-top: 58px;
     }
 </style>
 

@@ -70,7 +70,7 @@
                                     pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
                                 }
                                 userlist += `
-                                <tr>
+                                <tr">
                                 <td style="display: none;" class="users-id">${user.user_id}</td>
                                 <td>${pictureHtml}</td>
                                 <td>${user.full_name}</td>
