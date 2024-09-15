@@ -47,9 +47,11 @@
 
     #picture,
     img {
-      height: 120px;
-      width: 120px;
+      height: 100px;
+      width: 100px;
       padding: 5px;
+      margin: 15px;
+      object-fit: cover;
     }
 
     #btn {
@@ -151,15 +153,15 @@
     .product-Header {
       color: #2D2B2B;
       /* Adjusted for consistency */
-      border: 2px solid #D9D9D9;
+      border: 2px solid #d9d9d9;
       justify-content: space-between;
       background-color: #D9D9D9;
 
     }
 
     #viewProductModalLabel {
-      font-size: 20px;
-      margin-left: 650px;
+      font-size: 25px;
+      margin-left: 550px;
       font-weight: bold;
     }
 
@@ -169,7 +171,7 @@
     }
 
     .btn-close {
-      background-color: #D9D9D9;
+      background-color: #fff;
     }
 
     .category {
@@ -248,8 +250,8 @@
 
     /* Input Styling */
     .t-input {
-      background-color: rgba(0, 0, 0, 0.3);
-      border: 1px solid #D9D9D9;
+      background-color: #fff;
+      border: 1px solid #000;
       color: #000;
       font-weight: bold;
     }
@@ -292,7 +294,7 @@
     /*Ingredient CSS*/
     .ingredientBody {
       border: 3px solid #2D2B2B;
-      background-color: #d9d9d9;
+      background-color: #D9D9D9;
       width: 540px;
       height: 535px;
       position: absolute;
@@ -303,11 +305,12 @@
     }
 
     .ingredientHeader {
-      border-bottom: 2px solid #d9d9d9;
+      border-bottom: 2px solid #000;
       color: #000;
-      width: 536px;
+      width: 534px;
       height: 80px;
       position: relative;
+      background-color: #D9D9D9;
     }
 
     .ingredientHeading {
@@ -368,8 +371,11 @@
     }
 
     .ingredientLi {
-      background-color: #fff;
+      background-color: #D9D9D9;
       color: #000;
+      margin: 10px;
+      display: flex;
+      justify-content: space-between; 
     }
 
     .ingredientBodyModal {
@@ -377,17 +383,19 @@
       font-weight: bold;
       font-style: normal;
       background-color: #d9d9d9;
+      height: 376px;
     }
 
     .spanquantity {
-      margin-left: 60px;
       font-size: large;
       font-weight: bold;
+      position: fixed;
+      margin-left: 230px;
     }
 
     .trashIcon {
       font-size: 20px;
-      margin-left: 150px;
+      margin-right: 40px;     
     }
 
     /*View Picture Edit*/
@@ -421,6 +429,7 @@
       font-size: 18px;
       padding: 30px;
       font-weight: bold;
+      display: flex;
     }
 
     .productName {
@@ -512,6 +521,26 @@
       font-style: italic;
       margin-left: 680px;
       margin-top: 60px;
+    }
+
+    
+    .imageButton{
+      border: 2px solid #D76614;
+      background-color: #D76614;
+      border-radius: 10px;
+      margin-top: 0px;
+      height: 40px;
+      width: 80px;
+      color: white;
+      font-size: 15px;
+    }
+    #product_image{
+      margin-left: 100px;
+    }
+    #productCategory{
+      border-radius: 15px;
+      width: 50px;
+      height: 50px;
     }
   </style>
 
