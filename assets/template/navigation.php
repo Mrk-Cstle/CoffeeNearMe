@@ -1,3 +1,9 @@
+<?php
+include 'action/session.php';
+
+// Check if the user is logged in
+checkLogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +14,7 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
    <link rel="stylesheet" href="../assets/template/navigation.css">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
    <title></title>
 </head>
@@ -41,14 +48,14 @@
          <!--=============== NAV MENU ===============-->
          <div class="nav__menu" id="nav-menu">
             <ul class="nav__list me-5">
-               <li><a href="#" class="nav__link">
+               <li><a href="posProduct.php" class="nav__link">
                      <h3 class="bi bi-cart"></h3>
                   </a></li>
 
                <!--=============== DROPDOWN 2 ===============-->
                <li class="dropdown__item">
                   <div class="nav__link">
-                     <img class="profile" src="../assets/images/logo_no_bg.png"> Brisky <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                     <img class="profile" src="../assets/images/logo_no_bg.png"> <?php echo $_SESSION['full_name']; ?> <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                   </div>
 
                   <ul class="dropdown__menu">
@@ -65,7 +72,7 @@
                      </li>
 
                      <li>
-                        <a href="#" class="dropdown__link">
+                        <a id="signoutbtn" class="dropdown__link">
                            <i class="ri-message-3-line"></i> Signout
                         </a>
                      </li>
@@ -128,6 +135,23 @@
       }
 
       showMenu('nav-toggle', 'nav-menu')
+
+      $(document).ready(function() {
+
+         $('#signoutbtn').click(function() {
+            $.ajax({
+               url: 'action/logout.php',
+               type: 'POST',
+               success: function(response) {
+                  // Redirect to login page after logging out
+                  window.location.href = '../index.php';
+               },
+               error: function() {
+                  alert('Error signing out. Please try again.');
+               }
+            });
+         });
+      })
    </script>
 </body>
 
