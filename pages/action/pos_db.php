@@ -15,16 +15,11 @@ try {
 
         include '../include/dbConnection.php';
 
-
         $category = sanitizeInput($data['categoryFilter']);
         $searchQuery = sanitizeInput($data['searchQuery']);
 
-
-
-
+        // SQL to fetch products
         $sql = "SELECT * FROM product WHERE 1=1";
-
-
 
         if (!empty($category)) {
             $sql .= " AND product_category = '$category'";
@@ -33,21 +28,51 @@ try {
             $sql .= " AND product_name LIKE '%$searchQuery%'";
         }
 
-
         $result = $conn->query($sql);
 
         if (!$result) {
             die(json_encode(["status" => "error", "message" => "Invalid query: " . $conn->error]));
         }
 
-        // Read data for each row
+        // Prepare the product data array
         $product = [];
 
         while ($row = $result->fetch_assoc()) {
+            $productId = $row['product_id'];
+
+            // Query to check ingredient availability for this product
+            $ingredientsQuery = "
+        SELECT pi.ingredients_id, pi.quantity AS required_quantity, i.quantity AS available_stock
+        FROM product_ingredients pi
+        JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
+        WHERE pi.product_id = ?";
+
+            $stmt = $conn->prepare($ingredientsQuery);
+            $stmt->bind_param("i", $productId);
+            $stmt->execute();
+            $ingredientsResult = $stmt->get_result();
+
+            $canMake = PHP_INT_MAX;  // Initialize to a large number to find the limiting factor
+
+            while ($ingredient = $ingredientsResult->fetch_assoc()) {
+                $required = $ingredient['required_quantity'];
+                $available = $ingredient['available_stock'];
+
+                // Calculate how many products can be made based on the limiting ingredient
+                if ($available < $required) {
+                    $canMake = 0;  // Not enough stock to make even one product
+                    break;
+                } else {
+                    $canMake = min($canMake, floor($available / $required));
+                }
+            }
+
+            // Add product details to the array, including available quantity
+            $row['available_quantity'] = $canMake;
             $product[] = $row;
         }
-        $conn->close();
 
+        $conn->close();
 
         echo json_encode([
             "status" => "success",

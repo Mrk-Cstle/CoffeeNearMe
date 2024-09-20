@@ -41,10 +41,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
 
         case 'fetch':
+            // Fetch the cart from session
             echo json_encode(['status' => 'success', 'cart' => $_SESSION['cart']]);
             break;
 
-            // Additional actions like 'remove' can be added here
+        case 'remove':
+            $productId = $_POST['product_id'];
+
+            // Find the item in the cart and remove it
+            foreach ($_SESSION['cart'] as $index => $item) {
+                if ($item['id'] == $productId) {
+                    unset($_SESSION['cart'][$index]); // Remove the item
+                    $_SESSION['cart'] = array_values($_SESSION['cart']); // Reindex array
+                    break;
+                }
+            }
+
+            // Return updated cart
+            echo json_encode(['status' => 'success', 'cart' => $_SESSION['cart']]);
+            break;
 
         default:
             echo json_encode(['status' => 'error', 'message' => 'Invalid action']);

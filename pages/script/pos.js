@@ -25,43 +25,54 @@ function loadProduct() {
           
           
       };
-      $.ajax({
-          type: 'POST',
-          url: 'action/pos_db.php', // Replace with correct path to fetch categories
-          contentType: 'application/json',
-          data: JSON.stringify(data),
-          success: function(response) {
-
+    $.ajax({
+        type: 'POST',
+        url: 'action/pos_db.php',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
             if (response.status === 'success') {
-              var product = response.product;
-              var listItems = '';
+                var product = response.product;
+                var listItems = '';
 
-              product.forEach(function(product) {
-               
-                 let pictureHtml = '';
-                                if (product.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="product-img" src="uploads/product/${product.picture}"data-product-img="${product.picture}">`;
-                                } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="product-img" src="uploads/product/default.png"data-product-img="default.png">`; // or provide alternative HTML
-                                }
-                listItems += `
-                            
-                                  <div class="product" data-product-id="${product.product_id}">
+                product.forEach(function(product) {
+                    let pictureHtml = '';
+                    if (product.picture) {
+                        pictureHtml = `<img style="width: 150px; height: 150px; object-fit: cover;" class="product-img" src="uploads/product/${product.picture}" data-product-img="${product.picture}">`;
+                    } else {
+                        pictureHtml = `<img style="width: 150px; height: 150px; object-fit: cover;" class="product-img" src="uploads/product/default.png" data-product-img="default.png">`;
+                    }
+
+                    // Check if product is available
+                    let isAvailable = product.available_quantity > 0;
+                    let productClass = isAvailable ? '' : 'not-available';
+
+                    listItems += `
+                        <div class="product ${productClass}" data-product-id="${product.product_id}" data-available-quantity="${product.available_quantity}">
                             ${pictureHtml}
-                            <h3>${product.product_name}</h3>
+                            <h3 class="${isAvailable ? '' : 'text-danger'}">${product.product_name}</h3>
                             <p>₱${product.price}</p>
                             <div class="quantity-control">
                                 <button class="minus-btn">-</button>
                                 <input type="text" value="1" class="quantity" readonly>
                                 <button class="plus-btn">+</button>
                             </div>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <p>Available to make: ${product.available_quantity}</p>
+                            <button 
+                            class="add-to-cart-btn" 
+                            ${isAvailable ? '' : 'style="cursor: not-allowed; opacity: 0.5; background-color: #ccc; border-color: #ccc; color: #666;"'}
+                            ${isAvailable ? '' : 'disabled'}
+                            > 
+                            Add to Cart 
+                            </button>
                         </div>
+                    `;
+                });
+                
+                $('.product-grid').html(listItems);
 
-          `;
-              });
-              $('.product-grid').html(listItems);
-               
+                // Attach event listeners for quantity control
+                attachQuantityControl();
               
               console.error('loading categories: ' + response.message);
               
@@ -79,8 +90,44 @@ function loadProduct() {
             // Handle any additional error details as needed
           }
         });
-      }
+    }
+    
 
+function attachQuantityControl() {
+    $('.product').each(function() {
+        let availableQuantity = parseInt($(this).data('available-quantity'));
+        let $minusBtn = $(this).find('.minus-btn');
+        let $plusBtn = $(this).find('.plus-btn');
+        let $quantityInput = $(this).find('.quantity');
+
+        // Increase quantity with plus button
+        $plusBtn.on('click', function() {
+            let currentQuantity = parseInt($quantityInput.val());
+            if (currentQuantity < availableQuantity) {
+                $quantityInput.val(currentQuantity + 1);
+            }
+            if (currentQuantity + 1 >= availableQuantity) {
+                $plusBtn.prop('disabled', true); // Disable plus button if limit reached
+            }
+            $minusBtn.prop('disabled', false); // Re-enable minus button
+        });
+
+        // Decrease quantity with minus button
+        $minusBtn.on('click', function() {
+            let currentQuantity = parseInt($quantityInput.val());
+            if (currentQuantity > 1) {
+                $quantityInput.val(currentQuantity - 1);
+            }
+            if (currentQuantity - 1 <= 1) {
+                $minusBtn.prop('disabled', true); // Disable minus button if minimum is reached
+            }
+            $plusBtn.prop('disabled', false); // Re-enable plus button
+        });
+
+        // Initially disable minus button
+        $minusBtn.prop('disabled', true);
+    });
+}
   loadProduct();
   
    
@@ -139,6 +186,7 @@ function loadProduct() {
                 } else {
                     alert('Failed to add to cart.');
                 }
+                 
             }
         });
     });
@@ -159,6 +207,27 @@ function loadProduct() {
             }
         });
     }
+   $(document).on('click', '.delete-btn', function () {
+    const productId = $(this).data('index');
+
+    // Send request to remove the item from the cart
+    $.ajax({
+        type: 'POST',
+        url: 'action/cart_handler.php',
+        data: {
+            action: 'remove',
+            product_id: productId
+        },
+        success: function(response) {
+            const data = JSON.parse(response);
+            if (data.status === 'success') {
+                updateCartDisplay(data.cart); // Refresh the cart after deletion
+            } else {
+                alert('Error removing item: ' + data.message);
+            }
+        }
+    });
+});
 
     // Function to update the cart display
     function updateCartDisplay(cart) {
@@ -166,13 +235,13 @@ function loadProduct() {
         let subtotal = 0;
 
         // Iterate over cart items
-        cart.forEach(function (item, index) {
+        cart.forEach(function (item) {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
             listItems += `
                 <li>
                     ${item.name} x ${item.quantity} - ₱${itemTotal.toFixed(2)}
-                     <button class="delete-btn" data-index="${index}">Delete</button>
+                     <button class="delete-btn" data-index="${item.id}">Delete</button>
                 </li>
             `;
         });
@@ -216,6 +285,7 @@ function loadProduct() {
                 if (response.status === 'success') {
                     alert(response.message);
                     // Clear the cart display
+                    loadProduct();
                     $('#order-list').html('');
                     $('#subtotal').text('₱0.00');
                     $('#total').text('₱0.00');
