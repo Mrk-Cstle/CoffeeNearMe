@@ -134,10 +134,8 @@
 
 
   .vbtn {
-    -webkit-text-fill-color: #FFF;
-    font-size: 15px;
-    width: 70px;
-    margin-top: 60px;
+    -webkit-text-fill-color: #d76614;
+    font-size: 20px;
   }
 
   /*Edit Modal Form CSS*/
@@ -149,7 +147,7 @@
     background-color: #d9d9d9;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 52%;
     transform: translate(-50%, -50%);
   }
 
@@ -282,7 +280,65 @@
     width: 80px;
     border-radius: 10px;
   }
-  
+
+  /*Drop Down CSS */
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 50px;
+    border: transparent;
+    background-color: transparent;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #d76614;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+}
+
+.dropdown-content a:hover {
+    background-color: #2c2c2c;
+    color: #fff; 
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: transparent;
+}
+
+
+.threeIcon{
+  height: 35px;
+  width: 35px;
+}
+
+/*Table Revise CSS */
+td{
+  text-align: center;
+}
 
 
 </style>
