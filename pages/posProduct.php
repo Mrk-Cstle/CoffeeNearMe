@@ -7,6 +7,15 @@
     <title>Product Page</title>
     <link rel="stylesheet" href="posProduct.css">
 </head>
+<style>
+    .disabled-btn {
+        cursor: not-allowed;
+        opacity: 0.5;
+        background-color: #ccc;
+        border-color: #ccc;
+        color: #666;
+    }
+</style>
 
 <body>
     <div class="pos-container">

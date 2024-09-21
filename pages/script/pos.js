@@ -57,7 +57,7 @@ function loadProduct() {
                                 <input type="text" value="1" class="quantity" readonly>
                                 <button class="plus-btn">+</button>
                             </div>
-                            <p>Available to make: ${product.available_quantity}</p>
+                            <p>Available: ${product.available_quantity}</p>
                             <button 
                             class="add-to-cart-btn" 
                             ${isAvailable ? '' : 'style="cursor: not-allowed; opacity: 0.5; background-color: #ccc; border-color: #ccc; color: #666;"'}
@@ -108,6 +108,7 @@ function attachQuantityControl() {
             }
             if (currentQuantity + 1 >= availableQuantity) {
                 $plusBtn.prop('disabled', true); // Disable plus button if limit reached
+                
             }
             $minusBtn.prop('disabled', false); // Re-enable minus button
         });
@@ -126,71 +127,79 @@ function attachQuantityControl() {
 
         // Initially disable minus button
         $minusBtn.prop('disabled', true);
+
+        
     });
 }
   loadProduct();
   
    
-    // Handle payment
-//   $('.pay-now').click(function () {
-//       var data = {
-          
-//              action: 'pay',
-//              cart: cart
-             
-
-          
-          
-//       };
-//         $.ajax({
-//             type: 'POST',
-//             url: 'action/pos_db.php', // Replace with the correct path to process payment
-//             contentType: 'application/json',
-//             data: JSON.stringify(data),
-//             success: function(response) {
-//                 if (response.status === 'success') {
-//                     alert('Payment successful!');
-//                     cart = {}; // Clear the cart
-//                     updateCart();
-//                 } else {
-//                     alert('Payment failed: ' + response.message);
-//                 }
-//             }
-//         });
-    //     });
     
 
-
-    $('.product-grid').on('click', '.add-to-cart-btn', function () {
+     $('.product-grid').on('click', '.add-to-cart-btn', function () {
         const productElement = $(this).closest('.product');
         const productId = productElement.data('product-id');
         const productName = productElement.find('h3').text();
         const productPrice = parseFloat(productElement.find('p').text().replace('₱', ''));
         const quantity = parseInt(productElement.find('.quantity').val());
 
-        // Send data to PHP to add product to session cart
-        $.ajax({
-            type: 'POST',
-            url: 'action/cart_handler.php', // Your PHP script for handling the cart
-            data: {
-                action: 'add',
-                product_id: productId,
-                product_name: productName,
-                product_price: productPrice,
-                quantity: quantity
-            },
-            success: function(response) {
-                const data = JSON.parse(response);
-                if (data.status === 'success') {
-                    updateCartDisplay(data.cart);
-                } else {
-                    alert('Failed to add to cart.');
+        let $productDiv = $(this).closest('.product');
+        let availableQuantity = parseInt($productDiv.data('available-quantity'));
+        let selectedQuantity = parseInt($productDiv.find('.quantity').val());
+
+        if (selectedQuantity <= availableQuantity) {
+            // Update the available stock on the server side
+            $.ajax({
+                type: 'POST',
+                url: 'action/cart_handler.php',
+                data: {
+                    action: 'add',
+                    product_id: productId,
+                    product_name: productName,
+                    product_price: productPrice,
+                    quantity: selectedQuantity
+                },
+                success: function(response) {
+                    const data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        updateCartDisplay(data.cart);
+
+                        // Update the available stock on the page
+                        let newAvailableQuantity = availableQuantity - selectedQuantity;
+                        $productDiv.data('available-quantity', newAvailableQuantity);
+                        $productDiv.find('.available-stock').text('Available: ' + newAvailableQuantity);
+
+                        if (newAvailableQuantity <= 0) {
+                            $productDiv.find('.add-to-cart-btn').prop('disabled', true).css({
+                                'cursor': 'not-allowed',
+                                'opacity': '0.5',
+                                'background-color': '#ccc',
+                                'border-color': '#ccc',
+                                'color': '#666'
+                            });
+                        }
+                    } else {
+                        alert('Failed to add to cart.');
+                    }
                 }
-                 
-            }
-        });
+            });
+        } else {
+            alert('Not enough stock available.');
+        }
     });
 
+// $('.product').each(function() {
+//         let availableQuantity = parseInt($(this).data('available-quantity'));
+//         if (availableQuantity <= 0) {
+//             $(this).find('.add-to-cart-btn').prop('disabled', true).css({
+//                 'cursor': 'not-allowed',
+//                 'opacity': '0.5',
+//                 'background-color': '#ccc',
+//                 'border-color': '#ccc',
+//                 'color': '#666'
+//             });
+//         }
+//     });
     // Function to fetch and display the cart
     function fetchCart() {
         $.ajax({
