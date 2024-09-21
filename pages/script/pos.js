@@ -103,10 +103,8 @@ function attachQuantityControl() {
         // Increase quantity with plus button
         $plusBtn.on('click', function() {
             let currentQuantity = parseInt($quantityInput.val());
-            if (currentQuantity < availableQuantity) {
-                $quantityInput.val(currentQuantity + 1);
-            }
-            if (currentQuantity + 1 >= availableQuantity) {
+           
+            if (currentQuantity  >= availableQuantity) {
                 $plusBtn.prop('disabled', true); // Disable plus button if limit reached
                 
             }
