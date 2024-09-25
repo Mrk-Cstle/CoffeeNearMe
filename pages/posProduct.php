@@ -1,144 +1,60 @@
 <?php include '../assets/template/navigation.php'; ?>
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
     <link rel="stylesheet" href="posProduct.css">
 </head>
+<style>
+    .disabled-btn {
+        cursor: not-allowed;
+        opacity: 0.5;
+        background-color: #ccc;
+        border-color: #ccc;
+        color: #666;
+    }
+</style>
+
 <body>
     <div class="pos-container">
         <!-- Product Grid with Search and Category Buttons -->
         <div class="product-grid-container">
             <div class="header-pos">
-                <input type="text" placeholder="Search all product here...">
-                <button class="possearch-btn">Search</button>
+                <input id="searchInput" type="text" placeholder="Search all product here...">
+
                 <div class="categories">
                     <select id="categoryDropdown" class="category-select">
-                        <option value="all" selected>All</option>
-                        <option value="iced-coffee">Iced Coffee</option>
-                        <option value="milktea">Milktea</option>
-                        <option value="espresso">Espresso</option>
-                        <option value="fruity">Fruity</option>
-                        <option value="cake">Cake</option>
-                        <option value="hot-coffee">Hot Coffee</option>
+                        <option value="">Filter</option>
+                        <?php
+
+                        include '../pages/include/dbConnection.php';
+
+                        // Read all rows from the database
+                        $sql = "SELECT * FROM product_category";
+                        $results = $conn->query($sql);
+
+                        if (!$results) {
+                            die("Invalid query: " . $conn->error);
+                        }
+
+                        // Read data for each row
+                        while ($rows = $results->fetch_assoc()) {
+                            echo '<option value ="' . $rows["category"] . '">' . $rows["category"] . '</option> ';
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
 
             <div class="product-grid">
-                <div class="product" data-category="iced-coffee">
-                    <img src="../assets/images/latte.png" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-                
-                <div class="product" data-category="milktea">
-                    <img src="../assets/images/matcha.jpg" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
 
-                <div class="product" data-category="espresso">
-                    <img src="../assets/images/latte.png" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
 
-                <div class="product" data-category="fruity">
-                    <img src="../assets/images/fruity.jpg" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-
-                <div class="product" data-category="cake">
-                    <img src="../assets/images/cake.jpg" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-
-                <div class="product" data-category="hot-coffee">
-                    <img src="../assets/images/hot.jpg" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-
-                <div class="product" data-category="iced-coffee">
-                    <img src="../assets/images/frappe.jpg" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-
-                <div class="product" data-category="milktea">
-                    <img src="../assets/images/latte.png" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-                
-                <div class="product" data-category="milktea">
-                    <img src="../assets/images/latte.png" alt="Latte">
-                    <h3>Latte</h3>
-                    <p>₱30.00</p>
-                    <div class="quantity-control">
-                        <button class="minus-btn">-</button>
-                        <input type="text" value="1" class="quantity" readonly>
-                        <button class="plus-btn">+</button>
-                    </div>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
 
             </div>
         </div>
-        
+
         <!-- Order Details Sidebar -->
         <div class="order-summary">
             <h2>Order Details</h2>
@@ -146,6 +62,7 @@
                 <!-- Orders will be added here dynamically -->
             </ul>
             <div class="totals">
+                <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <p>Subtotal: <span id="subtotal">₱0.00</span></p>
                 <h3>Total: <span id="total">₱0.00</span></h3>
                 <button class="pay-now">Pay Now</button>
@@ -153,7 +70,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         const productGrid = document.querySelector('.product-grid');
         const orderSummary = document.querySelector('.order-summary');
 
@@ -176,7 +93,7 @@
 
         categoryDropdown.addEventListener('change', () => {
             const selectedCategory = categoryDropdown.value;
-            
+
             products.forEach(product => {
                 if (selectedCategory === 'all' || product.getAttribute('data-category') === selectedCategory) {
                     product.style.display = 'block';
@@ -217,7 +134,7 @@
                 const productPrice = parseFloat(productElement.querySelector('p').textContent.replace('₱', ''));
                 const quantity = parseInt(productElement.querySelector('.quantity').value);
                 const totalPrice = productPrice * quantity;
-                
+
                 // Create a new list item for the order
                 const orderItem = document.createElement('li');
                 orderItem.classList.add('order-item'); // Add a class for easier targeting
@@ -225,31 +142,34 @@
                     <div class="item">
                         <span>${productName} x${quantity}</span>
                         <span>₱${totalPrice.toFixed(2)}</span>
-                        <button class="delete-btn">🗑️</button> <!-- Trash icon as button -->
-                    </div>
-                `;
-                
-                // Append the order item to the order list
-                orderList.appendChild(orderItem);
+                        <button class="delete-btn">🗑️</button> 
+    </div>
+    `;
 
-                // Update the subtotal and total
-                subtotal += totalPrice;
-                subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
-                totalElement.textContent = `₱${subtotal.toFixed(2)}`;
-                
-                // Add event listener to the delete button
-                const deleteBtn = orderItem.querySelector('.delete-btn');
-                deleteBtn.addEventListener('click', () => {
-                    // Remove item from the list
-                    orderItem.remove();
+    // Append the order item to the order list
+    orderList.appendChild(orderItem);
 
-                    // Update the subtotal and total
-                    subtotal -= totalPrice; // Subtract the item's total price from the subtotal
-                    subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
-                    totalElement.textContent = `₱${subtotal.toFixed(2)}`;
-                });
-            });
-        });
-    </script>
+    // Update the subtotal and total
+    subtotal += totalPrice;
+    subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
+    totalElement.textContent = `₱${subtotal.toFixed(2)}`;
+
+    // Add event listener to the delete button
+    const deleteBtn = orderItem.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => {
+    // Remove item from the list
+    orderItem.remove();
+
+    // Update the subtotal and total
+    subtotal -= totalPrice; // Subtract the item's total price from the subtotal
+    subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
+    totalElement.textContent = `₱${subtotal.toFixed(2)}`;
+    });
+    });
+    });
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/pos.js"></script>
 </body>
+
 </html>

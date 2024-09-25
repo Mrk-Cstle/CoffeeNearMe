@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2024 at 08:32 PM
+-- Generation Time: Sep 25, 2024 at 06:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `coffeenearme`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `product_price` decimal(10,2) DEFAULT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -41,9 +56,9 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `ideal_quantity`, `picture`) VALUES
-(30, 'Arabica', 'Coffee', 1, 1, '30.jpg'),
-(34, 'qwe', 'Food', 2, 2131, ''),
-(37, 'Robusta', 'Coffee', 2000, 2500, '');
+(30, 'Arabica', 'Coffee', 52, 1, '30.jpg'),
+(34, 'qwe', 'Food', 19927, 2131, ''),
+(37, 'Robusta', 'Coffee', 0, 2500, '');
 
 -- --------------------------------------------------------
 
@@ -84,8 +99,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`, `picture`) VALUES
-(74, 'Coffee', 'Water Based', 150, NULL),
-(75, 'Spanish Latte', 'Water Based', 120, NULL);
+(74, 'Coffee', 'Hot', 150, '74.jpg'),
+(75, 'Spanish Latte', 'Water Based', 120, '75.jpg'),
+(78, 'asdasdasdasd', 'Water Based', 0, NULL),
+(80, 'qq', 'Water Based', 0, NULL),
+(81, 'qqq', 'Water Based', 0, NULL),
+(82, 'qqqq', 'Water Based', 0, NULL),
+(83, 'qqqqq', 'Water Based', 222, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,11 +144,41 @@ CREATE TABLE `product_ingredients` (
 --
 
 INSERT INTO `product_ingredients` (`product_raw_id`, `product_id`, `ingredients_id`, `quantity`) VALUES
-(22, 75, 30, 20),
-(23, 74, 30, 2),
-(24, 74, 30, 2),
-(25, 75, 34, 200),
-(26, 74, 30, 20);
+(31, 75, 30, 1),
+(32, 75, 34, 1),
+(33, 78, 37, 2),
+(34, 78, 30, 2),
+(35, 80, 30, 1),
+(36, 74, 30, 5),
+(38, 74, 37, 1),
+(39, 83, 30, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `transaction_id` int(100) NOT NULL,
+  `user` varchar(100) NOT NULL,
+  `total_amount` int(100) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_item`
+--
+
+CREATE TABLE `transaction_item` (
+  `item_id` int(100) NOT NULL,
+  `transaction_id` int(100) NOT NULL,
+  `product_name` varchar(100) NOT NULL,
+  `quantity` int(100) NOT NULL,
+  `price` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -154,7 +204,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `account_type`, `full_name`, `user_name`, `password`, `contact_number`, `address`, `picture`, `account_date`) VALUES
 (45, 'admin', 'qwe', '22222', '$2y$10$9irpUPBnsJM52Kc36eRWjuUESD4OOM2xSLVWFYt0ujCdEPORJ3haS', 0, '', '45.png', '2024-08-31'),
-(49, '', '', 'qweasdqawea', '$2y$10$y6KQRHfYwy7CxB4Ybkw6mulHeHli66.gU.JnQ86OMgBnQ7PW0w.Du', 0, '', '49.jpg', '2024-09-02'),
+(49, '', '', 'qweqwe', '$2y$10$NBw7hSs2vOnjLBZUhPSLteb6mATAaIYABHxIPISBYESdPkIRDovBO', 0, '', '49.jpg', '2024-09-02'),
 (52, '', 'q', '', '$2y$10$irsPKj9aFs3hrWthEhbvsOlYBqc5EBisLzmI40ZU0/FjVjOh5mCAG', 0, '', NULL, '2024-09-03'),
 (57, '', '', 'qwe', '$2y$10$ft2w4jTj/pQqQ4l1J51BG.tECTLWH9PunsVfJ0mgqkNrRmnuh3/Wu', 0, '', NULL, '2024-09-03'),
 (64, '', 'qwe', 'qweq', '$2y$10$HCewu3EkK.oz5lt.Fnnl5OjPCYtifewpoCOrlXW2ry1amlVinixGG', 0, 'w', NULL, '2024-09-04');
@@ -162,6 +212,14 @@ INSERT INTO `user` (`user_id`, `account_type`, `full_name`, `user_name`, `passwo
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `ingredients`
@@ -198,15 +256,37 @@ ALTER TABLE `product_ingredients`
   ADD KEY `FK_Product` (`product_id`);
 
 --
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`transaction_id`),
+  ADD KEY `FK_TUser` (`user`);
+
+--
+-- Indexes for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  ADD PRIMARY KEY (`item_id`),
+  ADD KEY `FK_TProduct` (`product_name`),
+  ADD KEY `FK_Transaction` (`transaction_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `user_name` (`user_name`);
+  ADD UNIQUE KEY `user_name` (`user_name`),
+  ADD UNIQUE KEY `user_name_2` (`user_name`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
@@ -224,7 +304,7 @@ ALTER TABLE `ingredients_category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -236,7 +316,19 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
-  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -249,11 +341,24 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `carts`
+--
+ALTER TABLE `carts`
+  ADD CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+
+--
 -- Constraints for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
   ADD CONSTRAINT `FK_Ingredients` FOREIGN KEY (`ingredients_id`) REFERENCES `ingredients` (`ingredients_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_Product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transaction_item`
+--
+ALTER TABLE `transaction_item`
+  ADD CONSTRAINT `FK_Transaction` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`transaction_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
