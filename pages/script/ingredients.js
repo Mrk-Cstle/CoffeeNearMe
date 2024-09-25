@@ -208,7 +208,14 @@
                             
                             
                             <td>
-                                <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
+                                <div class="dropdown">
+                                  <button class="dropdown-btn"><img src="../assets/images//threeDots.png" class="threeIcon"></button>
+                                    <div class="dropdown-content">
+                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
+                                        <a href="#">Stock In</a>
+                                        <a href="#">Stock Out</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
 
