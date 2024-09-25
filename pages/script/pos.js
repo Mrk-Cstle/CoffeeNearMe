@@ -74,7 +74,7 @@ function loadProduct() {
                 // Attach event listeners for quantity control
                 attachQuantityControl();
               
-              console.error('loading categories: ' + response.message);
+              console.log('loading categories: ' + response.message);
               
 
             } else {
@@ -157,7 +157,8 @@ function attachQuantityControl() {
                     product_price: productPrice,
                     quantity: selectedQuantity
                 },
-                success: function(response) {
+                success: function (response) {
+                   
                     const data = JSON.parse(response);
                     if (data.status === 'success') {
                         updateCartDisplay(data.cart);
@@ -166,7 +167,7 @@ function attachQuantityControl() {
                         let newAvailableQuantity = availableQuantity - selectedQuantity;
                         $productDiv.data('available-quantity', newAvailableQuantity);
                         $productDiv.find('.available-stock').text('Available: ' + newAvailableQuantity);
-
+                        
                         if (newAvailableQuantity <= 0) {
                             $productDiv.find('.add-to-cart-btn').prop('disabled', true).css({
                                 'cursor': 'not-allowed',
@@ -176,6 +177,7 @@ function attachQuantityControl() {
                                 'color': '#666'
                             });
                         }
+                        loadProduct();
                     } else {
                         alert('Failed to add to cart.');
                     }
@@ -215,24 +217,40 @@ function attachQuantityControl() {
         });
     }
    $(document).on('click', '.delete-btn', function () {
-    const productId = $(this).data('index');
-
+       const productId = $(this).data('index');
+       const quantity = $(this).data('quantity');
+        
+   
     // Send request to remove the item from the cart
     $.ajax({
         type: 'POST',
         url: 'action/cart_handler.php',
         data: {
             action: 'remove',
+            quantity:  quantity,
             product_id: productId
         },
-        success: function(response) {
+        success: function (response) {
+         console.log(response)
             const data = JSON.parse(response);
+            console.log(data.message)
             if (data.status === 'success') {
                 updateCartDisplay(data.cart); // Refresh the cart after deletion
+                console.log(data.message)
+                loadProduct();
             } else {
+                console.log(response.message)
                 alert('Error removing item: ' + data.message);
             }
-        }
+        },
+          error: function(xhr, status, error) {
+            console.error('Error loading categories:', status, error);
+            console.log('XHR object:', xhr); // Log the entire XHR object for more details
+            if (xhr.responseText) {
+              console.log('Response text:', xhr.responseText); // Log the response text if available
+            }
+            // Handle any additional error details as needed
+          }
     });
 });
 
@@ -248,7 +266,7 @@ function attachQuantityControl() {
             listItems += `
                 <li>
                     ${item.name} x ${item.quantity} - ₱${itemTotal.toFixed(2)}
-                     <button class="delete-btn" data-index="${item.id}">Delete</button>
+                     <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">Delete</button>
                 </li>
             `;
         });
@@ -275,32 +293,84 @@ function attachQuantityControl() {
 
     // Fetch the cart when the page loads
     fetchCart();
+ $('.pay-now').on('click', function () {
+    const totalAmount = $('#total').text().replace('₱', '');
 
+    // SweetAlert confirmation before proceeding
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You are about to complete the payment. Total: ₱" + totalAmount,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, pay now!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // If confirmed, proceed with the AJAX request
+            $.ajax({
+                type: 'POST',
+                url: 'action/cart_handler.php',
+                data: {
+                    action: 'pay',
+                    total: totalAmount
+                },
+                success: function(response) {
+                    const data = JSON.parse(response);
 
-    $('.pay-now').on('click', function () {
-        var data = {
-          
-             action: 'pay' 
-      };
-        $.ajax({
-            type: 'POST',
-            url: 'action/pos_db.php',
-            data: JSON.stringify(data),
-            success: function(response) {
-                // const data = JSON.parse(response);
-                console.log(response.message)
-                if (response.status === 'success') {
-                    alert(response.message);
-                    // Clear the cart display
-                    loadProduct();
-                    $('#order-list').html('');
-                    $('#subtotal').text('₱0.00');
-                    $('#total').text('₱0.00');
-                } else {
-                     alert(response.message);
-                    alert(response.message.join(',\n')); // Display any errors
+                    if (data.status === 'success') {
+                        // SweetAlert for successful payment
+                        Swal.fire({
+                            title: 'Payment Successful!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+
+                        // Clear cart and update DOM
+                        loadProduct();
+                        $('#order-list').html('');
+                        $('#subtotal').text('₱0.00');
+                        $('#total').text('₱0.00');
+                    } else {
+                        // SweetAlert for error handling
+                        Swal.fire({
+                            title: 'Payment Failed!',
+                            text: data.message.join(',\n'),
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
                 }
-            }
-        });
+            });
+        }
     });
+});
+
+    // $('.pay-now').on('click', function () {
+    //     var data = {
+          
+    //          action: 'pay' 
+    //   };
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'action/pos_db.php',
+    //         data: JSON.stringify(data),
+    //         success: function(response) {
+    //             // const data = JSON.parse(response);
+    //             console.log(response.message)
+    //             if (response.status === 'success') {
+    //                 alert(response.message);
+    //                 // Clear the cart display
+    //                 loadProduct();
+    //                 $('#order-list').html('');
+    //                 $('#subtotal').text('₱0.00');
+    //                 $('#total').text('₱0.00');
+    //             } else {
+    //                  alert(response.message);
+    //                 alert(response.message.join(',\n')); // Display any errors
+    //             }
+    //         }
+    //     });
+    // });
 })

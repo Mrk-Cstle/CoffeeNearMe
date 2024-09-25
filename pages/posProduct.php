@@ -62,6 +62,7 @@
                 <!-- Orders will be added here dynamically -->
             </ul>
             <div class="totals">
+                <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
                 <p>Subtotal: <span id="subtotal">₱0.00</span></p>
                 <h3>Total: <span id="total">₱0.00</span></h3>
                 <button class="pay-now">Pay Now</button>
@@ -167,6 +168,7 @@
     });
     });
     </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script/pos.js"></script>
 </body>
 
