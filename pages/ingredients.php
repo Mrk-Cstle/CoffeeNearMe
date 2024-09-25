@@ -340,6 +340,108 @@ td{
   text-align: center;
 }
 
+/* STOCKS CSS */
+
+.stockIn{
+    background-color: #d9d9d9;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    height: 430px;
+    width: 450px;
+    position: absolute;
+    margin-top: 450px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.stockINHeader{
+    margin-left: 150px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.stockIn-FirstForm{
+    display: inline-flex;
+}   
+.stockInput{
+    position: fixed;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+    height: 200px;
+    width: 352px;
+    margin-left: 30px;
+    margin-top: 0px;
+    background-color: #fff;
+}
+.spanQty{
+    margin-left: 40px;
+    font-weight: bold;
+    
+}
+.stockQty{
+    background-color: #D9D9D9;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 200px;
+    height: 35px;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.stockIn-SecondForm{
+    background-color: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 167px;
+    width: 290px;
+    margin-left: 70px;
+    margin-top: 30px;
+}
+.ingre{
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 20px;
+}
+.ingreText{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.stockBtnClose{
+    color: #fff;
+    background-color: #D76614CC;
+    border: 2px solid #D76614CC;
+    border-radius: 10px;
+    height: 35px;
+    width: 90px;
+    margin-top: 20px;
+}
+.stockBtnUpdate{
+    color: #fff;
+    background-color: #D76614CC;
+    border: 2px solid #D76614CC;
+    border-radius: 10px;
+    height: 35px;
+    width: 90px;
+    margin-top: 20px; 
+}
+.stockBtn{
+    text-align: center;
+    float: right;
+    margin-right: 20px;
+    margin-top: 70px;
+}
+.stockclose{
+  border: 1px solid #d9d9d9;
+  height: 50px;
+  width: 30px;
+  font-size: 30px;
+  background-color: #d9d9d9;
+  margin-right: 20px;
+}
+
 
 </style>
 
@@ -564,6 +666,63 @@ td{
       <button id="prevPage" disabled>Previous</button>
       <span id="currentPage">1</span>
       <button id="nextPage" disabled>Next</button>
+    </div>
+
+    <!-- Bootstrap Modal For Stock In -->
+    <div class="modal fade" id="stockINModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content stockIn">
+                <div class="modal-header">
+                    <h5 class="modal-title stockINHeader" id="stockModalLabel">Stock In</h5>
+                    <button type="button" class="stockclose" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="stockIn-FirstForm">
+                        
+                        <div class="stockInput">
+                        <p class="ingre">Stock</p>
+                            <p class="ingreText">Mango Cake</p>
+                            <span class="spanQty">Quantity:</span>
+                            <input type="number" class="stockQty" required><br>
+                            <div class="stockBtn">
+                                <button class="stockBtnClose" data-dismiss="modal">Close</button>
+                                <button class="stockBtnUpdate">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Bootstrap Modal For Stock Out -->
+     <div class="modal fade" id="stockOUTModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content stockIn">
+                <div class="modal-header">
+                    <h5 class="modal-title stockINHeader" id="stockModalLabel">Stock Out</h5>
+                    <button type="button" class="stockclose" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="stockIn-FirstForm">
+                        <div class="stockInput">
+                        <p class="ingre">Stock</p>
+                            <p class="ingreText">Mango Cake</p>
+                            <span class="spanQty">Quantity:</span>
+                            <input type="number" class="stockQty" required><br>
+                            <div class="stockBtn">  
+                                <button class="stockBtnClose" data-dismiss="modal">Close</button>
+                                <button class="stockBtnUpdate">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
   </div>
