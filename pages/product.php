@@ -29,6 +29,7 @@
       width: 1200px;
       height: 70px;
       text-align: center;
+      margin-top: 250px;
     }
 
     thead {
@@ -536,7 +537,21 @@
     }
     #product_image{
       margin-left: 100px;
+      border: 5px #2c2c2c;
+      border-radius: 50px;
+      width: 300px;
+      padding: 2px;
+      font-size: 20px;
+      color: #d76614;
     }
+    #product_image::-webkit-file-upload-button{
+    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
     #productCategory{
       border-radius: 15px;
       width: 50px;

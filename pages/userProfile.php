@@ -14,8 +14,8 @@
         .user-form{
             border: 2px solid #D9D9D9;
             background-color: #D9D9D9;
-            height: 550px;
-            width: 1000px;
+            height: 720px;
+            width: 1085px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -28,7 +28,7 @@
         .user-image-container{
             display: flex;
             flex-direction: column;
-            margin-top: 50px;
+            margin-top: 80px;
             margin-left: 50px;
         }
         .user-image{
@@ -56,10 +56,10 @@
             background-color: #2D2B2B;
             border: 2px solid #2D2B2B;
             border-radius: 10px;
-            height: 450px;
+            height: 550px;
             width: 400px;
-            margin-top: 50px;
-            margin-left: 40px;
+            margin-top: 83px;
+            margin-left: 120px;
         }
         .info{
             margin-top: 20px;
@@ -86,9 +86,9 @@
             background-color: #2D2B2B;
             border: 2px solid #2D2B2B;
             border-radius: 10px;
-            height: 277px;
+            height: 260px;
             width: 350px;
-            margin-top: 20px;
+            margin-top: 45px;
             color: black;
             font-family: "Roboto", sans-serif;
             font-weight: 900;
@@ -117,6 +117,37 @@
             border: 2px solid #fff;
             border-radius: 10px;
         }
+        #user_image{
+            margin-top: 50px;
+            border: 5px #2c2c2c;
+            border-radius: 50px;
+            width: 300px;
+            padding: 2px;
+            font-size: 20px;
+            color: #d76614;
+            margin-left: 25px;
+        }
+        #user_image::-webkit-file-upload-button{
+            background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        .imageButton{
+            border: 2px solid #d76614;
+            border-radius: 10px;
+            width: 100px;
+            height: 35px;
+            background-color: #d76614;
+            color: #fff;
+            margin-top: 55px;
+            font-size: 18px;
+        }
+        .image-btn{
+            display: flex;
+        }
 
     </style>
 </head>
@@ -128,6 +159,10 @@
                 <div class="user-image">
                     <img src="../assets/images/1x1.jpg" class="profile-image">
                 </div>
+            <div class="image-btn">
+                <input type="file" name="user_image" id="user_image" placeholder="Enter something">
+                <button class="imageButton" type="submit" data-ingredients-id="">Submit</button>
+            </div>
                 <div class="user-acc">
                     <p class="user-para">Fullname</p>
                     <input type="text" placeholder="Eric Dimagiba" class="user-name">
@@ -138,6 +173,8 @@
             <div class="user-info">
                 <p class="info">Username</p>
                 <input type="text" class="info-text" placeholder="eric001">
+                <p class="info">Confirm Password</p>
+                <input type="text" class="info-text" placeholder="*********">
                 <p class="info">Password</p>
                 <input type="text" class="info-text" placeholder="*********">
                 <p class="info">Address</p>
