@@ -693,9 +693,9 @@
 
               <div class="stockInput">
                 <p class="ingre">Stock</p>
-                <p class="ingreText">Mango Cake</p>
+                <p class="ingreText"></p>
                 <span class="spanQty">Quantity:</span>
-                <input type="number" class="stockQty" required><br>
+                <input type="number" id="stockinQty" class="stockQty" required><br>
                 <div class="stockBtn">
                   <button class="stockBtnClose" data-dismiss="modal">Close</button>
                   <button class="stockBtnUpdate">Update</button>
@@ -723,7 +723,7 @@
                 <p class="ingre">Stock</p>
                 <p class="ingreText">Mango Cake</p>
                 <span class="spanQty">Quantity:</span>
-                <input type="number" class="stockQty" required><br>
+                <input id="stockoutQty" type="number" class="stockQty" required><br>
                 <div class="stockBtn">
                   <button class="stockBtnClose" data-dismiss="modal">Close</button>
                   <button class="stockBtnUpdate">Update</button>

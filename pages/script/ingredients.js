@@ -212,8 +212,8 @@
                                   <button class="dropdown-btn"><img src="../assets/images//threeDots.png" class="threeIcon"></button>
                                     <div class="dropdown-content">
                                         <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
-                                        <a class="vbtn btn-dark btn-sm" data-toggle="modal" data-target="#stockINModal">Stock In</a>
-                                        <a class="vbtn btn-dark btn-sm" data-toggle="modal" data-target="#stockOUTModal">Stock Out</a>
+                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-in btn-dark btn-sm" data-toggle="modal" data-target="#stockINModal">Stock In</a>
+                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-out btn-dark btn-sm" data-toggle="modal" data-target="#stockOUTModal">Stock Out</a>
                                     </div>
                                 </div>
                             </td>
@@ -292,6 +292,52 @@
 
       });
 
+      $(document).on('click', '.vbtn-in', function () {
+        var $row = $(this).closest('tr');
+        var ingredientId = $(this).data('ingredients-id');
+        var ingredientName = $row.find('.ingredient-name').text().trim();
+        
+
+        $('.ingreText').text(ingredientName);
+        console.log(ingredientName)
+        
+      $('.stockBtnUpdate').off('click').on('click', function() {
+              var stockQty = $('#stockinQty').val();
+              var data = {
+                ingredientId: ingredientId,
+                ingredientName:ingredientName,
+                  stockQty: stockQty,
+                  action: "stockin"
+                  
+                  }
+        ingredientsAjaxRequest(data);
+        
+        });
+       
+      });
+      $(document).on('click', '.vbtn-out', function () {
+        var $row = $(this).closest('tr');
+        var ingredientId = $(this).data('ingredients-id');
+        var ingredientName = $row.find('.ingredient-name').text().trim();
+        
+
+        $('.ingreText').text(ingredientName);
+        console.log(ingredientName)
+        
+      $('.stockBtnUpdate').off('click').on('click', function() {
+              var stockQty = $('#stockoutQty').val();
+              var data = {
+                ingredientId: ingredientId,
+                ingredientName:ingredientName,
+                  stockQty: stockQty,
+                  action: "stockout"
+                  
+                  }
+        ingredientsAjaxRequest(data);
+        
+        });
+       
+ });
       $(document).on('click', '.updatebtn', function() {
 
 

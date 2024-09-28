@@ -276,6 +276,111 @@ try {
         }
 
         $conn->close();
+    } elseif ($action === 'stockout') {
+        $ingredientId = sanitizeInput($data['ingredientId']);
+        $stockQty = sanitizeInput($data['stockQty']);
+        $ingredientName = sanitizeInput($data['ingredientName']);
+
+        session_start();
+
+        $action_type = "Stock Out";
+        $user = $_SESSION['full_name'];
+
+        include '../include/dbConnection.php';
+        $conn->begin_transaction();
+
+        try {
+
+            $quantity_stmt = $conn->prepare("SELECT quantity FROM ingredients WHERE ingredients_id = ?");
+            $quantity_stmt->bind_param("i", $ingredientId);
+            $quantity_stmt->execute();
+            $quantity_stmt->bind_result($currentQuantity);
+            $quantity_stmt->fetch();
+            $quantity_stmt->close();
+
+
+            if ($currentQuantity < $stockQty) {
+                throw new Exception("Stock quantity is insufficient. Stock Available: " . $currentQuantity);
+            }
+            if ($stockQty <= 0) {
+                throw new Exception("Please input a value higher than 0.");
+            }
+
+
+
+            $stmt = $conn->prepare("UPDATE ingredients SET quantity = quantity - ? WHERE ingredients_id = ?");
+            $stmt->bind_param("ii", $stockQty, $ingredientId);
+            if (!$stmt->execute()) {
+                throw new Exception("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+            }
+
+
+            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by) VALUES (?, ?, ?, ?)");
+            $log_stmt->bind_param("ssis", $action_type, $ingredientName, $stockQty, $user);
+            if (!$log_stmt->execute()) {
+                throw new Exception("Execute failed for INSERT: (" . $log_stmt->errno . ") " . $log_stmt->error);
+            }
+
+            // Commit the transaction
+            $conn->commit();
+
+            echo json_encode(["status" => "success", "message" => "Stock out successfully"]);
+
+            // Close the statements
+            $log_stmt->close();
+            $stmt->close();
+        } catch (Exception $e) {
+            // Rollback the transaction if any error occurs
+            $conn->rollback();
+            echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
+        }
+    } elseif ($action === 'stockin') {
+        $ingredientId = sanitizeInput($data['ingredientId']);
+        $stockQty = sanitizeInput($data['stockQty']);
+        $ingredientName = sanitizeInput($data['ingredientName']);
+
+
+        session_start();
+
+        $action_type = "Stock In";
+        $user = $_SESSION['full_name'];
+
+        include '../include/dbConnection.php';
+        $conn->begin_transaction();
+
+        try {
+            if ($stockQty <= 0) {
+                throw new Exception("Please input a value higher than 0.");
+            }
+            $stmt = $conn->prepare("UPDATE ingredients SET  quantity = quantity + ? WHERE ingredients_id = ?");
+
+
+            $stmt->bind_param("ii", $stockQty, $ingredientId);
+            if (!$stmt->execute()) {
+                throw new Exception("Execute failed: (" . $stmt->errno . ") " . $stmt->error);
+            }
+
+
+            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by) VALUES (?, ?, ?, ?)");
+
+
+            $log_stmt->bind_param("ssis", $action_type, $ingredientName, $stockQty, $user);
+            if (!$log_stmt->execute()) {
+                throw new Exception("Execute failed for INSERT: (" . $log_stmt->errno . ") " . $log_stmt->error);
+            }
+
+            // If both queries were successful, commit the transaction
+            $conn->commit();
+
+            echo json_encode(["status" => "success", "message" => "Stock in successfully"]);
+
+            // Close the statements
+            $log_stmt->close();
+            $stmt->close();
+        } catch (Exception $e) {
+            $conn->rollback();
+            echo json_encode(["status" => "error", "message" => "Error: " . $e->getMessage()]);
+        }
     } else {
     }
 } catch (Exception $e) {
