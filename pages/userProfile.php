@@ -1,3 +1,4 @@
+<?php include '../assets/template/navigation.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +18,8 @@
             height: 720px;
             width: 1085px;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 54%;
+            left: 58%;
             transform: translate(-50%, -50%);
 
         }
@@ -62,7 +63,7 @@
             margin-left: 120px;
         }
         .info{
-            margin-top: 20px;
+            margin-top: 30px;
             margin-left: 30px;
             font-size: 20px;
             font-weight: bold;
@@ -110,7 +111,7 @@
             font-weight: 900;
             font-style: normal;
             margin-left: 20px;
-            margin-top: 20px;
+            margin-top: 5px;
             text-align: center;
             height: 30px;
             width: 305px;
@@ -173,8 +174,6 @@
             <div class="user-info">
                 <p class="info">Username</p>
                 <input type="text" class="info-text" placeholder="eric001">
-                <p class="info">Confirm Password</p>
-                <input type="text" class="info-text" placeholder="*********">
                 <p class="info">Password</p>
                 <input type="text" class="info-text" placeholder="*********">
                 <p class="info">Address</p>
