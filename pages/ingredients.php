@@ -270,6 +270,20 @@
 
   #ingredients_image {
     margin-top: 50px;
+    border: 5px #2c2c2c;
+    border-radius: 50px;
+    width: 300px;
+    padding: 2px;
+    font-size: 20px;
+    color: #d76614;
+  }
+  #ingredients_image::-webkit-file-upload-button{
+    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
   }
 
   .imageButton {

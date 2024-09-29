@@ -28,7 +28,7 @@
     .container {
         padding: 50px;
         margin-left: 420px;
-        margin-top: 120px;
+        margin-top: 40px;
     }
 
     .table {
@@ -99,7 +99,7 @@
         width: 200px;
         height: 200px;
         border-radius: 150px;
-        margin-left: 120px;
+        margin-left: 217px;
         margin-top: 20px;
     }
 
@@ -116,14 +116,14 @@
     .fname {
         background-color: #fff;
         margin-top: 30px;
-        width: 75%;
+        width: 85%;
         padding: 20px;
         padding-top: 30px;
         padding-bottom: 52px;
         border-radius: 20px;
         font-weight: 600;
         margin-bottom: 20px;
-        margin-left: 25px;
+        margin-left: 87px;
     }
 
     .input {
@@ -144,6 +144,7 @@
         margin-top: -188px;
         margin-bottom: 30px;
         font-weight: 600;
+        margin-left: 50px;
     }
 
     .update {
@@ -258,6 +259,39 @@
         height: 40px;
         margin-top: 58px;
     }
+
+
+    /*File Image CSS */
+
+    #users_image{
+        margin-top: 10px;
+        border: 5px #2c2c2c;
+        border-radius: 50px;
+        width: 300px;
+        padding: 2px;
+        font-size: 18px;
+        color: #d76614;
+    }
+    #users_image::-webkit-file-upload-button{
+        background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .user-imagebtn{
+        border: 2px solid #d76614;
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: #d76614;
+        color: #fff;
+    }
+    #modal-header-edit{
+        margin-left: 520px;
+    }
 </style>
 
 
@@ -346,7 +380,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="viewcontent modal-content">
                         <div class="modal-header headerrr">
-                            <h1 class="modal-title fs-4" id="Modal">Edit User</h1>
+                            <h1 class="modal-title fs-4" id="modal-header-edit">Edit User</h1>
                             <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="viewbody modal-body bodyyy">
