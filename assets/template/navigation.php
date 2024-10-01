@@ -61,7 +61,7 @@ checkLogin();
                   <ul class="dropdown__menu">
                      <li>
                         <a href="userProfile.php" class="dropdown__link">
-                           <i class="ri-user-line"></i> Profile Type
+                           <i class="ri-user-line"></i> Profile
                         </a>
                      </li>
 

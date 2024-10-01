@@ -174,7 +174,8 @@
                       confirmButtonText: 'OK'
                     });
 loadUser();
-                   
+                    var $row = $('.users-id:contains("' + user_id + '")').closest('tr'); // Find the corresponding row
+                    $row.find('.view-btn').trigger('click'); // Trigger the click on view-btn
                    
                   } else {
                     Swal.fire({

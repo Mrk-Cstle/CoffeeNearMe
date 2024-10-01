@@ -39,7 +39,20 @@ $(document).on('submit', '.user-image', function (event) {
 
    // Debugging
     imageAjaxRequest(formData); // Call your AJAX function
-});
+    });
+    
+     $(document).on('submit', '.profile-image', function (event) {
+        event.preventDefault();
+      
+    
+         var user_id = $('#users-id').val();
+       
+        var formData = new FormData(this); // Create a FormData object to handle file upload
+        formData.append("action", "user");
+        formData.append("id", user_id);// Append additional data
+        
+        imageAjaxRequest(formData);
+    });
 
     function imageAjaxRequest(formData) {
         $.ajax({
