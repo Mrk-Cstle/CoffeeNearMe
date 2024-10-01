@@ -47,10 +47,10 @@
     }
 
     .btn {
-        background-color: #2d2b2b;
+        background-color: #d76614;
         color: white;
         border: none;
-        font-weight: bolder;
+        font-weight: 600;
         height: 35px;
         text-align: center;
         margin-top: 58px;
@@ -292,6 +292,19 @@
     #modal-header-edit{
         margin-left: 520px;
     }
+
+
+    /*Users-tbl */
+
+    .users-tbl{
+        -webkit-text-fill-color: #000;
+        font-weight: 600;
+    }
+    .view-btn{
+        -webkit-text-fill-color: #fff;
+        background-color: #d76614;
+    }
+    
 </style>
 
 

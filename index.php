@@ -72,7 +72,7 @@
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 200px;
+        margin-top: 300px;
         padding: 40px;
     }
 </style>

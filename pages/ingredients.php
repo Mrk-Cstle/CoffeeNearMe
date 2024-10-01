@@ -467,6 +467,15 @@
     background-color: #d9d9d9;
     margin-right: 20px;
   }
+
+  /*Table CSS */
+
+  .ingredients-tbl, td{
+    -webkit-text-fill-color: #000;
+    font-weight: 700;
+    
+  }
+  
 </style>
 
 <body>
