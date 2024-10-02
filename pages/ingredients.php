@@ -277,8 +277,9 @@
     font-size: 20px;
     color: #d76614;
   }
-  #ingredients_image::-webkit-file-upload-button{
-    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+
+  #ingredients_image::-webkit-file-upload-button {
+    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
     color: #fff;
     padding: 8px 16px;
     border: none;
@@ -470,19 +471,21 @@
 
   /*Table CSS */
 
-  .ingredients-tbl, td{
+  .ingredients-tbl,
+  td {
     -webkit-text-fill-color: #000;
     font-weight: 700;
-    
+
   }
-  
 </style>
 
 <body>
   <div class="container">
 
     <div>
+      <button type="button" class="topbtn btn btn-dark me-1"><a href="actionInventory.php">Inventory Actions</a></button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
+
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>
 
       <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
