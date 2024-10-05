@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
-    <link rel="stylesheet" href="posProduct.css">
+    <link rel="stylesheet" href="../assets/design/posProduct.css">
 </head>
 <style>
     .disabled-btn {

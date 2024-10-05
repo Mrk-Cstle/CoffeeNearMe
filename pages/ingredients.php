@@ -306,7 +306,7 @@
   .dropdown-btn {
     padding: 10px;
     font-size: 18px;
-    margin-top: 50px;
+    margin-top: 10px;
     border: transparent;
     background-color: transparent;
   }
@@ -473,8 +473,10 @@
   .ingredients-tbl, td{
     -webkit-text-fill-color: #000;
     font-weight: 700;
-    
   }
+  
+  /*Text CSS */
+  
   
 </style>
 

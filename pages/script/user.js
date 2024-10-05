@@ -65,17 +65,17 @@
                           users.forEach(function (user) {
                                let pictureHtml = '';
                                 if (user.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/${user.picture}">`;
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/user/${user.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
                                 }
                                 userlist += `
                                 <tr">
                                 <td style="display: none;" class="users-id">${user.user_id}</td>
                                 <td>${pictureHtml}</td>
-                                <td>${user.full_name}</td>
-                                <td>${user.address}</td>
-                                <td>${user.contact_number}</td>
+                                <td style="padding-top: 2.5%;">${user.full_name}</td>
+                                <td style="padding-top: 2.5%;">${user.address}</td>
+                                <td style="padding-top: 2.5%;">${user.contact_number}</td>
                                 <td data-user-id='${user.user_id}'><a class='btn btn-dark  view-btn '
                                     href='#View'
                                     data-bs-toggle='modal'>

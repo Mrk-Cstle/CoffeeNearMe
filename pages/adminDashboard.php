@@ -205,10 +205,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- Bar CHART SCRIPT -->
-    <script src="barchart.js"></script>
+    <script src="../pages/script/barchart.js"></script>
 
     <!-- Line CHART SCRIPT -->
-    <script src="linechart.js"></script>
+    <script src="../pages/script/linechart.js"></script>
 
 </body>
 

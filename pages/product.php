@@ -15,6 +15,10 @@
       padding: 0;
     }
 
+    body{
+      background-color: #D9D9D9;
+    }
+
     .container {
       margin: 0;
       position: absolute;
@@ -24,12 +28,12 @@
     }
 
     .tableProductsInfo {
-      border: 1px solid black;
-      outline: 1px solid black;
+      border: 1px solid #000;
+      outline: 1px solid #000;
       width: 1200px;
       height: 70px;
       text-align: center;
-      margin-top: 250px;
+      margin-top: 80px;
     }
 
     thead {
@@ -40,7 +44,7 @@
     }
 
     tbody {
-      background-color: #D9D9D9;
+      background-color: #fff;
       font-size: 20px;
       font-weight: bold;
       font-style: italic;
