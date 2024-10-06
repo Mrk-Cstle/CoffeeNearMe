@@ -193,18 +193,18 @@
                 var BackgroundColor = lowStock ? '#FA8072' : '';
                  let pictureHtml = '';
                                 if (ingredient.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
                                 }
                 listItems += `
                     <tr >
                             <td>${pictureHtml}</td>
                            <td style="display: none;" class="ingredient-category">${ingredient.category}</td>
-                            <td class="ingredient-name" style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
+                            <td class="ingredient-name" style="background-color: ${BackgroundColor}; padding-top: 2.5%;" >${ingredient.raw_name}</td>
                             
-                            <td class="ingredient-quantity">${ingredient.quantity}</td>
-                            <td class="ingredient-ideal-quantity">${ingredient.ideal_quantity}</td>
+                            <td class="ingredient-quantity" style="padding-top: 2.5%;">${ingredient.quantity}</td>
+                            <td class="ingredient-ideal-quantity" style="padding-top: 2.5%;">${ingredient.ideal_quantity}</td>
                             
                             
                             <td>

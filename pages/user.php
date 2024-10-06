@@ -53,7 +53,7 @@
         font-weight: 600;
         height: 35px;
         text-align: center;
-        margin-top: 58px;
+        margin-top: 25px;
     }
 
     .btnnnn {
