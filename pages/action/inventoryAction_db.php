@@ -23,7 +23,7 @@ try {
 
         // Calculate the offset for pagination
         $offset = ($page - 1) * $itemsPerPage;
-        $sql = "SELECT * FROM inventory_action WHERE 1=1";
+        $sql = "SELECT * FROM inventory_action WHERE 1=1 ORDER BY action_id DESC";
 
         $result = $conn->query($sql);
         $totalItems = $result->num_rows;

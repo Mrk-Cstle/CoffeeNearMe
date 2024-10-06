@@ -249,7 +249,7 @@ loadUser();
 
       $(document).on('click', '.view-btn', function () {
            var $row = $(this).closest('tr');
-          var userid = $row.find('.users-id').text().trim();;
+          var userid = $row.find('.users-id').text().trim();
           
            var data = {
                     usersid: userid,

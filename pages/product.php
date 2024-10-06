@@ -15,7 +15,7 @@
       padding: 0;
     }
 
-    body{
+    body {
       background-color: #D9D9D9;
     }
 
@@ -380,7 +380,7 @@
       color: #000;
       margin: 10px;
       display: flex;
-      justify-content: space-between; 
+      justify-content: space-between;
     }
 
     .ingredientBodyModal {
@@ -400,7 +400,7 @@
 
     .trashIcon {
       font-size: 20px;
-      margin-right: 40px;     
+      margin-right: 40px;
     }
 
     /*View Picture Edit*/
@@ -528,8 +528,8 @@
       margin-top: 60px;
     }
 
-    
-    .imageButton{
+
+    .imageButton {
       border: 2px solid #D76614;
       background-color: #D76614;
       border-radius: 10px;
@@ -539,7 +539,8 @@
       color: white;
       font-size: 15px;
     }
-    #product_image{
+
+    #product_image {
       margin-left: 100px;
       border: 5px #2c2c2c;
       border-radius: 50px;
@@ -548,15 +549,17 @@
       font-size: 20px;
       color: #d76614;
     }
-    #product_image::-webkit-file-upload-button{
-    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-    #productCategory{
+
+    #product_image::-webkit-file-upload-button {
+      background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    #productCategory {
       border-radius: 15px;
       width: 50px;
       height: 50px;
@@ -572,6 +575,7 @@
       <div class="productTable">
         <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Product</button>
+        <a href="transactionDetails.php">Transaction History</a>
         <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
           <option value="">Filter</option>
           <?php
