@@ -27,16 +27,17 @@
 
     .container {
         padding: 50px;
-        margin-left: 420px;
+        margin-left: 550px;
         margin-top: 40px;
     }
 
     .table {
-        border: 1px solid;
-        margin-top: 60px;
+        border: 1px #000;
+        margin-top: 40px;
         text-align: center;
         font-size: 18px;
         -webkit-text-fill-color: #d76614;
+        
     }
 
     .search {
@@ -304,6 +305,44 @@
         -webkit-text-fill-color: #fff;
         background-color: #d76614;
     }
+
+    /*PAGINATION */
+
+    .pagination {
+        float: left;
+        margin-top: 10px;
+    }
+
+    .pagination button {
+        margin: 0 5px;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: #D76614;
+        color: #fff;
+        height: 40px;
+        width: 100px;
+        font-weight: bold;
+    }
+
+    .pagination button.active {
+        background-color: #D76614;
+        color: white;
+    }
+
+    .pagination button:hover {
+        background-color: #333;
+    }
+    span{
+        font-size: 20px;
+        margin: 5px;
+    }
+
+    .topbtn{
+        margin-top: 60px;
+    }
+    
     
 </style>
 
@@ -324,7 +363,7 @@
 
             </select>
             <form class="search form-inline">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50">Add User</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50 topbtn ">Add User</button>
                 <!-- Modal -->
                 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -381,7 +420,7 @@
 
             </tbody>
         </table>
-        <div id="paginationControls">
+        <div id="paginationControls " class="pagination">
             <button id="prevPage" disabled>Previous</button>
             <span id="currentPage">1</span>
             <button id="nextPage" disabled>Next</button>

@@ -99,7 +99,7 @@
             border-radius: 10px;
             height: 260px;
             width: 350px;
-            margin-top: 45px;
+            margin-top: 12px;
             color: black;
             font-family: "Roboto", sans-serif;
             font-weight: 900;
@@ -164,6 +164,18 @@
 
         .image-btn {
             display: flex;
+        }
+
+        .updates-btn{
+            border: 2px solid #d76614;
+            border-radius: 10px;
+            width: 100px;
+            height: 35px;
+            background-color: #d76614;
+            color: #fff;
+            margin-right: 50px;
+            font-size: 18px;
+            margin-top: 20px;
         }
     </style>
 </head>

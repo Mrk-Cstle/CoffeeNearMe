@@ -37,6 +37,7 @@
             <span id="currentPage">1</span>
             <button id="nextPage" disabled>Next</button>
         </div>
+        
         <!-- Modal Structure -->
         <div id="receiptModal" class="modal">
             <div class="modal-content">
