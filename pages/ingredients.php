@@ -25,7 +25,7 @@
 
   .container {
     padding: 50px;
-    margin-left: 550px;
+    margin-left: 420px;
     margin-top: 120px;
   }
 
@@ -477,48 +477,14 @@
     font-weight: 700;
   }
 
-  /*PAGINATION */
-
-  .pagination {
-        float: left;
-        margin-top: 10px;
-    }
-
-    .pagination button {
-        margin: 0 5px;
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        text-decoration: none;
-        border-radius: 5px;
-        background-color: #D76614;
-        color: #fff;
-        height: 40px;
-        width: 100px;
-        font-weight: bold;
-    }
-
-    .pagination button.active {
-        background-color: #D76614;
-        color: white;
-    }
-
-    .pagination button:hover {
-        background-color: #333;
-    }
-    span{
-        font-size: 20px;
-        margin: 5px;
-    }
-
-
-  
+  /*Text CSS */
 </style>
 
 <body>
   <div class="container">
 
     <div>
-      <a href="actionInventory.php" class="topbtn btn btn-dark me-1">Inventory Actions</a>
+      <button type="button" class="topbtn btn btn-dark me-1"><a href="actionInventory.php">Inventory Actions</a></button>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>
@@ -733,7 +699,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </table>
 
-    <div id="paginationControls" class="pagination">
+    <div id="paginationControls">
       <button id="prevPage" disabled>Previous</button>
       <span id="currentPage">1</span>
       <button id="nextPage" disabled>Next</button>

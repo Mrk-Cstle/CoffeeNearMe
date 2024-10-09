@@ -115,8 +115,7 @@
     .searchInput {
       display: flex;
       width: 350px;
-      float: left;
-      margin-left: 250px;
+      float: right;
     }
 
     /*Top btn*/
@@ -446,7 +445,6 @@
       height: 30px;
       border-radius: 15px;
       margin-left: 10px;
-      text-align: center;
     }
 
     .productCategory {
@@ -467,7 +465,6 @@
       height: 30px;
       border-radius: 15px;
       margin-left: 10px;
-      text-align: center;
     }
 
     .viewIngredient {
@@ -566,51 +563,7 @@
       border-radius: 15px;
       width: 50px;
       height: 50px;
-      text-align: center;
     }
-
-    /*PAGINATION */
-
-.pagination {
-    float: left;
-    margin-top: 20px;
-}
-
-.pagination button {
-    margin: 0 5px;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    color: #2D2B2B;
-    text-decoration: none;
-    border-radius: 4px;
-    background-color: #D76614;
-    color: #fff;
-    height: 40px;
-    width: 100px;
-}
-
-.pagination button.active {
-    background-color: #D76614;
-    color: white;
-}
-
-.pagination button:hover {
-    background-color: #333;
-}
-span{
-    font-size: 20px;
-    margin: 5px;
-}
-
-#product_categoryadd{
-  text-align: center;
-}
-#product-add{
-  text-align: center;
-}
-#product-price{
-  text-align: center;
-}
   </style>
 
 </head>
@@ -622,7 +575,7 @@ span{
       <div class="productTable">
         <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Product</button>
-        <a href="transactionDetails.php" class="topbtn btn btn-dark">Transaction History</a>
+        <a href="transactionDetails.php">Transaction History</a>
         <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
           <option value="">Filter</option>
           <?php
@@ -667,7 +620,7 @@ span{
 
 
 
-  <div id="paginationControls" class="pagination">
+  <div id="paginationControls">
     <button id="prevPage" disabled>Previous</button>
     <span id="currentPage">1</span>
     <button id="nextPage" disabled>Next</button>

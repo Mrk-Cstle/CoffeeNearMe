@@ -33,7 +33,7 @@ include '../assets/template/navigation.php'; ?>
             </table>
         </div>
         <div class="pagination">
-            <button id="prevPage" disabled> Previous</button>
+            <button id="prevPage" disabled>Previous</button>
             <span id="currentPage">1</span>
             <button id="nextPage" disabled>Next</button>
         </div>
