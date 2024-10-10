@@ -44,8 +44,9 @@ function loadProduct() {
                     }
 
                     // Check if product is available
-                    let isAvailable = product.available_quantity > 0;
+                    let isAvailable = product.available_quantity > 0 && product.available_quantity !== 9223372036854776000;
                     let productClass = isAvailable ? '' : 'not-available';
+                    let availableText = isAvailable ? product.available_quantity : 0;
 
                     listItems += `
                         <div class="product ${productClass}" data-product-id="${product.product_id}" data-available-quantity="${product.available_quantity}">
@@ -57,7 +58,7 @@ function loadProduct() {
                                 <input type="text" value="1" class="quantity" readonly>
                                 <button class="plus-btn">+</button>
                             </div>
-                            <p>Available: ${product.available_quantity}</p>
+                            <p>Available: ${availableText}</p>
                             <button 
                             class="add-to-cart-btn" 
                             ${isAvailable ? '' : 'style="cursor: not-allowed; opacity: 0.5; background-color: #ccc; border-color: #ccc; color: #666;"'}
