@@ -588,6 +588,13 @@
                 <div class="add-quantity input-group mb-3 d-block">
                   Quantity
                   <input type="text" class="t-input form-control w-75" aria-label="qty" id="qty">
+                  <select class="t-input form-control w-75" aria-label="a_unit" name="a_unit" id="a_unit" required>
+
+                    <option value="kg">kg</option>
+                    <option value="pcs">pcs</option>
+                    <option value="gal">gal</option>
+
+                  </select>
                 </div>
                 <div class="add-ideal input-group mb-3 d-block">
                   Ideal Quantity
@@ -722,7 +729,9 @@
                 <p class="ingre">Stock</p>
                 <p class="ingreText"></p>
                 <span class="spanQty">Quantity:</span>
-                <input type="number" id="stockinQty" class="stockQty" required><br>
+                <input type="number" id="stockinQty" class="stockQty" required>
+                <input type="text" id="stockinunit" class="stockinunit" readonly>
+                <br>
                 <div class="stockBtn">
                   <button class="stockBtnClose" data-dismiss="modal">Close</button>
                   <button class="stockBtnUpdate">Update</button>
@@ -750,7 +759,8 @@
                 <p class="ingre">Stock</p>
                 <p class="ingreText">Mango Cake</p>
                 <span class="spanQty">Quantity:</span>
-                <input id="stockoutQty" type="number" class="stockQty" required><br>
+                <input id="stockoutQty" type="number" class="stockQty" required>
+                <input type="text" id="stockoutunit" class="stockoutunit" readonly><br>
                 <div class="stockBtn">
                   <button class="stockBtnClose" data-dismiss="modal">Close</button>
                   <button class="stockBtnUpdate">Update</button>

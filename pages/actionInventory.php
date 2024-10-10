@@ -87,7 +87,7 @@ include '../assets/template/navigation.php'; ?>
                                 <td>${item.action_id}</td>
                                 <td>${item.action_type}</td>
                                 <td>${item.item}</td>
-                                <td>${item.quantity}</td>
+                                <td>${item.quantity} ${item.unit}</td>
                                 <td>${item.action_date}</td>
                                 <td>${item.performed_by}</td>
                             </tr>`

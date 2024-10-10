@@ -147,6 +147,7 @@ try {
         $category = sanitizeInput($data['category']);
         $qty = sanitizeInput($data['qty']);
         $ideal_qty = sanitizeInput($data['ideal_qty']);
+        $unit = sanitizeInput($data['unit']);
 
         $action_type = "Add Ingredient";
         $user = $_SESSION['full_name']; // Assuming session stores user name
@@ -156,22 +157,22 @@ try {
 
         try {
             // Insert into ingredients table
-            $stmt = $conn->prepare("INSERT INTO ingredients (raw_name, category, quantity, ideal_quantity) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO ingredients (raw_name, category, quantity, ideal_quantity, unit) VALUES (?, ?, ?, ?, ?)");
             if (!$stmt) {
                 throw new Exception("Prepare failed: (" . $conn->errno . ") " . $conn->error);
             }
-            $stmt->bind_param("ssii", $ingredients, $category, $qty, $ideal_qty);
+            $stmt->bind_param("ssiis", $ingredients, $category, $qty, $ideal_qty, $unit);
             $stmt->execute();
 
             // Get the last inserted ID of the new ingredient
 
 
             // Insert action log into the `inventory_actions` table
-            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by) VALUES (?, ?, ?, ?)");
+            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by, unit) VALUES (?, ?, ?, ?,?)");
             if (!$log_stmt) {
                 throw new Exception("Prepare failed: (" . $conn->errno . ") " . $conn->error);
             }
-            $log_stmt->bind_param("ssis", $action_type, $ingredients, $qty, $user);
+            $log_stmt->bind_param("ssiss", $action_type, $ingredients, $qty, $user, $unit);
             $log_stmt->execute();
 
             // If both queries were successful, commit the transaction
@@ -280,6 +281,7 @@ try {
         $ingredientId = sanitizeInput($data['ingredientId']);
         $stockQty = sanitizeInput($data['stockQty']);
         $ingredientName = sanitizeInput($data['ingredientName']);
+        $stockUnit = sanitizeInput($data['stockUnit']);
 
         session_start();
 
@@ -315,8 +317,9 @@ try {
             }
 
 
-            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by) VALUES (?, ?, ?, ?)");
-            $log_stmt->bind_param("ssis", $action_type, $ingredientName, $stockQty, $user);
+            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by, unit) VALUES (?, ?, ?, ?, ?)");
+            $log_stmt->bind_param("ssiss", $action_type, $ingredientName, $stockQty, $user,  $stockUnit);
+
             if (!$log_stmt->execute()) {
                 throw new Exception("Execute failed for INSERT: (" . $log_stmt->errno . ") " . $log_stmt->error);
             }
@@ -337,6 +340,7 @@ try {
     } elseif ($action === 'stockin') {
         $ingredientId = sanitizeInput($data['ingredientId']);
         $stockQty = sanitizeInput($data['stockQty']);
+        $stockUnit = sanitizeInput($data['stockUnit']);
         $ingredientName = sanitizeInput($data['ingredientName']);
 
 
@@ -361,10 +365,10 @@ try {
             }
 
 
-            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by) VALUES (?, ?, ?, ?)");
+            $log_stmt = $conn->prepare("INSERT INTO inventory_action (action_type, item, quantity, performed_by, unit) VALUES (?, ?, ?, ?,?)");
 
 
-            $log_stmt->bind_param("ssis", $action_type, $ingredientName, $stockQty, $user);
+            $log_stmt->bind_param("ssiss", $action_type, $ingredientName, $stockQty, $user, $stockUnit);
             if (!$log_stmt->execute()) {
                 throw new Exception("Execute failed for INSERT: (" . $log_stmt->errno . ") " . $log_stmt->error);
             }

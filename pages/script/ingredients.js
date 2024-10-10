@@ -203,8 +203,8 @@
                            <td style="display: none;" class="ingredient-category">${ingredient.category}</td>
                             <td class="ingredient-name" style="background-color: ${BackgroundColor}; padding-top: 2.5%;" >${ingredient.raw_name}</td>
                             
-                            <td class="ingredient-quantity" style="padding-top: 2.5%;">${ingredient.quantity}</td>
-                            <td class="ingredient-ideal-quantity" style="padding-top: 2.5%;">${ingredient.ideal_quantity}</td>
+                            <td class="ingredient-quantity" style="padding-top: 2.5%;">${ingredient.quantity} ${ingredient.unit}</td>
+                            <td class="ingredient-ideal-quantity" style="padding-top: 2.5%;">${ingredient.ideal_quantity} ${ingredient.unit}</td>
                             
                             
                             <td>
@@ -296,18 +296,25 @@
         var $row = $(this).closest('tr');
         var ingredientId = $(this).data('ingredients-id');
         var ingredientName = $row.find('.ingredient-name').text().trim();
+        var ingredientQuantityText = $row.find('.ingredient-quantity').text().trim();
         
+        var quantityParts = ingredientQuantityText.split(' ');
+        var ingredientUnit = quantityParts[quantityParts.length - 1];
 
         $('.ingreText').text(ingredientName);
+        $('#stockinunit').val(ingredientUnit);
         console.log(ingredientName)
         
       $('.stockBtnUpdate').off('click').on('click', function() {
-              var stockQty = $('#stockinQty').val();
+        var stockQty = $('#stockinQty').val();
+        
+        
               var data = {
                 ingredientId: ingredientId,
                 ingredientName:ingredientName,
-                  stockQty: stockQty,
-                  action: "stockin"
+                stockQty: stockQty,
+                stockUnit: ingredientUnit,
+                action: "stockin"
                   
                   }
         ingredientsAjaxRequest(data);
@@ -319,9 +326,13 @@
         var $row = $(this).closest('tr');
         var ingredientId = $(this).data('ingredients-id');
         var ingredientName = $row.find('.ingredient-name').text().trim();
+         var ingredientQuantityText = $row.find('.ingredient-quantity').text().trim();
         
+        var quantityParts = ingredientQuantityText.split(' ');
+        var ingredientUnit = quantityParts[quantityParts.length - 1]; 
 
         $('.ingreText').text(ingredientName);
+        $('#stockoutunit').val(ingredientUnit);
         console.log(ingredientName)
         
       $('.stockBtnUpdate').off('click').on('click', function() {
@@ -329,7 +340,8 @@
               var data = {
                 ingredientId: ingredientId,
                 ingredientName:ingredientName,
-                  stockQty: stockQty,
+                stockQty: stockQty,
+                  stockUnit: ingredientUnit,
                   action: "stockout"
                   
                   }
@@ -419,12 +431,14 @@
         var category = $('#icategory').val();
         var qty = $('#qty').val();
         var ideal_qty = $('#ideal_qty').val();
+        var unit = $('#a_unit').val();
 
         var data = {
           ingredients: ingredients,
           category: category,
           qty: qty,
           ideal_qty: ideal_qty,
+          unit: unit,
           action: 'add'
         }
         ingredientsAjaxRequest(data);
