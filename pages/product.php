@@ -760,6 +760,13 @@
             <div class="mb-3">
               <label for="ingredientQuantity" class="form-label ">Quantity</label>
               <input type="text" class="form-control plusInput" id="productingredientQuantity" placeholder="Enter quantity">
+              <select class="t-input form-control w-75" aria-label="a_unit" name="a_unit" id="a_unit" required>
+
+                <option value="g">g</option>
+                <option value="pcs">pcs</option>
+                <option value="mL">mL</option>
+
+              </select>
             </div>
             <button id="add_ingredientsbtn" data-bs-toggle="modal" data-bs-target="#viewProductModal" class="btn btn-dark btn-plus">Add</button>
           </form>

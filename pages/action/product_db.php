@@ -34,6 +34,7 @@ try {
 
 
 
+
         // Prepare and bind SQL statement using prepared statement
         $stmt = $conn->prepare("INSERT INTO product (product_name, product_category, price) VALUES (?, ?, ?)");
         if (!$stmt) {

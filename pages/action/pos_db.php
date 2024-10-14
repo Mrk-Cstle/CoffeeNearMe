@@ -1,4 +1,9 @@
 <?php
+
+require '../../vendor/autoload.php'; // Load Composer's autoloader
+
+use UnitConverter\UnitConverter;
+
 header("Content-Type: application/json");
 $data = json_decode(file_get_contents('php://input'), true);
 $action = isset($data['action']) ? $data['action'] : '';
@@ -42,7 +47,7 @@ try {
 
             // Query to check ingredient availability for this product
             $ingredientsQuery = "
-        SELECT pi.ingredients_id, pi.quantity AS required_quantity, i.quantity AS available_stock
+        SELECT pi.ingredients_id, pi.quantity AS required_quantity,pi.unit AS ingredient_unit, i.quantity AS available_stock, i.unit AS available_unit 
         FROM product_ingredients pi
         JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
         WHERE pi.product_id = ?";
@@ -54,16 +59,22 @@ try {
 
             $canMake = PHP_INT_MAX;  // Initialize to a large number to find the limiting factor
 
+            $converter = UnitConverter::default();
+
             while ($ingredient = $ingredientsResult->fetch_assoc()) {
                 $required = $ingredient['required_quantity'];
                 $available = $ingredient['available_stock'];
+                $ingredientUnit = $ingredient['ingredient_unit'];
+                $availableUnit = $ingredient['available_unit'];
+
+                $converted = $converter->convert($available, 10)->from($availableUnit)->to($ingredientUnit);
 
                 // Calculate how many products can be made based on the limiting ingredient
-                if ($available < $required) {
+                if ($converted < $required) {
                     $canMake = 0;  // Not enough stock to make even one product
                     break;
                 } else {
-                    $canMake = min($canMake, floor($available / $required));
+                    $canMake = floor($converted / $required);
                 }
             }
 

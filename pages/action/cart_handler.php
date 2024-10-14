@@ -1,4 +1,7 @@
 <?php
+require '../../vendor/autoload.php'; // Load Composer's autoloader
+
+use UnitConverter\UnitConverter;
 
 session_start();
 
@@ -63,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
 
-            $query = "SELECT pi.ingredients_id, pi.quantity AS ingredient_quantity, i.quantity AS available_quantity 
+            $query = "SELECT pi.ingredients_id, pi.quantity AS ingredient_quantity,pi.unit AS ingredient_unit, i.quantity AS available_quantity , i.unit AS available_unit 
                   FROM product_ingredients pi
                   JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
                   WHERE pi.product_id = ?";
@@ -75,22 +78,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Update each ingredient's quantity based on the product's required ingredients
             while ($row = $result->fetch_assoc()) {
                 $ingredientId = $row['ingredients_id'];
-                $ingredientQuantity = $row['ingredient_quantity']; // quantity of ingredient needed per product
-                $availableQuantity = $row['available_quantity']; // current stock of the ingredient
+                $ingredientQuantity = $row['ingredient_quantity'];
+                $availableQuantity = $row['available_quantity'];
+                $ingredientUnit = $row['ingredient_unit'];
+                $availableUnit = $row['available_unit'];
 
-                // Calculate the total quantity to be deducted based on the number of products added
-                $quantityToDeduct = $ingredientQuantity * $quantity;
+
+
+                // Create a default unit converter
+                $converter = UnitConverter::default();
+
+
+
+                $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
+
+
+                $quantityToDeduct = $todeduct * $quantity;
                 $newQuantity = $availableQuantity - $quantityToDeduct;
+
+
 
                 // Update the ingredient's stock
                 $updateQuery = "UPDATE ingredients SET quantity = ? WHERE ingredients_id = ?";
                 $updateStmt = $conn->prepare($updateQuery);
-                $updateStmt->bind_param("ii", $newQuantity, $ingredientId);
+                $updateStmt->bind_param("di", $newQuantity, $ingredientId);
                 $updateStmt->execute();
             }
-
-            // Send response
-            echo json_encode(['status' => 'success', 'cart' => $_SESSION['cart']]);
+            echo json_encode(['status' => 'success', 'message' => 'to save.' . $newQuantity . ' to kg ' . $todeduct . 'to deduct' . $ingredientQuantity, 'cart' => $_SESSION['cart']]);
             break;
 
         case 'fetch':
@@ -145,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $quantity = intval($_POST['quantity']);
 
             // Increase the stock back when deleting an item from the cart
-            $query = "SELECT pi.ingredients_id, pi.quantity AS ingredient_quantity, i.quantity AS available_quantity 
+            $query = "SELECT pi.ingredients_id, pi.quantity AS ingredient_quantity,pi.unit AS ingredient_unit, i.quantity AS available_quantity , i.unit AS available_unit 
               FROM product_ingredients pi
               JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
               WHERE pi.product_id = ?";
@@ -159,9 +173,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $ingredientId = $row['ingredients_id'];
                 $ingredientQuantity = $row['ingredient_quantity'];
                 $availableQuantity = $row['available_quantity'];
+                $ingredientUnit = $row['ingredient_unit'];
+                $availableUnit = $row['available_unit'];
+
+
+                $converter = UnitConverter::default();
+
+
+
+                $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
+
+
+
+
 
                 // Calculate the total quantity to be added back based on the number of products removed
-                $quantityToAdd = $ingredientQuantity * $quantity;
+                $quantityToAdd = $todeduct * $quantity;
                 $newQuantity = $availableQuantity + $quantityToAdd;
 
                 // Update the ingredient's stock

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jordanbrauer/unit-converter": "^0.8.6"
+    }
+}

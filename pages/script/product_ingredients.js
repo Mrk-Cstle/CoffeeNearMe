@@ -8,14 +8,16 @@ $(document).ready(function () {
 
     var ingredients = $('#product_ingredients').val();
     var qty = $('#productingredientQuantity').val();
-     var productId = $('#productId').val();
+      var productId = $('#productId').val();
+      var units = $('#a_unit').val();
     
 
     
         var data = {
             ingredients: ingredients,
             qty: qty,
-            productId: productId,
+          productId: productId,
+          unit: units,
             action: 'add'
         }
         productingredientsAjaxRequest(data);

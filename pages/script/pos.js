@@ -161,6 +161,7 @@ function attachQuantityControl() {
                 success: function (response) {
                    
                     const data = JSON.parse(response);
+                    console.log(data.message);
                     if (data.status === 'success') {
                         updateCartDisplay(data.cart);
 
@@ -180,7 +181,7 @@ function attachQuantityControl() {
                         }
                         loadProduct();
                     } else {
-                        alert('Failed to add to cart.');
+                        alert(data.message);
                     }
                 }
             });
