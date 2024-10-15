@@ -88,13 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Create a default unit converter
                 $converter = UnitConverter::default();
 
+                if ($ingredientUnit === 'pcs') {
 
 
-                $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
+
+                    $quantityToDeduct = $ingredientQuantity * $quantity;
+                    $newQuantity = $availableQuantity - $quantityToDeduct;
+                } else {
+                    $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
 
 
-                $quantityToDeduct = $todeduct * $quantity;
-                $newQuantity = $availableQuantity - $quantityToDeduct;
+                    $quantityToDeduct = $todeduct * $quantity;
+                    $newQuantity = $availableQuantity - $quantityToDeduct;
+                }
+
+
 
 
 
@@ -104,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $updateStmt->bind_param("di", $newQuantity, $ingredientId);
                 $updateStmt->execute();
             }
-            echo json_encode(['status' => 'success', 'message' => 'to save.' . $newQuantity . ' to kg ' . $todeduct . 'to deduct' . $ingredientQuantity, 'cart' => $_SESSION['cart']]);
+            echo json_encode(['status' => 'success',  'cart' => $_SESSION['cart']]);
             break;
 
         case 'fetch':
@@ -180,8 +188,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $converter = UnitConverter::default();
 
 
+                if ($ingredientUnit == 'pcs') {
+                    $todeduct = $ingredientQuantity;
+                } else {
+                    $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
+                }
 
-                $todeduct = $converter->convert($ingredientQuantity, 10)->from($ingredientUnit)->to($availableUnit);
 
 
 

@@ -67,14 +67,24 @@ try {
                 $ingredientUnit = $ingredient['ingredient_unit'];
                 $availableUnit = $ingredient['available_unit'];
 
-                $converted = $converter->convert($available, 10)->from($availableUnit)->to($ingredientUnit);
 
-                // Calculate how many products can be made based on the limiting ingredient
-                if ($converted < $required) {
-                    $canMake = 0;  // Not enough stock to make even one product
-                    break;
+                if ($ingredientUnit == 'pcs') {
+                    if ($available < $required) {
+                        $canMake = 0;  // Not enough stock to make even one product
+                        break;
+                    } else {
+                        $canMake = floor($available / $required);
+                    }
                 } else {
-                    $canMake = floor($converted / $required);
+                    $converted = $converter->convert($available, 10)->from($availableUnit)->to($ingredientUnit);
+
+                    // Calculate how many products can be made based on the limiting ingredient
+                    if ($converted < $required) {
+                        $canMake = 0;  // Not enough stock to make even one product
+                        break;
+                    } else {
+                        $canMake = floor($converted / $required);
+                    }
                 }
             }
 

@@ -159,7 +159,7 @@ function attachQuantityControl() {
                     quantity: selectedQuantity
                 },
                 success: function (response) {
-                   
+                   console.log(response.message);
                     const data = JSON.parse(response);
                     console.log(data.message);
                     if (data.status === 'success') {
