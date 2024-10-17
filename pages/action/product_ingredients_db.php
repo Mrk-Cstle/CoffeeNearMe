@@ -42,7 +42,7 @@ if ($action === "add") {
 
     $productId = sanitizeInput($data['productId']);
     $stmt = $conn->prepare("
-        SELECT i.raw_name, pi.quantity , pi.product_raw_id
+        SELECT i.raw_name, pi.quantity , pi.product_raw_id, pi.unit
         FROM product_ingredients pi
         INNER JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
         WHERE pi.product_id = ?");
