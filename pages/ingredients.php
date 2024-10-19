@@ -25,23 +25,26 @@
 
   .container {
     padding: 50px;
-    margin-left: 420px;
+    margin-left: 350px;
     margin-top: 120px;
   }
 
   .table {
+    position: relative;
     border: 1px solid;
-    margin-top: 60px;
+    width: 54vw;
+    height: auto;
+    margin-top: 40px;
     text-align: center;
-    font-size: 18px;
-    -webkit-text-fill-color: #d76614;
+    font-size: 15px;
+    -webkit-text-fill-color: #fff;
   }
 
   .search {
     height: 10%;
-    width: 30%;
+    width:  25%;
     display: flex;
-    float: right;
+    margin-left: 600px;
   }
 
   .btn {
@@ -53,7 +56,7 @@
     background-color: #d76614;
     border: none;
     float: left;
-    margin-left: 50px;
+    margin-left: 20px;
   }
 
   .categorycontent {
@@ -143,7 +146,7 @@
     border: 2px solid #d9d9d9;
     border-radius: 25px;
     height: 590px;
-    width: 1070px;
+    width: 55vw;
     background-color: #d9d9d9;
     position: absolute;
     top: 50%;
@@ -477,14 +480,50 @@
     font-weight: 700;
   }
 
-  /*Text CSS */
+  /*Pagination*/
+
+  #paginationControls {
+        position: relative;
+        float: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #prevPage, #nextPage {
+        background-color: #d76614; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 5px 10px; 
+        margin: 0 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+    }
+
+    #prevPage:disabled, #nextPage:disabled {
+        background-color: #ccc; 
+        cursor: not-allowed; 
+    }
+
+    #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+        background-color: #2c2c2c; 
+    }
+
+    #currentPage {
+        margin: 0 10px; 
+        font-weight: bold; 
+        font-size: 16px; 
+    }
+
 </style>
 
 <body>
   <div class="container">
 
     <div>
-      <button type="button" class="topbtn btn btn-dark me-1"><a href="actionInventory.php">Inventory Actions</a></button>
+      <a href="actionInventory.php" class="topbtn btn btn-dark me-1">Inventory Actions</a>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>

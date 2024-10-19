@@ -1,35 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #D9D9D9;
     margin: 20px;
+    padding-left: 250px;
 }
 
 .container {
-    max-width: 1200px;
-    max-height: 800px;
-    height: 650px;
-    width: 1200px;
+    width: 55vw;
+    height: 68vh;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 51%;
-    left: 57%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.transaction-table-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
 .transaction-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    table-layout: fixed; /* Ensures equal column widths */
 }
 
 .transaction-table th,
 .transaction-table td {
     border: 1px solid #ddd;
     padding: 12px;
-    text-align: left;
+    text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Adds ellipsis when text overflows */
 }
 
 .transaction-table th {
@@ -46,27 +55,74 @@ body {
     font-weight: bold;
 }
 
-/*PAGINATION */
-
+/* Pagination */
 .pagination {
-    float: left;
-    margin-top: 60px;
+    position: absolute;
+    bottom: -90px; 
+    left: 100px;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
 }
 
-.pagination a {
-    margin: 0 5px;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    color: #2D2B2B;
-    text-decoration: none;
-    border-radius: 4px;
+#prevPage, #nextPage {
+    background-color: #d76614; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    margin: 0 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
-.pagination a.active {
-    background-color: #D76614;
-    color: white;
+#prevPage:disabled, #nextPage:disabled {
+    background-color: #ccc; 
+    cursor: not-allowed;
 }
 
-.pagination a:hover {
-    background-color: #ddd;
+#prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+    background-color: #2c2c2c; 
+}
+
+#currentPage {
+    margin: 0 10px; 
+    font-weight: bold; 
+    font-size: 16px; 
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90vw; /* Adjust container width on smaller screens */
+        margin-left: auto;
+        margin-right: auto;
+        height: auto; /* Allow height to adapt */
+    }
+
+    .pagination {
+        bottom: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Laptop adjustments (screen width: 1024px - 1440px) */
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .container {
+        width: 70vw; /* Slightly larger container width for laptops */
+        height: auto; /* Allow the height to adapt based on content */
+    }
+
+    .transaction-table th, .transaction-table td {
+        padding: 10px; /* Adjust padding for better spacing on laptops */
+    }
+
+    .pagination {
+        bottom: -80px; /* Adjust pagination position */
+    }
 }

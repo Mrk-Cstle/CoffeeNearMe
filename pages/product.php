@@ -21,31 +21,30 @@
 
     .container {
       margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 58%;
-      transform: translate(-50%, -50%);
+      position: relative;
+      margin-left: 350px;
+      margin-top: 180px;
     }
 
     .tableProductsInfo {
       border: 1px solid #000;
       outline: 1px solid #000;
-      width: 1200px;
-      height: 70px;
+      width: 54vw;
+      height: 40px;
       text-align: center;
-      margin-top: 80px;
+      margin-top: 40px;
     }
 
     thead {
       background-color: #2D2B2B;
-      color: white;
-      font-size: 20px;
+      color: #fff;
+      font-size: 15px;
       font-weight: bold;
     }
 
     tbody {
       background-color: #fff;
-      font-size: 20px;
+      font-size: 15px;
       font-weight: bold;
       font-style: italic;
     }
@@ -108,19 +107,11 @@
     .search {
       width: 80px;
       text-align: center;
-      float: right;
-      margin-right: 130px;
     }
 
     .searchInput {
-      display: flex;
-      width: 350px;
-      float: right;
-    }
-
-    /*Top btn*/
-    .topbtn {
-      margin: 10px;
+      width: 15vw;
+      margin-left: 650px;
     }
 
     /* Modal Category CSS */
@@ -300,8 +291,8 @@
     .ingredientBody {
       border: 3px solid #2D2B2B;
       background-color: #D9D9D9;
-      width: 540px;
-      height: 535px;
+      width: 25vw;
+      height: auto;
       position: absolute;
       top: 80px;
       /* Adjust this value to move the div down */
@@ -310,9 +301,9 @@
     }
 
     .ingredientHeader {
-      border-bottom: 2px solid #000;
+      border-bottom: 2px solid #d9d9d9;
       color: #000;
-      width: 534px;
+      width: 24vw;
       height: 80px;
       position: relative;
       background-color: #D9D9D9;
@@ -328,7 +319,7 @@
       position: absolute;
       top: 10px;
       /* Adjust this value to move the div down */
-      left: 480px;
+      left: 350px;
       /* Adjust this value as needed */
       border: 1px solid #d76614;
       border-radius: 5px;
@@ -351,7 +342,7 @@
     }
 
     .ingredientLabel {
-      border-bottom: 2px solid #d76614;
+      border: 1px solid #d9d9d9;
       height: 50px;
       color: white;
       font-size: 20px;
@@ -366,7 +357,7 @@
       text-align: center;
       display: grid;
       grid-template-columns: 180px 120px 1fr;
-      gap: 25px;
+      gap: 0px;
     }
 
     .headerRow td {
@@ -395,7 +386,7 @@
       font-size: large;
       font-weight: bold;
       position: fixed;
-      margin-left: 230px;
+      margin-left: 200px;
     }
 
     .trashIcon {
@@ -424,7 +415,7 @@
       border: 3px solid #2D2B2B;
       background-color: #EEEEEE;
       height: 320px;
-      width: 540px;
+      width: 25vw;
       margin-top: 52px;
       margin-left: 60px;
     }
@@ -441,18 +432,19 @@
       border: 2px solid #2D2B2B;
       background-color: #fff;
       color: black;
-      width: 320px;
+      width: 15vw;
       height: 30px;
       border-radius: 15px;
       margin-left: 10px;
+      text-align: center;
     }
 
     .productCategory {
       border: 2px solid #2D2B2B;
       background-color: #FFF;
       color: black;
-      width: 290px;
-      height: 30px;
+      width: 10vw;
+      height: 10px;
       border-radius: 15px;
       margin-left: 10px;
     }
@@ -465,6 +457,7 @@
       height: 30px;
       border-radius: 15px;
       margin-left: 10px;
+      text-align: center;
     }
 
     .viewIngredient {
@@ -561,9 +554,120 @@
 
     #productCategory {
       border-radius: 15px;
-      width: 50px;
-      height: 50px;
+      height: 45px;
+      text-align: center;
     }
+
+    /* Pagination */
+    #paginationControls {
+        position: absolute;
+        bottom: -70px; 
+        left: 10%;
+        transform: translateX(-50%); 
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex; 
+        align-items: center; 
+    }
+
+    #prevPage, #nextPage {
+        background-color: #d76614; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 5px 10px; 
+        margin: 0 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+    }
+
+    #prevPage:disabled, #nextPage:disabled {
+        background-color: #ccc; 
+        cursor: not-allowed; 
+    }
+
+    #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+        background-color: #2c2c2c; 
+    }
+
+    #currentPage {
+        margin: 0 10px; 
+        font-weight: bold; 
+        font-size: 16px; 
+    }
+
+    /* Media Queries */
+@media only screen and (max-width: 1200px) {
+    /* Adjust container for tablets */
+    .container {
+        margin-top: 100px;
+        max-width: 95%;
+    }
+
+    .viewProduct, .ingredientBody {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Adjust container for mobile devices */
+    .container {
+        margin-top: 50px;
+    }
+
+    /* Stack product inputs vertically */
+    .productInput {
+        flex-direction: column;
+    }
+
+    .viewProduct {
+        height: auto;
+    }
+
+    /* Adjust modal and form widths */
+    .modal-dialog {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    /* Adjust buttons for mobile */
+    #btn, #btn-action {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* Image adjustments for smaller screens */
+    #picture, img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Smaller adjustments for very small screens */
+    .container {
+        margin-top: 20px;
+    }
+
+    /* Stack elements vertically on mobile */
+    .headerRow tr {
+        display: block;
+    }
+
+    #btn, #btn-action {
+        width: 100%;
+    }
+
+    .ingredientBody {
+        width: 100%;
+    }
+}
+      
   </style>
 
 </head>
@@ -575,7 +679,7 @@
       <div class="productTable">
         <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Product</button>
-        <a href="transactionDetails.php">Transaction History</a>
+        <a href="transactionDetails.php" class="topbtn btn btn-dark me-1" >Transaction History</a>
         <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
           <option value="">Filter</option>
           <?php
