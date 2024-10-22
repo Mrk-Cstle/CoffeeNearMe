@@ -160,7 +160,13 @@
     }
 
     .viewcontent {
-        height: 750px;
+        height: 5vh;
+        width: 60vw;
+        margin: 0;
+        position: absolute;
+        left: 55%;
+        top: 15%;
+        transform: translate(-50%, -50%);
     }
 
     .viewbody {
@@ -230,7 +236,7 @@
     }
 
     #modal-header-edit {
-        margin-left: 520px;
+        margin-left: 560px;
     }
 
     /* Users-tbl */
@@ -353,7 +359,7 @@
     }
 
     .pooter{
-        height: 80px;
+        height: 70px;
     }
     
 </style>

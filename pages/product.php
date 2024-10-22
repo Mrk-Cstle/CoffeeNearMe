@@ -29,7 +29,7 @@
     .tableProductsInfo {
       border: 1px solid #000;
       outline: 1px solid #000;
-      width: 54vw;
+      width: 64vw;
       height: 40px;
       text-align: center;
       margin-top: 40px;
@@ -152,7 +152,7 @@
       border: 2px solid #d9d9d9;
       justify-content: space-between;
       background-color: #D9D9D9;
-
+      width: 100%;
     }
 
     #viewProductModalLabel {
@@ -262,8 +262,10 @@
     /*VIEW and INGREDIENT CSS */
 
     .viewContent {
-      width: 1200px;
-      margin-left: 150px;
+      width: 60vw;
+      margin-left: 200px;
+      margin-top: 120px;
+      background-color: #d9d9d9;
     }
 
     .prodHeading {
@@ -276,8 +278,8 @@
     .viewProduct {
       border: 2px solid #D9D9D9;
       background-color: #D9D9D9;
-      width: 1200px;
-      height: 700px;
+      width: 90%;
+      height: 0px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -292,12 +294,10 @@
       border: 3px solid #2D2B2B;
       background-color: #D9D9D9;
       width: 25vw;
-      height: auto;
+      height: 53vh;
       position: absolute;
-      top: 80px;
-      /* Adjust this value to move the div down */
-      left: 630px;
-      /* Adjust this value as needed */
+      top: -310px;
+      left: 500px;
     }
 
     .ingredientHeader {
@@ -361,7 +361,6 @@
     }
 
     .headerRow td {
-      margin-left: 46px;
       padding: 10px;
       border-right: 1px solid #2D2B2B;
     }
@@ -379,7 +378,7 @@
       font-weight: bold;
       font-style: normal;
       background-color: #d9d9d9;
-      height: 376px;
+      height: 36vh;
     }
 
     .spanquantity {
@@ -400,8 +399,8 @@
       height: 182px;
       background-color: #D9D9D9;
       border-radius: 50%;
-      margin-left: 230px;
-      margin-top: 61px;
+      margin-left: 160px;
+      margin-top: -310px;
     }
 
     .ingredientProfile {
@@ -414,16 +413,15 @@
     .productDetails {
       border: 3px solid #2D2B2B;
       background-color: #EEEEEE;
-      height: 320px;
+      height: 240px;
       width: 25vw;
       margin-top: 52px;
-      margin-left: 60px;
     }
 
     .productInput {
       color: #2D2B2B;
-      font-size: 18px;
-      padding: 30px;
+      font-size: 15px;
+      padding: 15px;
       font-weight: bold;
       display: flex;
     }
@@ -462,7 +460,7 @@
 
     .viewIngredient {
       border: 3px solid #D9D9D9;
-      margin-top: 664px;
+      margin-top: 525px;
       background-color: #d9d9d9;
       width: 100%;
     }
@@ -534,10 +532,10 @@
     }
 
     #product_image {
-      margin-left: 100px;
+      margin-left: 10px;
       border: 5px #2c2c2c;
       border-radius: 50px;
-      width: 300px;
+      width: 280px;
       padding: 2px;
       font-size: 20px;
       color: #d76614;

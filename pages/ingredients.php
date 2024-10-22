@@ -32,7 +32,7 @@
   .table {
     position: relative;
     border: 1px solid;
-    width: 54vw;
+    width: 64vw;
     height: auto;
     margin-top: 40px;
     text-align: center;
