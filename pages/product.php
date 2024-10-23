@@ -24,12 +24,13 @@
       position: relative;
       margin-left: 350px;
       margin-top: 180px;
+      min-width: 400px;
     }
 
     .tableProductsInfo {
       border: 1px solid #000;
       outline: 1px solid #000;
-      width: 64vw;
+      width: 50vw;
       height: 40px;
       text-align: center;
       margin-top: 40px;

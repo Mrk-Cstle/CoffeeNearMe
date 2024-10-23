@@ -32,7 +32,7 @@
         position: relative;
         margin-top: 30px;
         padding-left: 100px;
-        left: 20px;
+        left: -120px;
     }
 
     .table {
@@ -161,11 +161,11 @@
 
     .viewcontent {
         height: 5vh;
-        width: 60vw;
+        width: 100%;
         margin: 0;
         position: absolute;
         left: 55%;
-        top: 15%;
+        top: 10%;
         transform: translate(-50%, -50%);
     }
 
@@ -444,7 +444,7 @@
             <button id="nextPage" disabled>Next</button>
         </div>
 
-
+            <!--VIEW MODAL-->
         <form class="user-image" id="view" method="POST">
             <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
