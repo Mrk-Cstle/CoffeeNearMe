@@ -25,7 +25,7 @@
 
   .container {
     padding: 50px;
-    margin-left: 350px;
+    margin-left: 300px;
     margin-top: 120px;
   }
 
