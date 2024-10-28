@@ -6,7 +6,7 @@ $action = isset($data['action']) ? $data['action'] : '';
 include '../include/dbConnection.php';
 try {
     if ($action == 'lowstock') {
-        $query = "SELECT * FROM ingredients WHERE quantity <= (ideal_quantity * 0.05)";
+        $query = "SELECT * FROM ingredients WHERE quantity < (ideal_quantity * 0.8)";
         $result = $conn->query($query);
         $ingredients = [];
         if ($result->num_rows > 0) {

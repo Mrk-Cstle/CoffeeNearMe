@@ -23,8 +23,8 @@ $(document).ready(function () {
                let header = `<h5 id="lowHead">Low Stock</h5>
 
                     <div class="lowHeading">
-                        <h5 id="lowHead">Product</h5>
-                        <h5 id="lowHead">Product Name</h5>
+                        <h5 id="lowHead">Picture</h5>
+                        <h5 id="lowHead">Ingredient Name</h5>
                         <h5 id="lowHead">Quantity</h5>
                     </div>`
 

@@ -1,5 +1,5 @@
 <?php include '../assets/template/navigation.php'; ?>
-
+<?php include 'include/dashboard.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +34,8 @@
                     <div class="salesOver">
                         <img src="../assets/images/salesIcon.png" class="salesImage">
                         <div class="paragraphSales">
-                            <p id="salesNum">50</p>
-                            <p id="salesPara">Orders</p>
+                            <p id="salesNum">₱<?php echo number_format($total_sales_today, 2); ?></p>
+                            <p id="salesPara">Sales Today</p>
                         </div>
                     </div>
                     <div class="borderRight"></div>
@@ -43,19 +43,19 @@
                     <div class="salesOver">
                         <img src="../assets/images/revenueIcon.png" class="salesImage">
                         <div class="paragraphSales">
-                            <p id="salesNum">50</p>
-                            <p id="salesPara">Total Sales Today</p>
+                            <p id="salesNum"><?php echo $total_transactions_today; ?></p>
+                            <p id="salesPara">Transaction Today</p>
                         </div>
                     </div>
-                    <div class="borderRight"></div>
+                    <!-- <div class="borderRight"></div> -->
 
-                    <div class="salesOver">
+                    <!-- <div class="salesOver">
                         <img src="../assets/images/profitIcon.png" class="salesImage">
                         <div class="paragraphSales">
                             <p id="salesNum">50</p>
                             <p id="salesPara">Number</p>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -70,7 +70,7 @@
                     <div class="inventorySum">
                         <img src="../assets/images/in-stockIcon.png" class="inventImage">
                         <div class="paragraphInvent">
-                            <p id="inventNum">50</p>
+                            <p id="inventNum"><?php echo $total_ingredients; ?></p>
                             <p id="inventPara">Stocks</p>
                         </div>
                     </div>
@@ -79,19 +79,19 @@
                     <div class="inventorySum">
                         <img src="../assets/images/lowstockIcon.png" class="inventImage">
                         <div class="paragraphInvent">
-                            <p id="inventNum">50</p>
+                            <p id="inventNum"><?php echo $low_stock_count; ?></p>
                             <p id="inventPara">Low Stocks</p>
                         </div>
                     </div>
-                    <div class="borderRight"></div>
+                    <!-- <div class="borderRight"></div> -->
 
-                    <div class="inventorySum">
+                    <!-- <div class="inventorySum">
                         <img src="../assets/images/newStocksIcon.png" class="inventImage">
                         <div class="paragraphInvent">
                             <p id="inventNum">50</p>
                             <p id="inventPara">New Stocks</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
