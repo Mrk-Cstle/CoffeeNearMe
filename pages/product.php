@@ -25,7 +25,6 @@
       margin-left: 350px;
       margin-top: 180px;
       min-width: 400px;
-      overflow: hidden;
     }
 
     .tableProductsInfo {
@@ -126,7 +125,7 @@
       float: right;
       border: 1px white;
       background-color: white;
-      margin-left: 430px;
+      margin-left: 630px;
     }
 
     /* Button Styling */
@@ -140,7 +139,7 @@
     /* Category List Modal Styling */
     .categorycontent {
       background-color: #fff;
-      width: 600px;
+      width: 800px;
       height: 500px;
       position: absolute;
       top: 50%;
@@ -159,7 +158,7 @@
 
     #viewProductModalLabel {
       font-size: 25px;
-      margin-left: 40%;
+      margin-left: 550px;
       font-weight: bold;
     }
 
@@ -223,7 +222,7 @@
       background-color: #fff;
       border: 2px solid #d9d9d9;
       color: #000;
-      width: 800px;
+      width: 1000px;
     }
 
     .add {
@@ -264,8 +263,8 @@
     /*VIEW and INGREDIENT CSS */
 
     .viewContent {
-      width: 50vw;
-      margin-left: 25%;
+      width: 60vw;
+      margin-left: 200px;
       margin-top: 120px;
       background-color: #d9d9d9;
     }
@@ -295,21 +294,20 @@
     .ingredientBody {
       border: 3px solid #2D2B2B;
       background-color: #D9D9D9;
-      width: 20vw;
-      height: 500px;
-      min-height: max-content;
+      width: 25vw;
+      height: 53vh;
       position: absolute;
-      left: 53%;
-      margin: 25px 0 50px 0;
+      top: -310px;
+      left: 500px;
     }
 
     .ingredientHeader {
       border-bottom: 2px solid #d9d9d9;
       color: #000;
-      width: auto;
+      width: 24vw;
       height: 80px;
       position: relative;
-      background-color: transparent;
+      background-color: #D9D9D9;
     }
 
     .ingredientHeading {
@@ -322,7 +320,7 @@
       position: absolute;
       top: 10px;
       /* Adjust this value to move the div down */
-      left: 80%;
+      left: 350px;
       /* Adjust this value as needed */
       border: 1px solid #d76614;
       border-radius: 5px;
@@ -354,29 +352,22 @@
     .tableIngredient {
       width: 100%;
       border-collapse: collapse;
-      table-layout: fixed;
     }
 
-    .headerRow {
-        width: 100%;
-        text-align: center;
-      }
+    .headerRow tr {
+      text-align: center;
+      display: grid;
+      grid-template-columns: 180px 120px 1fr;
+      gap: 0px;
+    }
 
-      .grid-cell {
-        display: grid;
-        grid-template-columns: 120px 120px 1fr;
-        gap: 0px;
-        padding: 10px;
-      }
-
-      .headerRow td {
-        border-right: 1px solid transparent;
-      }
-
-    
+    .headerRow td {
+      padding: 10px;
+      border-right: 1px solid #2D2B2B;
+    }
 
     .ingredientLi {
-      background-color: transparent;
+      background-color: #D9D9D9;
       color: #000;
       margin: 10px;
       display: flex;
@@ -387,22 +378,20 @@
       font-size: 20px;
       font-weight: bold;
       font-style: normal;
-      background-color: transparent;
-      height: auto;
-      max-height: fit-content;
+      background-color: #d9d9d9;
+      height: 36vh;
     }
 
     .spanquantity {
       font-size: large;
       font-weight: bold;
       position: fixed;
-      margin-left: 17%;
+      margin-left: 200px;
     }
 
     .trashIcon {
       font-size: 20px;
-      margin-left: 30%;
-      position: fixed;
+      margin-right: 40px;
     }
 
     /*View Picture Edit*/
@@ -426,7 +415,7 @@
       border: 3px solid #2D2B2B;
       background-color: #EEEEEE;
       height: 240px;
-      width: 20vw;
+      width: 25vw;
       margin-top: 52px;
     }
 
@@ -480,7 +469,7 @@
     .btnIngredient {
       background-color: #d76614;
       margin-top: 20px;
-      font-size: 15px;
+      font-size: 20px;
       font-weight: normal;
     }
 
@@ -677,8 +666,6 @@
         width: 100%;
     }
 }
-
-
       
   </style>
 
@@ -768,9 +755,9 @@
                       <table class="tableIngredient">
                         <thead class="headerRow">
                           <tr>
-                            <td><div class="grid-cell">Ingredients</div></td>
-                            <td><div class="grid-cell">Quantity</div></td>
-                            <td><div class="grid-cell">Action</div></td>
+                            <td class="ingred">Ingredients</td>
+                            <td class="ingred">Quantity</td>
+                            <td class="ingredientAction">Action</td>
                           </tr>
                         </thead>
                       </table>

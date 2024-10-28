@@ -31,8 +31,8 @@
         max-width: 1000px;
         position: relative;
         margin-top: 30px;
-        padding-left: 200px;
-        left: 0;
+        padding-left: 100px;
+        left: -120px;
     }
 
     .table {
@@ -381,7 +381,7 @@
 
             </select>
             <form class="search form-inline">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-2 w-50 topbtn">Add User</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50 topbtn">Add User</button>
                 <!-- Modal -->
                 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
