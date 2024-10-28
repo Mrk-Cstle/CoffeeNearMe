@@ -78,7 +78,7 @@ $(document).ready(function () {
          
          var data = {
           
-             action: 'lowstock'
+             action: 'topproduct'
       
       };
     $.ajax({
@@ -88,41 +88,35 @@ $(document).ready(function () {
         data: JSON.stringify(data),
         success: function(response) {
             if (response.status === 'success') {
-                var ingredients = response.ingredients;
+                var top = response.top;
                 
                 
                 
-               let header = `<h5 id="lowHead">Low Stock</h5>
-
-                    <div class="lowHeading">
-                        <h5 id="lowHead">Product</h5>
-                        <h5 id="lowHead">Product Name</h5>
-                        <h5 id="lowHead">Quantity</h5>
-                    </div>`
+               let header = ` <div class="heading">
+                                  <p id="head">Name</p>
+                                  <p id="head">Sold Quantity</p>
+                                 
+                                  <p id="head">Price</p>
+                              </div>
+                              <div id="borderDown"></div>`
 
                 let listItems = header;
-                ingredients.forEach(function(ingredients) {
-                    let pictureHtml = '';
-                    if (ingredients.picture) {
-                        pictureHtml = `<img  class="lowImage" src="uploads/ingredients/${ingredients.picture}" data-product-img="${ingredients.picture}">`;
-                    } else {
-                        pictureHtml = ` <img src="../assets/images/coffee.png" class="lowImage">`;
-                    }
-
+                top.forEach(function(top) {
+                    
                  
                     listItems += `
-                    
-                           
-                        <div class="lowBody">
-                        ${pictureHtml}
-                        <h5 id="lowP1">${ingredients.raw_name}</h5>
-                        <h5 id="lowP2">${ingredients.quantity} ${ingredients.unit}</h5>
-                        </div>
+                    <div class="bodySell">
+                        <p id="bodyP1">${top.product_name}</p>
+                        <p id="bodyP2">${top.sold_quantity}</p>
+                        
+                        <p id="bodyP4">${top.total_value}</p>
+                    </div>
+
                     <div id="borderDown"></div>
                     `;
                 });
                 
-                $('.lowStockDiv').html(listItems);
+                $('.selling').html(listItems);
 
                 
      
@@ -143,5 +137,6 @@ $(document).ready(function () {
             // Handle any additional error details as needed
           }
         });
-    }
+  }
+  topproduct();
 })

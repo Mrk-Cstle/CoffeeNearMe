@@ -110,38 +110,10 @@
                     <div id="borderDown"></div>
 
                     <div class="bodySell">
-                        <p id="bodyP1">Spanish Latte</p>
-                        <p id="bodyP2">12</p>
-                        <p id="bodyP3">5 Latte</p>
-                        <p id="bodyP4">₱120</p>
+                        <p id="bodyP1">No Data</p>
+
                     </div>
 
-                    <div id="borderDown"></div>
-
-                    <div class="bodySell">
-                        <p id="bodyP1">Spanish Latte</p>
-                        <p id="bodyP2">12</p>
-                        <p id="bodyP3">5 Latte</p>
-                        <p id="bodyP4">₱120</p>
-                    </div>
-
-                    <div id="borderDown"></div>
-
-                    <div class="bodySell">
-                        <p id="bodyP1">Spanish Latte</p>
-                        <p id="bodyP2">12</p>
-                        <p id="bodyP3">5 Latte</p>
-                        <p id="bodyP4">₱120</p>
-                    </div>
-
-                    <div id="borderDown"></div>
-
-                    <div class="bodySell">
-                        <p id="bodyP1">Spanish Latte</p>
-                        <p id="bodyP2">12</p>
-                        <p id="bodyP3">5 Latte</p>
-                        <p id="bodyP4">₱120</p>
-                    </div>
 
                 </div>
 
@@ -181,19 +153,16 @@
             </div>
 
         </div>
-        <div class="container">
-            <h2>Total Sales Over Time</h2>
-            <canvas id="salesChart"></canvas>
-        </div>
+
         <div class="charts">
 
 
             <!--BAR CHART -->
             <div class="barChart-container">
                 <div class="chartBar-container">
-                    <h3 class="barChartHeadOne">In-Demand Product</h3>
+                    <h3 class="barChartHeadOne">Total Sales Over Time</h3>
                     <div class="canvasBar-container">
-                        <canvas id="myBarChart"></canvas>
+                        <canvas id="salesChart"></canvas>
                     </div>
                 </div>
             </div>
