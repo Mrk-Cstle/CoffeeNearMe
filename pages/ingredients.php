@@ -25,23 +25,27 @@
 
   .container {
     padding: 50px;
-    margin-left: 420px;
+    margin-left: 350px;
     margin-top: 120px;
   }
 
   .table {
+    position: relative;
     border: 1px solid;
-    margin-top: 60px;
+    width: 80%;
+    min-width: 400px;
+    height: auto;
+    margin-top: 40px;
     text-align: center;
-    font-size: 18px;
-    -webkit-text-fill-color: #d76614;
+    font-size: 15px;
+    -webkit-text-fill-color: #fff;
   }
 
   .search {
     height: 10%;
-    width: 30%;
+    width:  25%;
     display: flex;
-    float: right;
+    margin-left: 600px;
   }
 
   .btn {
@@ -53,7 +57,7 @@
     background-color: #d76614;
     border: none;
     float: left;
-    margin-left: 50px;
+    margin-left: 20px;
   }
 
   .categorycontent {
@@ -138,164 +142,135 @@
     font-size: 20px;
   }
 
-  /*Edit Modal Form CSS*/
-  #editModal {
-    border: 2px solid #d9d9d9;
-    border-radius: 25px;
-    height: 590px;
-    width: 1070px;
-    background-color: #d9d9d9;
-    position: absolute;
-    top: 50%;
-    left: 52%;
-    transform: translate(-50%, -50%);
+  /* Edit Modal overall styles */
+  .modal-content {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 150px;
   }
 
-  #modal-body {
-    background-color: #d9d9d9;
-    height: 430px;
-    width: 750px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 288px;
+  /* Header styles */
+  .modal-header {
+    border-bottom: 1px solid #ddd;
     display: flex;
-  }
-
-  #modal-header {
-    background-color: #d9d9d9;
-    width: 750px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 40px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
   }
 
   .modal-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-    margin-left: 5px;
-    -webkit-text-fill-color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
-  #editModalLabel {
-    margin-left: 306px;
+  .close {
+    font-size: 1.5rem;
   }
 
-  .form-group {
-    margin-left: 60px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 18px;
-    margin-top: 20px;
+  /* Body styles */
+  #modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
   }
 
+  /* Image styles */
   .ingredientProfile {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
-    margin-top: 20px;
-    margin-left: 14px;
+    margin: 0 auto 20px;
   }
 
-  #ingredientPicture {
-    border: 2px solid white;
-    height: 190px;
-    width: 190px;
-    border-radius: 10px;
-    background-color: #fff;
-    margin-left: 15px;
+  /* Form group styles */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  /* Input styles */
+  input[type="text"],
+  input[type="number"],
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Button styles */
+  .btnn {
+    display: flex;
+    justify-content: space-between;
     margin-top: 15px;
   }
 
-  #name {
-    margin-left: 5px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    width: 250px;
+  .btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
   }
-
-  #qty {
-    margin-left: 5px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    width: 333px;
-  }
-
-  #ideal_qty {
-    margin-left: 5px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    width: 282px;
-  }
-
-  #picture {
-    margin-left: 5px;
-    border: 2px solid #d76614;
-    border-radius: 10px;
-    width: 345px;
-  }
-
-  .btnn {
-    margin-top: 120px;
-    float: right;
-    height: 15px;
-  }
-
-  #btn {
-    height: 35px;
-    margin: 5px;
-  }
-
-  .borderr {
-    border: 2px solid white;
-    border-radius: 15px;
-    background-color: white;
-    height: 300px;
-    width: 450px;
-    margin-left: 125px;
-  }
-
-  #category {
-    border: 2px solid #000;
-  }
-
-  #ingredients {
-    border: 2px solid #000;
-  }
-
-  #ingredients_image {
-    margin-top: 50px;
-    border: 5px #2c2c2c;
-    border-radius: 50px;
-    width: 300px;
-    padding: 2px;
-    font-size: 20px;
-    color: #d76614;
-  }
-
-  #ingredients_image::-webkit-file-upload-button {
-    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
-    color: #fff;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-  }
-
-  .imageButton {
-    margin-top: 20px;
-    border: 2px solid #d76614;
+  
+  .imageButton{
     background-color: #d76614;
-    color: white;
-    height: 35px;
-    width: 80px;
+    border: 1px solid  #d76614;
+    width: 5vw;
+    height: 4vh;
+    color: #fff;
     border-radius: 10px;
+
   }
+  #ingredients_image::-webkit-file-upload-button {
+      background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+  /* Responsive design */
+  @media (max-width: 1024px) {
+    .modal-dialog {
+      width: 80%; /* Adjust modal width for laptops */
+      max-width: 600px; /* Limit maximum width */
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+    }
+
+    .btn {
+      width: 48%; /* Make buttons slightly smaller */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-content {
+      padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .ingredientProfile {
+      width: 80px; /* Smaller image on smaller screens */
+      height: 80px;
+    }
+
+    .modal-header,
+    .modal-body {
+      padding: 10px; /* Further reduce padding */
+    }
+  }
+
 
   /*Drop Down CSS */
 
@@ -477,14 +452,50 @@
     font-weight: 700;
   }
 
-  /*Text CSS */
+  /*Pagination*/
+
+  #paginationControls {
+        position: relative;
+        float: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #prevPage, #nextPage {
+        background-color: #d76614; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        padding: 5px 10px; 
+        margin: 0 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+    }
+
+    #prevPage:disabled, #nextPage:disabled {
+        background-color: #ccc; 
+        cursor: not-allowed; 
+    }
+
+    #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
+        background-color: #2c2c2c; 
+    }
+
+    #currentPage {
+        margin: 0 10px; 
+        font-weight: bold; 
+        font-size: 16px; 
+    }
+
 </style>
 
 <body>
   <div class="container">
 
     <div>
-      <button type="button" class="topbtn btn btn-dark me-1"><a href="actionInventory.php">Inventory Actions</a></button>
+      <a href="actionInventory.php" class="topbtn btn btn-dark me-1">Inventory Actions</a>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Ingredients</button>

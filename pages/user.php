@@ -22,21 +22,25 @@
 </head>
 <style>
     body {
-        background-color: #d9d9d9;
+    background-color: #d9d9d9;
     }
 
     .container {
         padding: 50px;
-        margin-left: 420px;
-        margin-top: 40px;
+        margin: 0 auto;
+        max-width: 1000px;
+        position: relative;
+        margin-top: 30px;
+        padding-left: 100px;
+        left: -120px;
     }
 
     .table {
         border: 1px solid;
-        margin-top: 60px;
+        margin-top: 40px;
         text-align: center;
         font-size: 18px;
-        -webkit-text-fill-color: #d76614;
+        -webkit-text-fill-color: #fff;
     }
 
     .search {
@@ -147,13 +151,7 @@
         margin-left: 50px;
     }
 
-    .update {
-        background-color: #2d2b2b;
-        border: none;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
+    .update,
     .delete {
         background-color: #2d2b2b;
         border: none;
@@ -162,7 +160,13 @@
     }
 
     .viewcontent {
-        height: 750px;
+        height: 5vh;
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        left: 55%;
+        top: 10%;
+        transform: translate(-50%, -50%);
     }
 
     .viewbody {
@@ -173,55 +177,6 @@
         background-color: rgba(0, 0, 0, 0.3);
         border: #d76614;
         -webkit-text-fill-color: #d76614;
-    }
-
-    .pagination {
-        list-style-type: none;
-        padding: 10px 0;
-        display: inline-flex;
-        justify-content: center;
-        box-sizing: border-box;
-        margin-top: 20px;
-    }
-
-    .pagination li {
-        box-sizing: border-box;
-        padding-right: 10px;
-    }
-
-    .pagination li a {
-        box-sizing: border-box;
-        background-color: #d76614;
-        padding: 8px;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: bold;
-        color: #fff;
-        /* Text color */
-        border-radius: 4px;
-    }
-
-    .pagination li a:hover {
-        background-color: #2d2b2b;
-        color: #fff;
-        /* Hover text color */
-    }
-
-    .pagination .currentpage a {
-        background-color: #2d2b2b;
-        color: #fff;
-    }
-
-    .pagination .currentpage a:hover {
-        background-color: #2d2b2b;
-    }
-
-    .pagination li a {
-        color: #fff;
-    }
-
-    .pagination li a:hover {
-        text-decoration: none;
     }
 
     .vbtn {
@@ -238,32 +193,21 @@
         height: 40px;
         width: 80px;
         margin-right: 15px;
-        
     }
 
-    .headerrr {
-        background-color: #2c2c2c;
-    }
-
-    .pooter {
-        background-color: #2c2c2c;
-        height: 75px;
-        border: #2c2c2c;
-    }
-
+    .headerrr,
+    .pooter,
     .bodyyy {
         background-color: #2c2c2c;
     }
 
-    #search-user{
+    #search-user {
         height: 40px;
         margin-top: 58px;
     }
 
-
-    /*File Image CSS */
-
-    #users_image{
+    /* File Image CSS */
+    #users_image {
         margin-top: 10px;
         border: 5px #2c2c2c;
         border-radius: 50px;
@@ -272,8 +216,9 @@
         font-size: 18px;
         color: #d76614;
     }
-    #users_image::-webkit-file-upload-button{
-        background-image: linear-gradient(45deg, rgb(215, 102, 20), #000 );
+
+    #users_image::-webkit-file-upload-button {
+        background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
         color: #fff;
         padding: 8px 16px;
         border: none;
@@ -281,7 +226,7 @@
         cursor: pointer;
     }
 
-    .user-imagebtn{
+    .user-imagebtn {
         border: 2px solid #d76614;
         width: 100px;
         height: 30px;
@@ -289,20 +234,132 @@
         background-color: #d76614;
         color: #fff;
     }
-    #modal-header-edit{
-        margin-left: 520px;
+
+    #modal-header-edit {
+        margin-left: 560px;
     }
 
-
-    /*Users-tbl */
-
-    .users-tbl{
+    /* Users-tbl */
+    .users-tbl {
         -webkit-text-fill-color: #000;
         font-weight: 600;
     }
-    .view-btn{
+
+    .view-btn {
         -webkit-text-fill-color: #fff;
         background-color: #d76614;
+    }
+
+    /* Pagination */
+    #paginationControls {
+        position: relative;
+        float: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #prevPage,
+    #nextPage {
+        background-color: #d76614;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #prevPage:disabled,
+    #nextPage:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    #prevPage:not(:disabled):hover,
+    #nextPage:not(:disabled):hover {
+        background-color: #2c2c2c;
+    }
+
+    #currentPage {
+        margin: 0 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .topbtn {
+        margin-top: 60px;
+        position: relative;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+        .container {
+            margin-left: 80px;
+            padding-left: 100px;
+        }
+        .table {
+            font-size: 16px;
+        }
+        .fname {
+            margin-left: 0;
+            width: 100%;
+        }
+        .info {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .search {
+            width: 100%;
+            float: none;
+            margin-top: 20px;
+        }
+        .modal-title {
+            margin-left: 0;
+            text-align: center;
+        }
+        .fprofile {
+            margin-left: 0;
+        }
+        .userbody {
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 25px;
+            margin-left: 80px;
+        }
+        .btnn {
+            width: auto;
+            margin-right: 0;
+        }
+        .viewcontent {
+            height: auto; /* Adjust height for smaller screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .modal-header {
+            text-align: center;
+        }
+        .user-imagebtn {
+            width: 80%;
+            height: 28px;
+        }
+        #users_image {
+            width: 80%;
+        }
+    }
+
+    .pooter{
+        height: 70px;
     }
     
 </style>
@@ -324,7 +381,7 @@
 
             </select>
             <form class="search form-inline">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50">Add User</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50 topbtn">Add User</button>
                 <!-- Modal -->
                 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -387,7 +444,7 @@
             <button id="nextPage" disabled>Next</button>
         </div>
 
-
+            <!--VIEW MODAL-->
         <form class="user-image" id="view" method="POST">
             <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
