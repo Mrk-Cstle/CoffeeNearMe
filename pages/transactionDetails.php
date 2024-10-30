@@ -138,7 +138,7 @@
                             <p><strong>Cashier:</strong> ${usertd}</p>`
                         totalcontent += `
                             <p>Total</p>
-                            <p>₱${totaltd}</p>
+                            <p>${totaltd}</p>
                             `
                         transaction.forEach(function(item) {
 
@@ -236,7 +236,7 @@
                             <tr>
                                 <td >${item.transaction_id}</td>
                                 <td class ="usertd">${item.user}</td>
-                                <td class ="totaltd">${item.total_amount}</td>
+                                  <td class="totaltd">₱${Number(item.total_amount).toLocaleString()}</td>
                                 <td class = "timetd">${item.timestamp}</td>
                                
                                 <td><button id="btn-view" onclick="openModal(this,${item.transaction_id})">View</button></td>

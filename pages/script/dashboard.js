@@ -109,7 +109,7 @@ $(document).ready(function () {
                         <p id="bodyP1">${top.product_name}</p>
                         <p id="bodyP2">${top.sold_quantity}</p>
                         
-                        <p id="bodyP4">${top.total_value}</p>
+                        <p id="bodyP4">₱${Number(top.total_value).toLocaleString()}</p>
                     </div>
 
                     <div id="borderDown"></div>

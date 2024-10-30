@@ -98,7 +98,7 @@ $(document).ready(function () {
                             <td  class="product-name tableProductsInfo" >${product.product_name}</td>
                             
                             
-                            <td class="product-quantity tableProductsInfo">${product.price}</td>
+                            <td class="product-quantity tableProductsInfo">₱${Number(product.price).toLocaleString()}</td>
                             
                            
                             

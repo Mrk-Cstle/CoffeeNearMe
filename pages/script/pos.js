@@ -52,7 +52,7 @@ function loadProduct() {
                         <div class="product ${productClass}" data-product-id="${product.product_id}" data-available-quantity="${product.available_quantity}">
                             ${pictureHtml}
                             <h3 class="${isAvailable ? '' : 'text-danger'}">${product.product_name}</h3>
-                            <p>₱${product.price}</p>
+                            <p>₱${Number(product.price).toLocaleString()}</p>
                             <div class="quantity-control">
                                 <button class="minus-btn">-</button>
                                 <input type="text" value="1" class="quantity" readonly>
@@ -267,7 +267,7 @@ function attachQuantityControl() {
             subtotal += itemTotal;
             listItems += `
                 <li>
-                    ${item.name} x ${item.quantity} - ₱${itemTotal.toFixed(2)}
+                    ${item.name} x ${item.quantity} - ₱${Number(itemTotal.toFixed(2)).toLocaleString()} 
                      <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">Delete</button>
                 </li>
             `;
