@@ -18,13 +18,31 @@ try {
             // Retrieve and sanitize page and itemsPerPage from the input data
             $page  = sanitizeInput($data['page']);
             $itemsPerPage = sanitizeInput($data['itemsPerPage']);
-
+            $filter  = sanitizeInput($data['filter']);
 
             // Default to 10 items per page
 
             // Calculate the offset for pagination
             $offset = ($page - 1) * $itemsPerPage;
-            $sql = "SELECT * FROM transaction WHERE 1=1 ORDER BY transaction_id DESC";
+            $whereClause = "1=1"; // Default, selects all records
+
+            switch ($filter) {
+                case "Today":
+                    $whereClause = "DATE(timestamp) = CURRENT_DATE";
+                    break;
+                case "Weekly":
+                    $whereClause = "WEEK(timestamp) = WEEK(CURRENT_DATE) AND YEAR(timestamp) = YEAR(CURRENT_DATE)";
+                    break;
+                case "Monthly":
+                    $whereClause = "MONTH(timestamp) = MONTH(CURRENT_DATE) AND YEAR(timestamp) = YEAR(CURRENT_DATE)";
+                    break;
+                case "All":
+                default:
+                    // No additional conditions, so the default is "all" transactions
+                    break;
+            }
+
+            $sql = "SELECT * FROM transaction WHERE $whereClause ORDER BY transaction_id DESC";
 
             $result = $conn->query($sql);
             $totalItems = $result->num_rows;

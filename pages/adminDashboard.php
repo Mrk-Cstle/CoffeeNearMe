@@ -99,7 +99,15 @@
         <div class="topSellingandLowStockProduct">
 
             <div class="topSellingDiv">
+
                 <h5 id="topHead">Top Selling Product</h5>
+                <select class="topbtn btn btn-dark me-1" aria-label="filter" name="filter" id="filter">
+                    <option value="Today">Today</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
+
+
+                </select>
                 <div class="selling">
                     <div class="heading">
                         <p id="head">Name</p>

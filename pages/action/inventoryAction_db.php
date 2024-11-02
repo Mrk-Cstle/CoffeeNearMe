@@ -17,13 +17,31 @@ try {
         // Retrieve and sanitize page and itemsPerPage from the input data
         $page  = sanitizeInput($data['page']);
         $itemsPerPage = sanitizeInput($data['itemsPerPage']);
+        $filter  = sanitizeInput($data['filter']);
 
 
         // Default to 10 items per page
 
         // Calculate the offset for pagination
         $offset = ($page - 1) * $itemsPerPage;
-        $sql = "SELECT * FROM inventory_action WHERE 1=1 ORDER BY action_id DESC";
+        $whereClause = "1=1";
+        switch ($filter) {
+            case "Today":
+                $whereClause = "DATE(action_date) = CURRENT_DATE";
+                break;
+            case "Weekly":
+                $whereClause = "WEEK(action_date) = WEEK(CURRENT_DATE) AND YEAR(action_date) = YEAR(CURRENT_DATE)";
+                break;
+            case "Monthly":
+                $whereClause = "MONTH(action_date) = MONTH(CURRENT_DATE) AND YEAR(action_date) = YEAR(CURRENT_DATE)";
+                break;
+            case "All":
+            default:
+                // No additional conditions, so the default is "all" transactions
+                break;
+        }
+
+        $sql = "SELECT * FROM inventory_action WHERE $whereClause ORDER BY action_id DESC";
 
         $result = $conn->query($sql);
         $totalItems = $result->num_rows;

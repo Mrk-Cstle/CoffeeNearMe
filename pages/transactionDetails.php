@@ -15,6 +15,14 @@
 <body>
     <div class="container">
         <h2>Transaction Details</h2>
+        <select class="topbtn btn btn-dark me-1" aria-label="filter" name="filter" id="filter">
+            <option value="All">All</option>
+            <option value="Today">Today</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+
+
+        </select>
         <div class="transaction">
             <table class="transaction-table">
                 <thead>
@@ -209,10 +217,16 @@
                     loads();
                 }
             });
+            $('#filter').change(function() {
+
+                loads();
+            });
 
             function loads() {
+                var filter = $('#filter').val();
                 var itemsPerPage = 10;
                 var data = {
+                    filter: filter,
                     page: currentPage,
                     itemsPerPage: itemsPerPage,
                     action: 'reload'

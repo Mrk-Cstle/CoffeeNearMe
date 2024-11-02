@@ -24,6 +24,26 @@ try {
         ]);
         $conn->close();
     } elseif ($action == 'topproduct') {
+
+        $filter = $data['filter'];
+        $whereClause = "";
+
+        switch ($filter) {
+            case "Today":
+                $whereClause = "DATE(t.timestamp) = CURRENT_DATE";
+                break;
+            case "Weekly":
+                $whereClause = "WEEK(t.timestamp) = WEEK(CURRENT_DATE) AND YEAR(t.timestamp) = YEAR(CURRENT_DATE)";
+                break;
+            case "Monthly":
+                $whereClause = "MONTH(t.timestamp) = MONTH(CURRENT_DATE) AND YEAR(t.timestamp) = YEAR(CURRENT_DATE)";
+                break;
+            default:
+                // Default to this week if no filter is specified
+                $whereClause = "DATE(t.timestamp) = CURRENT_DATE";
+                break;
+        }
+
         $query = "SELECT 
             p.product_name, 
             SUM(ti.quantity) AS sold_quantity, 
@@ -35,8 +55,7 @@ try {
         JOIN 
             coffeenearme.transaction t ON ti.transaction_id = t.transaction_id
         WHERE 
-            WEEK(t.timestamp) = WEEK(CURRENT_DATE) 
-            AND YEAR(t.timestamp) = YEAR(CURRENT_DATE)
+            $whereClause
         GROUP BY 
             p.product_name, p.price
         ORDER BY 
@@ -50,7 +69,7 @@ try {
                 $top[] = $row;
             }
         } else {
-            echo "No ingredients with low stock.";
+            echo "No Data.";
         }
         echo json_encode([
             "status" => "success",

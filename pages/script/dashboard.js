@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+  
 
     function lowstock() {
      
@@ -72,12 +73,19 @@ $(document).ready(function () {
           }
         });
     }
-    lowstock()
+  lowstock()
+  
+  $('#filter').change(function () {
+      
+        topproduct();
+  });
+  
+
     function topproduct() {
-     
+     var filter = $('#filter').val();
          
          var data = {
-          
+          filter: filter,
              action: 'topproduct'
       
       };
