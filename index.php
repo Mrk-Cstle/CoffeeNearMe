@@ -55,7 +55,7 @@
     }
 
     .btn:hover {
-        background-color:#806D60;
+        background-color: #806D60;
     }
 
     .image {
@@ -79,21 +79,22 @@
 
 <body>
     <div class="Area">
-        <form action="pages/action/logindb.php" method="post">
+        <form>
             <div class="row g-2 mb-3">
                 <div>
                     <img class="text-logo" src="assets/images/logotext _nobg.png">
                 </div>
                 <div class="user col-10">
                     <label class="form-label" style="color:#FFFFFF;">Username</label>
-                    <input type="Username" name="user_name" class="usr form-control">
+                    <input type="Username" name="user_name" id="user_name" class="usr form-control">
                 </div>
                 <div class="pass col-10 mb-3">
                     <label class="form-label" style="color:#FFFFFF;">Password</label>
-                    <input type="Password" name="password" class="pss form-control">
+                    <input type="Password" name="password" id="password" class="pss form-control">
                 </div>
+                <p id="errorhandling" style="color:red;"> </p>
                 <div>
-                    <button type="submit" class="btn">Login</button>
+                    <button class="btn">Login</button>
                 </div>
             </div>
         </form>
@@ -106,5 +107,59 @@
     <!-- <a href="pages/adduser.php">add user</a> -->
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn').click(function(event) {
+            event.preventDefault();
+
+            var user = $('#user_name').val().trim();
+            var password = $('#password').val().trim();
+
+
+            // if (user === "") {
+            //     $('#errorhandling').text("Username is required.");
+            //     $('#user_name').focus();
+            //     return;
+            // } else if (password === "") {
+            //     $('#errorhandling').text("Password is required.");
+            //     $('#password').focus();
+            //     return;
+            // } else {
+
+            //     $('#errorhandling').text("");
+            // }
+
+            var data = {
+                user: user,
+                password: password
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "pages/action/logindb.php",
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function(response) {
+                    // Parse the JSON response if not already parsed
+                    if (typeof response !== 'object') {
+                        response = JSON.parse(response);
+                    }
+
+                    if (response.success) {
+                        $('#errorhandling').text(response.message);
+                        // Optionally, redirect to dashboard
+                        window.location.href = "pages/adminDashboard.php";
+                    } else {
+                        $('#errorhandling').text(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#errorhandling').text("An error occurred: " + error);
+                }
+            });
+        });
+    });
+</script>
 
 </html>
