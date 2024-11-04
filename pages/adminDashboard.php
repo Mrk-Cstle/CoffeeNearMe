@@ -110,15 +110,12 @@
                 </select>
                 <div class="selling">
                     <div class="heading">
-                        <p id="head">Name</p>
-                        <p id="head">Sold Quantity</p>
-                        <p id="head">Remaining</p>
-                        <p id="head">Price</p>
+
                     </div>
                     <div id="borderDown"></div>
 
                     <div class="bodySell">
-                        <p id="bodyP1">No Data</p>
+
 
                     </div>
 

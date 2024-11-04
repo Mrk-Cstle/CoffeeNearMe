@@ -64,18 +64,22 @@ try {
         $result = $conn->query($query);
         $top = [];
         if ($result->num_rows > 0) {
-            // Output data for each row
             while ($row = $result->fetch_assoc()) {
                 $top[] = $row;
             }
+            echo json_encode([
+                "status" => "success",
+                "message" => "Data fetched successfully.",
+                "top" => $top
+            ]);
         } else {
-            echo "No Data.";
+            // No data case
+            echo json_encode([
+                "status" => "success",
+                "message" => "No data available.",
+                "top" => []
+            ]);
         }
-        echo json_encode([
-            "status" => "success",
-            "message" => 'success',
-            "top" => $top
-        ]);
         $conn->close();
     }
 } catch (Exception $e) {

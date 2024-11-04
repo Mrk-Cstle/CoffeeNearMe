@@ -109,20 +109,21 @@ $(document).ready(function () {
                               <div id="borderDown"></div>`
 
                 let listItems = header;
-                top.forEach(function(top) {
-                    
-                 
+                if (top.length > 0) {
+              
+                top.forEach(function(item) {
                     listItems += `
-                    <div class="bodySell">
-                        <p id="bodyP1">${top.product_name}</p>
-                        <p id="bodyP2">${top.sold_quantity}</p>
-                        
-                        <p id="bodyP4">₱${Number(top.total_value).toLocaleString()}</p>
-                    </div>
-
-                    <div id="borderDown"></div>
-                    `;
+                        <div class="bodySell">
+                            <p id="bodyP1">${item.product_name}</p>
+                            <p id="bodyP2">${item.sold_quantity}</p>
+                            <p id="bodyP4">₱${Number(item.total_value).toLocaleString()}</p>
+                        </div>
+                        <div id="borderDown"></div>`;
                 });
+            } else {
+                
+                listItems += `<p class="no-data">${response.message}</p>`;
+            }
                 
                 $('.selling').html(listItems);
 
