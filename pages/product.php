@@ -368,20 +368,20 @@
     }
 
     .headerRow {
-        width: 100%;
-        text-align: center;
-      }
-    
-      .grid-cell {
-        display: grid;
-        grid-template-columns: 20px 120px 1fr;
-        gap: 0px;
-        padding: 10px;
-      }
+      width: 100%;
+      text-align: center;
+    }
 
-      .headerRow td {
-        border-right: 1px solid transparent;
-      }
+    .grid-cell {
+      display: grid;
+      grid-template-columns: 20px 120px 1fr;
+      gap: 0px;
+      padding: 10px;
+    }
+
+    .headerRow td {
+      border-right: 1px solid transparent;
+    }
 
     .ingredientLi {
       background-color: transparent;
@@ -580,114 +580,123 @@
 
     /* Pagination */
     #paginationControls {
-        position: absolute;
-        bottom: -70px; 
-        left: 10%;
-        transform: translateX(-50%); 
-        padding: 10px;
-        background-color: #f2f2f2;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: flex; 
-        align-items: center; 
+      position: absolute;
+      bottom: -70px;
+      left: 10%;
+      transform: translateX(-50%);
+      padding: 10px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
     }
 
-    #prevPage, #nextPage {
-        background-color: #d76614; 
-        color: white; 
-        border: none; 
-        border-radius: 5px; 
-        padding: 5px 10px; 
-        margin: 0 5px; 
-        cursor: pointer; 
-        transition: background-color 0.3s; 
+    #prevPage,
+    #nextPage {
+      background-color: #d76614;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
 
-    #prevPage:disabled, #nextPage:disabled {
-        background-color: #ccc; 
-        cursor: not-allowed; 
+    #prevPage:disabled,
+    #nextPage:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
 
-    #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
-        background-color: #2c2c2c; 
+    #prevPage:not(:disabled):hover,
+    #nextPage:not(:disabled):hover {
+      background-color: #2c2c2c;
     }
 
     #currentPage {
-        margin: 0 10px; 
-        font-weight: bold; 
-        font-size: 16px; 
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     /* Media Queries */
-@media only screen and (max-width: 1200px) {
-    /* Adjust container for tablets */
-    .container {
+    @media only screen and (max-width: 1200px) {
+
+      /* Adjust container for tablets */
+      .container {
         margin-top: 100px;
         max-width: 95%;
-    }
+      }
 
-    .viewProduct, .ingredientBody {
+      .viewProduct,
+      .ingredientBody {
         max-width: 100%;
         height: auto;
+      }
     }
-}
 
-@media only screen and (max-width: 768px) {
-    /* Adjust container for mobile devices */
-    .container {
+    @media only screen and (max-width: 768px) {
+
+      /* Adjust container for mobile devices */
+      .container {
         margin-top: 50px;
-    }
+      }
 
-    /* Stack product inputs vertically */
-    .productInput {
+      /* Stack product inputs vertically */
+      .productInput {
         flex-direction: column;
-    }
+      }
 
-    .viewProduct {
+      .viewProduct {
         height: auto;
-    }
+      }
 
-    /* Adjust modal and form widths */
-    .modal-dialog {
+      /* Adjust modal and form widths */
+      .modal-dialog {
         max-width: 100%;
         padding: 10px;
-    }
+      }
 
-    /* Adjust buttons for mobile */
-    #btn, #btn-action {
+      /* Adjust buttons for mobile */
+      #btn,
+      #btn-action {
         width: 100%;
         height: auto;
         padding: 10px;
         font-size: 16px;
-    }
+      }
 
-    /* Image adjustments for smaller screens */
-    #picture, img {
+      /* Image adjustments for smaller screens */
+      #picture,
+      img {
         width: 80px;
         height: 80px;
+      }
     }
-}
 
-@media only screen and (max-width: 480px) {
-    /* Smaller adjustments for very small screens */
-    .container {
+    @media only screen and (max-width: 480px) {
+
+      /* Smaller adjustments for very small screens */
+      .container {
         margin-top: 20px;
-    }
+      }
 
-    /* Stack elements vertically on mobile */
-    .headerRow tr {
+      /* Stack elements vertically on mobile */
+      .headerRow tr {
         display: block;
-    }
+      }
 
-    #btn, #btn-action {
+      #btn,
+      #btn-action {
         width: 100%;
-    }
+      }
 
-    .ingredientBody {
+      .ingredientBody {
         width: 100%;
+      }
     }
-}
-      
   </style>
 
 </head>
@@ -699,7 +708,7 @@
       <div class="productTable">
         <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="topbtn btn btn-dark me-1">Category</button>
         <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class="topbtn btn btn-dark me-1">Add Product</button>
-        <a href="transactionDetails.php" class="topbtn btn btn-dark me-1" >Transaction History</a>
+        <a href="transactionDetails.php" class="topbtn btn btn-dark me-1">Transaction History</a>
         <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
           <option value="">Filter</option>
           <?php
@@ -776,9 +785,15 @@
                       <table class="tableIngredient">
                         <thead class="headerRow">
                           <tr>
-                            <td><div class="grid-cell">Ingredients</div></td>
-                            <td><div class="grid-cell">Quantity</div></td>
-                            <td><div class="grid-cell">Action</div></td>
+                            <td>
+                              <div class="grid-cell">Ingredients</div>
+                            </td>
+                            <td>
+                              <div class="grid-cell">Quantity</div>
+                            </td>
+                            <td>
+                              <div class="grid-cell">Action</div>
+                            </td>
                           </tr>
                         </thead>
                       </table>
@@ -875,7 +890,7 @@
 
                 // Read data for each row
                 while ($row = $result->fetch_assoc()) {
-                  echo '<option value="' . $row["ingredients_id"] . '">' . $row["raw_name"] . '</option>';
+                  echo '<option value="' . $row["ingredients_id"] . '" data-unit="' . $row["unit"] . '">' . $row["raw_name"] . '</option>';
                 }
                 ?>
               </select>
@@ -1015,6 +1030,34 @@
   <script src="script/product_ingredients.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="script/imageupload.js"></script>
+  <script>
+    const unitOptions = {
+      kg: ['g'],
+      pcs: ['pcs'],
+      gal: ['mL'],
+
+    };
+
+    document.getElementById('product_ingredients').addEventListener('change', function() {
+      const selectedIngredient = this.options[this.selectedIndex];
+      const unitType = selectedIngredient.getAttribute('data-unit'); // Get unit type
+
+      const aUnitSelect = document.getElementById('a_unit');
+      aUnitSelect.innerHTML = ''; // Clear current options
+
+      if (unitOptions[unitType]) {
+        unitOptions[unitType].forEach(unit => {
+          const option = document.createElement('option');
+          option.value = unit;
+          option.textContent = unit;
+          aUnitSelect.appendChild(option);
+        });
+      }
+    });
+
+    // Trigger change event on page load to set initial units
+    document.getElementById('product_ingredients').dispatchEvent(new Event('change'));
+  </script>
 </body>
 
 </html>
