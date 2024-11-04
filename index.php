@@ -117,18 +117,18 @@
             var password = $('#password').val().trim();
 
 
-            // if (user === "") {
-            //     $('#errorhandling').text("Username is required.");
-            //     $('#user_name').focus();
-            //     return;
-            // } else if (password === "") {
-            //     $('#errorhandling').text("Password is required.");
-            //     $('#password').focus();
-            //     return;
-            // } else {
+            if (user === "") {
+                $('#errorhandling').text("Username is required.");
+                $('#user_name').focus();
+                return;
+            } else if (password === "") {
+                $('#errorhandling').text("Password is required.");
+                $('#password').focus();
+                return;
+            } else {
 
-            //     $('#errorhandling').text("");
-            // }
+                $('#errorhandling').text("");
+            }
 
             var data = {
                 user: user,
