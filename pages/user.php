@@ -22,7 +22,7 @@
 </head>
 <style>
     body {
-    background-color: #d9d9d9;
+        background-color: #d9d9d9;
     }
 
     .container {
@@ -300,13 +300,16 @@
             margin-left: 80px;
             padding-left: 100px;
         }
+
         .table {
             font-size: 16px;
         }
+
         .fname {
             margin-left: 0;
             width: 100%;
         }
+
         .info {
             width: 100%;
             margin-left: 0;
@@ -319,13 +322,16 @@
             float: none;
             margin-top: 20px;
         }
+
         .modal-title {
             margin-left: 0;
             text-align: center;
         }
+
         .fprofile {
             margin-left: 0;
         }
+
         .userbody {
             margin-left: 0;
         }
@@ -336,12 +342,15 @@
             padding-left: 25px;
             margin-left: 80px;
         }
+
         .btnn {
             width: auto;
             margin-right: 0;
         }
+
         .viewcontent {
-            height: auto; /* Adjust height for smaller screens */
+            height: auto;
+            /* Adjust height for smaller screens */
         }
     }
 
@@ -349,19 +358,20 @@
         .modal-header {
             text-align: center;
         }
+
         .user-imagebtn {
             width: 80%;
             height: 28px;
         }
+
         #users_image {
             width: 80%;
         }
     }
 
-    .pooter{
+    .pooter {
         height: 70px;
     }
-    
 </style>
 
 
@@ -400,20 +410,23 @@
                                 </div>
                                 <div class="name input-group mb-3 d-block">
                                     Password
-                                    <input type="text" class="t-input form-control w-75" aria-label="Name" id="password">
+                                    <input type="password" class="t-input form-control w-75" aria-label="Name" id="password">
                                 </div>
                                 <div class="contact input-group mb-3 d-block">
                                     Contact
-                                    <input type="text" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
+                                    <input type="number" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
                                 </div>
                                 <div class="address input-group mb-3 d-block">
                                     Address
                                     <input type="text" class="t-input form-control w-75" aria-label="Address" id="address">
                                 </div>
+                                <p id="errorhandling" style="color:red;"> </p>
                             </div>
+
                             <div class="userfooter modal-footer">
+
                                 <button type="button" class="btnnnn btn-dark me-2" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btnnnn btn-dark" id="saveChanges">Save changes</button>
+                                <button type="button" class="btnnnn btn-dark" id="saveChanges">Add</button>
                             </div>
                         </div>
                     </div>
@@ -444,7 +457,7 @@
             <button id="nextPage" disabled>Next</button>
         </div>
 
-            <!--VIEW MODAL-->
+        <!--VIEW MODAL-->
         <form class="user-image" id="view" method="POST">
             <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">

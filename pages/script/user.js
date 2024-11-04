@@ -203,11 +203,51 @@ loadUser();
      
             $('#saveChanges').click(function() {
                 // Collect the input data
-                var full_name = $('#full_name').val();
-                var user_name = $('#user_name').val();
-                var password = $('#password').val();
-                var address = $('#address').val();
-                var contact_number = $('#contact_number').val();
+                var full_name = $('#full_name').val().trim();
+        var user_name = $('#user_name').val().trim();
+        var password = $('#password').val().trim();
+        var address = $('#address').val().trim();
+        var contact_number = $('#contact_number').val().trim();
+
+        // Validation checks
+        if (full_name === "") {
+            $('#errorhandling').text("Full name is required.");
+            $('#full_name').focus();
+            return;
+        }
+        
+        if (user_name === "") {
+            $('#errorhandling').text("Username is required.");
+            $('#user_name').focus();
+            return;
+        }
+        
+        if (password === "") {
+            $('#errorhandling').text("Password is required.");
+            $('#password').focus();
+            return;
+        } 
+        
+       
+        
+        if (contact_number === "") {
+            $('#errorhandling').text("Contact number is required.");
+            $('#contact_number').focus();
+            return;
+        } else if (!/^\d+$/.test(contact_number)) {
+            $('#errorhandling').text("Contact number must contain only digits.");
+            $('#contact_number').focus();
+            return;
+              }else if (contact_number.length < 11) {
+            $('#errorhandling').text("Invalid Contact number.");
+            $('#contact_number').focus();
+            return;
+        }
+        if (address === "") {
+            $('#errorhandling').text("Address is required.");
+            $('#address').focus();
+            return;
+        }
 
                 // Prepare the data to be sent
                 var data = {
