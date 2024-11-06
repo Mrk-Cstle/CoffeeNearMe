@@ -3,20 +3,22 @@ body {
     background-color: #D9D9D9;
     margin: 20px;
     padding-left: 250px;
+    box-sizing: border-box;
 }
 
 .container {
     width: 55vw;
-    height: 68vh;
+    height: 70vh;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
     margin-bottom: 20px;
-    margin-top: 150px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 0.9rem;
 }
 
 .transaction-table-container {
@@ -95,34 +97,59 @@ body {
     font-size: 16px; 
 }
 
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-    .container {
-        width: 90vw; /* Adjust container width on smaller screens */
-        margin-left: auto;
-        margin-right: auto;
-        height: auto; /* Allow height to adapt */
+@media (max-width: 1200px) {
+    .container{
+        width: 100%;
+        height: auto;
+        font-size: 0.8rem;
     }
-
-    .pagination {
-        bottom: -70px;
-        left: 50%;
-        transform: translateX(-50%);
+    .transaction-table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        table-layout: fixed; /* Ensures equal column widths */
     }
 }
 
-/* Laptop adjustments (screen width: 1024px - 1440px) */
-@media screen and (min-width: 1024px) and (max-width: 1440px) {
-    .container {
-        width: 70vw; /* Slightly larger container width for laptops */
-        height: auto; /* Allow the height to adapt based on content */
+@media (max-width: 968px) {
+    .container{
+        width: 100%;
+        height: auto;
+        font-size: 0.7rem;
     }
-
-    .transaction-table th, .transaction-table td {
-        padding: 10px; /* Adjust padding for better spacing on laptops */
+    .transaction-table-container {
+        width: 100%;
+        overflow-x: auto;
     }
+    
+    .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        table-layout: fixed; /* Ensures equal column widths */
+    }
+}
 
-    .pagination {
-        bottom: -80px; /* Adjust pagination position */
+@media (max-width: 768px) {
+    .container{
+        width: 100%;
+        height: auto;
+        font-size: 0.7rem;
+    }
+    .transaction-table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .transaction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        table-layout: fixed; /* Ensures equal column widths */
     }
 }

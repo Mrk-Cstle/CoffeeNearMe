@@ -193,9 +193,9 @@
                 var BackgroundColor = lowStock ? '#FA8072' : '';
                  let pictureHtml = '';
                                 if (ingredient.picture) {
-                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
+                                    pictureHtml = `<img style="width: 60px; height: 60px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 60px; height: 60px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
                                 }
                 listItems += `
                     <tr >
