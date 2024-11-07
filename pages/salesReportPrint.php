@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +31,8 @@
       margin-bottom: 20px;
     }
 
-    .left-section, .right-section {
+    .left-section,
+    .right-section {
       display: flex;
       flex-direction: column;
     }
@@ -41,11 +43,13 @@
       margin-top: 40px;
     }
 
-    .left-section div, .right-section div {
+    .left-section div,
+    .right-section div {
       margin-bottom: 10px;
     }
 
-    .left-section input, .right-section div {
+    .left-section input,
+    .right-section div {
       font-size: 1rem;
     }
 
@@ -69,7 +73,8 @@
       margin: 20px 0;
     }
 
-    th, td {
+    th,
+    td {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: center;
@@ -117,38 +122,43 @@
       }
 
       body {
-        -webkit-print-color-adjust: exact; /* Ensures colors are printed correctly */
+        -webkit-print-color-adjust: exact;
+        /* Ensures colors are printed correctly */
       }
 
       /* Hide header and footer added by the browser */
-      footer, header {
+      footer,
+      header {
         display: none !important;
       }
 
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
-    <h1>BASIC DAILY SALES REPORT TEMPLATE</h1>
+    <h1>DAILY SALES REPORT</h1>
     <div class="header">
       <!-- Left Section -->
       <div class="left-section">
         <div class="left-row">
           <div>
-            <strong>SALES PERSON</strong><br>
-            <input type="text" value="Robert Smith" readonly>
+            <!-- <strong>USER</strong><br>
+            <input type="text" value="Robert Smith" readonly> -->
           </div>
           <div>
             <strong>DATE</strong><br>
-            <input type="text" value="05/11/2024" readonly>
+            <input id="dateInput" type="text" readonly>
           </div>
         </div>
       </div>
-
+      <div class="no-print">
+        <button onclick="window.print()">Print Report</button>
+      </div>
       <!-- Right Section -->
-      <div class="right-section">
+      <!-- <div class="right-section">
         <div>
           <strong>SALES AMOUNT</strong><br>
           <span>$3,750.00</span>
@@ -161,61 +171,115 @@
           <strong>SALES TOTAL</strong><br>
           <span>$4,027.50</span>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="table-container">
       <table>
         <thead>
           <tr>
-            <th>ITEM NO</th>
-            <th>ITEM NAME</th>
-            <th>ITEM DESCRIPTION</th>
+
+            <th>PRODUCT NAME</th>
+
             <th>PRICE</th>
             <th>QTY</th>
             <th>AMOUNT</th>
-            <th>TAX RATE</th>
-            <th>TAX</th>
-            <th>TOTAL</th>
+
+
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>A123</td>
+          <!-- <tr>
+
             <td>ITEM A</td>
-            <td>Item A description</td>
+
             <td>$10.00</td>
             <td>20</td>
             <td>$200.00</td>
-            <td>15%</td>
-            <td>$30.00</td>
-            <td>$230.00</td>
+
+
           </tr>
           <tr>
-            <td>B123</td>
+
             <td>ITEM B</td>
-            <td>Item B description</td>
+
             <td>$20.00</td>
             <td>10</td>
             <td>$200.00</td>
-            <td>15%</td>
-            <td>$30.00</td>
-            <td>$230.00</td>
-          </tr>
+
+
+          </tr> -->
           <!-- Add more rows as needed -->
         </tbody>
       </table>
     </div>
 
     <div class="total-box">
-      <div><strong>GRAND TOTAL</strong></div>
-      <div>$4,027.50</div>
+      <div><strong>TOTAL</strong></div>
+      <div id="grandTotal"></div>
     </div>
 
-    <div class="no-print">
-      <button onclick="window.print()">Print Report</button>
-    </div>
+
   </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    $('#dateInput').val(formattedDate);
+
+    // Fetch and display today's sales data
+
+
+
+    function fetchDailySales() {
+      const date = $('#dateInput').val(); // Get the date from the input
+
+      $.ajax({
+        url: 'action/report_db.php', // Ensure this is the correct path to your PHP file
+        type: 'POST',
+        data: {
+          date: date // Pass the date if needed; otherwise, remove this if the current date should be used
+        },
+        dataType: 'json',
+        success: function(data) {
+          let tableBody = $('table tbody');
+          tableBody.empty(); // Clear any existing rows
+
+          let grandTotal = 0;
+
+          data.forEach(item => {
+            const amount = parseFloat(item.total_sales_today).toFixed(2); // Calculate item sales amount
+            grandTotal += parseFloat(amount); // Accumulate the grand total
+
+            // Append a new row for each item
+            tableBody.append(`
+                <tr>
+                    <td>${item.product_name}</td>
+                    <td>$${parseFloat(item.price).toFixed(2)}</td>
+                    <td>${item.total_qty_sold_today}</td>
+                    <td>$${amount}</td>
+                </tr>
+            `);
+          });
+
+          // Update the grand total display
+          $('#grandTotal').text('₱' + grandTotal.toFixed(2));
+        },
+        error: function(err) {
+          console.error('Error fetching data:', err);
+        }
+      });
+
+    }
+
+    fetchDailySales();
+
+  })
+</script>
+
 </html>

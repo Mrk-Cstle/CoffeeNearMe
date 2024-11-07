@@ -47,15 +47,17 @@
                             <p id="salesPara">Transaction Today</p>
                         </div>
                     </div>
-                    <!-- <div class="borderRight"></div> -->
 
-                    <!-- <div class="salesOver">
-                        <img src="../assets/images/profitIcon.png" class="salesImage">
-                        <div class="paragraphSales">
-                            <p id="salesNum">50</p>
-                            <p id="salesPara">Number</p>
+                    <div class="borderRight"></div>
+
+                    <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
+                        <div class="salesOver">
+                            <img src="../assets/images/profitIcon.png" class="salesImage">
+                            <div class="paragraphSales">
+                                <p id="salesPara">Today's Report</p>
+                            </div>
                         </div>
-                    </div> -->
+                    </a>
 
                 </div>
 
