@@ -330,7 +330,7 @@
 
         }
 
-        <<<<<<< HEAD .table {
+        HEAD .table {
             font-size: 16px;
         }
 
@@ -389,7 +389,7 @@
         }
 
         .user-imagebtn {
-            =======.add-user {
+            .add-user {
                 width: 100%;
             }
 
@@ -398,19 +398,19 @@
             }
 
             .usercontent {
-                >>>>>>>ron width: 80%;
+                width: 80%;
                 padding: 10px;
                 max-width: 500px;
                 margin: auto;
             }
 
-            <<<<<<< HEAD #users_image {
+            #users_image {
                 width: 80%;
 
-                =======.viewbody {
+                .viewbody {
                     width: 100%;
                     display: block;
-                    >>>>>>>ron
+
                 }
 
                 .fname {
@@ -431,145 +431,143 @@
 
             }
 
-            <<<<<<< HEAD .pooter {
+            .pooter {
                 height: 70px;
             }
 
-            =======
 
-            /* Tablet */
-            @media (min-width: 768px) and (max-width: 1023px) {
-                .container {
-                    width: 100%;
-                    padding: 20px;
-                    margin: 0 auto 0 50px;
-                    max-width: 900px;
-                    position: relative;
-                    margin-top: 0px;
-                    padding-left: 220px;
-                    padding-right: auto;
+        }
+    }
 
-                }
+    /* Tablet */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .container {
+            width: 100%;
+            padding: 20px;
+            margin: 0 auto 0 50px;
+            max-width: 900px;
+            position: relative;
+            margin-top: 0px;
+            padding-left: 220px;
+            padding-right: auto;
 
-                .add-user {
-                    width: 100%;
-                }
+        }
 
-                .search {
-                    width: 60%;
-                }
+        .add-user {
+            width: 100%;
+        }
 
-                .usercontent {
-                    width: 80%;
-                    padding: 10px;
-                    max-width: 500px;
-                    margin: auto;
-                }
+        .search {
+            width: 60%;
+        }
 
-                .viewbody {
-                    width: 60vw;
-                    display: block;
-                }
+        .usercontent {
+            width: 80%;
+            padding: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
 
-                .pooter {
-                    width: 60vw;
-                }
+        .viewbody {
+            width: 60vw;
+            display: block;
+        }
 
-                .headerrr {
-                    width: 60vw;
-                }
+        .pooter {
+            width: 60vw;
+        }
 
-                .fname {
-                    width: 100%;
-                    height: 80%;
-                    padding: 20px;
-                }
+        .headerrr {
+            width: 60vw;
+        }
 
-                .info {
-                    width: 100%;
-                    right: 60px;
-                    margin-left: 50px;
-                }
+        .fname {
+            width: 100%;
+            height: 80%;
+            padding: 20px;
+        }
 
-                .fprofile {
-                    width: 100px;
-                    height: 100px;
-                }
+        .info {
+            width: 100%;
+            right: 60px;
+            margin-left: 50px;
+        }
 
-                #modal-header-edit {
-                    margin-left: 250px;
-                }
-            }
+        .fprofile {
+            width: 100px;
+            height: 100px;
+        }
 
-
-
-            @media screen and (max-width: 853px) {
-                .container {
-                    padding: 10px;
-                    margin: 0 auto 0 50px;
-                    max-width: 900px;
-                    position: relative;
-                    margin-top: 30px;
-                    padding-left: 220px;
-                    padding-right: auto;
-
-                }
-
-                .add-user {
-                    width: 100%;
-                }
-
-                .search {
-                    width: 60%;
-                }
-
-                .usercontent {
-                    width: 80%;
-                    height: 100%;
-                    padding: 10px;
-                    max-width: 500px;
-                    margin: auto;
-                }
-
-                .viewbody {
-                    width: 60vw;
-                    height: 60vh;
-                    display: block;
-                }
-
-                .pooter,
-                .headerrr {
-                    width: 60vw;
-                }
-
-                .fname {
-                    width: 28vw;
-                    height: 80%;
-                    padding: 20px;
-                }
-
-                .info {
-                    width: 20vw;
-                    right: 22px;
-                    float: right;
-                    bottom: 350px;
-                    padding-left: 10px;
-                }
-
-                .fprofile {
-                    width: 100px;
-                    height: 100px;
-                    margin-left: 90px;
-                }
-
-                #modal-header-edit {
-                    margin-left: 180px;
-                }
-            }
+        #modal-header-edit {
+            margin-left: 250px;
+        }
+    }
 
 
 
-            >>>>>>>ron
+    @media screen and (max-width: 853px) {
+        .container {
+            padding: 10px;
+            margin: 0 auto 0 50px;
+            max-width: 900px;
+            position: relative;
+            margin-top: 30px;
+            padding-left: 220px;
+            padding-right: auto;
+
+        }
+
+        .add-user {
+            width: 100%;
+        }
+
+        .search {
+            width: 60%;
+        }
+
+        .usercontent {
+            width: 80%;
+            height: 100%;
+            padding: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .viewbody {
+            width: 60vw;
+            height: 60vh;
+            display: block;
+        }
+
+        .pooter,
+        .headerrr {
+            width: 60vw;
+        }
+
+        .fname {
+            width: 28vw;
+            height: 80%;
+            padding: 20px;
+        }
+
+        .info {
+            width: 20vw;
+            right: 22px;
+            float: right;
+            bottom: 350px;
+            padding-left: 10px;
+        }
+
+        .fprofile {
+            width: 100px;
+            height: 100px;
+            margin-left: 90px;
+        }
+
+        #modal-header-edit {
+            margin-left: 180px;
+        }
+    }
 </style>
 
 
@@ -608,19 +606,13 @@
                                 </div>
                                 <div class="name input-group mb-3 d-block">
                                     Password
-                                    <<<<<<< HEAD
-                                        <input type="password" class="t-input form-control w-75" aria-label="Name" id="password">
+
+                                    <input type="password" class="t-input form-control w-75" aria-label="Name" id="password">
                                 </div>
                                 <div class="contact input-group mb-3 d-block">
                                     Contact
                                     <input type="number" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
-                                    =======
-                                    <input type="text" class="t-input form-control w-75 addInput" aria-label="Name" id="password" required>
-                                </div>
-                                <div class="contact input-group mb-3 d-block">
-                                    Contact
-                                    <input type="text" class="t-input form-control w-75 addInput" aria-label="Contact" id="contact_number" required>
-                                    >>>>>>> ron
+
                                 </div>
                                 <div class="address input-group mb-3 d-block">
                                     Address
