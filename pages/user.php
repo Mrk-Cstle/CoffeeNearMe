@@ -614,6 +614,16 @@
                                     <input type="number" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
 
                                 </div>
+                                <div class="contact input-group mb-3 d-block">
+                                    Account Type
+                                    <select class="t-input form-control w-75" aria-label="Account Type" name="account" id="account" required>
+
+                                        <option value="admin">Admin</option>
+                                        <option value="staff">Staff</option>
+
+                                    </select>
+
+                                </div>
                                 <div class="address input-group mb-3 d-block">
                                     Address
                                     <input type="text" class="t-input form-control w-75 addInput" aria-label="Address" id="address" required>
@@ -688,7 +698,7 @@
                                             </div>
 
                                             <div class="input-group mb-3 d-block mt-4">Account Type
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type" required>
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type" required readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -707,7 +717,7 @@
                                                 <input type="number" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number" required>
                                             </div>
                                             <div class="input-group mb-2 mt-1">Account Date
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date" required>
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date" required readonly>
                                             </div>
                                         </div>
                                     </div>

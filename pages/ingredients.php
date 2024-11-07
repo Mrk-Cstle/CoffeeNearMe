@@ -19,18 +19,19 @@
   <title>Table 2</title>
 </head>
 <style>
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
   }
+
   body {
     background-color: #d9d9d9;
     position: fixed;
     overflow: hidden;
   }
-  
+
 
   .container {
     width: 80%;
@@ -72,10 +73,10 @@
     margin: 0 0 0 auto;
     justify-content: space-evenly;
     font-size: 1rem;
-    
+
   }
 
-  #searchInput{
+  #searchInput {
     width: 20%;
     height: 40px;
   }
@@ -148,16 +149,16 @@
     -webkit-text-fill-color: #000;
   }
 
-.add-quantity{
+  .add-quantity {
     display: flex;
   }
 
-  #add-qty{
+  #add-qty {
     border: none;
     border-radius: 10px;
   }
 
-  #a_unit{
+  #a_unit {
     margin-top: 0px;
     border: none;
     border-radius: 10px;
@@ -205,7 +206,7 @@
     font-size: 1.5rem;
   }
 
-  #close-btn{
+  #close-btn {
     font-size: 2rem;
     border: none;
     background-color: transparent;
@@ -240,7 +241,7 @@
     font-weight: bold;
   }
 
-  
+
 
   /* Button styles */
   .btnn {
@@ -256,24 +257,25 @@
     width: 18%;
     height: 40px;
   }
-  
-  .imageButton{
+
+  .imageButton {
     background-color: #d76614;
-    border: 1px solid  #d76614;
+    border: 1px solid #d76614;
     width: 5vw;
     height: 4vh;
     color: #fff;
     border-radius: 10px;
 
   }
+
   #ingredients_image::-webkit-file-upload-button {
-      background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
-      color: #fff;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-    }
+    background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
 
 
   /*Drop Down CSS */
@@ -390,7 +392,7 @@
     font-weight: bold;
   }
 
-  .stockinunit{
+  .stockinunit {
     width: 15%;
     height: 35px;
     background-color: #d9d9d9;
@@ -402,7 +404,7 @@
     text-align: center;
   }
 
-  .stockoutunit{
+  .stockoutunit {
     width: 15%;
     height: 35px;
     background-color: #d9d9d9;
@@ -473,7 +475,7 @@
     margin-right: 20px;
   }
 
-  .updatebtn{
+  .updatebtn {
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     width: 80px;
@@ -485,7 +487,7 @@
     text-decoration: none;
   }
 
-  .deletebtn{
+  .deletebtn {
     border: 1px solid #d9d9d9;
     border-radius: 5px;
     width: 80px;
@@ -508,48 +510,51 @@
   /*Pagination*/
 
   #paginationControls {
-        position: relative;
-        float: left;
-        padding: 10px;
-        background-color: #f2f2f2;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+    position: relative;
+    float: left;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-    #prevPage, #nextPage {
-        background-color: #d76614; 
-        color: white; 
-        border: none; 
-        border-radius: 5px; 
-        padding: 5px 10px; 
-        margin: 0 5px; 
-        cursor: pointer; 
-        transition: background-color 0.3s; 
-    }
+  #prevPage,
+  #nextPage {
+    background-color: #d76614;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
 
-    #prevPage:disabled, #nextPage:disabled {
-        background-color: #ccc; 
-        cursor: not-allowed; 
-    }
+  #prevPage:disabled,
+  #nextPage:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 
-    #prevPage:not(:disabled):hover, #nextPage:not(:disabled):hover {
-        background-color: #2c2c2c; 
-    }
+  #prevPage:not(:disabled):hover,
+  #nextPage:not(:disabled):hover {
+    background-color: #2c2c2c;
+  }
 
-    #currentPage {
-        margin: 0 10px; 
-        font-weight: bold; 
-        font-size: 16px; 
-    }
-    
+  #currentPage {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 16px;
+  }
 
-    /* Responsive design */
 
-    @media (max-width: 1400px) {
-    .container{
+  /* Responsive design */
+
+  @media (max-width: 1400px) {
+    .container {
       width: 80%;
       height: 700px;
-      margin: 100px auto 0 300px; 
+      margin: 100px auto 0 300px;
       padding: 10px;
       max-width: 900px;
       margin-top: 100px;
@@ -557,26 +562,30 @@
       overflow: hidden;
     }
 
-    .table{
+    .table {
       width: 80%;
       padding: 10px;
     }
 
-    .topbtn{
+    .topbtn {
       display: flex;
       margin: 0 auto 0 40px;
       width: 100%;
       overflow: hidden;
     }
 
-    #searchInput{
+    #searchInput {
       width: 100%;
       height: 40px;
     }
+
     .modal-dialog {
-      width: 80%; /* Adjust modal width for laptops */
-      max-width: 600px; /* Limit maximum width */
+      width: 80%;
+      /* Adjust modal width for laptops */
+      max-width: 600px;
+      /* Limit maximum width */
     }
+
     .modal-content {
       width: 80%;
       height: 590px;
@@ -588,103 +597,111 @@
     }
 
     .btn {
-      width: 80%; /* Make buttons slightly smaller */
+      width: 80%;
+      /* Make buttons slightly smaller */
       height: 40px;
     }
 
-    #close-btn{
-    font-size: 2rem;
-    border: none;
-    background-color: transparent;
-    } 
+    #close-btn {
+      font-size: 2rem;
+      border: none;
+      background-color: transparent;
+    }
 
     .stockIn {
-    background-color: #d9d9d9;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    height: 400px;
-    width: 400px;
-    position: absolute;
-    margin-top: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-  }
+      background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      height: 400px;
+      width: 400px;
+      position: absolute;
+      margin-top: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
 
 
-  /*FOR ADD CATEGORY MODAL */
-  .categorycontent{
-    height: 350px;
-    bottom: 100px;
-  }
-  .pluscontent{
-    width: 80%;
-    height: 250px;
-    bottom: 100px;
-  }
-  #add_category{
-    width: 60px;
-  }
+    /*FOR ADD CATEGORY MODAL */
+    .categorycontent {
+      height: 350px;
+      bottom: 100px;
+    }
 
-  /*FOR ADD INGREDIENT MODAL */
+    .pluscontent {
+      width: 80%;
+      height: 250px;
+      bottom: 100px;
+    }
 
-  .add-content{
-    width: 40vw;
-    height: 460px;
-    font-size: 0.8rem;
-    margin: 0px;
-    
-  }
-  .btn-Ingredient{
-    width: 60px;
-  }
+    #add_category {
+      width: 60px;
+    }
+
+    /*FOR ADD INGREDIENT MODAL */
+
+    .add-content {
+      width: 40vw;
+      height: 460px;
+      font-size: 0.8rem;
+      margin: 0px;
+
+    }
+
+    .btn-Ingredient {
+      width: 60px;
+    }
   }
 
 
   @media (max-width: 1024px) {
-    .container{
+    .container {
       width: 80%;
       height: 700px;
-      margin: 100px auto 0 230px; 
+      margin: 100px auto 0 230px;
       padding: 10px;
       max-width: 900px;
       margin-top: 100px;
       margin-right: auto;
     }
 
-    .table{
+    .table {
       width: 80%;
       padding: 10px;
     }
 
-    .topbtn{
+    .topbtn {
       display: flex;
       margin: 0 auto 0 40px;
       width: 100%;
       overflow: hidden;
     }
 
-    #searchInput{
+    #searchInput {
       width: 100%;
       height: 40px;
     }
 
-    .modal-content{
+    .modal-content {
       width: 80%;
       height: 620px;
       overflow: hidden;
     }
 
-    #ingredients_image{
-      height:40px;
+    #ingredients_image {
+      height: 40px;
     }
-    .imageButton{
+
+    .imageButton {
       width: 60px;
     }
+
     .modal-dialog {
-      width: 80%; /* Adjust modal width for laptops */
-      max-width: 600px; /* Limit maximum width */
+      width: 80%;
+      /* Adjust modal width for laptops */
+      max-width: 600px;
+      /* Limit maximum width */
     }
 
     .modal-title {
@@ -692,7 +709,8 @@
     }
 
     .btn {
-      width: 80%; /* Make buttons slightly smaller */
+      width: 80%;
+      /* Make buttons slightly smaller */
       height: 40px;
     }
 
@@ -710,141 +728,153 @@
       overflow: hidden;
     }
 
-  .categorycontent{
-    height: 250px;
-    bottom: 100px;
-  }
-  .pluscontent{
-    width: 80%;
-    height: 250px;
-    bottom: 100px;
-  }
-  #add_category{
-    width: 60px;
-  } 
+    .categorycontent {
+      height: 250px;
+      bottom: 100px;
+    }
 
-  .add-content{
-    width: 40vw;
-    height: 480px;
-    font-size: 0.8rem;
-    margin: 0px;
-    
-  }
+    .pluscontent {
+      width: 80%;
+      height: 250px;
+      bottom: 100px;
+    }
 
-  .btn-Ingredient{
-    width: 60px;
-  }
+    #add_category {
+      width: 60px;
+    }
 
-}
+    .add-content {
+      width: 40vw;
+      height: 480px;
+      font-size: 0.8rem;
+      margin: 0px;
+
+    }
+
+    .btn-Ingredient {
+      width: 60px;
+    }
+
+  }
 
   @media (max-width: 968px) {
 
-  .container{
-    width: 90%;
-    height: 700px;
-    margin: 100px auto 0 230px; 
-    padding: 10px;
-    max-width: 800px;
-    margin-top: 100px;
-    margin-right: auto;
-  }
+    .container {
+      width: 90%;
+      height: 700px;
+      margin: 100px auto 0 230px;
+      padding: 10px;
+      max-width: 800px;
+      margin-top: 100px;
+      margin-right: auto;
+    }
 
-  .topbtn{
-    display: flex;
-    margin: 0 auto 0 5px;
-    width: 100%;
-    overflow: hidden;
-  }
+    .topbtn {
+      display: flex;
+      margin: 0 auto 0 5px;
+      width: 100%;
+      overflow: hidden;
+    }
 
-  #searchInput{
-    width: 100%;
-    height: 40px;
-  }
+    #searchInput {
+      width: 100%;
+      height: 40px;
+    }
 
-  .modal-dialog {
-    width: 80%; /* Adjust modal width for laptops */
-    max-width: 600px; /* Limit maximum width */
-  }
+    .modal-dialog {
+      width: 80%;
+      /* Adjust modal width for laptops */
+      max-width: 600px;
+      /* Limit maximum width */
+    }
 
-  .btn {
-    width: 100%; /* Make buttons slightly smaller */
-    height: 40px;
-  }
+    .btn {
+      width: 100%;
+      /* Make buttons slightly smaller */
+      height: 40px;
+    }
 
-  .modal-content {
-    padding: 15px; /* Reduce padding on smaller screens */
-  }
+    .modal-content {
+      padding: 15px;
+      /* Reduce padding on smaller screens */
+    }
 
-  .modal-content{
+    .modal-content {
       width: 80%;
       height: 570px;
       overflow: hidden;
     }
 
-    #ingredients_image{
-      height:40px;
+    #ingredients_image {
+      height: 40px;
     }
-    .imageButton{
+
+    .imageButton {
       width: 60px;
     }
 
-  .ingredientProfile {
-    width: 80px; /* Smaller image on smaller screens */
-    height: 80px;
-  }
+    .ingredientProfile {
+      width: 80px;
+      /* Smaller image on smaller screens */
+      height: 80px;
+    }
 
-  .modal-header,
-  .modal-body {
-    padding: 10px; /* Further reduce padding */
-  }
+    .modal-header,
+    .modal-body {
+      padding: 10px;
+      /* Further reduce padding */
+    }
 
-  .stockIn {
-    background-color: #d9d9d9;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    height: 400px;
-    width: 400px;
-    position: absolute;
-    margin-top: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-  }
+    .stockIn {
+      background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      height: 400px;
+      width: 400px;
+      position: absolute;
+      margin-top: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
 
-  
-  .categorycontent{
-    height: 350px;
-    bottom: 100px;
-  }
-  .pluscontent{
-    width: 80%;
-    height: 250px;
-    bottom: 100px;
-  }
-  #add_category{
-    width: 60px;
-  }
 
-  /*ADD INGREDIENT MODAL */
-  .add-content{
-    width: 40vw;
-    height: 490px;
-    font-size: 0.8rem;
-    margin: 0px;
-    
-  }
-  .btn-Ingredient{
-    width: 60px;
-  }
-  
+    .categorycontent {
+      height: 350px;
+      bottom: 100px;
+    }
+
+    .pluscontent {
+      width: 80%;
+      height: 250px;
+      bottom: 100px;
+    }
+
+    #add_category {
+      width: 60px;
+    }
+
+    /*ADD INGREDIENT MODAL */
+    .add-content {
+      width: 40vw;
+      height: 490px;
+      font-size: 0.8rem;
+      margin: 0px;
+
+    }
+
+    .btn-Ingredient {
+      width: 60px;
+    }
+
   }
 
   @media (max-width: 768px) {
 
-    .container{
+    .container {
       width: 80%;
-      margin: 100px auto 0 210px; 
+      margin: 100px auto 0 210px;
       padding: 10px;
       max-width: 900px;
       margin-top: 100px;
@@ -852,29 +882,32 @@
       overflow: hidden;
     }
 
-    .topbtn{
+    .topbtn {
       display: flex;
       margin: 0 auto 0 10px;
       width: 100%;
       overflow: hidden;
     }
 
-    #searchInput{
+    #searchInput {
       width: 100%;
       height: 40px;
     }
 
     .modal-dialog {
-      width: 80%; /* Adjust modal width for laptops */
-      max-width: 600px; /* Limit maximum width */
+      width: 80%;
+      /* Adjust modal width for laptops */
+      max-width: 600px;
+      /* Limit maximum width */
     }
 
     .btn {
-      width: 100%; /* Make buttons slightly smaller */
+      width: 100%;
+      /* Make buttons slightly smaller */
       height: 40px;
     }
 
-    .modal-content{
+    .modal-content {
       width: 80%;
       height: 570px;
       overflow: hidden;
@@ -882,74 +915,80 @@
       padding: 15px;
     }
 
-    #ingredients_image{
-      height:40px;
+    #ingredients_image {
+      height: 40px;
       font-size: 0.8rem;
     }
-    .imageButton{
+
+    .imageButton {
       width: 60px;
     }
 
     .ingredientProfile {
-      width: 80px; /* Smaller image on smaller screens */
+      width: 80px;
+      /* Smaller image on smaller screens */
       height: 80px;
     }
 
     .modal-header,
     .modal-body {
-      padding: 10px; /* Further reduce padding */
+      padding: 10px;
+      /* Further reduce padding */
     }
+
     .stockIn {
-    background-color: #d9d9d9;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    height: 400px;
-    width: 350px;
-    position: absolute;
-    margin-top: 400px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow: hidden;
-  }
-  .stockINHeader{
-    margin-left: 100px;
-  } 
-  
-  .categorycontent{
-    height: 350px;
-    bottom: 100px;
-  }
-  .pluscontent{
-    width: 80%;
-    height: 250px;
-    bottom: 100px;
-  }
-  #add_category{
-    width: 60px;
-  }
+      background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      height: 400px;
+      width: 350px;
+      position: absolute;
+      margin-top: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
 
-  /*ADD INGREDIENT MODAL */
-  .add-content{
-    width: 40vw;
-    height: 490px;
-    font-size: 0.8rem;
-    margin: 0px;
-    
-  }
+    .stockINHeader {
+      margin-left: 100px;
+    }
 
-  .btn-Ingredient{
-    width: 60px;
-  }
-}
+    .categorycontent {
+      height: 350px;
+      bottom: 100px;
+    }
 
+    .pluscontent {
+      width: 80%;
+      height: 250px;
+      bottom: 100px;
+    }
+
+    #add_category {
+      width: 60px;
+    }
+
+    /*ADD INGREDIENT MODAL */
+    .add-content {
+      width: 40vw;
+      height: 490px;
+      font-size: 0.8rem;
+      margin: 0px;
+
+    }
+
+    .btn-Ingredient {
+      width: 60px;
+    }
+  }
 </style>
 
 <body>
   <div class="container">
 
-  <div class="topbtn">
-  <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a>
+    <div class="topbtn">
+      <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Ingredients</button>
@@ -978,111 +1017,116 @@
       <input id="searchInput" class="form-control mr-sm-2 me-1" type="search" placeholder="Search" aria-label="Search">
       <form class="search form-inline">
 
-      </div>
+    </div>
     <div>
-        <!-- Modal -->
-        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="categorycontent modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-4" id="ModalLabel">Category</h1>
-                <a type="button" class="plusbtn bi bi-plus-lg mt-1" data-bs-target="#Category" data-bs-toggle="modal"></a>
-              </div>
-              <div class="category modal-body">
-                <ul class="list-group">
+      <!-- Modal -->
+      <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="categorycontent modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="ModalLabel">Category</h1>
+              <a type="button" class="plusbtn bi bi-plus-lg mt-1" data-bs-target="#Category" data-bs-toggle="modal"></a>
+            </div>
+            <div class="category modal-body">
+              <ul class="list-group">
 
-                  <!-- <li class="items list-group-item">aad
+                <!-- <li class="items list-group-item">aad
                     <a href="" class="dots bi bi-three-dots-vertical text-dark"></a> -->
-                  </li>
-                </ul>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="modal fade" id="Category" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="pluscontent modal-content">
-              <div class="plusheader modal-header">
-                <h1 class="modal-title fs-4" id="ModalLabel">Add New Category</h1>
-              </div>
-              <div class="plusbody modal-body">
-                <div class="userbody modal-body">
-                  <div class="user input-group mb-3 d-block"> Category
-                    <input type="text" class="t-input form-control w-100" aria-label="category" id="category" required>
-                  </div>
+      </div>
+      <div class="modal fade" id="Category" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="pluscontent modal-content">
+            <div class="plusheader modal-header">
+              <h1 class="modal-title fs-4" id="ModalLabel">Add New Category</h1>
+            </div>
+            <div class="plusbody modal-body">
+              <div class="userbody modal-body">
+                <div class="user input-group mb-3 d-block"> Category
+                  <input type="text" class="t-input form-control w-100" aria-label="category" id="category" required>
                 </div>
               </div>
-              <div class="plusfooter modal-footer">
-                <button type="button" class="btn btn-dark" id="add_category">Add</button>
-              </div>
+              <p id="errorhandlingcategory" style="color: red"></p>
+            </div>
+            <div class="plusfooter modal-footer">
+              <button type="button" class="btn btn-dark" id="add_category">Add</button>
             </div>
           </div>
         </div>
-        <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="add-content modal-content">
-              <div class="add modal-header header-Modal">
-                <h3 class="add-title modal-title fs-4" id="modalLabel ">Add Ingredients</h3>
-                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="add-content modal-content">
+            <div class="add modal-header header-Modal">
+              <h3 class="add-title modal-title fs-4" id="modalLabel ">Add Ingredients</h3>
+              <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="add-body modal-body">
+              <div class="add-ingredient input-group mb-1 d-block">
+                Ingredients
+                <input type="text" class="t-input form-control w-75" aria-label="ingredients" id="ingredients" required>
               </div>
-              <div class="add-body modal-body">
-                <div class="add-ingredient input-group mb-1 d-block">
-                  Ingredients
-                  <input type="text" class="t-input form-control w-75" aria-label="ingredients" id="ingredients" required>
-                </div>
-                <div class="add-category input-group mb-1 d-block">
-                  Category
+              <div class="add-category input-group mb-1 d-block">
+                Category
 
-                  <select class="t-input form-control w-75" aria-label="category" name="icategory" id="icategory">
-                    <?php
+                <select class="t-input form-control w-75" aria-label="category" name="icategory" id="icategory">
+                  <?php
 
-                    include '../pages/include/dbConnection.php';
+                  include '../pages/include/dbConnection.php';
 
-                    // Read all rows from the database
-                    $sql = "SELECT * FROM ingredients_category";
-                    $results = $conn->query($sql);
+                  // Read all rows from the database
+                  $sql = "SELECT * FROM ingredients_category";
+                  $results = $conn->query($sql);
 
-                    if (!$results) {
-                      die("Invalid query: " . $conn->error);
-                    }
+                  if (!$results) {
+                    die("Invalid query: " . $conn->error);
+                  }
 
-                    // Read data for each row
-                    while ($rows = $results->fetch_assoc()) {
-                      echo '<option value ="' . $rows["category"] . '">' . $rows["category"] . '</option> ';
-                    }
-                    ?>
-                  </select>
-                </div>
-
-
-                <div class="add-quantity input-group mb-3 d-block">
-                  Quantity
-                  <input type="text" class="t-input form-control w-75" aria-label="qty" id="qty">
-
-                  Unit
-                  <select class="t-input form-control w-75" aria-label="a_unit" name="a_unit" id="a_unit" required>
-
-                    <option value="kg">kg</option>
-                    <option value="pcs">pcs</option>
-                    <option value="gal">gal</option>
-
-                  </select>
-                </div>
-
-
-                <div class="add-ideal input-group mb-1 d-block">
-                  Ideal Quantity
-                  <input type="text" class="t-input form-control w-75" aria-label="ideal_qty" id="ideal_qty" required>
-                </div>
+                  // Read data for each row
+                  while ($rows = $results->fetch_assoc()) {
+                    echo '<option value ="' . $rows["category"] . '">' . $rows["category"] . '</option> ';
+                  }
+                  ?>
+                </select>
               </div>
-              <div class="add-footer modal-footer">
-                <button type="button" class="btn btn-dark me-2 btn-Ingredient" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-dark btn-Ingredient" id="saveChanges">Add</button>
+
+
+              <div class="add-quantity input-group mb-3 d-block">
+                Quantity
+                <input type="number" class="t-input form-control w-75" aria-label="qty" id="qty">
+
+                Unit
+                <select class="t-input form-control w-75" aria-label="a_unit" name="a_unit" id="a_unit" required>
+
+                  <option value="kg">kg</option>
+                  <option value="pcs">pcs</option>
+                  <option value="gal">gal</option>
+
+                </select>
               </div>
+
+
+              <div class="add-ideal input-group mb-1 d-block">
+                Ideal Quantity
+                <input type="number" class="t-input form-control w-75" aria-label="ideal_qty" id="ideal_qty" required>
+              </div>
+
+              <p id="errorhandling" style="color:red;"></p>
+            </div>
+
+
+            <div class="add-footer modal-footer">
+              <button type="button" class="btn btn-dark me-2 btn-Ingredient" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-dark btn-Ingredient" id="saveChanges">Add</button>
             </div>
           </div>
         </div>
-        
+      </div>
+
 
       </form>
     </div>
@@ -1227,7 +1271,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" >
+          <div class="modal-body">
             <div class="stockIn-FirstForm">
               <div class="stockInput">
                 <p class="ingre">Stock</p>
