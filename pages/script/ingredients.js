@@ -44,7 +44,16 @@
       }
 
       $('#add_category').click(function() {
-        var category = $('#category').val();
+        var category = $('#category').val().trim();
+
+         $('#errorhandling').text('');
+
+    // Validation checks
+    if (category === "") {
+        $('#errorhandlingcategory').text("Category is required.");
+        $('#category').focus();
+        return;
+    }
         var data = {
           category: category,
           action: 'add'
@@ -432,6 +441,34 @@
         var qty = $('#qty').val();
         var ideal_qty = $('#ideal_qty').val();
         var unit = $('#a_unit').val();
+
+        $('#errorhandling').text('');
+
+      if (ingredients === "") {
+        $('#errorhandling').text("Ingredients field is required.");
+        $('#ingredients').focus();
+        return;
+    }
+      if (category === "") {
+          $('#errorhandling').text("Category field is required.");
+          $('#icategory').focus();
+          return;
+      }
+      if (qty === "" || isNaN(qty) || qty <= 0) {
+          $('#errorhandling').text("Please enter a valid quantity.");
+          $('#qty').focus();
+          return;
+      }
+      if (ideal_qty === "" || isNaN(ideal_qty) || ideal_qty <= 0) {
+          $('#errorhandling').text("Please enter a valid ideal quantity.");
+          $('#ideal_qty').focus();
+          return;
+      }
+      if (unit === "") {
+          $('#errorhandling').text("Unit field is required.");
+          $('#a_unit').focus();
+          return;
+      }
 
         var data = {
           ingredients: ingredients,

@@ -204,12 +204,18 @@ loadUser();
             $('#saveChanges').click(function() {
                 // Collect the input data
                 var full_name = $('#full_name').val().trim();
-        var user_name = $('#user_name').val().trim();
-        var password = $('#password').val().trim();
-        var address = $('#address').val().trim();
-        var contact_number = $('#contact_number').val().trim();
+              var user_name = $('#user_name').val().trim();
+              var password = $('#password').val().trim();
+              var address = $('#address').val().trim();
+              var contact_number = $('#contact_number').val().trim();
+              var account = $('#account').val();
 
-        // Validation checks
+              // Validation checks
+          if (account === "") {
+            $('#errorhandling').text("Account type is required.");
+            $('#account').focus();
+            return;
+        }
         if (full_name === "") {
             $('#errorhandling').text("Full name is required.");
             $('#full_name').focus();
@@ -255,7 +261,8 @@ loadUser();
                     user_name: user_name,
                     password: password,
                     address: address,
-                    contact_number: contact_number,
+                  contact_number: contact_number,
+                    account: account,
                     action: 'add'
                 }
                 userAjaxRequest(data);
