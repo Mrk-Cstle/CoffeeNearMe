@@ -41,7 +41,7 @@ $(document).ready(function () {
                  
                     listItems += `
                     
-                           
+
                         <div class="lowBody">
                         ${pictureHtml}
                         <h5 id="lowP1">${ingredients.raw_name}</h5>

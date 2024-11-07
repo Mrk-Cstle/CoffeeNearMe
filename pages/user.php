@@ -568,6 +568,14 @@
             margin-left: 180px;
         }
     }
+
+    .headDash{
+            margin-left: 50px;
+            margin-top: 0px;
+            width: 15%;
+            text-align: center;
+            font-size: 2rem;
+        }
 </style>
 
 
@@ -578,7 +586,7 @@
 <body>
 
     <div class="container">
-
+        <h3 class="headDash">User</h3>
         <div>
             <select class="topbtn btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
                 <option value="">Filter</option>

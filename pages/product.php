@@ -1109,6 +1109,14 @@
       }
 
     }
+
+    .headDash{
+            margin-left: 50px;
+            margin-top: 0px;
+            width: 15%;
+            text-align: center;
+            font-size: 2rem;
+        }
   </style>
 
 </head>
@@ -1116,6 +1124,7 @@
 <body>
 
   <div class="container">
+  <h3 class="headDash">Product</h3>
     <form action="">
       <div class="productTable">
 
