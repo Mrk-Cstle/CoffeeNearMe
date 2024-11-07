@@ -8,14 +8,16 @@ $(document).ready(function () {
 
     var ingredients = $('#product_ingredients').val();
     var qty = $('#productingredientQuantity').val();
-     var productId = $('#productId').val();
+      var productId = $('#productId').val();
+      var units = $('#a_unit').val();
     
 
     
         var data = {
             ingredients: ingredients,
             qty: qty,
-            productId: productId,
+          productId: productId,
+          unit: units,
             action: 'add'
         }
         productingredientsAjaxRequest(data);
@@ -133,7 +135,7 @@ function loadProductIngredients() {
                     <li class="ingredientLi list-group-item">
                             <input type="hidden" id="prod-ingredients-hide" name="prod-ingredients-hide" value="${ingredients.product_raw_id}">
                             ${ingredients.raw_name}  
-                            <span class="spanquantity">${ingredients.quantity}</span>
+                            <span class="spanquantity">${ingredients.quantity} ${ingredients.unit}</span>
                             <a href="#" class="trashIcon bi bi-trash text-dark"></a>
                         </li>
                        

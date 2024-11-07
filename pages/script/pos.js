@@ -38,26 +38,27 @@ function loadProduct() {
                 product.forEach(function(product) {
                     let pictureHtml = '';
                     if (product.picture) {
-                        pictureHtml = `<img style="width: 150px; height: 150px; object-fit: cover;" class="product-img" src="uploads/product/${product.picture}" data-product-img="${product.picture}">`;
+                        pictureHtml = `<img style="width: 75px; height: 75px; object-fit: cover;" class="product-img" src="uploads/product/${product.picture}" data-product-img="${product.picture}">`;
                     } else {
-                        pictureHtml = `<img style="width: 150px; height: 150px; object-fit: cover;" class="product-img" src="uploads/product/default.png" data-product-img="default.png">`;
+                        pictureHtml = `<img style="width: 75px; height: 75px; object-fit: cover;" class="product-img" src="uploads/product/default.png" data-product-img="default.png">`;
                     }
 
                     // Check if product is available
-                    let isAvailable = product.available_quantity > 0;
+                    let isAvailable = product.available_quantity > 0 && product.available_quantity !== 9223372036854776000;
                     let productClass = isAvailable ? '' : 'not-available';
+                    let availableText = isAvailable ? product.available_quantity : 0;
 
                     listItems += `
                         <div class="product ${productClass}" data-product-id="${product.product_id}" data-available-quantity="${product.available_quantity}">
                             ${pictureHtml}
                             <h3 class="${isAvailable ? '' : 'text-danger'}">${product.product_name}</h3>
-                            <p>₱${product.price}</p>
+                            <p>₱${Number(product.price).toLocaleString()}</p>
                             <div class="quantity-control">
                                 <button class="minus-btn">-</button>
                                 <input type="text" value="1" class="quantity" readonly>
                                 <button class="plus-btn">+</button>
                             </div>
-                            <p>Available: ${product.available_quantity}</p>
+                            <p>Available: ${availableText}</p>
                             <button 
                             class="add-to-cart-btn" 
                             ${isAvailable ? '' : 'style="cursor: not-allowed; opacity: 0.5; background-color: #ccc; border-color: #ccc; color: #666;"'}
@@ -158,8 +159,9 @@ function attachQuantityControl() {
                     quantity: selectedQuantity
                 },
                 success: function (response) {
-                   
+                   console.log(response.message);
                     const data = JSON.parse(response);
+                    console.log(data.message);
                     if (data.status === 'success') {
                         updateCartDisplay(data.cart);
 
@@ -179,7 +181,7 @@ function attachQuantityControl() {
                         }
                         loadProduct();
                     } else {
-                        alert('Failed to add to cart.');
+                        alert(data.message);
                     }
                 }
             });
@@ -265,7 +267,7 @@ function attachQuantityControl() {
             subtotal += itemTotal;
             listItems += `
                 <li>
-                    ${item.name} x ${item.quantity} - ₱${itemTotal.toFixed(2)}
+                    ${item.name} x ${item.quantity} - ₱${Number(itemTotal.toFixed(2)).toLocaleString()} 
                      <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">Delete</button>
                 </li>
             `;

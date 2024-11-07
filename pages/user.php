@@ -21,22 +21,34 @@
     <title>Table</title>
 </head>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
         background-color: #d9d9d9;
+        position: fixed;
+        overflow: hidden;
     }
 
     .container {
-        padding: 50px;
-        margin-left: 420px;
-        margin-top: 120px;
+        padding: 10px;
+        margin: 0 auto 0 350px;
+        max-width: 900px;
+        position: relative;
+        margin-top: 100px;
+        padding-left: 100px;
+
     }
 
     .table {
         border: 1px solid;
-        margin-top: 60px;
+        margin-top: 40px;
         text-align: center;
-        font-size: 18px;
-        -webkit-text-fill-color: #d76614;
+        font-size: 1em;
+        -webkit-text-fill-color: #fff;
     }
 
     .search {
@@ -47,13 +59,13 @@
     }
 
     .btn {
-        background-color: #2d2b2b;
+        background-color: #d76614;
         color: white;
         border: none;
-        font-weight: bolder;
+        font-weight: 600;
         height: 35px;
         text-align: center;
-        margin-top: 58px;
+        margin-top: 25px;
     }
 
     .btnnnn {
@@ -68,17 +80,22 @@
     }
 
     .usercontent {
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: #d9d9d9;
+        height: fit-content;
     }
 
     .modal-header {
-        -webkit-text-fill-color: #fff;
+        -webkit-text-fill-color: #000;
         border: rgba(0, 0, 0, 0.6);
+        font-weight: 600;
+        font-size: 1em;
     }
 
     .userbody {
         margin-left: 90px;
-        -webkit-text-fill-color: #fff;
+        -webkit-text-fill-color: #000;
+        font-weight: 600;
+        font-size: 1em;
     }
 
     .userfooter {
@@ -86,20 +103,20 @@
     }
 
     .modal-title {
-        margin-left: 200px;
+        margin-left: 120px;
     }
 
     .t-input {
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: #fff;
         border: #d76614;
         -webkit-text-fill-color: #d76614;
     }
 
     .fprofile {
-        width: 200px;
-        height: 200px;
+        width: 120px;
+        height: 120px;
         border-radius: 150px;
-        margin-left: 120px;
+        margin-left: 140px;
         margin-top: 20px;
     }
 
@@ -116,14 +133,15 @@
     .fname {
         background-color: #fff;
         margin-top: 30px;
-        width: 75%;
+        width: 80%;
         padding: 20px;
         padding-top: 30px;
         padding-bottom: 52px;
         border-radius: 20px;
         font-weight: 600;
+        font-size: 1em;
         margin-bottom: 20px;
-        margin-left: 25px;
+        margin-left: 27px;
     }
 
     .input {
@@ -141,18 +159,13 @@
         flex-direction: row;
         flex-wrap: wrap;
         position: relative;
-        margin-top: -188px;
-        margin-bottom: 30px;
+        margin-top: -110px;
+        margin-bottom: 0px;
         font-weight: 600;
+        margin-left: 0px;
     }
 
-    .update {
-        background-color: #2d2b2b;
-        border: none;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
+    .update,
     .delete {
         background-color: #2d2b2b;
         border: none;
@@ -161,7 +174,13 @@
     }
 
     .viewcontent {
-        height: 750px;
+        height: 5vh;
+        width: 80%;
+        margin: 0;
+        position: absolute;
+        left: 55%;
+        top: 10%;
+        transform: translate(-50%, -50%);
     }
 
     .viewbody {
@@ -172,55 +191,6 @@
         background-color: rgba(0, 0, 0, 0.3);
         border: #d76614;
         -webkit-text-fill-color: #d76614;
-    }
-
-    .pagination {
-        list-style-type: none;
-        padding: 10px 0;
-        display: inline-flex;
-        justify-content: center;
-        box-sizing: border-box;
-        margin-top: 20px;
-    }
-
-    .pagination li {
-        box-sizing: border-box;
-        padding-right: 10px;
-    }
-
-    .pagination li a {
-        box-sizing: border-box;
-        background-color: #d76614;
-        padding: 8px;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: bold;
-        color: #fff;
-        /* Text color */
-        border-radius: 4px;
-    }
-
-    .pagination li a:hover {
-        background-color: #2d2b2b;
-        color: #fff;
-        /* Hover text color */
-    }
-
-    .pagination .currentpage a {
-        background-color: #2d2b2b;
-        color: #fff;
-    }
-
-    .pagination .currentpage a:hover {
-        background-color: #2d2b2b;
-    }
-
-    .pagination li a {
-        color: #fff;
-    }
-
-    .pagination li a:hover {
-        text-decoration: none;
     }
 
     .vbtn {
@@ -237,26 +207,366 @@
         height: 40px;
         width: 80px;
         margin-right: 15px;
-        
     }
 
-    .headerrr {
-        background-color: #2c2c2c;
+    .headerrr,
+    .pooter,
+    .bodyyy {
+        background-color: #d9d9d9;
     }
 
     .pooter {
-        background-color: #2c2c2c;
-        height: 75px;
-        border: #2c2c2c;
+        height: 8vh;
+        width: 100%;
     }
 
-    .bodyyy {
-        background-color: #2c2c2c;
+    .headerrr {
+        width: 100%;
     }
 
-    #search-user{
+    #search-user {
         height: 40px;
         margin-top: 58px;
+    }
+
+    /* File Image CSS */
+    #users_image {
+        margin-top: 10px;
+        border: 5px #2c2c2c;
+        border-radius: 50px;
+        width: 200px;
+        padding: 2px;
+        font-size: 0.9em;
+        color: #d76614;
+    }
+
+    #users_image::-webkit-file-upload-button {
+        background-image: linear-gradient(45deg, rgb(215, 102, 20), #000);
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .user-imagebtn {
+        border: 2px solid #d76614;
+        width: 80px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: #d76614;
+        color: #fff;
+    }
+
+    #modal-header-edit {
+        margin-left: 420px;
+    }
+
+    /* Users-tbl */
+    .users-tbl {
+        -webkit-text-fill-color: #000;
+        font-weight: 600;
+    }
+
+    .view-btn {
+        -webkit-text-fill-color: #fff;
+        background-color: #d76614;
+    }
+
+    /* Pagination */
+    #paginationControls {
+        position: relative;
+        float: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #prevPage,
+    #nextPage {
+        background-color: #d76614;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    #prevPage:disabled,
+    #nextPage:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    #prevPage:not(:disabled):hover,
+    #nextPage:not(:disabled):hover {
+        background-color: #2c2c2c;
+    }
+
+    #currentPage {
+        margin: 0 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .topbtn {
+        margin-top: 60px;
+        position: relative;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .container {
+            width: 100%;
+            padding: 10px;
+            margin: 0 auto 0 150px;
+            max-width: 900px;
+            position: relative;
+            margin-top: 50px;
+            padding-left: 220px;
+            padding-right: auto;
+
+        }
+
+        HEAD .table {
+            font-size: 16px;
+        }
+
+        .fname {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .info {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .search {
+            width: 100%;
+            float: none;
+            margin-top: 20px;
+        }
+
+        .modal-title {
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .fprofile {
+            margin-left: 0;
+        }
+
+        .userbody {
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 25px;
+            margin-left: 80px;
+        }
+
+        .btnn {
+            width: auto;
+            margin-right: 0;
+        }
+
+        .viewcontent {
+            height: auto;
+            /* Adjust height for smaller screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .modal-header {
+            text-align: center;
+        }
+
+        .user-imagebtn {
+            .add-user {
+                width: 100%;
+            }
+
+            .search {
+                width: 60%;
+            }
+
+            .usercontent {
+                width: 80%;
+                padding: 10px;
+                max-width: 500px;
+                margin: auto;
+            }
+
+            #users_image {
+                width: 80%;
+
+                .viewbody {
+                    width: 100%;
+                    display: block;
+
+                }
+
+                .fname {
+                    width: 100%;
+                    height: 80%;
+                    padding: 20px;
+                }
+
+                .info {
+                    width: 100%;
+                    right: 55px;
+                    margin-left: 45px;
+                }
+
+                #modal-header-edit {
+                    margin-left: 320px;
+                }
+
+            }
+
+            .pooter {
+                height: 70px;
+            }
+
+
+        }
+    }
+
+    /* Tablet */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .container {
+            width: 100%;
+            padding: 20px;
+            margin: 0 auto 0 50px;
+            max-width: 900px;
+            position: relative;
+            margin-top: 0px;
+            padding-left: 220px;
+            padding-right: auto;
+
+        }
+
+        .add-user {
+            width: 100%;
+        }
+
+        .search {
+            width: 60%;
+        }
+
+        .usercontent {
+            width: 80%;
+            padding: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .viewbody {
+            width: 60vw;
+            display: block;
+        }
+
+        .pooter {
+            width: 60vw;
+        }
+
+        .headerrr {
+            width: 60vw;
+        }
+
+        .fname {
+            width: 100%;
+            height: 80%;
+            padding: 20px;
+        }
+
+        .info {
+            width: 100%;
+            right: 60px;
+            margin-left: 50px;
+        }
+
+        .fprofile {
+            width: 100px;
+            height: 100px;
+        }
+
+        #modal-header-edit {
+            margin-left: 250px;
+        }
+    }
+
+
+
+    @media screen and (max-width: 853px) {
+        .container {
+            padding: 10px;
+            margin: 0 auto 0 50px;
+            max-width: 900px;
+            position: relative;
+            margin-top: 30px;
+            padding-left: 220px;
+            padding-right: auto;
+
+        }
+
+        .add-user {
+            width: 100%;
+        }
+
+        .search {
+            width: 60%;
+        }
+
+        .usercontent {
+            width: 80%;
+            height: 100%;
+            padding: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .viewbody {
+            width: 60vw;
+            height: 60vh;
+            display: block;
+        }
+
+        .pooter,
+        .headerrr {
+            width: 60vw;
+        }
+
+        .fname {
+            width: 28vw;
+            height: 80%;
+            padding: 20px;
+        }
+
+        .info {
+            width: 20vw;
+            right: 22px;
+            float: right;
+            bottom: 350px;
+            padding-left: 10px;
+        }
+
+        .fprofile {
+            width: 100px;
+            height: 100px;
+            margin-left: 90px;
+        }
+
+        #modal-header-edit {
+            margin-left: 180px;
+        }
     }
 </style>
 
@@ -277,7 +587,7 @@
 
             </select>
             <form class="search form-inline">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-50">Add User</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-100 topbtn add-user">Add User</button>
                 <!-- Modal -->
                 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -288,28 +598,43 @@
                             </div>
                             <div class="userbody modal-body">
                                 <div class="user input-group mb-3 d-block"> Full Name
-                                    <input type="text" class="t-input form-control w-75" aria-label="full_name" id="full_name">
+                                    <input type="text" class="t-input form-control w-75 addInput" aria-label="full_name" id="full_name" required>
                                 </div>
                                 <div class="user input-group mb-3 d-block">
                                     Username
-                                    <input type="text" class="t-input form-control w-75" aria-label="user_name" id="user_name">
+                                    <input type="text" class="t-input form-control w-75 addInput" aria-label="user_name" id="user_name" required>
                                 </div>
                                 <div class="name input-group mb-3 d-block">
                                     Password
-                                    <input type="text" class="t-input form-control w-75" aria-label="Name" id="password">
+
+                                    <input type="password" class="t-input form-control w-75" aria-label="Name" id="password">
                                 </div>
                                 <div class="contact input-group mb-3 d-block">
                                     Contact
-                                    <input type="text" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
+                                    <input type="number" class="t-input form-control w-75" aria-label="Contact" id="contact_number">
+
+                                </div>
+                                <div class="contact input-group mb-3 d-block">
+                                    Account Type
+                                    <select class="t-input form-control w-75" aria-label="Account Type" name="account" id="account" required>
+
+                                        <option value="admin">Admin</option>
+                                        <option value="staff">Staff</option>
+
+                                    </select>
+
                                 </div>
                                 <div class="address input-group mb-3 d-block">
                                     Address
-                                    <input type="text" class="t-input form-control w-75" aria-label="Address" id="address">
+                                    <input type="text" class="t-input form-control w-75 addInput" aria-label="Address" id="address" required>
                                 </div>
+                                <p id="errorhandling" style="color:red;"> </p>
                             </div>
+
                             <div class="userfooter modal-footer">
+
                                 <button type="button" class="btnnnn btn-dark me-2" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btnnnn btn-dark" id="saveChanges">Save changes</button>
+                                <button type="button" class="btnnnn btn-dark" id="saveChanges">Add</button>
                             </div>
                         </div>
                     </div>
@@ -340,13 +665,13 @@
             <button id="nextPage" disabled>Next</button>
         </div>
 
-
+        <!--VIEW MODAL-->
         <form class="user-image" id="view" method="POST">
             <div class="modal fade" id="View" tabindex="-1" aria-labelledby="Modal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="viewcontent modal-content">
                         <div class="modal-header headerrr">
-                            <h1 class="modal-title fs-4" id="Modal">Edit User</h1>
+                            <h1 class="modal-title fs-4" id="modal-header-edit">Edit User</h1>
                             <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="viewbody modal-body bodyyy">
@@ -360,7 +685,7 @@
                                         <div class="fname">
 
 
-                                            <input type="file" name="users_image" id="users_image">
+                                            <input type="file" name="users_image" id="users_image" required>
                                             <button type="submit" class="user-imagebtn">Submit</button>
 
 
@@ -369,30 +694,30 @@
                                             <input type="hidden" id="users-id" name="users_id">
                                             <div class="input-group mb-3 
                                             d-block">Fullname
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="full_name">
+                                                <input type="text" class="input form-control w-100 mt-1" aria-label="Username" name="full_name" required>
                                             </div>
 
                                             <div class="input-group mb-3 d-block mt-4">Account Type
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type">
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_type" required readonly>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="info col-6">
-                                            <div class="input-group mb-3">Username
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="user_name">
+                                            <div class="input-group mb-2">Username
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="user_name" required>
                                             </div>
-                                            <div class="input-group mb-3 mt-3">Password
-                                                <input type="password" class="input form-control w-100 mt-2" aria-label="Username" name="password">
+                                            <div class="input-group mb-2 mt-1">Password
+                                                <input type="password" class="input form-control w-100 mt-2" aria-label="Username" name="password" required>
                                             </div>
-                                            <div class="input-group mb-3 mt-3">Address
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="address">
+                                            <div class="input-group mb-2 mt-1">Address
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="address" required>
                                             </div>
-                                            <div class="input-group mb-3 mt-3">Contact Number
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number">
+                                            <div class="input-group mb-2 mt-1">Contact Number
+                                                <input type="number" class="input form-control w-100 mt-2" aria-label="Username" name="contact_number" required>
                                             </div>
-                                            <div class="input-group mb-3 mt-3">Account Date
-                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date">
+                                            <div class="input-group mb-2 mt-1">Account Date
+                                                <input type="text" class="input form-control w-100 mt-2" aria-label="Username" name="account_date" required readonly>
                                             </div>
                                         </div>
                                     </div>

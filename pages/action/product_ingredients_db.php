@@ -15,14 +15,15 @@ if ($action === "add") {
     $ingredients = sanitizeInput($data['ingredients']);
     $qty = sanitizeInput($data['qty']);
     $productId = sanitizeInput($data['productId']);
+    $units = sanitizeInput($data['unit']);
 
-    $stmt = $conn->prepare("INSERT INTO product_ingredients (product_id, ingredients_id, quantity) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO product_ingredients (product_id, ingredients_id, quantity,unit) VALUES (?, ?, ?,?)");
     if (!$stmt) {
         die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
     }
 
     // Bind parameters
-    $stmt->bind_param("ssi", $productId, $ingredients, $qty);
+    $stmt->bind_param("ssis", $productId, $ingredients, $qty, $units);
 
     // Execute the statement
     try {
@@ -41,7 +42,7 @@ if ($action === "add") {
 
     $productId = sanitizeInput($data['productId']);
     $stmt = $conn->prepare("
-        SELECT i.raw_name, pi.quantity , pi.product_raw_id
+        SELECT i.raw_name, pi.quantity , pi.product_raw_id, pi.unit
         FROM product_ingredients pi
         INNER JOIN ingredients i ON pi.ingredients_id = i.ingredients_id
         WHERE pi.product_id = ?");

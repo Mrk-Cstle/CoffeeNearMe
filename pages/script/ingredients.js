@@ -44,7 +44,16 @@
       }
 
       $('#add_category').click(function() {
-        var category = $('#category').val();
+        var category = $('#category').val().trim();
+
+         $('#errorhandling').text('');
+
+    // Validation checks
+    if (category === "") {
+        $('#errorhandlingcategory').text("Category is required.");
+        $('#category').focus();
+        return;
+    }
         var data = {
           category: category,
           action: 'add'
@@ -193,18 +202,18 @@
                 var BackgroundColor = lowStock ? '#FA8072' : '';
                  let pictureHtml = '';
                                 if (ingredient.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
+                                    pictureHtml = `<img style="width: 60px; height: 60px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/${ingredient.picture}"data-ingredients-img="${ingredient.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 60px; height: 60px;object-fit: cover;" class="ingredients-img" src="uploads/ingredients/default.png"data-ingredients-img="default.png">`; // or provide alternative HTML
                                 }
                 listItems += `
                     <tr >
                             <td>${pictureHtml}</td>
                            <td style="display: none;" class="ingredient-category">${ingredient.category}</td>
-                            <td class="ingredient-name" style="background-color: ${BackgroundColor};" >${ingredient.raw_name}</td>
+                            <td class="ingredient-name" style="background-color: ${BackgroundColor}; padding-top: 2.5%;" >${ingredient.raw_name}</td>
                             
-                            <td class="ingredient-quantity">${ingredient.quantity}</td>
-                            <td class="ingredient-ideal-quantity">${ingredient.ideal_quantity}</td>
+                            <td class="ingredient-quantity" style="padding-top: 2.5%;">${ingredient.quantity} ${ingredient.unit}</td>
+                            <td class="ingredient-ideal-quantity" style="padding-top: 2.5%;">${ingredient.ideal_quantity} ${ingredient.unit}</td>
                             
                             
                             <td>
@@ -212,8 +221,8 @@
                                   <button class="dropdown-btn"><img src="../assets/images//threeDots.png" class="threeIcon"></button>
                                     <div class="dropdown-content">
                                         <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
-                                        <a class="vbtn btn-dark btn-sm" data-toggle="modal" data-target="#stockINModal">Stock In</a>
-                                        <a class="vbtn btn-dark btn-sm" data-toggle="modal" data-target="#stockOUTModal">Stock Out</a>
+                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-in btn-dark btn-sm" data-toggle="modal" data-target="#stockINModal">Stock In</a>
+                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-out btn-dark btn-sm" data-toggle="modal" data-target="#stockOUTModal">Stock Out</a>
                                     </div>
                                 </div>
                             </td>
@@ -292,6 +301,64 @@
 
       });
 
+      $(document).on('click', '.vbtn-in', function () {
+        var $row = $(this).closest('tr');
+        var ingredientId = $(this).data('ingredients-id');
+        var ingredientName = $row.find('.ingredient-name').text().trim();
+        var ingredientQuantityText = $row.find('.ingredient-quantity').text().trim();
+        
+        var quantityParts = ingredientQuantityText.split(' ');
+        var ingredientUnit = quantityParts[quantityParts.length - 1];
+
+        $('.ingreText').text(ingredientName);
+        $('#stockinunit').val(ingredientUnit);
+        console.log(ingredientName)
+        
+      $('.stockBtnUpdate').off('click').on('click', function() {
+        var stockQty = $('#stockinQty').val();
+        
+        
+              var data = {
+                ingredientId: ingredientId,
+                ingredientName:ingredientName,
+                stockQty: stockQty,
+                stockUnit: ingredientUnit,
+                action: "stockin"
+                  
+                  }
+        ingredientsAjaxRequest(data);
+        
+        });
+       
+      });
+      $(document).on('click', '.vbtn-out', function () {
+        var $row = $(this).closest('tr');
+        var ingredientId = $(this).data('ingredients-id');
+        var ingredientName = $row.find('.ingredient-name').text().trim();
+         var ingredientQuantityText = $row.find('.ingredient-quantity').text().trim();
+        
+        var quantityParts = ingredientQuantityText.split(' ');
+        var ingredientUnit = quantityParts[quantityParts.length - 1]; 
+
+        $('.ingreText').text(ingredientName);
+        $('#stockoutunit').val(ingredientUnit);
+        console.log(ingredientName)
+        
+      $('.stockBtnUpdate').off('click').on('click', function() {
+              var stockQty = $('#stockoutQty').val();
+              var data = {
+                ingredientId: ingredientId,
+                ingredientName:ingredientName,
+                stockQty: stockQty,
+                  stockUnit: ingredientUnit,
+                  action: "stockout"
+                  
+                  }
+        ingredientsAjaxRequest(data);
+        
+        });
+       
+ });
       $(document).on('click', '.updatebtn', function() {
 
 
@@ -373,12 +440,42 @@
         var category = $('#icategory').val();
         var qty = $('#qty').val();
         var ideal_qty = $('#ideal_qty').val();
+        var unit = $('#a_unit').val();
+
+        $('#errorhandling').text('');
+
+      if (ingredients === "") {
+        $('#errorhandling').text("Ingredients field is required.");
+        $('#ingredients').focus();
+        return;
+    }
+      if (category === "") {
+          $('#errorhandling').text("Category field is required.");
+          $('#icategory').focus();
+          return;
+      }
+      if (qty === "" || isNaN(qty) || qty <= 0) {
+          $('#errorhandling').text("Please enter a valid quantity.");
+          $('#qty').focus();
+          return;
+      }
+      if (ideal_qty === "" || isNaN(ideal_qty) || ideal_qty <= 0) {
+          $('#errorhandling').text("Please enter a valid ideal quantity.");
+          $('#ideal_qty').focus();
+          return;
+      }
+      if (unit === "") {
+          $('#errorhandling').text("Unit field is required.");
+          $('#a_unit').focus();
+          return;
+      }
 
         var data = {
           ingredients: ingredients,
           category: category,
           qty: qty,
           ideal_qty: ideal_qty,
+          unit: unit,
           action: 'add'
         }
         ingredientsAjaxRequest(data);

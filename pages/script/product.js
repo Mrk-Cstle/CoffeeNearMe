@@ -83,9 +83,9 @@ $(document).ready(function () {
                
                  let pictureHtml = '';
                                 if (product.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="product-img" src="uploads/product/${product.picture}"data-product-img="${product.picture}">`;
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="product-img" src="uploads/product/${product.picture}"data-product-img="${product.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="product-img" src="uploads/product/default.png"data-product-img="default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="product-img" src="uploads/product/default.png"data-product-img="default.png">`; // or provide alternative HTML
                                 }
                 listItems += `
                     <tr class="tableRowProductsInfo" >
@@ -98,7 +98,7 @@ $(document).ready(function () {
                             <td  class="product-name tableProductsInfo" >${product.product_name}</td>
                             
                             
-                            <td class="product-quantity tableProductsInfo">${product.price}</td>
+                            <td class="product-quantity tableProductsInfo">₱${Number(product.price).toLocaleString()}</td>
                             
                            
                             

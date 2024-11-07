@@ -18,16 +18,17 @@ try {
         $passwords = sanitizeInput($data['password']);
         $address = sanitizeInput($data['address']);
         $contact_number = sanitizeInput($data['contact_number']);
+        $account = sanitizeInput($data['account']);
         // Password hashing
         $hashedPassword = password_hash($passwords, PASSWORD_DEFAULT);
 
-        $stmt = $conn->prepare("INSERT INTO user (full_name, user_name, password, contact_number, address) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO user (full_name, user_name, password, contact_number, address,account_type) VALUES (?, ?, ?, ?, ?,?)");
         if (!$stmt) {
             die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
         }
 
         // Bind parameters
-        $stmt->bind_param("sssss", $full_name, $user_name, $hashedPassword, $contact_number, $address);
+        $stmt->bind_param("ssssss", $full_name, $user_name, $hashedPassword, $contact_number, $address, $account);
 
         // Execute the statement
         try {

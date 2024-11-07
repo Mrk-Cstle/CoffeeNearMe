@@ -65,17 +65,17 @@
                           users.forEach(function (user) {
                                let pictureHtml = '';
                                 if (user.picture) {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/${user.picture}">`;
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/user/${user.picture}">`;
                                 } else {
-                                    pictureHtml = `<img style="width: 150px; height: 150px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
+                                    pictureHtml = `<img style="width: 75px; height: 75px;object-fit: cover;" class="ingredients-img" src="uploads/user/default.png">`; // or provide alternative HTML
                                 }
                                 userlist += `
                                 <tr">
                                 <td style="display: none;" class="users-id">${user.user_id}</td>
                                 <td>${pictureHtml}</td>
-                                <td>${user.full_name}</td>
-                                <td>${user.address}</td>
-                                <td>${user.contact_number}</td>
+                                <td style="padding-top: 2.5%;">${user.full_name}</td>
+                                <td style="padding-top: 2.5%;">${user.address}</td>
+                                <td style="padding-top: 2.5%;">${user.contact_number}</td>
                                 <td data-user-id='${user.user_id}'><a class='btn btn-dark  view-btn '
                                     href='#View'
                                     data-bs-toggle='modal'>
@@ -174,7 +174,8 @@
                       confirmButtonText: 'OK'
                     });
 loadUser();
-                   
+                    var $row = $('.users-id:contains("' + user_id + '")').closest('tr'); // Find the corresponding row
+                    $row.find('.view-btn').trigger('click'); // Trigger the click on view-btn
                    
                   } else {
                     Swal.fire({
@@ -202,11 +203,57 @@ loadUser();
      
             $('#saveChanges').click(function() {
                 // Collect the input data
-                var full_name = $('#full_name').val();
-                var user_name = $('#user_name').val();
-                var password = $('#password').val();
-                var address = $('#address').val();
-                var contact_number = $('#contact_number').val();
+                var full_name = $('#full_name').val().trim();
+              var user_name = $('#user_name').val().trim();
+              var password = $('#password').val().trim();
+              var address = $('#address').val().trim();
+              var contact_number = $('#contact_number').val().trim();
+              var account = $('#account').val();
+
+              // Validation checks
+          if (account === "") {
+            $('#errorhandling').text("Account type is required.");
+            $('#account').focus();
+            return;
+        }
+        if (full_name === "") {
+            $('#errorhandling').text("Full name is required.");
+            $('#full_name').focus();
+            return;
+        }
+        
+        if (user_name === "") {
+            $('#errorhandling').text("Username is required.");
+            $('#user_name').focus();
+            return;
+        }
+        
+        if (password === "") {
+            $('#errorhandling').text("Password is required.");
+            $('#password').focus();
+            return;
+        } 
+        
+       
+        
+        if (contact_number === "") {
+            $('#errorhandling').text("Contact number is required.");
+            $('#contact_number').focus();
+            return;
+        } else if (!/^\d+$/.test(contact_number)) {
+            $('#errorhandling').text("Contact number must contain only digits.");
+            $('#contact_number').focus();
+            return;
+              }else if (contact_number.length < 11) {
+            $('#errorhandling').text("Invalid Contact number.");
+            $('#contact_number').focus();
+            return;
+        }
+        if (address === "") {
+            $('#errorhandling').text("Address is required.");
+            $('#address').focus();
+            return;
+        }
 
                 // Prepare the data to be sent
                 var data = {
@@ -214,7 +261,8 @@ loadUser();
                     user_name: user_name,
                     password: password,
                     address: address,
-                    contact_number: contact_number,
+                  contact_number: contact_number,
+                    account: account,
                     action: 'add'
                 }
                 userAjaxRequest(data);
@@ -248,7 +296,7 @@ loadUser();
 
       $(document).on('click', '.view-btn', function () {
            var $row = $(this).closest('tr');
-          var userid = $row.find('.users-id').text().trim();;
+          var userid = $row.find('.users-id').text().trim();
           
            var data = {
                     usersid: userid,
