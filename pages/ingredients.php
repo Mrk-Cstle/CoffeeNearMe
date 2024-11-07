@@ -254,7 +254,7 @@
     padding: 10px 15px;
     font-size: 1rem;
     border-radius: 5px;
-    width: 18%;
+    width: 20%;
     height: 40px;
   }
 

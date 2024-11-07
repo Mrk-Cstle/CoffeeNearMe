@@ -632,7 +632,7 @@
     #paginationControls {
       position: absolute;
       bottom: -70px;
-      left: 10%;
+      left: 12%;
       transform: translateX(-50%);
       padding: 10px;
       background-color: #f2f2f2;
@@ -1145,7 +1145,7 @@
 
           </select>
 
-          <input id="searchInput" class="form-control mr-sm-2 me-1 my-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
+          <input id="searchInput" class="form-control mr-sm-2 me-1 searchInput" type="search" placeholder="Search" aria-label="Search">
     </form>
   </div>
   </div>
