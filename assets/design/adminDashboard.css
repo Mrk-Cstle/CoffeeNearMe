@@ -1,10 +1,12 @@
     *{
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
     body{
         background-color: #D9D9D9;
     }
+    
     .salesandInventory{
         display: inline-flex;
     }
@@ -14,9 +16,10 @@
         border: 2px solid #fff;
         border-radius: 10px;
         height: 200px;
-        width: 800px;
-        margin-top: 100px;
-        margin-left: 30px;
+        width: 600px;
+        max-width: 800px;
+        margin-top: 200px;
+        margin-left: 100px;
         background-color: #fff;
 
     }
@@ -29,13 +32,13 @@
         display: flex;
     }
     .salesImage{
-        height: 50px;
-        width: 50px;
-        margin-left: 100px;
+        height: 40px;
+        width: 40px;
+        margin-left: 80px;
         margin-top: 20px;
     }
     #salesNum{
-        margin-left: 60px;
+        margin-left: 20px;
         margin-top: 20px;
         font-weight: bold;
     }
@@ -55,7 +58,7 @@
         border-radius: 10px;
         height: 200px;
         width: 650px;
-        margin-top: 100px;
+        margin-top: 200px;
         margin-left: 30px;
         background-color: #fff;
         
@@ -71,11 +74,11 @@
     .inventImage{
         height: 50px;
         width: 50px;
-        margin-left: 80px;
+        margin-left: 150px;
         margin-top: 20px;
     }
     #inventNum{
-        margin-left: 40px;
+        margin-left: 100px;
         margin-top: 20px;
         font-weight: bold;
     }
@@ -104,9 +107,10 @@
         border: 2px solid #fff;
         border-radius: 10px;
         height: 400px;
-        width: 800px;
+        width: 600px;
         margin-top: 40px;
-        margin-left: 30px;
+        margin-left: 100px;
+        overflow: hidden;
     }
     #topHead{
         font-size: 20px;
@@ -148,6 +152,8 @@
     }
 
     /*Low Stocks CSS*/
+
+    
     .lowStockDiv{
         border: 2px solid #fff;
         border-radius: 10px;
@@ -156,9 +162,11 @@
         margin-top: 40px;
         margin-left: 30px;
         background-color: #fff;
+        overflow: hidden;
+        overflow-y: scroll;
     }
     #lowHead{
-        font-size: 20px;
+        font-size: 1.2rem;
         margin-left: 100px;
         margin-top: 20px;
     }
@@ -166,34 +174,37 @@
         display: flex;
         margin-top: 15px;
     }
-    .lowBody{
+    .lowBody {
         display: flex;
+        align-items: center; /* Vertically centers the items */
+        justify-content: space-between; /* Evenly spaces items across the container */
+        padding: 10px 30px; /* Optional: adds padding for better spacing */
     }
+
+    .lowImage, #lowP1, #lowP2 {
+        margin: 0; /* Resets margin to avoid extra spacing */
+        flex: 1; /* Allows each item to take up equal space within .lowBody */
+        text-align: center; /* Centers the text inside each item */
+    }
+    
+    
     .lowImage{
         height: 70px;
         width: 70px;
-        margin-left: 80px;
+        margin-left: 40px;
         margin-top: 10px;
         object-fit: cover;
     }
     #lowP1{
         margin-top: 40px;
-        margin-left: 150px;
+        margin-left: 120px;
     }
     #lowP2{
         margin-top: 40px;
-        margin-left: 165px;
+        margin-left: 120px;
     }
 
 
-
-
-    .borderRight{
-        border-right: 1px solid rgb(185, 179, 179);;
-        margin-left: 40px;
-        height: 90px;
-        margin-top: 15px;
-    }
 
 
 
@@ -210,9 +221,9 @@
         justify-content: center;
         align-items: center;
         height: 490px;
-        width: 800px;
+        width: 600px;
         margin-top: 40px;
-        margin-left: 30px;
+        margin-left: 100px;
         border: 2px solid #fff;
         border-radius: 10px;
         background-color: #fff;
