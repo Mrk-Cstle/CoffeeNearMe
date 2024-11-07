@@ -1376,10 +1376,13 @@
               Category
               <input type="text" class="t-input form-control w-100" aria-label="category" id="category" required>
             </div>
+            <p id="errorhandlingcategory" style="color:red;"></p>
           </div>
+
         </div>
+
         <div class="plusfooter modal-footer">
-          <button type="button" class="btn btn-dark" id="add_category" data-bs-target="#Category" data-bs-toggle="modal">Add</button>
+          <button type="button" class="btn btn-dark" id="add_category" data-bs-target="#Category">Add</button>
         </div>
       </div>
     </div>
@@ -1421,9 +1424,9 @@
           </div>
           <div class="add-quantity input-group mb-3 d-block">
             Price
-            <input type="text" class="t-input form-control w-50" aria-label="priceadd" id="priceadd">
+            <input type="number" class="t-input form-control w-50" aria-label="priceadd" id="priceadd">
           </div>
-
+          <p id="errorhandling" style="color:red;"></p>
         </div>
         <div class="add-footer modal-footer">
           <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>

@@ -154,10 +154,29 @@ $(document).ready(function () {
   }
 
   $('#saveChanges').click(function() {
-        var productName = $('#product-add').val();
-        var productCategory = $('#product_categoryadd').val();
-        var productPrice = $('#priceadd').val();
-      
+        var productName = $('#product-add').val().trim();
+    var productCategory = $('#product_categoryadd').val().trim();
+    var productPrice = $('#priceadd').val().trim();
+
+   
+    $('#errorhandling').text('');
+
+    // Validation checks
+    if (productName === "") {
+        $('#errorhandling').text("Product is required.");
+        $('#product-add').focus();
+        return;
+    }
+    if (productCategory === "") {
+        $('#errorhandling').text("Product category is required.");
+        $('#product_categoryadd').focus();
+        return;
+    }
+    if (productPrice === "" || isNaN(productPrice) || productPrice <= 0) {
+        $('#errorhandling').text("Please enter a valid product price.");
+        $('#priceadd').focus();
+        return;
+    }
 
         var data = {
           productName: productName,
@@ -430,7 +449,13 @@ $(document).on('click', '.category-delete', function() {
       });
 
   $('#add_category').click(function() {
-        var category = $('#category').val();
+    var category = $('#category').val();
+    
+    if (category === "") {
+        $('#errorhandlingcategory').text("Category is required.");
+        $('#category').focus();
+        return;
+    }
         var data = {
           category: category,
           action: 'add'
