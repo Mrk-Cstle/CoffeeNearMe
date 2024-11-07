@@ -72,8 +72,55 @@
         max-width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 200px;
+        margin-top: 100px;
         padding: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .Area {
+            display: flex;
+            background-color: #1E1E1E;
+            width: 100%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 300px;
+            padding: 40px;
+
+        }
+
+        .logo {
+            background-color: #000000;
+            margin-top: 20px;
+            padding: 10px;
+            padding-bottom: 30px;
+            height: auto;
+            width: 250px;
+            display: block;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .Area {
+            margin: 0 auto;
+            width: 100vw;
+            height: auto;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+
+        }
+
+        .logo {
+            margin-top: 0px;
+            padding: 10px;
+            padding-bottom: 30px;
+            height: auto;
+            width: 200px;
+
+        }
     }
 </style>
 

@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <h2>Transaction Details</h2>
+        <h5>Transaction Details</h5>
         <select class="topbtn btn btn-dark me-1" aria-label="filter" name="filter" id="filter">
             <option value="All">All</option>
             <option value="Today">Today</option>
@@ -50,7 +50,7 @@
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <div class="transactionheader">
-                    <!-- <h2>Coffee Near Me</h2>
+                    <!-- <h5>Coffee Near Me</h5>
                     <p><strong>Transaction:</strong> 2</p>
                     <p><strong>Date:</strong> 2024-02-10</p>
                     <p><strong>Cashier:</strong> MDC</p> -->

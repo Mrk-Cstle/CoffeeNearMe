@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2024 at 10:14 PM
+-- Generation Time: Nov 07, 2024 at 02:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,7 +57,7 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `unit`, `ideal_quantity`, `picture`) VALUES
-(30, 'Arabica', 'Coffee', 76.99699999999999, 'kg', 1, '30.jpg'),
+(30, 'Arabica', 'Coffee', 76.99399999999999, 'kg', 1, '30.jpg'),
 (42, 'Robusta', 'Coffee', 180, 'kg', 400, '42.png'),
 (44, 'qwe', 'Food', 0, 'kg', 0, '44.png'),
 (45, '2', 'Food', 0, 'kg', 0, ''),
@@ -65,7 +65,7 @@ INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`,
 (48, 'water', 'Food', 2, 'kg', 3, ''),
 (50, 'water b', 'Food', 10, 'pcs', 5, ''),
 (51, 'beans', 'Coffee', 0.98, 'kg', 5, ''),
-(52, 'w', 'Food', 22.87002728899998, 'gal', 30, '');
+(52, 'w', 'Food', 22.869234772399977, 'gal', 30, '');
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,8 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`
 (80, 'qq', 'Water Based', 0, NULL),
 (81, 'qqq', 'Water Based', 0, NULL),
 (82, 'qqqq', 'Water Based', 0, NULL),
-(83, 'qqqqq', 'Water Based', 222, NULL);
+(83, 'qqqqq', 'Water Based', 222, NULL),
+(84, 'a', 'Water Based', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -278,7 +279,11 @@ INSERT INTO `transaction` (`transaction_id`, `user`, `total_amount`, `timestamp`
 (71, '', 240, '2024-11-02 23:31:49'),
 (72, '', 120, '2024-11-02 23:31:52'),
 (73, '', 120, '2024-11-02 23:31:55'),
-(74, '', 0, '2024-11-04 09:38:55');
+(74, '', 0, '2024-11-04 09:38:55'),
+(75, 'qwe', 0, '2024-11-05 05:16:00'),
+(76, 'qwe', 120, '2024-11-06 18:45:55'),
+(77, 'qwe', 120, '2024-11-06 18:58:33'),
+(78, 'qwe', 240, '2024-11-06 18:58:42');
 
 -- --------------------------------------------------------
 
@@ -337,7 +342,11 @@ INSERT INTO `transaction_item` (`item_id`, `transaction_id`, `product_name`, `qu
 (90, 71, 'Spanish Latte', 1, 120),
 (91, 72, 'Spanish Latte', 1, 120),
 (92, 73, 'Coffee', 1, 120),
-(93, 74, 'qq', 1, 0);
+(93, 74, 'qq', 1, 0),
+(94, 75, 'asdasdasdasd', 1, 0),
+(95, 76, 'Spanish Latte', 1, 120),
+(96, 77, 'Coffee', 1, 120),
+(97, 78, 'Coffee', 2, 120);
 
 -- --------------------------------------------------------
 
@@ -447,7 +456,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
@@ -471,7 +480,7 @@ ALTER TABLE `inventory_action`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -489,19 +498,19 @@ ALTER TABLE `product_ingredients`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `transaction_item`
 --
 ALTER TABLE `transaction_item`
-  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- Constraints for dumped tables
