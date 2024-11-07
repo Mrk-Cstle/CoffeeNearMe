@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2024 at 08:58 AM
+-- Generation Time: Nov 07, 2024 at 02:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,13 +36,6 @@ CREATE TABLE `carts` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `carts`
---
-
-INSERT INTO `carts` (`id`, `user_id`, `product_id`, `product_name`, `product_price`, `quantity`) VALUES
-(212, 45, 74, 'Coffee', 150.00, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -64,16 +57,15 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `unit`, `ideal_quantity`, `picture`) VALUES
-(30, 'Arabica', 'Coffee', 79.996, 'kg', 1, '30.jpg'),
-(42, 'Robusta', 'Coffee', 630, 'kg', 400, '42.png'),
+(30, 'Arabica', 'Coffee', 76.99399999999999, 'kg', 1, '30.jpg'),
+(42, 'Robusta', 'Coffee', 180, 'kg', 400, '42.png'),
 (44, 'qwe', 'Food', 0, 'kg', 0, '44.png'),
 (45, '2', 'Food', 0, 'kg', 0, ''),
 (46, '3', 'Food', 0, 'kg', 0, ''),
-(47, '4', 'Food', 0, 'kg', 0, ''),
 (48, 'water', 'Food', 2, 'kg', 3, ''),
 (50, 'water b', 'Food', 10, 'pcs', 5, ''),
-(51, 'beans', 'Coffee', 0.992, 'kg', 5, ''),
-(52, 'w', 'Food', 0.9852063580000001, 'gal', 30, '');
+(51, 'beans', 'Coffee', 0.98, 'kg', 5, ''),
+(52, 'w', 'Food', 22.869234772399977, 'gal', 30, '');
 
 -- --------------------------------------------------------
 
@@ -158,7 +150,14 @@ INSERT INTO `inventory_action` (`action_id`, `action_type`, `item`, `quantity`, 
 (44, 'Stock In', 'water b', 5, 'pcs', '2024-10-10 08:17:29', 'qwe'),
 (45, 'Stock Out', 'water b', 5, 'pcs', '2024-10-10 08:30:19', 'qwe'),
 (46, 'Stock Out', 'Arabica', 51, '51', '2024-10-10 17:59:04', 'qwe'),
-(47, 'Add Ingredient', 'w', 25, 'gal', '2024-10-13 06:04:49', 'qwe');
+(47, 'Add Ingredient', 'w', 25, 'gal', '2024-10-13 06:04:49', 'qwe'),
+(48, 'Stock In', 'beans', 5, 'kg', '2024-10-22 07:11:16', 'qwe'),
+(49, 'Stock In', 'w', 25, 'gal', '2024-10-22 07:11:22', 'qwe'),
+(50, 'Stock Out', 'Robusta', 500, 'kg', '2024-10-29 07:44:04', 'qwe'),
+(51, 'Stock In', 'Robusta', 50, 'kg', '2024-11-02 15:42:16', 'qwe'),
+(52, 'Add Ingredient', '', 0, 'kg', '2024-11-02 15:47:38', 'qwe'),
+(53, 'Delete Ingredient', '4', NULL, '', '2024-11-02 15:48:26', 'qwe'),
+(54, 'Delete Ingredient', '', NULL, '', '2024-11-02 15:48:32', 'qwe');
 
 -- --------------------------------------------------------
 
@@ -179,13 +178,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`, `picture`) VALUES
-(74, 'Coffee', 'Hot', 150, '74.jpg'),
+(74, 'Coffee', 'Hot', 120, '74.jpg'),
 (75, 'Spanish Latte', 'Water Based', 120, '75.jpg'),
 (78, 'asdasdasdasd', 'Water Based', 0, NULL),
 (80, 'qq', 'Water Based', 0, NULL),
 (81, 'qqq', 'Water Based', 0, NULL),
 (82, 'qqqq', 'Water Based', 0, NULL),
-(83, 'qqqqq', 'Water Based', 222, NULL);
+(83, 'qqqqq', 'Water Based', 222, NULL),
+(84, 'a', 'Water Based', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +264,26 @@ INSERT INTO `transaction` (`transaction_id`, `user`, `total_amount`, `timestamp`
 (56, '', 222, '2024-10-11 02:45:12'),
 (57, '', 222, '2024-10-17 17:04:59'),
 (58, '', 372, '2024-10-19 17:58:03'),
-(59, '', 540, '2024-10-20 21:59:55');
+(59, '', 540, '2024-10-20 21:59:55'),
+(60, '', 1110, '2024-10-25 17:28:10'),
+(61, '', 222, '2024-10-25 17:28:55'),
+(62, '', 120, '2024-10-28 22:01:06'),
+(63, '', 150, '2024-10-28 22:58:28'),
+(64, '', 222, '2024-10-29 15:31:54'),
+(65, '', 1332, '2024-10-30 20:49:02'),
+(66, '', 3, '2024-10-30 21:27:28'),
+(67, '', 1, '2024-10-30 21:27:55'),
+(68, '', 1, '2024-10-30 21:29:03'),
+(69, '', 1200, '2024-10-30 21:29:53'),
+(70, '', 120, '2024-11-02 16:22:08'),
+(71, '', 240, '2024-11-02 23:31:49'),
+(72, '', 120, '2024-11-02 23:31:52'),
+(73, '', 120, '2024-11-02 23:31:55'),
+(74, '', 0, '2024-11-04 09:38:55'),
+(75, 'qwe', 0, '2024-11-05 05:16:00'),
+(76, 'qwe', 120, '2024-11-06 18:45:55'),
+(77, 'qwe', 120, '2024-11-06 18:58:33'),
+(78, 'qwe', 240, '2024-11-06 18:58:42');
 
 -- --------------------------------------------------------
 
@@ -307,7 +326,27 @@ INSERT INTO `transaction_item` (`item_id`, `transaction_id`, `product_name`, `qu
 (74, 58, 'qqqqq', 1, 222),
 (75, 58, 'Coffee', 1, 150),
 (76, 59, 'Spanish Latte', 2, 120),
-(77, 59, 'Coffee', 2, 150);
+(77, 59, 'Coffee', 2, 150),
+(78, 60, 'qqqqq', 5, 222),
+(79, 61, 'qqqqq', 1, 222),
+(80, 62, 'Spanish Latte', 1, 120),
+(81, 63, 'Coffee', 1, 150),
+(82, 64, 'qqqqq', 1, 222),
+(83, 65, 'qqqqq', 6, 222),
+(84, 66, 'qqqqq', 14, 222),
+(85, 67, 'qqqqq', 5, 222),
+(86, 68, 'Coffee', 7, 150),
+(87, 69, 'Coffee', 8, 150),
+(88, 70, 'Spanish Latte', 1, 120),
+(89, 71, 'Coffee', 1, 120),
+(90, 71, 'Spanish Latte', 1, 120),
+(91, 72, 'Spanish Latte', 1, 120),
+(92, 73, 'Coffee', 1, 120),
+(93, 74, 'qq', 1, 0),
+(94, 75, 'asdasdasdasd', 1, 0),
+(95, 76, 'Spanish Latte', 1, 120),
+(96, 77, 'Coffee', 1, 120),
+(97, 78, 'Coffee', 2, 120);
 
 -- --------------------------------------------------------
 
@@ -332,11 +371,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `account_type`, `full_name`, `user_name`, `password`, `contact_number`, `address`, `picture`, `account_date`) VALUES
-(45, 'admin', 'qwe', '', '$2y$10$.arNxG6DGb.7DqE.1WjmduDt60CIJdu1BMqvfwPUnbDr/uwYsHGey', '0', 'a', '45.png', '2024-08-31 00:00:00'),
-(49, '', '', 'qweqwe', '$2y$10$NBw7hSs2vOnjLBZUhPSLteb6mATAaIYABHxIPISBYESdPkIRDovBO', '9', '', '49.jpg', '2024-09-02 00:00:00'),
-(52, 'a', 'q', 'asdasd', '$2y$10$zPWjNeyHjBqE6D8poxOIgOvGiKsEf3TYn5WDJzgirWq4dAkk.SU26', '0911', 'wwww', NULL, '2024-09-03 00:00:00'),
-(57, '', '', 'qwe', '$2y$10$ddqcOI.tYkeBKSlRLQNDaOkNS2/f3xCEnDwBjVeSbVt1U3qRCgKHK', '0', '', NULL, '2024-09-03 00:00:00'),
-(64, '', 'qwe', 'qweq', '$2y$10$ZNDzL0Njah3Tkpt6flPEK.qK7axzxUeFy/3yuk66VIJYo9kCPIJPy', '0', 'w', NULL, '2024-09-04 00:00:00');
+(45, 'admin', 'qwe', 'qwe', '$2y$10$LGV24wxGxueW2SwuIWqFjeXN8OBBTnqcd03BfT0IuG7F7Spkmx7u.', '0', 'a', '45.png', '2024-08-31 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -421,31 +456,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `ingredients_category`
 --
 ALTER TABLE `ingredients_category`
-  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `inventory_action`
 --
 ALTER TABLE `inventory_action`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -463,19 +498,19 @@ ALTER TABLE `product_ingredients`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `transaction_item`
 --
 ALTER TABLE `transaction_item`
-  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- Constraints for dumped tables
