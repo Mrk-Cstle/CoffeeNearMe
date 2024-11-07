@@ -18,11 +18,21 @@
             height: 400px;
             /* Fixed height */
         }
+
+        .headDash{
+            margin-left: 150px;
+            margin-top: 100px;
+            width: 15%;
+            text-align: center;
+            font-size: 2rem;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+
+    <h3 class="headDash">Dashboard</h3>
 
         <div class="salesandInventory">
             <!--SALES OVERVIEW FORM-->
@@ -52,7 +62,7 @@
 
                     <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
                         <div class="salesOver">
-                            <img src="../assets/images/profitIcon.png" class="salesImage">
+                            <img src="../assets/images/report.png" class="salesImage">
                             <div class="paragraphSales">
                                 <p id="salesPara">Today's Report</p>
                             </div>
@@ -136,6 +146,7 @@
                         <h5 id="lowHead">Quantity</h5>
                     </div> -->
 
+
                     <!-- <div class="lowBody">
                         <img src="../assets/images/coffee.png" class="lowImage">
                         <h5 id="lowP1">Coffee</h5>
@@ -155,7 +166,7 @@
                         <h5 id="lowP1">Sugar</h5>
                         <h5 id="lowP2">15</h5>
                     </div> -->
-
+                    
                 </div>
             </div>
 

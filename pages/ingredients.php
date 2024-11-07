@@ -982,11 +982,20 @@
       width: 60px;
     }
   }
+
+  .headDash{
+            margin-left: 50px;
+            margin-top: 0px;
+            width: 15%;
+            text-align: center;
+            font-size: 2rem;
+        }
 </style>
 
 <body>
   <div class="container">
 
+  <h3 class="headDash">Ingredient</h3>
     <div class="topbtn">
       <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a>
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
