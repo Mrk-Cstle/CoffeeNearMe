@@ -284,14 +284,25 @@
         var ingredientCategory = $row.find('.ingredient-category').text().trim();
         var ingredientImage = $row.find('.ingredients-img').data('ingredients-img');
         
-        console.log(ingredientImage)
+        console.log(ingredientQuantity)
 
-        // Populate the modal fields with the data
+       
+        var numericQuantity = ingredientQuantity.match(/^\d+/);
+        var numericidealQuantity = ingredientIdealQuantity.match(/^\d+/);
+
+
+          if (numericQuantity) {
+              $('#qtys').val(numericQuantity[0]);
+        }
+        
+        if (numericidealQuantity) {
+              $('#ideal_qtys').val(numericidealQuantity[0]);
+          }
 
         $('#ingredient-id').val(ingredientId);
         $('#names').val(ingredientName);
-        $('#qtys').val(ingredientQuantity);
-        $('#ideal_qtys').val(ingredientIdealQuantity);
+        
+       
           
         $('#categorys').val(`<option value="${ingredientCategory}">${ingredientCategory}</option>`).val(ingredientCategory);
         $('.imageButton').data('ingredients-id', ingredientId);
@@ -422,13 +433,16 @@
               ingredients_id: ingredients_id,
               action: 'delete'
             }
-            ingredientsAjaxRequest(data);
-          }
-          $('#ingredient-id').val("");
+            $('#ingredient-id').val("");
           $('#names').val("");
           $('#qtys').val("");
           $('#ideal_qtys').val("");
-
+         
+            ingredientsAjaxRequest(data);
+           
+          }
+          
+ 
 
         });
 

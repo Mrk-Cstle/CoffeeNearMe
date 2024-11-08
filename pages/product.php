@@ -1110,13 +1110,13 @@
 
     }
 
-    .headDash{
-            margin-left: 50px;
-            margin-top: 0px;
-            width: 15%;
-            text-align: center;
-            font-size: 2rem;
-        }
+    .headDash {
+      margin-left: 50px;
+      margin-top: 0px;
+      width: 15%;
+      text-align: center;
+      font-size: 2rem;
+    }
   </style>
 
 </head>
@@ -1124,14 +1124,14 @@
 <body>
 
   <div class="container">
-  <h3 class="headDash">Product</h3>
+    <h3 class="headDash">Product</h3>
     <form action="">
       <div class="productTable">
 
         <div class="topbtn">
           <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
           <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Product</button>
-          <a href="transactionDetails.php" class=" btn btn-dark me-1">Transaction History</a>
+          <!-- <a href="transactionDetails.php" class=" btn btn-dark me-1">Transaction History</a> -->
           <select class=" btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
             <option value="">Filter</option>
             <?php
@@ -1280,8 +1280,8 @@
           </div>
         </div>
         <div class="modal-footer viewIngredient">
-          <button type="button" class="btnIngredient deletebtn  btn btn-secondary" data-dismiss="modal">Delete</button>
-          <button type="button" class="btnIngredient updatebtn btn btn-secondary" data-bs-dismiss="modal">Update</button>
+          <button type="button" class="btnIngredient deletebtn  btn btn-secondary">Delete</button>
+          <button type="button" class="btnIngredient updatebtn btn btn-secondary">Update</button>
         </div>
       </div>
     </div>

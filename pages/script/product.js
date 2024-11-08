@@ -188,42 +188,7 @@ $(document).ready(function () {
         productAjaxRequest(data);
       });
   
-    function productAjaxRequest(data) {
-        $.ajax({
-          type: 'POST',
-          url: 'action/product_db.php', // replace with your server endpoint
-          data: JSON.stringify(data),
-          contentType: 'application/json',
-
-          success: function(response) {
-
-            console.log(response);
-            // Optionally close the modal
-            if (response.status === 'success') {
-              Swal.fire({
-                title: 'Success',
-                text: response.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-              });
-
-              loadProduct();
-            } else {
-              Swal.fire({
-                title: 'Error',
-                text: response.message,
-                icon: 'error',
-                confirmButtonText: 'OK'
-              });
-            }
-            
-          },
-          error: function(error) {
-            // Handle any errors
-            console.error(error);
-          }
-        });
-  }
+    
   
   loadProduct();
 
@@ -328,7 +293,44 @@ $(document).on('click', '.updatebtn', function() {
         });
 
 
-      });
+});
+  
+  function productAjaxRequest(data) {
+        $.ajax({
+          type: 'POST',
+          url: 'action/product_db.php', // replace with your server endpoint
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+
+          success: function(response) {
+
+            console.log(response);
+            // Optionally close the modal
+            if (response.status === 'success') {
+              Swal.fire({
+                title: 'Success',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+
+              loadProduct();
+            } else {
+              Swal.fire({
+                title: 'Error',
+                text: response.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+            
+          },
+          error: function(error) {
+            // Handle any errors
+            console.error(error);
+          }
+        });
+  }
  $(document).on('click', '.deletebtn', function() {
 
 
@@ -352,10 +354,12 @@ $(document).on('click', '.updatebtn', function() {
               action: 'delete'
             }
             productAjaxRequest(data);
+            $('#productName').val("");
+            $('#productCategory').val("");
+            $('#productPrice').val("");
+            $('#viewProductModal').modal('hide');
           }
-          $('#productName').val("");
-          $('#productCategory').val("");
-          $('#productPrice').val("");
+          
          
 
 

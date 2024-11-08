@@ -154,7 +154,7 @@ try {
 
         if ($db_product_name == $productName && $db_category == $productCategory && $db_price == $productPrice) {
             // No changes, so skip the update
-            echo "No changes to update.";
+            echo json_encode(["status" => "error", "message" => "No changes to update."]);
         } else {
             // Prepare update query
 

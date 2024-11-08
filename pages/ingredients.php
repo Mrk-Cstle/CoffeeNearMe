@@ -983,21 +983,21 @@
     }
   }
 
-  .headDash{
-            margin-left: 50px;
-            margin-top: 0px;
-            width: 15%;
-            text-align: center;
-            font-size: 2rem;
-        }
+  .headDash {
+    margin-left: 50px;
+    margin-top: 0px;
+    width: 15%;
+    text-align: center;
+    font-size: 2rem;
+  }
 </style>
 
 <body>
   <div class="container">
 
-  <h3 class="headDash">Ingredient</h3>
+    <h3 class="headDash">Ingredient</h3>
     <div class="topbtn">
-      <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a>
+      <!-- <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a> -->
       <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Ingredients</button>
@@ -1219,7 +1219,7 @@
                     <input type="number" name="ideal_qtys" id="ideal_qtys" placeholder="Enter Ideal Quantity" required>
                   </div>
                   <div class="btnn">
-                    <a class='deletebtn btn-dark' id="btn">Delete</a>
+                    <a class='deletebtn btn-dark' id="btn" data-dismiss="modal">Delete</a>
 
                     <a class="updatebtn btn-dark" id="btn">Update</a>
                   </div>

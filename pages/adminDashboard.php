@@ -19,7 +19,7 @@
             /* Fixed height */
         }
 
-        .headDash{
+        .headDash {
             margin-left: 150px;
             margin-top: 100px;
             width: 15%;
@@ -32,7 +32,7 @@
 <body>
     <div class="container">
 
-    <h3 class="headDash">Dashboard</h3>
+        <h3 class="headDash">Dashboard</h3>
 
         <div class="salesandInventory">
             <!--SALES OVERVIEW FORM-->
@@ -95,15 +95,24 @@
                             <p id="inventPara">Low Stocks</p>
                         </div>
                     </div>
-                    <!-- <div class="borderRight"></div> -->
+                    <div class="borderRight"></div>
 
-                    <!-- <div class="inventorySum">
+                    <a href="actionInventory.php" class="inventorySum">
                         <img src="../assets/images/newStocksIcon.png" class="inventImage">
                         <div class="paragraphInvent">
-                            <p id="inventNum">50</p>
-                            <p id="inventPara">New Stocks</p>
+                            <p id="inventNum"></p>
+                            <p id="inventPara">Inventory History</p>
                         </div>
-                    </div> -->
+                    </a>
+                    <div class="borderRight"></div>
+
+                    <a href="transactionDetails.php" class="inventorySum">
+                        <img src="../assets/images/newStocksIcon.png" class="inventImage">
+                        <div class="paragraphInvent">
+                            <p id="inventNum"></p>
+                            <p id="inventPara">Transaction History</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -166,7 +175,7 @@
                         <h5 id="lowP1">Sugar</h5>
                         <h5 id="lowP2">15</h5>
                     </div> -->
-                    
+
                 </div>
             </div>
 
