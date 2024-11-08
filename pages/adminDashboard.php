@@ -98,18 +98,18 @@
                     <div class="borderRight"></div>
 
                     <a href="actionInventory.php" class="inventorySum">
-                        <img src="../assets/images/newStocksIcon.png" class="inventImage">
+                        <img src="../assets/images/inventoryHistory.png" class="inventImage">
                         <div class="paragraphInvent">
-                            <p id="inventNum"></p>
+                            
                             <p id="inventPara">Inventory History</p>
                         </div>
                     </a>
                     <div class="borderRight"></div>
 
                     <a href="transactionDetails.php" class="inventorySum">
-                        <img src="../assets/images/newStocksIcon.png" class="inventImage">
+                        <img src="../assets/images/transaction-History.png" class="inventImage">
                         <div class="paragraphInvent">
-                            <p id="inventNum"></p>
+                            
                             <p id="inventPara">Transaction History</p>
                         </div>
                     </a>
