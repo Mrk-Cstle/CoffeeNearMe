@@ -14,14 +14,19 @@ try {
             while ($row = $result->fetch_assoc()) {
                 $ingredients[] = $row;
             }
+            echo json_encode([
+                "status" => "success",
+                "message" => 'success',
+                "ingredients" => $ingredients
+            ]);
         } else {
-            echo "No ingredients with low stock.";
+            echo json_encode([
+                "status" => "success",
+                "message" => "No data available.",
+                "ingredients" => []
+            ]);
         }
-        echo json_encode([
-            "status" => "success",
-            "message" => 'success',
-            "ingredients" => $ingredients
-        ]);
+
         $conn->close();
     } elseif ($action == 'topproduct') {
 
