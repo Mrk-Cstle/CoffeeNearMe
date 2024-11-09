@@ -104,7 +104,7 @@ $(document).ready(function () {
                             
                             
                             
-                            <td class="tableProductsInfo"><button class="view-btn" data-product-id='${product.product_id}' type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#viewProductModal">View</button></td> 
+                            <td class="tableProductsInfo"><button class="view-btn" data-product-id='${product.product_id}' type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#viewProductModal" ${hasAdminAccess  ? '' : 'style="pointer-events: none; opacity: 0.5;"'}>View</button></td> 
                         </tr>
 
           `;

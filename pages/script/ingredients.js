@@ -220,7 +220,8 @@
                                 <div class="dropdown">
                                   <button class="dropdown-btn"><img src="../assets/images//threeDots.png" class="threeIcon"></button>
                                     <div class="dropdown-content">
-                                        <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn btn-dark btn-sm"  data-toggle="modal" data-target="#editModal">View</a>
+                                       <a data-ingredients-id="${ingredient.ingredients_id}" class="vbtn btn-dark btn-sm" 
+                        data-toggle="modal" data-target="#editModal" ${hasAdminAccess  ? '' : 'style="pointer-events: none; opacity: 0.5;"'}>View</a>
                                         <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-in btn-dark btn-sm" data-toggle="modal" data-target="#stockINModal">Stock In</a>
                                         <a data-ingredients-id='${ingredient.ingredients_id}' class="vbtn vbtn-out btn-dark btn-sm" data-toggle="modal" data-target="#stockOUTModal">Stock Out</a>
                                     </div>

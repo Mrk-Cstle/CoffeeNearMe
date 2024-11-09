@@ -1,5 +1,6 @@
 <?php include '../assets/template/navigation.php'; ?>
 <?php include 'include/dashboard.php'; ?>
+<?php include 'include/access.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,90 +34,90 @@
     <div class="container">
 
         <h3 class="headDash">Dashboard</h3>
+        <?php if (hasAccess('admin')): ?>
+            <div class="salesandInventory">
+                <!--SALES OVERVIEW FORM-->
+                <div class="salesOverview">
+                    <p id="salesHead">Sales Overview</p>
 
-        <div class="salesandInventory">
-            <!--SALES OVERVIEW FORM-->
-            <div class="salesOverview">
-                <p id="salesHead">Sales Overview</p>
+                    <div class="salesBord">
 
-                <div class="salesBord">
-
-                    <div class="salesOver">
-                        <img src="../assets/images/salesIcon.png" class="salesImage">
-                        <div class="paragraphSales">
-                            <p id="salesNum">₱<?php echo number_format($total_sales_today, 2); ?></p>
-                            <p id="salesPara">Sales Today</p>
-                        </div>
-                    </div>
-                    <div class="borderRight"></div>
-
-                    <div class="salesOver">
-                        <img src="../assets/images/revenueIcon.png" class="salesImage">
-                        <div class="paragraphSales">
-                            <p id="salesNum"><?php echo $total_transactions_today; ?></p>
-                            <p id="salesPara">Transaction Today</p>
-                        </div>
-                    </div>
-
-                    <div class="borderRight"></div>
-
-                    <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
                         <div class="salesOver">
-                            <img src="../assets/images/report.png" class="salesImage">
+                            <img src="../assets/images/salesIcon.png" class="salesImage">
                             <div class="paragraphSales">
-                                <p id="salesPara">Today's Report</p>
+                                <p id="salesNum">₱<?php echo number_format($total_sales_today, 2); ?></p>
+                                <p id="salesPara">Sales Today</p>
                             </div>
                         </div>
-                    </a>
+                        <div class="borderRight"></div>
+
+                        <div class="salesOver">
+                            <img src="../assets/images/revenueIcon.png" class="salesImage">
+                            <div class="paragraphSales">
+                                <p id="salesNum"><?php echo $total_transactions_today; ?></p>
+                                <p id="salesPara">Transaction Today</p>
+                            </div>
+                        </div>
+
+                        <div class="borderRight"></div>
+
+                        <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
+                            <div class="salesOver">
+                                <img src="../assets/images/report.png" class="salesImage">
+                                <div class="paragraphSales">
+                                    <p id="salesPara">Today's Report</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
 
                 </div>
 
-            </div>
+                <!--INVENTORY SUMMARY FORM-->
+                <div class="inventorySummary">
+                    <p id="inventoryHead">Inventory Summary</p>
 
-            <!--INVENTORY SUMMARY FORM-->
-            <div class="inventorySummary">
-                <p id="inventoryHead">Inventory Summary</p>
+                    <div class="inventoryBord">
 
-                <div class="inventoryBord">
-
-                    <div class="inventorySum">
-                        <img src="../assets/images/in-stockIcon.png" class="inventImage">
-                        <div class="paragraphInvent">
-                            <p id="inventNum"><?php echo $total_ingredients; ?></p>
-                            <p id="inventPara">Stocks</p>
+                        <div class="inventorySum">
+                            <img src="../assets/images/in-stockIcon.png" class="inventImage">
+                            <div class="paragraphInvent">
+                                <p id="inventNum"><?php echo $total_ingredients; ?></p>
+                                <p id="inventPara">Stocks</p>
+                            </div>
                         </div>
+                        <div class="borderRight"></div>
+
+                        <div class="inventorySum">
+                            <img src="../assets/images/lowstockIcon.png" class="inventImage">
+                            <div class="paragraphInvent">
+                                <p id="inventNum"><?php echo $low_stock_count; ?></p>
+                                <p id="inventPara">Low Stocks</p>
+                            </div>
+                        </div>
+                        <div class="borderRight"></div>
+
+                        <a href="actionInventory.php" class="inventorySum">
+                            <img src="../assets/images/inventoryHistory.png" class="inventImage">
+                            <div class="paragraphInvent">
+
+                                <p id="inventPara">Inventory History</p>
+                            </div>
+                        </a>
+                        <div class="borderRight"></div>
+
+                        <a href="transactionDetails.php" class="inventorySum">
+                            <img src="../assets/images/transaction-History.png" class="inventImage">
+                            <div class="paragraphInvent">
+
+                                <p id="inventPara">Transaction History</p>
+                            </div>
+                        </a>
                     </div>
-                    <div class="borderRight"></div>
-
-                    <div class="inventorySum">
-                        <img src="../assets/images/lowstockIcon.png" class="inventImage">
-                        <div class="paragraphInvent">
-                            <p id="inventNum"><?php echo $low_stock_count; ?></p>
-                            <p id="inventPara">Low Stocks</p>
-                        </div>
-                    </div>
-                    <div class="borderRight"></div>
-
-                    <a href="actionInventory.php" class="inventorySum">
-                        <img src="../assets/images/inventoryHistory.png" class="inventImage">
-                        <div class="paragraphInvent">
-                            
-                            <p id="inventPara">Inventory History</p>
-                        </div>
-                    </a>
-                    <div class="borderRight"></div>
-
-                    <a href="transactionDetails.php" class="inventorySum">
-                        <img src="../assets/images/transaction-History.png" class="inventImage">
-                        <div class="paragraphInvent">
-                            
-                            <p id="inventPara">Transaction History</p>
-                        </div>
-                    </a>
                 </div>
             </div>
-        </div>
-
+        <?php endif; ?>
         <div class="topSellingandLowStockProduct">
 
             <div class="topSellingDiv">
@@ -181,32 +182,34 @@
 
         </div>
 
-        <div class="charts">
+
+        <?php if (hasAccess('admin')): ?>
+            <div class="charts">
 
 
-            <!--BAR CHART -->
-            <div class="barChart-container">
-                <div class="chartBar-container">
-                    <h3 class="barChartHeadOne">Total Sales Over Time</h3>
-                    <div class="canvasBar-container">
-                        <canvas id="salesChart"></canvas>
+                <!--BAR CHART -->
+                <div class="barChart-container">
+                    <div class="chartBar-container">
+                        <h3 class="barChartHeadOne">Total Sales Over Time</h3>
+                        <div class="canvasBar-container">
+                            <canvas id="salesChart"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!--LINE CHART-->
+                <!--LINE CHART-->
 
-            <div class="chartLine-container">
-                <div class="lineChart-container">
-                    <h3 id="salesHead">Sales</h3>
-                    <div class="canvasLine-container">
-                        <canvas id="myLineChart"></canvas>
+                <div class="chartLine-container">
+                    <div class="lineChart-container">
+                        <h3 id="salesHead">Sales</h3>
+                        <div class="canvasLine-container">
+                            <canvas id="myLineChart"></canvas>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-        </div>
-
+        <?php endif; ?>
     </div>
 
     <!-- Include Luxon library -->

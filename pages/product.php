@@ -1,4 +1,5 @@
 <?php include '../assets/template/navigation.php'; ?>
+<?php include 'include/access.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1129,8 +1130,8 @@
       <div class="productTable">
 
         <div class="topbtn">
-          <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
-          <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Product</button>
+          <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
+          <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Product</button>
           <!-- <a href="transactionDetails.php" class=" btn btn-dark me-1">Transaction History</a> -->
           <select class=" btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
             <option value="">Filter</option>
@@ -1301,7 +1302,7 @@
 
               <!--LABEL INGREDIENT-->
               <div class="labelIngredient">
-                <label for="ingredientName" class="form-label ">Product</label>
+                <label for="ingredientName" class="form-label ">Ingredient</label>
                 <label for="ingredientQuantity" class="form-label ">Quantity</label>
                 <label for="ingredientGrams" class="form-label" id="unitMeasure">Unit of Measures</label>
               </div>
@@ -1446,6 +1447,9 @@
   </div>
 
   </div>
+  <script>
+    const hasAdminAccess = <?php echo json_encode(hasAccess('admin')); ?>;
+  </script>
 
   <script>
     // JavaScript to handle the fade-up effect

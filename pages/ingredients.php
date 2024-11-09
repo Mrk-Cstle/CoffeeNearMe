@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php include '../assets/template/navigation.php'; ?>
+<?php include 'include/access.php'; ?>
 <html lang="en">
 
 <head>
@@ -998,9 +999,9 @@
     <h3 class="headDash">Ingredient</h3>
     <div class="topbtn">
       <!-- <a href="actionInventory.php" class=" btn btn-dark me-1">Inventory Actions</a> -->
-      <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
+      <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
 
-      <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Ingredients</button>
+      <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Ingredients</button>
 
       <select class=" btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
         <option value="">Filter</option>
@@ -1300,6 +1301,9 @@
     </div>
 
   </div>
+  <script>
+    const hasAdminAccess = <?php echo json_encode(hasAccess('admin')); ?>;
+  </script>
   <script src="script/ingredients.js"></script>
   <script src="script/imageupload.js"></script>
 </body>
