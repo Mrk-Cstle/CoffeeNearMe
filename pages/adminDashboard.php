@@ -19,13 +19,8 @@
             /* Fixed height */
         }
 
-        .headDash {
-            margin-left: 150px;
-            margin-top: 100px;
-            width: 15%;
-            text-align: center;
-            font-size: 2rem;
-        }
+        
+        
     </style>
 </head>
 

@@ -226,7 +226,7 @@
 
     #search-user {
         height: 40px;
-        margin-top: 58px;
+        margin-top: 18px;
     }
 
     /* File Image CSS */
@@ -313,7 +313,7 @@
     }
 
     .topbtn {
-        margin-top: 60px;
+        margin-top: 20px;
         position: relative;
     }
 

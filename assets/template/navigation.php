@@ -49,7 +49,7 @@ checkLogin();
          <div class="nav__menu" id="nav-menu">
             <ul class="nav__list me-5">
                <li><a href="posProduct.php" class="nav__link">
-                     <h3 class="bi bi-cart"></h3>
+                     <h3 class="bi bi-cart" ></h3>
                   </a></li>
 
                <!--=============== DROPDOWN 2 ===============-->
@@ -88,7 +88,7 @@ checkLogin();
       <ul>
          <li>
             <a href="adminDashboard.php">
-               <h2 class="bi bi-house ms-3 me-3"></h2>
+               <h2 class="bi bi-house-fill ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Dashboard
                </span>
@@ -96,7 +96,7 @@ checkLogin();
          </li>
          <li>
             <a href="product.php">
-               <h2 class="bi bi-house ms-3 me-3"></h2>
+               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Product
                </span>
@@ -104,7 +104,7 @@ checkLogin();
          </li>
          <li>
             <a href="ingredients.php">
-               <h2 class="bi bi-house ms-3 me-3"></h2>
+               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Ingredients
                </span>
@@ -112,7 +112,7 @@ checkLogin();
          </li>
          <li>
             <a href="user.php">
-               <h2 class="bi bi-house ms-3 me-3"></h2>
+               <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Users
                </span>
