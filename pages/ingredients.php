@@ -51,7 +51,7 @@
     height: auto;
     margin-top: 30px;
     text-align: center;
-    font-size: 1em;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     -webkit-text-fill-color: #fff;
   }
 
@@ -72,7 +72,7 @@
     display: flex;
     margin: 0 0 0 auto;
     justify-content: space-evenly;
-    font-size: 1rem;
+    font-size: clamp(0.7rem, 1vw, 1rem);
 
   }
 
@@ -176,7 +176,7 @@
 
   .vbtn {
     -webkit-text-fill-color: #d76614;
-    font-size: 20px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
   /* Edit Modal overall styles */
@@ -186,6 +186,8 @@
     background-color: #f9f9f9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-top: 120px;
+    width: 100%;
+    font-size: clap(0.9rem, 1vw, 1rem);
   }
 
   /* Header styles */
@@ -198,16 +200,16 @@
   }
 
   .modal-title {
-    font-size: 1.5rem;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     font-weight: bold;
   }
 
   .close {
-    font-size: 1.5rem;
+    font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
   #close-btn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     border: none;
     background-color: transparent;
   }
@@ -223,8 +225,8 @@
   /* Image styles */
   .ingredientProfile {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     border-radius: 50%;
     margin: 0 auto 20px;
@@ -252,7 +254,7 @@
 
   .btn {
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     border-radius: 5px;
     width: 20%;
     height: 40px;
@@ -261,11 +263,11 @@
   .imageButton {
     background-color: #d76614;
     border: 1px solid #d76614;
-    width: 5vw;
+    width: 4vw;
     height: 4vh;
     color: #fff;
     border-radius: 10px;
-
+    font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
   #ingredients_image::-webkit-file-upload-button {
@@ -275,6 +277,7 @@
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
   }
 
 
@@ -287,7 +290,7 @@
 
   .dropdown-btn {
     padding: 10px;
-    font-size: 18px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     margin-top: 10px;
     border: transparent;
     background-color: transparent;
@@ -354,7 +357,7 @@
 
   .stockINHeader {
     margin-left: 150px;
-    font-size: 20px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     margin-top: 20px;
   }
 
@@ -396,7 +399,7 @@
     width: 15%;
     height: 35px;
     background-color: #d9d9d9;
-    font-size: 1em;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     color: #000;
     border: 1px solid transparent;
     border-radius: 10px;
@@ -408,7 +411,7 @@
     width: 15%;
     height: 35px;
     background-color: #d9d9d9;
-    font-size: 1em;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     color: #000;
     border: 1px solid transparent;
     border-radius: 10px;
@@ -428,13 +431,13 @@
 
   .ingre {
     margin-left: 20px;
-    font-size: 18px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     font-weight: normal;
     margin-top: 20px;
   }
 
   .ingreText {
-    font-size: 20px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
     font-weight: bold;
     margin-left: 40px;
   }
@@ -470,7 +473,7 @@
     border: 1px solid #d9d9d9;
     height: 50px;
     width: 30px;
-    font-size: 30px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     background-color: #d9d9d9;
     margin-right: 20px;
   }
@@ -483,7 +486,7 @@
     background-color: #d76614;
     color: #fff;
     text-align: center;
-    font-size: 1em;
+    font-size: clamp(0.9rem, 1vw, 1rem);
     text-decoration: none;
   }
 
@@ -495,7 +498,7 @@
     background-color: #d76614;
     color: #fff;
     text-align: center;
-    font-size: 1em;
+    font-size: clamp(0.9rem, 1vw, 1rem);
     text-decoration: none;
   }
 
@@ -544,7 +547,7 @@
   #currentPage {
     margin: 0 10px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
 
@@ -592,9 +595,7 @@
       overflow: hidden;
     }
 
-    .modal-title {
-      font-size: 1.3rem;
-    }
+    
 
     .btn {
       width: 80%;
@@ -603,7 +604,7 @@
     }
 
     #close-btn {
-      font-size: 2rem;
+      
       border: none;
       background-color: transparent;
     }
@@ -644,13 +645,147 @@
     .add-content {
       width: 40vw;
       height: 460px;
-      font-size: 0.8rem;
+      
       margin: 0px;
 
     }
 
     .btn-Ingredient {
       width: 60px;
+    }
+  }
+
+
+  @media (max-width: 1200px) {
+    .container {
+      width: 80%;
+      height: 700px;
+      margin: 100px auto 0 300px;
+      padding: 10px;
+      max-width: 900px;
+      margin-top: 100px;
+      margin-right: auto;
+      overflow: hidden;
+    }
+
+    .table {
+      width: 80%;
+      padding: 10px;
+    }
+
+    .topbtn {
+      display: flex;
+      margin: 0 auto 0 40px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .updatebtn {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #d76614;
+    color: #fff;
+    text-align: center;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-decoration: none;
+  }
+
+    .deletebtn {
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #d76614;
+    color: #fff;
+    text-align: center;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-decoration: none;
+  }
+
+  .add-title {
+    margin-left: 110px;
+    -webkit-text-fill-color: #000;
+  }
+
+    #searchInput {
+      width: 100%;
+      height: 40px;
+    }
+
+    .modal-dialog {
+      width: 80%;
+      /* Adjust modal width for laptops */
+      max-width: 600px;
+      /* Limit maximum width */
+    }
+
+    .modal-content {
+      width: 70%;
+      height: 555px;
+      overflow: hidden;
+    }
+
+    
+
+    .btn {
+      width: 80%;
+      /* Make buttons slightly smaller */
+      height: 40px;
+    }
+
+    #close-btn {
+      
+      border: none;
+      background-color: transparent;
+    }
+
+    .stockIn {
+      background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      height: 400px;
+      width: 400px;
+      position: absolute;
+      margin-top: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
+
+
+    /*FOR ADD CATEGORY MODAL */
+    .categorycontent {
+      height: 350px;
+      bottom: 100px;
+    }
+
+    .pluscontent {
+      width: 80%;
+      height: 250px;
+      bottom: 100px;
+    }
+
+    #add_category {
+      width: 60px;
+    }
+
+    /*FOR ADD INGREDIENT MODAL */
+
+    .add-content {
+      width: 35vw;
+      height: 480px;
+      margin: 0px;
+
+    }
+
+    
+
+    .btn-Ingredient {
+      width: 60px;
+      margin-top: -25px;
     }
   }
 
@@ -704,9 +839,7 @@
       /* Limit maximum width */
     }
 
-    .modal-title {
-      font-size: 1.3rem;
-    }
+    
 
     .btn {
       width: 80%;
@@ -746,7 +879,7 @@
     .add-content {
       width: 40vw;
       height: 480px;
-      font-size: 0.8rem;
+      
       margin: 0px;
 
     }
@@ -859,7 +992,7 @@
     .add-content {
       width: 40vw;
       height: 490px;
-      font-size: 0.8rem;
+      
       margin: 0px;
 
     }
@@ -917,7 +1050,7 @@
 
     #ingredients_image {
       height: 40px;
-      font-size: 0.8rem;
+      
     }
 
     .imageButton {
@@ -973,7 +1106,7 @@
     .add-content {
       width: 40vw;
       height: 490px;
-      font-size: 0.8rem;
+      
       margin: 0px;
 
     }
@@ -988,7 +1121,7 @@
     margin-top: 0px;
     width: 15%;
     text-align: center;
-    font-size: 2rem;
+    
   }
 </style>
 
@@ -1071,7 +1204,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="add-content modal-content">
             <div class="add modal-header header-Modal">
-              <h3 class="add-title modal-title fs-4" id="modalLabel ">Add Ingredients</h3>
+              <h3 class="add-title modal-title fs-5" id="modalLabel ">Add Ingredients</h3>
               <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="add-body modal-body">
