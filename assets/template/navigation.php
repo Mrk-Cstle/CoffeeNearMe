@@ -152,7 +152,23 @@ checkLogin();
             });
          });
       })
+
       
+      // Attach click event to all menu items
+document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach(item => {
+    item.addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent default link action, if any
+
+        // Clear 'selected' class from all items
+        document.querySelectorAll('.main-menu li, .dropdown-menu > li').forEach(li => {
+            li.classList.remove('selected');
+        });
+
+        // Add 'selected' class to the clicked item's parent <li>
+        this.parentNode.classList.add('selected');
+    });
+});
+
    </script>
 </body>
 
