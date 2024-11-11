@@ -15,6 +15,114 @@
         border-color: #ccc;
         color: #666;
     }
+
+    /* Receipt Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.receipt-details {
+    margin-top: 20px;
+}
+
+.receipt-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.receipt-details ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    margin-left: 105px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.print-btn{
+    display: flex;
+}
+
+#close-receipt {
+    background-color: #D76614;
+    color: #fff;
+    margin-left: 130px;
+}
+
+#print-receipt {
+    background-color: #D76614;
+    color: white;
+    margin-left: 10px;
+}
+
+/* Styling for print layout */
+@media print {
+
+    body{
+        visibility: hidden !important;
+    }
+    
+    .pos-container{
+        visibility: hidden !important;
+    }
+    .modal-content {
+        width: 300px;
+        font-family: monospace;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .receipt-details ul li {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        margin-left: 70px;
+    }
+
+    @page {
+      size:auto;
+      margin:.5rem 0;
+    }
+    
+
+    #print-receipt, #close-receipt {
+        display: none; /* Hide buttons during print */
+    }
+    
+    
+
+}
+
 </style>
 
 <body>
@@ -56,19 +164,78 @@
         </div>
 
         <!-- Order Details Sidebar -->
-        <div class="order-summary">
-            <h2>Order Details</h2>
-            <ul id="order-list">
-                <!-- Orders will be added here dynamically -->
-            </ul>
-            <div class="totals">
-                <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-                <p>Subtotal: <span id="subtotal">₱0.00</span></p>
-                <h3>Total: <span id="total">₱0.00</span></h3>
-                <button class="pay-now">Pay Now</button>
-            </div>
-        </div>
+<div class="order-summary">
+    <h2>Order Details</h2>
+    <ul id="order-list">
+        <!-- Orders will be added here dynamically -->
+    </ul>
+    <div class="totals">
+        <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+        <p>Subtotal: <span id="subtotal">₱0.00</span></p>
+        <h3>Total: <span id="total">₱0.00</span></h3>
+        <button class="pay-now">Pay Now</button>
     </div>
+</div>
+
+<!-- Receipt Modal -->
+<div id="receipt-modal" class="modal">
+    <div class="modal-content">
+        <h2>Coffee Near Me Receipt</h2>
+        <p>Thank you for your purchase!</p>
+        <div class="receipt-details">
+            <ul id="receipt-list">
+                <!-- Dynamic order items will appear here -->
+            </ul>
+            <p><strong>Subtotal:</strong> <span id="modal-subtotal">0.00</span></p>
+            <h3><strong>Total:</strong> <span id="modal-total">0.00</span></h3>
+        </div>
+        <div class="print-btn">
+        <button id="close-receipt">Close</button>
+        <button id="print-receipt">Print Receipt</button>
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+
+    <script>
+        // Open the receipt modal when the "Pay Now" button is clicked
+document.querySelector('.pay-now').addEventListener('click', function() {
+    let orderList = document.querySelector('#order-list');
+    let receiptList = document.querySelector('#receipt-list');
+    let subtotal = document.querySelector('#subtotal').textContent;
+    let total = document.querySelector('#total').textContent;
+
+    // Clear previous receipt items
+    receiptList.innerHTML = '';
+
+    // Add each order item to the receipt
+    orderList.querySelectorAll('li').forEach(item => {
+        let li = document.createElement('li');
+        li.innerHTML = item.innerHTML.replace('Delete', ''); // Remove delete button
+        receiptList.appendChild(li);
+    });
+
+    // Set subtotal and total for modal
+    document.querySelector('#modal-subtotal').textContent = subtotal;
+    document.querySelector('#modal-total').textContent = total;
+
+    // Show the modal
+    document.getElementById('receipt-modal').style.display = 'flex';
+});
+
+// Close the modal
+document.getElementById('close-receipt').addEventListener('click', function() {
+    document.getElementById('receipt-modal').style.display = 'none';
+});
+
+// Print the receipt
+document.getElementById('print-receipt').addEventListener('click', function() {
+    window.print();
+});
+
+    </script>
 
     <!-- <script>
         const productGrid = document.querySelector('.product-grid');
