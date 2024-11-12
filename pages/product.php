@@ -724,11 +724,11 @@
         grid-template-columns: 39px 0px 1fr;
         gap: 0px;
         padding: 8px;
-    }
+      }
 
-    .spanquantity {
+      .spanquantity {
         margin-left: 13%;
-    }
+      }
 
       .trashIcon {
         margin-left: 26%;
@@ -736,16 +736,16 @@
       }
 
       .imageButton {
-      border: 2px solid #D76614;
-      background-color: #D76614;
-      border-radius: 10px;
-      margin-top: 0px;
-      height: 35px;
-      width: 71px;
-      color: white;
-      font-size: clamp(0.7rem, 1vw, 1rem);
-      margin-left: 0px;
-    }
+        border: 2px solid #D76614;
+        background-color: #D76614;
+        border-radius: 10px;
+        margin-top: 0px;
+        height: 35px;
+        width: 71px;
+        color: white;
+        font-size: clamp(0.7rem, 1vw, 1rem);
+        margin-left: 0px;
+      }
 
       .ingredientBtn {
         left: 180px;
@@ -795,7 +795,7 @@
       }
 
       /* Category List Modal Styling */
-    .categorycontent {
+      .categorycontent {
         background-color: #fff;
         width: 20vw;
         height: 365px;
@@ -806,12 +806,12 @@
       }
 
       #plusbtn {
-      float: right;
-      border: 1px white;
-      background-color: white;
-      margin-left: 40%;
-    }
-    
+        float: right;
+        border: 1px white;
+        background-color: white;
+        margin-left: 40%;
+      }
+
 
     }
 
@@ -868,9 +868,9 @@
       }
 
       .spanquantity {
-      position: fixed;
-      margin-left: 19%;
-    }
+        position: fixed;
+        margin-left: 19%;
+      }
 
       .trashIcon {
         margin-left: 36%;
@@ -896,7 +896,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-        
+
       }
 
       .productDetails {
@@ -926,7 +926,7 @@
       }
 
       /* Category List Modal Styling */
-    .categorycontent {
+      .categorycontent {
         background-color: #fff;
         width: 20vw;
         height: 365px;
@@ -937,11 +937,11 @@
       }
 
       #plusbtn {
-      float: right;
-      border: 1px white;
-      background-color: white;
-      margin-left: 40%;
-    }
+        float: right;
+        border: 1px white;
+        background-color: white;
+        margin-left: 40%;
+      }
 
     }
 
@@ -1000,7 +1000,7 @@
       }
 
       .trashIcon {
-        
+
         margin-left: 32%;
         position: fixed;
       }
@@ -1024,7 +1024,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-        
+
       }
 
       .productDetails {
@@ -1042,7 +1042,7 @@
 
       .ingredientHeading {
         text-align: center;
-        
+
       }
 
       .ingredientBtn {
@@ -1065,8 +1065,8 @@
       #paginationControls {
         margin-left: 50px;
       }
-      
-      .ingredientBtn{
+
+      .ingredientBtn {
         margin-top: 20px;
       }
 
@@ -1082,11 +1082,11 @@
       }
 
       #plusbtn {
-      float: right;
-      border: 1px white;
-      background-color: white;
-      margin-left: 40%;
-    }
+        float: right;
+        border: 1px white;
+        background-color: white;
+        margin-left: 40%;
+      }
 
     }
 
@@ -1144,7 +1144,7 @@
       }
 
       .trashIcon {
-        
+
         margin-left: 32%;
         position: fixed;
       }
@@ -1168,7 +1168,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-        
+
       }
 
       .productDetails {
@@ -1200,11 +1200,11 @@
       }
 
       #plusbtn {
-      float: right;
-      border: 1px white;
-      background-color: white;
-      margin-left: 40%;
-    }
+        float: right;
+        border: 1px white;
+        background-color: white;
+        margin-left: 40%;
+      }
 
     }
 
@@ -1213,7 +1213,7 @@
       margin-top: 0px;
       width: 15%;
       text-align: center;
-      
+
     }
   </style>
 
@@ -1263,6 +1263,8 @@
         <td class="tableProductsInfo">Product Category</td>
         <td class="tableProductsInfo">Product Name</td>
         <td class="tableProductsInfo">Price</td>
+        <td class="tableProductsInfo">Cost</td>
+
         <td class="tableProductsInfo">Action</td>
       </tr>
     </thead>
@@ -1372,6 +1374,10 @@
                     <label for="prodPrice" class="productLabel">Product Price:</label>
                     <input type="text" id="productPrice" name="productPrice" class="productPrice" required>
                   </div>
+                  <div class="productInput">
+                    <label for="prodCost" class="productLabel">Product Cost:</label>
+                    <input type="text" id="productCost" name="productCost" class="productCost" required>
+                  </div>
                 </div>
               </div>
             </form>
@@ -1442,8 +1448,9 @@
 
                 </select>
               </div>
+              <p id="errorhandlingi" style="color:red;"></p>
             </div>
-            <button id="add_ingredientsbtn" data-bs-toggle="modal" data-bs-target="#viewProductModal" class="btn btn-dark btn-plus">Add</button>
+            <button id="add_ingredientsbtn" class="btn btn-dark btn-plus">Add</button>
           </form>
         </div>
       </div>
@@ -1532,6 +1539,10 @@
           <div class="add-quantity input-group mb-3 d-block">
             Price
             <input type="number" class="t-input form-control w-50" aria-label="priceadd" id="priceadd">
+          </div>
+          <div class="add-cost input-group mb-3 d-block">
+            Cost
+            <input type="number" class="t-input form-control w-50" aria-label="costadd" id="costadd">
           </div>
           <p id="errorhandling" style="color:red;"></p>
         </div>

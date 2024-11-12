@@ -99,6 +99,7 @@ $(document).ready(function () {
                             
                             
                             <td class="product-quantity tableProductsInfo">₱${Number(product.price).toLocaleString()}</td>
+                             <td class="product-quantity tableProductsInfo">₱${Number(product.cost).toLocaleString()}</td>
                             
                            
                             
@@ -157,6 +158,7 @@ $(document).ready(function () {
         var productName = $('#product-add').val().trim();
     var productCategory = $('#product_categoryadd').val().trim();
     var productPrice = $('#priceadd').val().trim();
+    var costadd = $('#costadd').val().trim();
 
    
     $('#errorhandling').text('');
@@ -177,11 +179,17 @@ $(document).ready(function () {
         $('#priceadd').focus();
         return;
     }
+    if (costadd === "" || isNaN(costadd) || costadd <= 0) {
+        $('#errorhandling').text("Please enter a valid cost price.");
+        $('#costadd').focus();
+        return;
+    }
 
         var data = {
           productName: productName,
           productCategory: productCategory,
           productPrice: productPrice,
+          costadd:costadd,
         
           action: 'add'
         }
@@ -213,7 +221,8 @@ $(document).on('click', '.view-btn', function () {
                     var Data = response.data;
 
                    
-                    $('input[name="productName"]').val(Data.product_name);
+                  $('input[name="productName"]').val(Data.product_name);
+                  $('input[name="productCost"]').val(Data.cost);
                   
                     $('input[name="productPrice"]').val(Data.price);
                      $('#productCategory').val(`<option value="${Data.product_category}">${Data.product_category}</option>`).val(Data.product_category);
@@ -264,7 +273,7 @@ $(document).on('click', '.updatebtn', function() {
         var productName = $('#productName').val();
         var productCategory = $('#productCategory').val();
         var productPrice = $('#productPrice').val();
-        
+         var productCost = $('#productCost').val();
 
 
         Swal.fire({
@@ -282,6 +291,7 @@ $(document).on('click', '.updatebtn', function() {
               productName: productName,
               productCategory: productCategory,
               productPrice: productPrice,
+              productCost:productCost,
               
               action: 'edit'
             }
