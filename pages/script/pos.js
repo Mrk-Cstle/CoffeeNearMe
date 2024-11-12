@@ -321,6 +321,8 @@ function attachQuantityControl() {
                     const data = JSON.parse(response);
 
                     if (data.status === 'success') {
+
+
                         // SweetAlert for successful payment
                         Swal.fire({
                             title: 'Payment Successful!',
@@ -329,7 +331,31 @@ function attachQuantityControl() {
                             confirmButtonText: 'OK'
                         });
 
-                        // Clear cart and update DOM
+                      
+                    //reciept modal
+                         let orderList = document.querySelector('#order-list');
+                        let receiptList = document.querySelector('#receipt-list');
+                        let subtotal = document.querySelector('#subtotal').textContent;
+                        let total = document.querySelector('#total').textContent;
+
+                        // Clear previous receipt items
+                        receiptList.innerHTML = '';
+
+                      
+                        orderList.querySelectorAll('li').forEach(item => {
+                            let li = document.createElement('li');
+                            li.innerHTML = item.innerHTML.replace('Delete', ''); // Remove delete button
+                            receiptList.appendChild(li);
+                        });
+
+                        // Set subtotal and total for modal
+                        document.querySelector('#modal-subtotal').textContent = subtotal;
+                        document.querySelector('#modal-total').textContent = total;
+
+                        // Show the modal
+                        document.getElementById('receipt-modal').style.display = 'flex';
+                        
+
                         loadProduct();
                         $('#order-list').html('');
                         $('#subtotal').text('₱0.00');
