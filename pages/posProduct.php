@@ -96,7 +96,7 @@ button {
         visibility: hidden !important;
     }
     .modal-content {
-        width: 300px;
+        width: 400px;
         font-family: monospace;
         display: block !important;
         visibility: visible !important;
@@ -106,7 +106,8 @@ button {
         display: flex;
         justify-content: space-between;
         padding: 5px 0;
-        margin-left: 70px;
+        margin-left: 100px;
+        font-size: 1rem;
     }
 
     @page {

@@ -154,18 +154,19 @@ checkLogin();
       })
 
       
-      // Attach click event to all menu items
-document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach(item => {
-    item.addEventListener('click', function(event) {
-        event.preventDefault();  // Prevent default link action, if any
+      // Apply selected class on page load based on saved item
+document.addEventListener("DOMContentLoaded", function() {
+    const selectedMenuItem = localStorage.getItem('selectedMenuItem');
+    if (selectedMenuItem) {
+        document.querySelectorAll('.main-menu li, .dropdown-menu > li')[selectedMenuItem].classList.add('selected');
+    }
+});
 
-        // Clear 'selected' class from all items
-        document.querySelectorAll('.main-menu li, .dropdown-menu > li').forEach(li => {
-            li.classList.remove('selected');
-        });
-
-        // Add 'selected' class to the clicked item's parent <li>
-        this.parentNode.classList.add('selected');
+// Attach click event to all menu items
+document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach((item, index) => {
+    item.addEventListener('click', function() {
+        // Store the selected item index in local storage
+        localStorage.setItem('selectedMenuItem', index);
     });
 });
 
