@@ -49,7 +49,7 @@ checkLogin();
          <div class="nav__menu" id="nav-menu">
             <ul class="nav__list me-5">
                <li><a href="posProduct.php" class="nav__link">
-                     <h3 class="bi bi-cart" ></h3>
+                     <h3 class="bi bi-cart"></h3>
                   </a></li>
 
                <!--=============== DROPDOWN 2 ===============-->
@@ -65,11 +65,7 @@ checkLogin();
                         </a>
                      </li>
 
-                     <li>
-                        <a href="#" class="dropdown__link">
-                           <i class="ri-lock-line"></i> History
-                        </a>
-                     </li>
+
 
                      <li>
                         <a id="signoutbtn" class="dropdown__link">
@@ -106,7 +102,16 @@ checkLogin();
             <a href="ingredients.php">
                <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
-                  Ingredients
+                  Inventory
+               </span>
+            </a>
+         </li>
+
+         <li>
+            <a href="expenses.php">
+               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+               <span class="nav-text">
+                  Expenses
                </span>
             </a>
          </li>
@@ -153,23 +158,22 @@ checkLogin();
          });
       })
 
-      
+
       // Apply selected class on page load based on saved item
-document.addEventListener("DOMContentLoaded", function() {
-    const selectedMenuItem = localStorage.getItem('selectedMenuItem');
-    if (selectedMenuItem) {
-        document.querySelectorAll('.main-menu li, .dropdown-menu > li')[selectedMenuItem].classList.add('selected');
-    }
-});
+      document.addEventListener("DOMContentLoaded", function() {
+         const selectedMenuItem = localStorage.getItem('selectedMenuItem');
+         if (selectedMenuItem) {
+            document.querySelectorAll('.main-menu li, .dropdown-menu > li')[selectedMenuItem].classList.add('selected');
+         }
+      });
 
-// Attach click event to all menu items
-document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach((item, index) => {
-    item.addEventListener('click', function() {
-        // Store the selected item index in local storage
-        localStorage.setItem('selectedMenuItem', index);
-    });
-});
-
+      // Attach click event to all menu items
+      document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach((item, index) => {
+         item.addEventListener('click', function() {
+            // Store the selected item index in local storage
+            localStorage.setItem('selectedMenuItem', index);
+         });
+      });
    </script>
 </body>
 
