@@ -38,29 +38,31 @@
                     <div class="salesBord">
 
                         <div class="salesOver">
+                            <p id="salesPara">Sales Today</p>
                             <img src="../assets/images/salesIcon.png" class="salesImage">
                             <div class="paragraphSales">
                                 <p id="salesNum">₱<?php echo number_format($total_sales_today, 2); ?></p>
-                                <p id="salesPara">Sales Today</p>
                             </div>
                         </div>
-                        <div class="borderRight"></div>
+                        
 
                         <div class="salesOver">
+                            <p id="salesPara">Transaction Today</p>
                             <img src="../assets/images/revenueIcon.png" class="salesImage">
                             <div class="paragraphSales">
-                                <p id="salesNum"><?php echo $total_transactions_today; ?></p>
-                                <p id="salesPara">Transaction Today</p>
+                                <p id="salesTrans"><?php echo $total_transactions_today; ?></p>
+                                
                             </div>
                         </div>
 
-                        <div class="borderRight"></div>
+                        
 
                         <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
                             <div class="salesOver">
-                                <img src="../assets/images/report.png" class="salesImage">
+                                <p id="salesPara">Today's Report</p>
+                                <img src="../assets/images/reportBlack.png" class="salesImage">
                                 <div class="paragraphSales">
-                                    <p id="salesPara">Today's Report</p>
+                                    
                                 </div>
                             </div>
                         </a>
@@ -76,37 +78,39 @@
                     <div class="inventoryBord">
 
                         <div class="inventorySum">
-                            <img src="../assets/images/in-stockIcon.png" class="inventImage">
+                            <p id="inventPara">Stocks</p>
+                            <img src="../assets/images/stockBlack.png" class="inventStock">
                             <div class="paragraphInvent">
-                                <p id="inventNum"><?php echo $total_ingredients; ?></p>
-                                <p id="inventPara">Stocks</p>
+                                <p id="inventNumStock"><?php echo $total_ingredients; ?></p>
                             </div>
                         </div>
                         <div class="borderRight"></div>
 
                         <div class="inventorySum">
-                            <img src="../assets/images/lowstockIcon.png" class="inventImage">
+                             <p id="inventPara">Low Stocks</p>
+                            <img src="../assets/images/lowStockBlack.png" class="inventImage">
                             <div class="paragraphInvent">
                                 <p id="inventNum"><?php echo $low_stock_count; ?></p>
-                                <p id="inventPara">Low Stocks</p>
                             </div>
                         </div>
                         <div class="borderRight"></div>
 
                         <a href="actionInventory.php" class="inventorySum">
-                            <img src="../assets/images/inventoryHistory.png" class="inventImage">
+                            <p id="inventPara">Inventory History</p>
+                            <img src="../assets/images/inventoryHistoryBlak.png" class="inventHis">
                             <div class="paragraphInvent">
 
-                                <p id="inventPara">Inventory History</p>
+                               
                             </div>
                         </a>
                         <div class="borderRight"></div>
 
                         <a href="transactionDetails.php" class="inventorySum">
-                            <img src="../assets/images/transaction-History.png" class="inventImage">
+                            <p id="inventPara">Transaction History</p>
+                            <img src="../assets/images/transactionBlack.png" class="inventSum">
                             <div class="paragraphInvent">
 
-                                <p id="inventPara">Transaction History</p>
+                                
                             </div>
                         </a>
                     </div>

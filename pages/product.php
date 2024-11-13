@@ -454,9 +454,9 @@
     .productDetails {
       border: 3px solid #2D2B2B;
       background-color: #EEEEEE;
-      height: 240px;
+      height: 300px;
       width: 20vw;
-      margin-top: 52px;
+      margin-top: 40px;
     }
 
     .productInput {
@@ -468,7 +468,7 @@
     }
 
     .productName {
-      border: 2px solid #2D2B2B;
+      border: 1px solid #2D2B2B;
       background-color: #fff;
       color: black;
       width: 15vw;
@@ -479,7 +479,7 @@
     }
 
     .productCategory {
-      border: 2px solid #2D2B2B;
+      border: 1px solid #2D2B2B;
       background-color: #FFF;
       color: black;
       width: 10vw;
@@ -489,7 +489,18 @@
     }
 
     .productPrice {
-      border: 2px solid #2D2B2B;
+      border: 1px solid #2D2B2B;
+      background-color: #fff;
+      color: black;
+      width: 40%;
+      height: 30px;
+      border-radius: 15px;
+      margin-left: 10px;
+      text-align: center;
+    }
+
+    #productCost{
+      border: 1px solid #2D2B2B;
       background-color: #fff;
       color: black;
       width: 40%;
@@ -1372,11 +1383,11 @@
                   </div>
                   <div class="productInput">
                     <label for="prodPrice" class="productLabel">Product Price:</label>
-                    <input type="text" id="productPrice" name="productPrice" class="productPrice" required>
+                    <input type="number" id="productPrice" name="productPrice" class="productPrice" required>
                   </div>
                   <div class="productInput">
                     <label for="prodCost" class="productLabel">Product Cost:</label>
-                    <input type="text" id="productCost" name="productCost" class="productCost" required>
+                    <input type="number" id="productCost" name="productCost" class="productCost" required>
                   </div>
                 </div>
               </div>

@@ -34,17 +34,22 @@
     .salesImage{
         height: 40px;
         width: 40px;
-        margin-left: 70px;
-        margin-top: 20px;
+        margin-left: 100px;
+        margin-top: 10px;
     }
     #salesNum{
-        margin-left: 40px;
+        margin-left: 80px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    #salesTrans{
+        margin-left: 115px;
         margin-top: 20px;
         font-weight: bold;
     }
     #salesPara{
-        margin-left: 30px;
-        margin-top: 20px;
+        margin-left: 65px;
+        margin-top: 0px;
         font-weight: bold;
         color: #000;
         font-size: clamp(0.7rem, 1vw, 1rem);
@@ -80,14 +85,39 @@
         margin-left: 70px;
         margin-top: 10px;
     }
+    .inventHis{
+        height: 40px;
+        width: 40px;
+        margin-left: 80px;
+        margin-top: 10px;
+    }
+
+    .inventSum{
+        height: 40px;
+        width: 40px;
+        margin-left: 90px;
+        margin-top: 10px; 
+    }
+    .inventStock{
+        height: 50px;
+        width: 50px;
+        margin-left: 50px;
+        margin-top: 10px;
+        
+    }
+    #inventNumStock{
+        margin-left: 65px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
     #inventNum{
-        margin-left: 30px;
-        margin-top: 20px;
+        margin-left: 90px;
+        margin-top: 10px;
         font-weight: bold;
     }
     #inventPara{
         margin-left: 40px;
-        margin-top: 20px;
+        margin-top: 0px;
         font-weight: bold;
         text-align: center;
         font-size: clamp(0.7rem, 1vw, 1rem);
@@ -117,6 +147,7 @@
         margin-top: 40px;
         margin-left: 100px;
         overflow: hidden;
+        overflow-y: scroll;
     }
     #topHead{
         font-size: clamp(0.7rem, 1vw, 1rem);
@@ -143,21 +174,22 @@
         justify-content: space-between; /* Evenly spaces items across the container */
         padding: 10px 30px; /* Optional: adds padding for better spacing */
     }
-    #bodyP1{
-        margin-top: 20px;
-        margin-left: 80px;
-    }
-    #bodyP2{
-        margin-top: 20px;
-        margin-left: 120px;
-    }
-    #bodyP3{
-        margin-top: 20px;
-        margin-left: 180px;
-    }
+    #bodyP1,
+    #bodyP2,
+    #bodyP3,
     #bodyP4{
-        margin-top: 20px;
-        margin-left: 130px;
+        margin: 0; /* Resets margin to avoid extra spacing */
+        flex: 1; /* Allows each item to take up equal space within .lowBody */
+        text-align: center; /* Centers the text inside each item */
+    }
+
+    .topbtn{
+        margin-left: 450px;
+        margin-top: -50px;
+        height: 3.5vh;
+        padding-right: 20px;
+        font-size: clamp(0.7rem, 1vw, 0.9rem);
+        background-color: #333;
     }
 
     /*Low Stocks CSS*/
