@@ -27,21 +27,23 @@ $(document).ready(function () {
                         <h5 id="lowHead">Picture</h5>
                         <h5 id="lowHead">Ingredient Name</h5>
                         <h5 id="lowHead">Quantity</h5>
-                    </div>`
+                    </div>
+                    <div id="borderDown"></div>`
 
-                let listItems = header;
-                ingredients.forEach(function(ingredients) {
-                    let pictureHtml = '';
-                    if (ingredients.picture) {
-                        pictureHtml = `<img  class="lowImage" src="uploads/ingredients/${ingredients.picture}" data-product-img="${ingredients.picture}">`;
-                    } else {
-                        pictureHtml = ` <img src="../assets/images/coffee.png" class="lowImage">`;
-                    }
+              let listItems = header;
+              if (ingredients.length > 0) {
+                ingredients.forEach(function (ingredients) {
+                  let pictureHtml = '';
+                  if (ingredients.picture) {
+                    pictureHtml = `<img  class="lowImage" src="uploads/ingredients/${ingredients.picture}" data-product-img="${ingredients.picture}">`;
+                  } else {
+                    pictureHtml = ` <img src="../assets/images/coffee.png" class="lowImage">`;
+                  }
 
                  
-                    listItems += `
+                  listItems += `
                     
-                           
+
                         <div class="lowBody">
                         ${pictureHtml}
                         <h5 id="lowP1">${ingredients.raw_name}</h5>
@@ -50,6 +52,9 @@ $(document).ready(function () {
                     <div id="borderDown"></div>
                     `;
                 });
+              } else {
+                 listItems += `<p class="no-data">${response.message}</p>`;
+              }
                 
                 $('.lowStockDiv').html(listItems);
 
