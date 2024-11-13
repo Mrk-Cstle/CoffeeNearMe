@@ -99,12 +99,13 @@ $(document).ready(function () {
                             
                             
                             <td class="product-quantity tableProductsInfo">₱${Number(product.price).toLocaleString()}</td>
+                             <td class="product-quantity tableProductsInfo">₱${Number(product.cost).toLocaleString()}</td>
                             
                            
                             
                             
                             
-                            <td class="tableProductsInfo"><button class="view-btn" data-product-id='${product.product_id}' type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#viewProductModal">View</button></td> 
+                            <td class="tableProductsInfo"><button class="view-btn" data-product-id='${product.product_id}' type="button" id="btn-action" data-bs-toggle="modal" data-bs-target="#viewProductModal" ${hasAdminAccess  ? '' : 'style="pointer-events: none; opacity: 0.5;"'}>View</button></td> 
                         </tr>
 
           `;
@@ -154,57 +155,48 @@ $(document).ready(function () {
   }
 
   $('#saveChanges').click(function() {
-        var productName = $('#product-add').val();
-        var productCategory = $('#product_categoryadd').val();
-        var productPrice = $('#priceadd').val();
-      
+        var productName = $('#product-add').val().trim();
+    var productCategory = $('#product_categoryadd').val().trim();
+    var productPrice = $('#priceadd').val().trim();
+    var costadd = $('#costadd').val().trim();
+
+   
+    $('#errorhandling').text('');
+
+    // Validation checks
+    if (productName === "") {
+        $('#errorhandling').text("Product is required.");
+        $('#product-add').focus();
+        return;
+    }
+    if (productCategory === "") {
+        $('#errorhandling').text("Product category is required.");
+        $('#product_categoryadd').focus();
+        return;
+    }
+    if (productPrice === "" || isNaN(productPrice) || productPrice <= 0) {
+        $('#errorhandling').text("Please enter a valid product price.");
+        $('#priceadd').focus();
+        return;
+    }
+    if (costadd === "" || isNaN(costadd) || costadd <= 0) {
+        $('#errorhandling').text("Please enter a valid cost price.");
+        $('#costadd').focus();
+        return;
+    }
 
         var data = {
           productName: productName,
           productCategory: productCategory,
           productPrice: productPrice,
+          costadd:costadd,
         
           action: 'add'
         }
         productAjaxRequest(data);
       });
   
-    function productAjaxRequest(data) {
-        $.ajax({
-          type: 'POST',
-          url: 'action/product_db.php', // replace with your server endpoint
-          data: JSON.stringify(data),
-          contentType: 'application/json',
-
-          success: function(response) {
-
-            console.log(response);
-            // Optionally close the modal
-            if (response.status === 'success') {
-              Swal.fire({
-                title: 'Success',
-                text: response.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-              });
-
-              loadProduct();
-            } else {
-              Swal.fire({
-                title: 'Error',
-                text: response.message,
-                icon: 'error',
-                confirmButtonText: 'OK'
-              });
-            }
-            
-          },
-          error: function(error) {
-            // Handle any errors
-            console.error(error);
-          }
-        });
-  }
+    
   
   loadProduct();
 
@@ -229,7 +221,8 @@ $(document).on('click', '.view-btn', function () {
                     var Data = response.data;
 
                    
-                    $('input[name="productName"]').val(Data.product_name);
+                  $('input[name="productName"]').val(Data.product_name);
+                  $('input[name="productCost"]').val(Data.cost);
                   
                     $('input[name="productPrice"]').val(Data.price);
                      $('#productCategory').val(`<option value="${Data.product_category}">${Data.product_category}</option>`).val(Data.product_category);
@@ -280,7 +273,7 @@ $(document).on('click', '.updatebtn', function() {
         var productName = $('#productName').val();
         var productCategory = $('#productCategory').val();
         var productPrice = $('#productPrice').val();
-        
+         var productCost = $('#productCost').val();
 
 
         Swal.fire({
@@ -298,6 +291,7 @@ $(document).on('click', '.updatebtn', function() {
               productName: productName,
               productCategory: productCategory,
               productPrice: productPrice,
+              productCost:productCost,
               
               action: 'edit'
             }
@@ -309,7 +303,44 @@ $(document).on('click', '.updatebtn', function() {
         });
 
 
-      });
+});
+  
+  function productAjaxRequest(data) {
+        $.ajax({
+          type: 'POST',
+          url: 'action/product_db.php', // replace with your server endpoint
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+
+          success: function(response) {
+
+            console.log(response);
+            // Optionally close the modal
+            if (response.status === 'success') {
+              Swal.fire({
+                title: 'Success',
+                text: response.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              });
+
+              loadProduct();
+            } else {
+              Swal.fire({
+                title: 'Error',
+                text: response.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+            
+          },
+          error: function(error) {
+            // Handle any errors
+            console.error(error);
+          }
+        });
+  }
  $(document).on('click', '.deletebtn', function() {
 
 
@@ -333,10 +364,12 @@ $(document).on('click', '.updatebtn', function() {
               action: 'delete'
             }
             productAjaxRequest(data);
+            $('#productName').val("");
+            $('#productCategory').val("");
+            $('#productPrice').val("");
+            $('#viewProductModal').modal('hide');
           }
-          $('#productName').val("");
-          $('#productCategory').val("");
-          $('#productPrice').val("");
+          
          
 
 
@@ -430,7 +463,13 @@ $(document).on('click', '.category-delete', function() {
       });
 
   $('#add_category').click(function() {
-        var category = $('#category').val();
+    var category = $('#category').val();
+    
+    if (category === "") {
+        $('#errorhandlingcategory').text("Category is required.");
+        $('#category').focus();
+        return;
+    }
         var data = {
           category: category,
           action: 'add'

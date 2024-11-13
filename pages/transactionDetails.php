@@ -224,7 +224,7 @@
 
             function loads() {
                 var filter = $('#filter').val();
-                var itemsPerPage = 10;
+                var itemsPerPage = 8;
                 var data = {
                     filter: filter,
                     page: currentPage,

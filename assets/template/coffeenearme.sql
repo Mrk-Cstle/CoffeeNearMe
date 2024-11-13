@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2024 at 02:28 AM
+-- Generation Time: Nov 09, 2024 at 11:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,21 +51,6 @@ CREATE TABLE `ingredients` (
   `ideal_quantity` int(100) NOT NULL,
   `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ingredients`
---
-
-INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `unit`, `ideal_quantity`, `picture`) VALUES
-(30, 'Arabica', 'Coffee', 76.99399999999999, 'kg', 1, '30.jpg'),
-(42, 'Robusta', 'Coffee', 180, 'kg', 400, '42.png'),
-(44, 'qwe', 'Food', 0, 'kg', 0, '44.png'),
-(45, '2', 'Food', 0, 'kg', 0, ''),
-(46, '3', 'Food', 0, 'kg', 0, ''),
-(48, 'water', 'Food', 2, 'kg', 3, ''),
-(50, 'water b', 'Food', 10, 'pcs', 5, ''),
-(51, 'beans', 'Coffee', 0.98, 'kg', 5, ''),
-(52, 'w', 'Food', 22.869234772399977, 'gal', 30, '');
 
 -- --------------------------------------------------------
 
@@ -157,7 +142,35 @@ INSERT INTO `inventory_action` (`action_id`, `action_type`, `item`, `quantity`, 
 (51, 'Stock In', 'Robusta', 50, 'kg', '2024-11-02 15:42:16', 'qwe'),
 (52, 'Add Ingredient', '', 0, 'kg', '2024-11-02 15:47:38', 'qwe'),
 (53, 'Delete Ingredient', '4', NULL, '', '2024-11-02 15:48:26', 'qwe'),
-(54, 'Delete Ingredient', '', NULL, '', '2024-11-02 15:48:32', 'qwe');
+(54, 'Delete Ingredient', '', NULL, '', '2024-11-02 15:48:32', 'qwe'),
+(55, 'Add Ingredient', '1', 1, 'kg', '2024-11-07 05:52:16', 'qwe'),
+(56, 'Delete Ingredient', '1', NULL, '', '2024-11-07 05:52:34', 'qwe'),
+(57, 'Delete Ingredient', 'beans', NULL, '', '2024-11-08 02:16:17', 'qwe'),
+(58, 'Delete Ingredient', 'w', NULL, '', '2024-11-08 02:16:39', 'qwe'),
+(59, 'Stock In', 'Arabica', 1, 'kg', '2024-11-08 02:22:26', 'qwe'),
+(60, 'Delete Ingredient', 'Arabica', NULL, '', '2024-11-08 02:30:26', 'qwe'),
+(61, 'Delete Ingredient', 'Robusta', NULL, '', '2024-11-08 02:37:27', 'qwe'),
+(62, 'Delete Ingredient', 'qwe', NULL, '', '2024-11-08 02:37:56', 'qwe'),
+(63, 'Delete Ingredient', '2', NULL, '', '2024-11-08 02:38:05', 'qwe'),
+(64, 'Delete Ingredient', 'water', NULL, '', '2024-11-08 02:44:12', 'qwe'),
+(65, 'Delete Ingredient', '3', NULL, '', '2024-11-08 02:46:16', 'qwe'),
+(66, 'Delete Ingredient', 'water b', NULL, '', '2024-11-08 02:51:15', 'qwe'),
+(67, 'Add Ingredient', '123', 2, 'kg', '2024-11-08 02:51:25', 'qwe'),
+(68, 'Delete Ingredient', '123', NULL, '', '2024-11-08 02:52:01', 'qwe'),
+(69, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:52:22', 'qwe'),
+(70, 'Delete Ingredient', '1', NULL, '', '2024-11-08 02:52:30', 'qwe'),
+(71, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:52:45', 'qwe'),
+(72, 'Delete Ingredient', '1', NULL, '', '2024-11-08 02:52:48', 'qwe'),
+(73, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:53:07', 'qwe'),
+(74, 'Delete Ingredient', '1', NULL, '', '2024-11-08 02:54:03', 'qwe'),
+(75, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:54:11', 'qwe'),
+(76, 'Delete Ingredient', '1', NULL, '', '2024-11-08 02:54:25', 'qwe'),
+(77, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:54:57', 'qwe'),
+(78, 'Delete Ingredient', '1', NULL, '', '2024-11-08 02:55:29', 'qwe'),
+(79, 'Add Ingredient', '2', 2, 'kg', '2024-11-08 02:58:32', 'qwe'),
+(80, 'Delete Ingredient', '2', NULL, '', '2024-11-08 02:58:39', 'qwe'),
+(81, 'Add Ingredient', '1', 1, 'kg', '2024-11-08 02:59:01', 'qwe'),
+(82, 'Delete Ingredient', '1', NULL, '', '2024-11-08 04:52:43', 'qwe');
 
 -- --------------------------------------------------------
 
@@ -172,20 +185,6 @@ CREATE TABLE `product` (
   `price` int(100) NOT NULL,
   `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`, `picture`) VALUES
-(74, 'Coffee', 'Hot', 120, '74.jpg'),
-(75, 'Spanish Latte', 'Water Based', 120, '75.jpg'),
-(78, 'asdasdasdasd', 'Water Based', 0, NULL),
-(80, 'qq', 'Water Based', 0, NULL),
-(81, 'qqq', 'Water Based', 0, NULL),
-(82, 'qqqq', 'Water Based', 0, NULL),
-(83, 'qqqqq', 'Water Based', 222, NULL),
-(84, 'a', 'Water Based', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -219,18 +218,6 @@ CREATE TABLE `product_ingredients` (
   `quantity` float NOT NULL,
   `unit` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product_ingredients`
---
-
-INSERT INTO `product_ingredients` (`product_raw_id`, `product_id`, `ingredients_id`, `quantity`, `unit`) VALUES
-(31, 75, 30, 1, 'g'),
-(34, 78, 30, 2, 'g'),
-(43, 83, 51, 1, 'g'),
-(44, 83, 52, 25, 'mL'),
-(45, 80, 51, 1, 'g'),
-(55, 74, 52, 1, 'g');
 
 -- --------------------------------------------------------
 
@@ -283,7 +270,9 @@ INSERT INTO `transaction` (`transaction_id`, `user`, `total_amount`, `timestamp`
 (75, 'qwe', 0, '2024-11-05 05:16:00'),
 (76, 'qwe', 120, '2024-11-06 18:45:55'),
 (77, 'qwe', 120, '2024-11-06 18:58:33'),
-(78, 'qwe', 240, '2024-11-06 18:58:42');
+(78, 'qwe', 240, '2024-11-06 18:58:42'),
+(79, 'qwe', 120, '2024-11-07 09:43:41'),
+(80, 'qwe', 120, '2024-11-08 10:19:43');
 
 -- --------------------------------------------------------
 
@@ -346,7 +335,9 @@ INSERT INTO `transaction_item` (`item_id`, `transaction_id`, `product_name`, `qu
 (94, 75, 'asdasdasdasd', 1, 0),
 (95, 76, 'Spanish Latte', 1, 120),
 (96, 77, 'Coffee', 1, 120),
-(97, 78, 'Coffee', 2, 120);
+(97, 78, 'Coffee', 2, 120),
+(98, 79, 'Spanish Latte', 1, 120),
+(99, 80, 'Spanish Latte', 1, 120);
 
 -- --------------------------------------------------------
 
@@ -456,61 +447,61 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `ingredients_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `ingredients_category`
 --
 ALTER TABLE `ingredients_category`
-  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `inventory_action`
 --
 ALTER TABLE `inventory_action`
-  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `action_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `category_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
-  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `transaction_item`
 --
 ALTER TABLE `transaction_item`
-  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- Constraints for dumped tables
