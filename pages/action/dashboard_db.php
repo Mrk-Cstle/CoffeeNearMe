@@ -65,7 +65,7 @@ try {
             p.product_name, p.price
         ORDER BY 
             sold_quantity DESC
-        LIMIT 5;";
+        LIMIT 3;";
         $result = $conn->query($query);
         $top = [];
         if ($result->num_rows > 0) {

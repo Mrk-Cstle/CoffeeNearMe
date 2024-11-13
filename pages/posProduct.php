@@ -128,6 +128,12 @@
 
 
     }
+
+    .discount-div button.active {
+        background-color: #3085d6;
+        /* Highlight color */
+        color: white;
+    }
 </style>
 
 <body>
@@ -173,46 +179,46 @@
             <h2>Order Details</h2>
             <table class="order-list-table">
                 <thead class="order-heading">
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Action</th>
                 </thead>
-                
-                
-                    
+
+
+
                 <tr class="ordered">
-                        
+
                 </tr>
 
             </table>
             <ul id="order-list ">
-                
-                
+
+
                 <!-- Orders will be added here dynamically -->
 
-                
+
             </ul>
             <div class="totals">
                 <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
 
                 <div class="discount-div">
-                <button class="discount-button">Discount</button>
-                <button class="normal-button">Normal</button>
+                    <button class="discount-button">Discount</button>
+                    <button class="normal-button">Regular</button>
                 </div>
-                
+
                 <div class="div-payment">
-                <p id="payment-text">Customer Payment:</p>
-                <input type="number" class="paymentAmount" id="payment-amount" placeholder="">
+                    <p id="payment-text">Customer Payment:</p>
+                    <input type="number" class="paymentAmount" id="payment-amount" placeholder="">
                 </div>
-                
+
                 <p>Subtotal: <span id="subtotal">₱0.00</span></p>
                 <p>Discounted: <span id="discount">₱0.00</span></p>
                 <p>Total: <span id="total">₱0.00</span></p>
                 <p>Change: <span id="change">₱0.00</span></p>
-                
-                <button class="pay-now">Pay Now</button>
-                
+
+                <button class="pay-now" disabled>Pay Now</button>
+
             </div>
         </div>
 

@@ -261,22 +261,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             $transactionId = $stmt->insert_id; // Get the ID of the newly created transaction
 
+            $items = []; // Array to hold cart items for response
+
             // Step 2: Save each cart item into transaction_items table
             foreach ($cart as $item) {
                 $productId = $item['name'];
                 $quantity = $item['quantity'];
                 $price = $item['price'];
 
-
-
-
                 // Insert into the transaction_items table
                 $itemQuery = "INSERT INTO transaction_item (transaction_id, product_name, quantity, price) VALUES (?, ?, ?, ?)";
                 $itemStmt = $conn->prepare($itemQuery);
                 $itemStmt->bind_param("isid", $transactionId, $productId, $quantity, $price);
                 $itemStmt->execute();
-            }
 
+                // Add item to the response items array
+                $items[] = [
+                    'name' => $productId,
+                    'quantity' => $quantity,
+                    'price' => $price,
+                    'total' => number_format($price * $quantity, 2)
+                ];
+            }
 
             // After successful payment, delete the cart items
             $clearCartQuery = "DELETE FROM carts WHERE user_id = ?";
@@ -287,15 +293,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
                     $_SESSION['cart'] = [];
-                    echo json_encode(["status" => "success", "message" => "Payment Successful"]);
+                    echo json_encode([
+                        "status" => "success",
+                        "message" => "Payment Successful",
+                        "items" => $items // Include the items in the response
+                    ]);
                 } else {
-
-                    echo json_encode(["status" => "error", "message" => "error" . $stmt->error]);
+                    echo json_encode(["status" => "error", "message" => "Error clearing cart: " . $stmt->error]);
                 }
             } catch (Exception $e) {
-                echo json_encode(["status" => "error", "message" => "Error deleting record: "]);
+                echo json_encode(["status" => "error", "message" => "Error deleting record: " . $e->getMessage()]);
             }
-
 
             break;
         default:
