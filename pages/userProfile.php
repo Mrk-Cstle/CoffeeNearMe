@@ -18,8 +18,8 @@
         .user-form {
             border: 2px solid #D9D9D9;
             background-color: #D9D9D9;
-            height: 655px;
-            width: 35vw;
+            height: 750px;
+            width: 55vw;
             position: absolute;
             top: 54%;
             left: 58%;
@@ -35,26 +35,26 @@
             display: flex;
             flex-direction: column;
             margin-top: 80px;
-            margin-left: 50px;
+            margin-left: 180px;
         }
 
         .user-image {
             background-color: #2D2B2B;
             border: 2px solid #2D2B2B;
             border-radius: 10px;
-            height: 150px;
-            width: 150px;
-            margin-left: 45px;
+            height: 200px;
+            width: 200px;
+            margin-left: -26px;
         }
 
         .profile-image {
             max-width: 150px;
             max-height: 150px;
-            height: 120px;
-            width: 120px;
+            height: 200px;
+            width: 200px;
             border-radius: 50%;
-            margin-top: 15px;
-            margin-left: 15px;
+            margin-top: 20px;
+            margin-left: 25px;
         }
 
         .user-info {
@@ -65,7 +65,7 @@
             background-color: #2D2B2B;
             border: 2px solid #2D2B2B;
             border-radius: 10px;
-            height: 488px;
+            height: 565px;
             width: 40%;
             margin-top: 83px;
             margin-left: 70px;
@@ -88,7 +88,7 @@
             margin-top: 6px;
             text-align: center;
             height: 30px;
-            width: 70%;
+            width: 80%;
             border: 2px solid #fff;
             border-radius: 10px;
 
@@ -99,13 +99,13 @@
             border: 2px solid #2D2B2B;
             border-radius: 10px;
             height: 230px;
-            width: 100%;
+            width: 15vw;
             margin-top: -25px;
             color: black;
             font-family: "Roboto", sans-serif;
             font-weight: 900;
             font-style: normal;
-            margin-left: 10px;
+            margin-left: -60px;
             
         }
 
@@ -141,7 +141,7 @@
             padding: 2px;
             font-size: clamp(0.9rem, 1vw, 1rem);
             color: #d76614;
-            margin-left: 0px;
+            margin-left: -60px;
         }
 
         #users_image::-webkit-file-upload-button {
@@ -184,10 +184,58 @@
             border: 2px solid #D9D9D9;
             background-color: #D9D9D9;
             height: 655px;
-            width: 60vw;
+            width: 70vw;
             position: absolute;
             top: 54%;
             left: 58%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        #users_image {
+            margin-top: 30px;
+            border: 5px #2c2c2c;
+            border-radius: 50px;
+            width: 9vw;
+            padding: 2px;
+            font-size: clamp(0.9rem, 1vw, 1rem);
+            color: #d76614;
+            margin-left: -50px;
+        }
+
+        .user-image-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            margin-left: 80px;
+        }
+
+        .user-acc{
+            width: 25vw;
+            margin-top: -60px;
+            margin-left: -35px;
+        }
+        .user-info{
+            width: 30vw;
+            margin-top: 50px;
+            height: 60vh;
+            margin-left: 40px;
+        }
+
+        .info-text{
+            margin-left: 27px;
+        }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .user-form {
+            border: 2px solid #D9D9D9;
+            background-color: #D9D9D9;
+            height: 655px;
+            width: 70vw;
+            position: absolute;
+            top: 54%;
+            left: 61%;
             transform: translate(-50%, -50%);
 
         }
@@ -198,34 +246,32 @@
             border-radius: 50px;
             width: 10vw;
             padding: 2px;
-            font-size: clamp(0.9rem, 1vw, 1rem);
+            font-size: clamp(0.8rem, 1vw, 1rem);
             color: #d76614;
-            margin-left: 0px;
-        }
-        }
-
-        @media screen and (max-width: 1024px) {
-            .user-form {
-            border: 2px solid #D9D9D9;
-            background-color: #D9D9D9;
-            height: 655px;
-            width: 65vw;
-            position: absolute;
-            top: 54%;
-            left: 58%;
-            transform: translate(-50%, -50%);
-
+            margin-left: -70px;
         }
 
-        #users_image {
-            margin-top: 30px;
-            border: 5px #2c2c2c;
-            border-radius: 50px;
-            width: 11vw;
-            padding: 2px;
-            font-size: clamp(0.9rem, 1vw, 1rem);
-            color: #d76614;
-            margin-left: 0px;
+        .user-image-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            margin-left: 80px;
+        }
+
+        .user-acc{
+            width: 25vw;
+            margin-top: -60px;
+            margin-left: -35px;
+        }
+        .user-info{
+            width: 30vw;
+            margin-top: 50px;
+            height: 60vh;
+            margin-left: 40px;
+        }
+
+        .info-text{
+            margin-left: 27px;
         }
         }
 
@@ -233,8 +279,8 @@
             .user-form {
             border: 2px solid #D9D9D9;
             background-color: #D9D9D9;
-            height: 655px;
-            width: 74vw;
+            height: 670px;
+            width: 70vw;
             position: absolute;
             top: 54%;
             left: 61%;
@@ -250,7 +296,30 @@
             padding: 2px;
             font-size: clamp(0.9rem, 1vw, 1rem);
             color: #d76614;
-            margin-left: 0px;
+            margin-left: -60px;
+        }
+
+        .user-image-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            margin-left: 80px;
+        }
+
+        .user-acc{
+            width: 25vw;
+            margin-top: -60px;
+            margin-left: -35px;
+        }
+        .user-info{
+            width: 30vw;
+            margin-top: 50px;
+            height: 60vh;
+            margin-left: 40px;
+        }
+
+        .info-text{
+            margin-left: 27px;
         }
         }
     </style>

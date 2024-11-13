@@ -258,23 +258,29 @@ function attachQuantityControl() {
 
     // Function to update the cart display
     function updateCartDisplay(cart) {
-        let listItems = '';
+        let tableRows = '';
         let subtotal = 0;
 
         // Iterate over cart items
         cart.forEach(function (item) {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
-            listItems += `
-                <li>
-                    ${item.name} x ${item.quantity} - ₱${Number(itemTotal.toFixed(2)).toLocaleString()} 
-                     <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">Delete</button>
-                </li>
+            
+            tableRows += `
+                <tr class="ordered">
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>₱${Number(itemTotal.toFixed(2)).toLocaleString()}</td>
+                    <td>
+
+                     <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}"><img src="../assets/images/delete.png" class="deleteIcon"></button>
+                    </td>
+                </tr>
             `;
         });
 
         // Update the order list and totals in the HTML
-        $('#order-list').html(listItems);
+        $('.order-list-table tbody').html(tableRows);
         $('#subtotal').text(`₱${subtotal.toFixed(2)}`);
         $('#total').text(`₱${subtotal.toFixed(2)}`);
     }
@@ -333,7 +339,7 @@ function attachQuantityControl() {
 
                       
                     //reciept modal
-                         let orderList = document.querySelector('#order-list');
+                         let orderList = document.querySelector('.order-list-table tbody');
                         let receiptList = document.querySelector('#receipt-list');
                         let subtotal = document.querySelector('#subtotal').textContent;
                         let total = document.querySelector('#total').textContent;
@@ -357,7 +363,7 @@ function attachQuantityControl() {
                         
 
                         loadProduct();
-                        $('#order-list').html('');
+                        $('.order-list-table tbody').html('');
                         $('#subtotal').text('₱0.00');
                         $('#total').text('₱0.00');
                     } else {

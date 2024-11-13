@@ -171,14 +171,48 @@
         <!-- Order Details Sidebar -->
         <div class="order-summary">
             <h2>Order Details</h2>
-            <ul id="order-list">
+            <table class="order-list-table">
+                <thead class="order-heading">
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+                </thead>
+                
+                
+                    
+                <tr class="ordered">
+                        
+                </tr>
+
+            </table>
+            <ul id="order-list ">
+                
+                
                 <!-- Orders will be added here dynamically -->
+
+                
             </ul>
             <div class="totals">
                 <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+
+                <div class="discount-div">
+                <button class="discount-button">Discount</button>
+                <button class="normal-button">Normal</button>
+                </div>
+                
+                <div class="div-payment">
+                <p id="payment-text">Customer Payment:</p>
+                <input type="number" class="paymentAmount" id="payment-amount" placeholder="">
+                </div>
+                
                 <p>Subtotal: <span id="subtotal">₱0.00</span></p>
-                <h3>Total: <span id="total">₱0.00</span></h3>
+                <p>Discounted: <span id="discount">₱0.00</span></p>
+                <p>Total: <span id="total">₱0.00</span></p>
+                <p>Change: <span id="change">₱0.00</span></p>
+                
                 <button class="pay-now">Pay Now</button>
+                
             </div>
         </div>
 
@@ -192,7 +226,9 @@
                         <!-- Dynamic order items will appear here -->
                     </ul>
                     <p><strong>Subtotal:</strong> <span id="modal-subtotal">0.00</span></p>
-                    <h3><strong>Total:</strong> <span id="modal-total">0.00</span></h3>
+                    <p><strong>Discount:</strong> <span id="modal-discount">0.00</span></p>
+                    <h4><strong>Total:</strong> <span id="modal-total">0.00</span></h4>
+                    <p><strong>Change:</strong> <span id="modal-change">0.00</span></p>
                 </div>
                 <div class="print-btn">
                     <button id="close-receipt">Close</button>
