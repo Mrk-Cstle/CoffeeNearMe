@@ -254,10 +254,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cart = $_SESSION['cart'];
             $username = $_SESSION['user_name'];
             $total = $_POST['total'];
+            $discount = $_POST['discount'];
+            if ($discount == 'true') {
+                $type = "discount";
+            } else {
+                $type = "regular";
+            }
 
-            $query = "INSERT INTO transaction (user, total_amount) VALUES (?, ?)";
+            $query = "INSERT INTO transaction (user, total_amount,transaction_type) VALUES (?, ?,?)";
             $stmt = $conn->prepare($query);
-            $stmt->bind_param("sd", $username, $total);
+            $stmt->bind_param("sds", $username, $total, $type);
             $stmt->execute();
             $transactionId = $stmt->insert_id; // Get the ID of the newly created transaction
 

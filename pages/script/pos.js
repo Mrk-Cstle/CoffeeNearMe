@@ -261,7 +261,8 @@ let isDiscounted = false; // Set default discount state
 if (localStorage.getItem('isDiscounted') === 'true') {
     isDiscounted = true; // Apply discount if stored as true
     $('.discount-button').addClass('active'); // Highlight the discount button
-    $('.normal-button').removeClass('active'); // Unhighlight the regular button
+    $('.normal-button').removeClass('active');
+    // Unhighlight the regular button
 } else if (localStorage.getItem('isDiscounted') === 'false') {
     isDiscounted = false; // No discount if stored as false
     $('.normal-button').addClass('active'); // Highlight the regular button
@@ -415,7 +416,8 @@ $('#payment-amount').on('input', function () {
                 url: 'action/cart_handler.php',
                 data: {
                     action: 'pay',
-                    total: totalAmount
+                    total: totalAmount,
+                    discount: isDiscounted
                 },
                 success: function(response) {
                     const data = JSON.parse(response);
