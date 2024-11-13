@@ -15,125 +15,6 @@
         border-color: #ccc;
         color: #666;
     }
-
-    /* Receipt Modal Styles */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Semi-transparent background */
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 20px;
-        max-width: 400px;
-        margin: 0 auto;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .receipt-details {
-        margin-top: 20px;
-    }
-
-    .receipt-details ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .receipt-details ul li {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 0;
-        margin-left: 105px;
-    }
-
-    h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        border: none;
-        border-radius: 5px;
-    }
-
-    .print-btn {
-        display: flex;
-    }
-
-    #close-receipt {
-        background-color: #D76614;
-        color: #fff;
-        margin-left: 130px;
-    }
-
-    #print-receipt {
-        background-color: #D76614;
-        color: white;
-        margin-left: 10px;
-    }
-
-    /* Styling for print layout */
-    @media print {
-
-        body {
-            visibility: hidden !important;
-        }
-
-        .pos-container {
-            visibility: hidden !important;
-        }
-
-        .modal-content {
-            width: 400px;
-            font-family: monospace;
-            display: block !important;
-            visibility: visible !important;
-        }
-
-        .receipt-details ul li {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            margin-left: 100px;
-            font-size: 1rem;
-        }
-
-        @page {
-            size: auto;
-            margin: .5rem 0;
-        }
-
-
-        #print-receipt,
-        #close-receipt {
-            display: none;
-            /* Hide buttons during print */
-        }
-
-
-
-    }
-
-    .discount-div button.active {
-        background-color: #3085d6;
-        /* Highlight color */
-        color: white;
-    }
 </style>
 
 <body>
@@ -177,111 +58,17 @@
         <!-- Order Details Sidebar -->
         <div class="order-summary">
             <h2>Order Details</h2>
-            <table class="order-list-table">
-                <thead class="order-heading">
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </thead>
-
-
-
-                <tr class="ordered">
-
-                </tr>
-
-            </table>
-            <ul id="order-list ">
-
-
+            <ul id="order-list">
                 <!-- Orders will be added here dynamically -->
-
-
             </ul>
             <div class="totals">
                 <input type="hidden" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-
-                <div class="discount-div">
-                    <button class="discount-button">Discount</button>
-                    <button class="normal-button">Regular</button>
-                </div>
-
-                <div class="div-payment">
-                    <p id="payment-text">Customer Payment:</p>
-                    <input type="number" class="paymentAmount" id="payment-amount" placeholder="">
-                </div>
-
                 <p>Subtotal: <span id="subtotal">₱0.00</span></p>
-                <p>Discounted: <span id="discount">₱0.00</span></p>
-                <p>Total: <span id="total">₱0.00</span></p>
-                <p>Change: <span id="change">₱0.00</span></p>
-
-                <button class="pay-now" disabled>Pay Now</button>
-
+                <h3>Total: <span id="total">₱0.00</span></h3>
+                <button class="pay-now">Pay Now</button>
             </div>
         </div>
-
-        <!-- Receipt Modal -->
-        <div id="receipt-modal" class="modal">
-            <div class="modal-content">
-                <h2>Coffee Near Me Receipt</h2>
-                <p>Thank you for your purchase!</p>
-                <div class="receipt-details">
-                    <ul id="receipt-list">
-                        <!-- Dynamic order items will appear here -->
-                    </ul>
-                    <p><strong>Subtotal:</strong> <span id="modal-subtotal">0.00</span></p>
-                    <p><strong>Discount:</strong> <span id="modal-discount">0.00</span></p>
-                    <h4><strong>Total:</strong> <span id="modal-total">0.00</span></h4>
-                    <p><strong>Change:</strong> <span id="modal-change">0.00</span></p>
-                </div>
-                <div class="print-btn">
-                    <button id="close-receipt">Close</button>
-                    <button id="print-receipt">Print Receipt</button>
-                </div>
-
-            </div>
-        </div>
-
     </div>
-
-    <script>
-        // Open the receipt modal when the "Pay Now" button is clicked
-        // document.querySelector('.pay-now').addEventListener('click', function() {
-        //     let orderList = document.querySelector('#order-list');
-        //     let receiptList = document.querySelector('#receipt-list');
-        //     let subtotal = document.querySelector('#subtotal').textContent;
-        //     let total = document.querySelector('#total').textContent;
-
-        //     // Clear previous receipt items
-        //     receiptList.innerHTML = '';
-
-        //     // Add each order item to the receipt
-        //     orderList.querySelectorAll('li').forEach(item => {
-        //         let li = document.createElement('li');
-        //         li.innerHTML = item.innerHTML.replace('Delete', ''); // Remove delete button
-        //         receiptList.appendChild(li);
-        //     });
-
-        //     // Set subtotal and total for modal
-        //     document.querySelector('#modal-subtotal').textContent = subtotal;
-        //     document.querySelector('#modal-total').textContent = total;
-
-        //     // Show the modal
-        //     document.getElementById('receipt-modal').style.display = 'flex';
-        // });
-
-        // Close the modal
-        document.getElementById('close-receipt').addEventListener('click', function() {
-            document.getElementById('receipt-modal').style.display = 'none';
-        });
-
-        // Print the receipt
-        document.getElementById('print-receipt').addEventListener('click', function() {
-            window.print();
-        });
-    </script>
 
     <!-- <script>
         const productGrid = document.querySelector('.product-grid');

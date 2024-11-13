@@ -7,17 +7,9 @@ $(document).ready(function () {
 
 
     var ingredients = $('#product_ingredients').val();
-    var qty = $('#productingredientQuantity').val().trim();
+    var qty = $('#productingredientQuantity').val();
       var productId = $('#productId').val();
       var units = $('#a_unit').val();
-
-      $('#errorhandlingi').text('');
-
-      if (qty === "" || isNaN(qty) || qty <= 0) {
-        $('#errorhandlingi').text("Quantity is required.");
-        $('#productingredientQuantity').focus();
-        return;
-    }
     
 
     

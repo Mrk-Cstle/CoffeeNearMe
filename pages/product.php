@@ -1,5 +1,4 @@
 <?php include '../assets/template/navigation.php'; ?>
-<?php include 'include/access.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,13 +43,13 @@
     thead {
       background-color: #2D2B2B;
       color: #fff;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
       font-weight: bold;
     }
 
     tbody {
       background-color: #fff;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
       font-weight: bold;
       font-style: italic;
     }
@@ -123,7 +122,7 @@
 
     /* Modal Category CSS */
     .modal {
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
       font-style: italic;
     }
 
@@ -131,7 +130,7 @@
       float: right;
       border: 1px white;
       background-color: white;
-      margin-left: 66%;
+      margin-left: 76%;
     }
 
     /* Button Styling */
@@ -139,7 +138,7 @@
       display: flex;
       margin: 0 0 0 auto;
       justify-content: start;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 1em;
       height: 40px;
     }
 
@@ -147,8 +146,8 @@
     /* Category List Modal Styling */
     .categorycontent {
       background-color: #fff;
-      width: 20vw;
-      height: 365px;
+      width: 600px;
+      height: 500px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -165,7 +164,7 @@
     }
 
     #viewProductModalLabel {
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 25px;
       margin-left: 550px;
       font-weight: bold;
       margin-left: 40%;
@@ -265,7 +264,7 @@
     /* Additional Button Styling */
     .vbtn {
       color: #FFF;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
       width: 70px;
     }
 
@@ -322,7 +321,7 @@
 
     .ingredientHeading {
       text-align: center;
-      font-size: clamp(1rem, 1vw, 2rem);
+      font-size: 1.2rem;
       margin-top: 23px;
       left: 80%;
     }
@@ -357,7 +356,7 @@
       border: 1px solid #d9d9d9;
       height: 50px;
       color: white;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
     }
 
     .tableIngredient {
@@ -390,7 +389,6 @@
       grid-template-columns: 20px 120px 1fr;
       gap: 0px;
       padding: 10px;
-      font-size: clamp(0.7rem, 1vw, 1rem)
     }
 
     .headerRow td {
@@ -407,7 +405,7 @@
     }
 
     .ingredientBodyModal {
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
       font-weight: bold;
       font-style: normal;
       background-color: #d9d9d9;
@@ -422,14 +420,14 @@
     }
 
     .spanquantity {
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: large;
       font-weight: bold;
       position: fixed;
       margin-left: 17%;
     }
 
     .trashIcon {
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
       margin-left: 32%;
       position: fixed;
     }
@@ -440,7 +438,7 @@
       height: 182px;
       background-color: #D9D9D9;
       border-radius: 50%;
-      margin-left: 130px;
+      margin-left: 160px;
       margin-top: -310px;
     }
 
@@ -454,21 +452,21 @@
     .productDetails {
       border: 3px solid #2D2B2B;
       background-color: #EEEEEE;
-      height: 300px;
+      height: 240px;
       width: 20vw;
-      margin-top: 40px;
+      margin-top: 52px;
     }
 
     .productInput {
       color: #2D2B2B;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
       padding: 15px;
       font-weight: bold;
       display: flex;
     }
 
     .productName {
-      border: 1px solid #2D2B2B;
+      border: 2px solid #2D2B2B;
       background-color: #fff;
       color: black;
       width: 15vw;
@@ -479,7 +477,7 @@
     }
 
     .productCategory {
-      border: 1px solid #2D2B2B;
+      border: 2px solid #2D2B2B;
       background-color: #FFF;
       color: black;
       width: 10vw;
@@ -489,18 +487,7 @@
     }
 
     .productPrice {
-      border: 1px solid #2D2B2B;
-      background-color: #fff;
-      color: black;
-      width: 40%;
-      height: 30px;
-      border-radius: 15px;
-      margin-left: 10px;
-      text-align: center;
-    }
-
-    #productCost{
-      border: 1px solid #2D2B2B;
+      border: 2px solid #2D2B2B;
       background-color: #fff;
       color: black;
       width: 40%;
@@ -520,7 +507,7 @@
     .btnIngredient {
       background-color: #d76614;
       margin-top: 20px;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
       font-weight: normal;
     }
 
@@ -550,7 +537,7 @@
       background-color: #d9d9d9;
       border: 2px solid #D9D9D9;
       color: #000;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
       font-style: italic;
       font-weight: bold;
     }
@@ -596,7 +583,7 @@
     .btn-plus {
       background-color: #d76614;
       color: white;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 18px;
       font-style: italic;
       margin-left: 680px;
       margin-top: 60px;
@@ -608,10 +595,10 @@
       background-color: #D76614;
       border-radius: 10px;
       margin-top: 0px;
-      height: 35px;
-      width: 71px;
+      height: 40px;
+      width: 80px;
       color: white;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 15px;
     }
 
     #product_image {
@@ -620,7 +607,7 @@
       border-radius: 50px;
       width: 280px;
       padding: 2px;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 20px;
       color: #d76614;
     }
 
@@ -681,7 +668,7 @@
     #currentPage {
       margin: 0 10px;
       font-weight: bold;
-      font-size: clamp(0.7rem, 1vw, 1rem);
+      font-size: 16px;
     }
 
 
@@ -709,7 +696,7 @@
       }
 
       .viewContent {
-        width: 50%;
+        width: 65%;
         height: 570px;
       }
 
@@ -718,9 +705,9 @@
       }
 
       .ingredientBody {
-        width: 42%;
-        height: 400px;
-        margin-left: 0px;
+        width: 55%;
+        height: 450px;
+        margin-left: 20px;
       }
 
       .headerRow tr {
@@ -732,35 +719,19 @@
 
       .grid-cell {
         display: grid;
-        grid-template-columns: 39px 0px 1fr;
+        grid-template-columns: 80px 120px 1fr;
         gap: 0px;
-        padding: 8px;
-      }
-
-      .spanquantity {
-        margin-left: 13%;
+        padding: 10px;
       }
 
       .trashIcon {
-        margin-left: 26%;
+        font-size: 20px;
+        margin-left: 33%;
         position: fixed;
       }
 
-      .imageButton {
-        border: 2px solid #D76614;
-        background-color: #D76614;
-        border-radius: 10px;
-        margin-top: 0px;
-        height: 35px;
-        width: 71px;
-        color: white;
-        font-size: clamp(0.7rem, 1vw, 1rem);
-        margin-left: 0px;
-      }
-
       .ingredientBtn {
-        left: 180px;
-        margin-top: 10px;
+        left: 260px;
       }
 
       /*View Picture Edit*/
@@ -774,19 +745,20 @@
       }
 
       #product_image {
-        margin-left: 35px;
+        margin-left: -40px;
         border-radius: 50px;
-        width: 93px;
+        width: 200px;
         padding: 2px;
+        font-size: 0.9rem;
       }
 
       .productDetails {
         border: 3px solid #2D2B2B;
         background-color: #EEEEEE;
-        height: 215px;
-        width: 23vw;
+        height: 240px;
+        width: 30vw;
         margin-top: 18px;
-        margin-left: 15px;
+        margin-left: -45px;
       }
 
       #paginationControls {
@@ -804,25 +776,6 @@
       .add-quantity {
         max-width: 600px;
       }
-
-      /* Category List Modal Styling */
-      .categorycontent {
-        background-color: #fff;
-        width: 20vw;
-        height: 365px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      #plusbtn {
-        float: right;
-        border: 1px white;
-        background-color: white;
-        margin-left: 40%;
-      }
-
 
     }
 
@@ -878,13 +831,9 @@
         padding: 10px;
       }
 
-      .spanquantity {
-        position: fixed;
-        margin-left: 19%;
-      }
-
       .trashIcon {
-        margin-left: 36%;
+        font-size: 20px;
+        margin-left: 33%;
         position: fixed;
       }
 
@@ -907,7 +856,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-
+        font-size: 0.9rem;
       }
 
       .productDetails {
@@ -934,24 +883,6 @@
 
       #paginationControls {
         margin-left: 50px;
-      }
-
-      /* Category List Modal Styling */
-      .categorycontent {
-        background-color: #fff;
-        width: 20vw;
-        height: 365px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      #plusbtn {
-        float: right;
-        border: 1px white;
-        background-color: white;
-        margin-left: 40%;
       }
 
     }
@@ -1011,7 +942,7 @@
       }
 
       .trashIcon {
-
+        font-size: 20px;
         margin-left: 32%;
         position: fixed;
       }
@@ -1035,7 +966,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-
+        font-size: 0.9rem;
       }
 
       .productDetails {
@@ -1053,7 +984,7 @@
 
       .ingredientHeading {
         text-align: center;
-
+        font-size: 1.2rem;
       }
 
       .ingredientBtn {
@@ -1075,28 +1006,6 @@
 
       #paginationControls {
         margin-left: 50px;
-      }
-
-      .ingredientBtn {
-        margin-top: 20px;
-      }
-
-      /* Category List Modal Styling */
-      .categorycontent {
-        background-color: #fff;
-        width: 20vw;
-        height: 365px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      #plusbtn {
-        float: right;
-        border: 1px white;
-        background-color: white;
-        margin-left: 40%;
       }
 
     }
@@ -1155,7 +1064,7 @@
       }
 
       .trashIcon {
-
+        font-size: 20px;
         margin-left: 32%;
         position: fixed;
       }
@@ -1179,7 +1088,7 @@
         border-radius: 50px;
         width: 200px;
         padding: 2px;
-
+        font-size: 0.9rem;
       }
 
       .productDetails {
@@ -1199,32 +1108,6 @@
         margin-left: 50px;
       }
 
-      /* Category List Modal Styling */
-      .categorycontent {
-        background-color: #fff;
-        width: 20vw;
-        height: 365px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      #plusbtn {
-        float: right;
-        border: 1px white;
-        background-color: white;
-        margin-left: 40%;
-      }
-
-    }
-
-    .headDash {
-      margin-left: 50px;
-      margin-top: 0px;
-      width: 15%;
-      text-align: center;
-
     }
   </style>
 
@@ -1233,14 +1116,13 @@
 <body>
 
   <div class="container">
-    <h3 class="headDash">Product</h3>
     <form action="">
       <div class="productTable">
 
         <div class="topbtn">
-          <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
-          <button <?php echo hasAccess('admin') ? '' : 'disabled'; ?> type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Product</button>
-          <!-- <a href="transactionDetails.php" class=" btn btn-dark me-1">Transaction History</a> -->
+          <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class=" btn btn-dark me-1">Category</button>
+          <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Product</button>
+          <a href="transactionDetails.php" class=" btn btn-dark me-1">Transaction History</a>
           <select class=" btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
             <option value="">Filter</option>
             <?php
@@ -1274,8 +1156,6 @@
         <td class="tableProductsInfo">Product Category</td>
         <td class="tableProductsInfo">Product Name</td>
         <td class="tableProductsInfo">Price</td>
-        <td class="tableProductsInfo">Cost</td>
-
         <td class="tableProductsInfo">Action</td>
       </tr>
     </thead>
@@ -1383,11 +1263,7 @@
                   </div>
                   <div class="productInput">
                     <label for="prodPrice" class="productLabel">Product Price:</label>
-                    <input type="number" id="productPrice" name="productPrice" class="productPrice" required>
-                  </div>
-                  <div class="productInput">
-                    <label for="prodCost" class="productLabel">Product Cost:</label>
-                    <input type="number" id="productCost" name="productCost" class="productCost" required>
+                    <input type="text" id="productPrice" name="productPrice" class="productPrice" required>
                   </div>
                 </div>
               </div>
@@ -1395,8 +1271,8 @@
           </div>
         </div>
         <div class="modal-footer viewIngredient">
-          <button type="button" class="btnIngredient deletebtn  btn btn-secondary">Delete</button>
-          <button type="button" class="btnIngredient updatebtn btn btn-secondary">Update</button>
+          <button type="button" class="btnIngredient deletebtn  btn btn-secondary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btnIngredient updatebtn btn btn-secondary" data-bs-dismiss="modal">Update</button>
         </div>
       </div>
     </div>
@@ -1416,7 +1292,7 @@
 
               <!--LABEL INGREDIENT-->
               <div class="labelIngredient">
-                <label for="ingredientName" class="form-label ">Ingredient</label>
+                <label for="ingredientName" class="form-label ">Product</label>
                 <label for="ingredientQuantity" class="form-label ">Quantity</label>
                 <label for="ingredientGrams" class="form-label" id="unitMeasure">Unit of Measures</label>
               </div>
@@ -1459,9 +1335,8 @@
 
                 </select>
               </div>
-              <p id="errorhandlingi" style="color:red;"></p>
             </div>
-            <button id="add_ingredientsbtn" class="btn btn-dark btn-plus">Add</button>
+            <button id="add_ingredientsbtn" data-bs-toggle="modal" data-bs-target="#viewProductModal" class="btn btn-dark btn-plus">Add</button>
           </form>
         </div>
       </div>
@@ -1476,7 +1351,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="categorycontent modal-content">
         <div class="modal-header categoryMowdal">
-          <h1 class="modal-title fs-5" id="ModalLabel">Category</h1>
+          <h1 class="modal-title fs-4" id="ModalLabel">Category</h1>
           <button type="button" id="plusbtn" class=" bi bi-plus-lg mt-1" data-bs-target="#Category" data-bs-toggle="modal"></button>
         </div>
         <div class="category modal-body">
@@ -1501,13 +1376,10 @@
               Category
               <input type="text" class="t-input form-control w-100" aria-label="category" id="category" required>
             </div>
-            <p id="errorhandlingcategory" style="color:red;"></p>
           </div>
-
         </div>
-
         <div class="plusfooter modal-footer">
-          <button type="button" class="btn btn-dark" id="add_category" data-bs-target="#Category">Add</button>
+          <button type="button" class="btn btn-dark" id="add_category" data-bs-target="#Category" data-bs-toggle="modal">Add</button>
         </div>
       </div>
     </div>
@@ -1549,13 +1421,9 @@
           </div>
           <div class="add-quantity input-group mb-3 d-block">
             Price
-            <input type="number" class="t-input form-control w-50" aria-label="priceadd" id="priceadd">
+            <input type="text" class="t-input form-control w-50" aria-label="priceadd" id="priceadd">
           </div>
-          <div class="add-cost input-group mb-3 d-block">
-            Cost
-            <input type="number" class="t-input form-control w-50" aria-label="costadd" id="costadd">
-          </div>
-          <p id="errorhandling" style="color:red;"></p>
+
         </div>
         <div class="add-footer modal-footer">
           <button type="button" class="btn btn-dark me-2" data-bs-dismiss="modal">Close</button>
@@ -1566,9 +1434,6 @@
   </div>
 
   </div>
-  <script>
-    const hasAdminAccess = <?php echo json_encode(hasAccess('admin')); ?>;
-  </script>
 
   <script>
     // JavaScript to handle the fade-up effect

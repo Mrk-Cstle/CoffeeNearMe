@@ -7,8 +7,8 @@ body {
 }
 
 .container {
-    width: 40vw;
-    height: 60vh;
+    width: 55vw;
+    height: 70vh;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
@@ -18,7 +18,7 @@ body {
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: 0.9rem;
 }
 
 .transaction-table-container {
@@ -101,7 +101,7 @@ body {
     .container{
         width: 100%;
         height: auto;
-        
+        font-size: 0.8rem;
     }
     .transaction-table-container {
         width: 100%;
@@ -120,7 +120,7 @@ body {
     .container{
         width: 100%;
         height: auto;
-        
+        font-size: 0.7rem;
     }
     .transaction-table-container {
         width: 100%;
@@ -139,7 +139,7 @@ body {
     .container{
         width: 100%;
         height: auto;
-        
+        font-size: 0.7rem;
     }
     .transaction-table-container {
         width: 100%;

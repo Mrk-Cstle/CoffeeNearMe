@@ -31,19 +31,18 @@ try {
         $products = sanitizeInput($data['productName']);
         $categorys = sanitizeInput($data['productCategory']);
         $prices = sanitizeInput($data['productPrice']);
-        $costadd = sanitizeInput($data['costadd']);
-        $margin = $prices - $costadd;
+
 
 
 
         // Prepare and bind SQL statement using prepared statement
-        $stmt = $conn->prepare("INSERT INTO product (product_name, product_category, price,cost,margin) VALUES (?, ?, ?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO product (product_name, product_category, price) VALUES (?, ?, ?)");
         if (!$stmt) {
             die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
         }
 
         // Bind parameters
-        $stmt->bind_param("ssddd", $products, $categorys, $prices, $costadd, $margin);
+        $stmt->bind_param("ssi", $products, $categorys, $prices);
 
         // Execute the statement
         try {
@@ -130,7 +129,6 @@ try {
         $productName = sanitizeInput($data['productName']);
         $productCategory = sanitizeInput($data['productCategory']);
         $productPrice = sanitizeInput($data['productPrice']);
-        $productCost = sanitizeInput($data['productCost']);
 
 
 
@@ -150,26 +148,25 @@ try {
             $db_product_name = $row['product_name'];
             $db_category = $row['product_category'];
             $db_price = $row['price'];
-            $db_cost = $row['cost'];
             $db_picture = $row['picture'];
         }
 
 
-        if ($db_product_name == $productName && $db_category == $productCategory && $db_price == $productPrice && $db_cost == $productCost) {
+        if ($db_product_name == $productName && $db_category == $productCategory && $db_price == $productPrice) {
             // No changes, so skip the update
-            echo json_encode(["status" => "error", "message" => "No changes to update."]);
+            echo "No changes to update.";
         } else {
             // Prepare update query
 
             $sql = "UPDATE product SET 
-            product_name = ? ,product_category = ? ,price = ?,cost=?
+            product_name = ? ,product_category = ? ,price = ?
  
             WHERE product_id = $productId";
 
             $stmt = $conn->prepare($sql);
 
             // Bind parameters to statement
-            $stmt->bind_param("ssdd", $productName, $productCategory, $productPrice, $productCost);
+            $stmt->bind_param("ssi", $productName, $productCategory, $productPrice);
 
             if ($stmt->execute()) {
                 echo json_encode(["status" => "success", "message" => "New record created successfully"]);

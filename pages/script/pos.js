@@ -256,129 +256,28 @@ function attachQuantityControl() {
     });
 });
 
-let isDiscounted = false; // Set default discount state
-// Check localStorage for stored discount state
-if (localStorage.getItem('isDiscounted') === 'true') {
-    isDiscounted = true; // Apply discount if stored as true
-    $('.discount-button').addClass('active'); // Highlight the discount button
-    $('.normal-button').removeClass('active');
-    // Unhighlight the regular button
-} else if (localStorage.getItem('isDiscounted') === 'false') {
-    isDiscounted = false; // No discount if stored as false
-    $('.normal-button').addClass('active'); // Highlight the regular button
-    $('.discount-button').removeClass('active'); // Unhighlight the discount button
-}
+    // Function to update the cart display
+    function updateCartDisplay(cart) {
+        let listItems = '';
+        let subtotal = 0;
 
-// Attach click handler to the "Discount" button
-$('.discount-button').on('click', function () {
-    isDiscounted = true; // Enable discount
-    $(this).addClass('active'); // Highlight the discount button
-    $('.normal-button').removeClass('active'); // Unhighlight the regular button
+        // Iterate over cart items
+        cart.forEach(function (item) {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            listItems += `
+                <li>
+                    ${item.name} x ${item.quantity} - ₱${Number(itemTotal.toFixed(2)).toLocaleString()} 
+                     <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">Delete</button>
+                </li>
+            `;
+        });
 
-    // Store the discount state in localStorage
-    localStorage.setItem('isDiscounted', 'true');
-
-    // Recalculate the cart with discount
-    fetchCart(); // Ensure this triggers cart recalculation
-});
-
-// Attach click handler to the "Regular" button
-$('.normal-button').on('click', function () {
-    isDiscounted = false; // Disable discount
-    $(this).addClass('active'); // Highlight the regular button
-    $('.discount-button').removeClass('active'); // Unhighlight the discount button
-
-    // Store the discount state in localStorage
-    localStorage.setItem('isDiscounted', 'false');
-
-    // Recalculate the cart without discount
-    fetchCart(); // Ensure this triggers cart recalculation
-});
-
-// Function to update the cart display
-function updateCartDisplay(cart) {
-    let tableRows = '';
-    let subtotal = 0;
-    let totalDiscount = 0;
-
-    // Iterate over cart items
-    cart.forEach(function (item) {
-        let itemTotal = 0;
-        let itemPrice = item.price;
-        let discountedPrice = item.price * 0.9; // 10% discount for the first 2 items
-
-        // Apply discount only on the first 2 items of the quantity
-        if (isDiscounted) {
-            let discountQuantity = Math.min(item.quantity, 2); // Discount the first 2 items
-            let normalQuantity = item.quantity - discountQuantity;
-            itemTotal = (discountedPrice * discountQuantity) + (itemPrice * normalQuantity); // Calculate total for the item
-            totalDiscount += (itemPrice - discountedPrice) * discountQuantity; // Calculate total discount
-        } else {
-            itemTotal = itemPrice * item.quantity; // Regular price if no discount
-        }
-
-        subtotal += itemTotal; // Add item total to the subtotal
-
-        // Build the table rows for the cart display
-        tableRows += `
-            <tr class="ordered">
-                <td>${item.name}</td>
-                <td>${item.quantity}</td>
-                <td>₱${Number(itemTotal.toFixed(2)).toLocaleString()}</td>
-                <td>
-                    <button class="delete-btn" data-quantity="${item.quantity}" data-index="${item.id}">
-                        <img src="../assets/images/delete.png" class="deleteIcon">
-                    </button>
-                </td>
-            </tr>
-        `;
-    });
-
-    // Update the table with cart rows
-    $('.order-list-table tbody').html(tableRows);
-
-    // Update the totals in the HTML
-    $('#subtotal').text(`₱${subtotal.toFixed(2)}`);
-    $('#discount').text(`₱${totalDiscount.toFixed(2)}`);
-    $('#total').text(`₱${(subtotal - totalDiscount).toFixed(2)}`);
-
-    // Call to update the change when payment is entered
-    updateChange();
-}
-
-// Function to update the change based on payment input
-function updateChange() {
-    const paymentAmount = parseFloat($('#payment-amount').val()) || 0;
-    const totalAmount = parseFloat($('#total').text().replace('₱', '').replace(',', '')) || 0;
-    const change = paymentAmount - totalAmount;
-
-    // Display the change
-    $('#change').text(`₱${change.toFixed(2)}`);
-}
-
-
-
-
-// Attach an event listener to the payment amount field to recalculate change
-$('#payment-amount').on('input', function () {
-    updateChange();
-    togglePayNowButton();
-});
-
-     function togglePayNowButton() {
-        const totalAmount = parseFloat($('#total').text().replace('₱', '').replace(',', ''));
-        const paymentAmount = parseFloat($('#payment-amount').val()) || 0;
-
-        if (paymentAmount < totalAmount) {
-            $('.pay-now').prop('disabled', true);  // Disable the button
-        } else {
-            $('.pay-now').prop('disabled', false); // Enable the button
-        }
+        // Update the order list and totals in the HTML
+        $('#order-list').html(listItems);
+        $('#subtotal').text(`₱${subtotal.toFixed(2)}`);
+        $('#total').text(`₱${subtotal.toFixed(2)}`);
     }
-
-
-
-
 
     // Quantity control buttons (optional)
     $('.product-grid').on('click', '.plus-btn', function () {
@@ -416,8 +315,7 @@ $('#payment-amount').on('input', function () {
                 url: 'action/cart_handler.php',
                 data: {
                     action: 'pay',
-                    total: totalAmount,
-                    discount: isDiscounted
+                    total: totalAmount
                 },
                 success: function(response) {
                     const data = JSON.parse(response);
@@ -431,44 +329,16 @@ $('#payment-amount').on('input', function () {
                             confirmButtonText: 'OK'
                         });
 
-                        // Receipt modal
-                        let receiptList = document.querySelector('#receipt-list');
-                        let subtotal = document.querySelector('#subtotal').textContent;
-                        let total = document.querySelector('#total').textContent;
-                        let discount = document.querySelector('#discount').textContent;
-                        let change = document.querySelector('#change').textContent;
-
-                        // Clear previous receipt items
-                        receiptList.innerHTML = '';
-
-                        // Append each item to the receipt
-                        data.items.forEach(item => {
-                            let li = document.createElement('li');
-                            li.innerHTML = `${item.name} - ${item.quantity} x ₱${item.price} `;
-                            receiptList.appendChild(li);
-                        });
-
-                        // Set subtotal and total for modal
-                        document.querySelector('#modal-subtotal').textContent = subtotal;
-                        document.querySelector('#modal-total').textContent = total;
-                        document.querySelector('#modal-discount').textContent = discount;
-                        document.querySelector('#modal-change').textContent = change;
-
-                        // Show the modal
-                        document.getElementById('receipt-modal').style.display = 'flex';
-
-                        // Clear cart display
+                        // Clear cart and update DOM
                         loadProduct();
-                        $('.order-list-table tbody').html('');
+                        $('#order-list').html('');
                         $('#subtotal').text('₱0.00');
                         $('#total').text('₱0.00');
-                        $('#discount').text('₱0.00');
-                        $('#change').text('₱0.00');
                     } else {
                         // SweetAlert for error handling
                         Swal.fire({
                             title: 'Payment Failed!',
-                            text: data.message,
+                            text: data.message.join(',\n'),
                             icon: 'error',
                             confirmButtonText: 'OK'
                         });

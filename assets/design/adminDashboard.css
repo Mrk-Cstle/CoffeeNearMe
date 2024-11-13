@@ -1,12 +1,10 @@
     *{
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
     }
     body{
         background-color: #D9D9D9;
     }
-    
     .salesandInventory{
         display: inline-flex;
     }
@@ -16,15 +14,14 @@
         border: 2px solid #fff;
         border-radius: 10px;
         height: 200px;
-        width: 600px;
-        max-width: 800px;
-        margin-top: 50px;
-        margin-left: 100px;
+        width: 800px;
+        margin-top: 100px;
+        margin-left: 30px;
         background-color: #fff;
 
     }
     #salesHead{
-        font-size: clamp(0.9rem, 1vw, 1rem);
+        font-size: 20px;
         margin-left: 20px;
         margin-top: 10px;
     }
@@ -32,28 +29,20 @@
         display: flex;
     }
     .salesImage{
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         margin-left: 100px;
-        margin-top: 10px;
+        margin-top: 20px;
     }
     #salesNum{
-        margin-left: 80px;
-        margin-top: 20px;
-        font-weight: bold;
-    }
-    #salesTrans{
-        margin-left: 115px;
+        margin-left: 60px;
         margin-top: 20px;
         font-weight: bold;
     }
     #salesPara{
-        margin-left: 65px;
-        margin-top: 0px;
+        margin-left: 50px;
+        margin-top: 20px;
         font-weight: bold;
-        color: #000;
-        font-size: clamp(0.7rem, 1vw, 1rem);
-        text-align: center;
     }
     .paragraphSales{
         display: flex;
@@ -66,13 +55,13 @@
         border-radius: 10px;
         height: 200px;
         width: 650px;
-        margin-top: 50px;
+        margin-top: 100px;
         margin-left: 30px;
         background-color: #fff;
         
     }
     #inventoryHead{
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        font-size: 20px;
         margin-left: 20px;
         margin-top: 10px;
     }
@@ -82,46 +71,18 @@
     .inventImage{
         height: 50px;
         width: 50px;
-        margin-left: 70px;
-        margin-top: 10px;
-    }
-    .inventHis{
-        height: 40px;
-        width: 40px;
         margin-left: 80px;
-        margin-top: 10px;
-    }
-
-    .inventSum{
-        height: 40px;
-        width: 40px;
-        margin-left: 90px;
-        margin-top: 10px; 
-    }
-    .inventStock{
-        height: 50px;
-        width: 50px;
-        margin-left: 50px;
-        margin-top: 10px;
-        
-    }
-    #inventNumStock{
-        margin-left: 65px;
-        margin-top: 10px;
-        font-weight: bold;
+        margin-top: 20px;
     }
     #inventNum{
-        margin-left: 90px;
-        margin-top: 10px;
+        margin-left: 40px;
+        margin-top: 20px;
         font-weight: bold;
     }
     #inventPara{
         margin-left: 40px;
-        margin-top: 0px;
+        margin-top: 20px;
         font-weight: bold;
-        text-align: center;
-        font-size: clamp(0.7rem, 1vw, 1rem);
-        color: #000;
     }
     .paragraphInvent{
         display: flex;
@@ -143,14 +104,12 @@
         border: 2px solid #fff;
         border-radius: 10px;
         height: 400px;
-        width: 600px;
+        width: 800px;
         margin-top: 40px;
-        margin-left: 100px;
-        overflow: hidden;
-        overflow-y: scroll;
+        margin-left: 30px;
     }
     #topHead{
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        font-size: 20px;
         margin-top: 20px;
         margin-left: 100px;
         font-weight: normal;
@@ -160,7 +119,7 @@
         margin-top: 30px;
     }
     #head{
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        font-size: 20px;
         margin-left: 100px;
     }
     #borderDown{
@@ -170,31 +129,25 @@
     }
     .bodySell{
         display: flex;
-        align-items: center; /* Vertically centers the items */
-        justify-content: space-between; /* Evenly spaces items across the container */
-        padding: 10px 30px; /* Optional: adds padding for better spacing */
     }
-    #bodyP1,
-    #bodyP2,
-    #bodyP3,
+    #bodyP1{
+        margin-top: 20px;
+        margin-left: 80px;
+    }
+    #bodyP2{
+        margin-top: 20px;
+        margin-left: 120px;
+    }
+    #bodyP3{
+        margin-top: 20px;
+        margin-left: 180px;
+    }
     #bodyP4{
-        margin: 0; /* Resets margin to avoid extra spacing */
-        flex: 1; /* Allows each item to take up equal space within .lowBody */
-        text-align: center; /* Centers the text inside each item */
-    }
-
-    .topbtn{
-        margin-left: 450px;
-        margin-top: -50px;
-        height: 3.5vh;
-        padding-right: 20px;
-        font-size: clamp(0.7rem, 1vw, 0.9rem);
-        background-color: #333;
+        margin-top: 20px;
+        margin-left: 130px;
     }
 
     /*Low Stocks CSS*/
-
-    
     .lowStockDiv{
         border: 2px solid #fff;
         border-radius: 10px;
@@ -203,11 +156,9 @@
         margin-top: 40px;
         margin-left: 30px;
         background-color: #fff;
-        overflow: hidden;
-        overflow-y: scroll;
     }
     #lowHead{
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        font-size: 20px;
         margin-left: 100px;
         margin-top: 20px;
     }
@@ -215,39 +166,34 @@
         display: flex;
         margin-top: 15px;
     }
-    .lowBody {
+    .lowBody{
         display: flex;
-        align-items: center; /* Vertically centers the items */
-        justify-content: space-between; /* Evenly spaces items across the container */
-        padding: 10px 30px; /* Optional: adds padding for better spacing */
     }
-
-    .lowImage, #lowP1, #lowP2 {
-        margin: 0; /* Resets margin to avoid extra spacing */
-        flex: 1; /* Allows each item to take up equal space within .lowBody */
-        text-align: center; /* Centers the text inside each item */
-    }
-    
-    
     .lowImage{
-        height: 60px;
-        width: 60px;
-        margin-left: 40px;
+        height: 70px;
+        width: 70px;
+        margin-left: 80px;
         margin-top: 10px;
         object-fit: cover;
     }
     #lowP1{
         margin-top: 40px;
-        margin-left: 120px;
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        margin-left: 150px;
     }
     #lowP2{
         margin-top: 40px;
-        margin-left: 120px;
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        margin-left: 165px;
     }
 
 
+
+
+    .borderRight{
+        border-right: 1px solid rgb(185, 179, 179);;
+        margin-left: 40px;
+        height: 90px;
+        margin-top: 15px;
+    }
 
 
 
@@ -264,9 +210,9 @@
         justify-content: center;
         align-items: center;
         height: 490px;
-        width: 600px;
+        width: 800px;
         margin-top: 40px;
-        margin-left: 100px;
+        margin-left: 30px;
         border: 2px solid #fff;
         border-radius: 10px;
         background-color: #fff;
@@ -281,7 +227,6 @@
     .barChartHeadOne {
         text-align: left;
         margin-bottom: 10px;
-        font-size: clamp(0.7rem, 1vw, 1rem);
     }
 
     .canvasBar-container {
@@ -289,7 +234,6 @@
         border-radius: 15px; /* Border radius for the graph */
         padding: 20px;
         background-color: #fff; /* Background color of the chart container */
-        height: 300px;
     }
 
     canvas {
@@ -325,7 +269,7 @@
     #salesHead{
         text-align: left;
         margin-bottom: 10px;
-        font-size: clamp(0.7rem, 1vw, 1rem);
+        font-size: 25px;
     }
 
     .canvasLine-container {
@@ -334,7 +278,7 @@
         padding: 20px;
         background-color: #fff; /* Background color of the chart container */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
-        height: 300px;
+        height: 345px;
         width: 500px;
     }
 
@@ -344,761 +288,4 @@
         height: 600px;
         width: 600px;
     }
-
-    .headDash {
-        margin-left: 150px;
-        margin-top: 100px;
-        width: 15%;
-        text-align: center;
-        font-size: clamp(1rem, 1vw, 1.5rem);
-    }
-
-    @media screen and (max-width: 1200px) {
-        
-        /* SALES OVERVIEW CSS */
-
-       .salesOverview{
-           width: 400px;
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 200px;
-           width: 400px;
-           max-width: 800px;
-           margin-top: 20px;
-           margin-left: 175px;
-           background-color: #fff;
-       }
-
-       #salesHead{
-           
-           margin-left: 20px;
-           margin-top: 10px;
-       }
-       .salesBord{
-           display: flex;
-       }
-       .salesImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 40px;
-           margin-top: 20px;
-       }
-       #salesNum{
-           margin-left: 20px;
-           margin-top: 20px;
-           font-weight: bold;
-           ;
-       }
-       #salesPara{
-           margin-left: 20px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
-
-       /* INVENTORY SUM CSS */
-
-       .inventorySummary{
-           height: 200px;
-           width: 350px;
-           margin-top: 20px;
-           margin-left: 30px; 
-           
-       }
-       #inventoryHead{
-           
-           margin-left: 20px;
-           margin-top: 10px;
-       }
-       .inventoryBord{
-           display: flex;
-       }
-       .inventImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 25px;
-           margin-top: 20px;
-       }
-       #inventNum{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-       }
-       #inventPara{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
-
-       /*Top Selling Products CSS*/
-       .topSellingDiv{
-           background-color: #fff;
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 400px;
-           width: 400px;
-           margin-top: 40px;
-           margin-left: 175px;
-           overflow: hidden;
-       }
-       #topHead{
-           
-           margin-top: 20px;
-           margin-left: 100px;
-           font-weight: normal;
-       }
-       .heading{
-           display: flex;
-           margin-top: 30px;
-       }
-       #head{
-           
-           margin-left: 50px;
-       }
-       
-
-       /*Low Stocks CSS*/
-
-       
-       .lowStockDiv{
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 400px;
-           width: 350px;
-           margin-top: 40px;
-           margin-left: 30px;
-           background-color: #fff;
-           overflow: hidden;
-           overflow-y: scroll;
-       }
-       #lowHead{
-           
-           margin-left: 45px;
-           margin-top: 20px;
-       }
-       .lowHeading{
-           display: flex;
-           margin-top: 15px;
-       }
-       .lowBody {
-           display: flex;
-           align-items: center; /* Vertically centers the items */
-           justify-content: space-between; /* Evenly spaces items across the container */
-           padding: 10px 30px; /* Optional: adds padding for better spacing */
-       }
-
-       .lowImage, #lowP1, #lowP2 {
-           margin: 0; /* Resets margin to avoid extra spacing */
-           flex: 1; /* Allows each item to take up equal space within .lowBody */
-           text-align: center; /* Centers the text inside each item */
-       }
-       
-       
-       .lowImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 20px;
-           margin-top: 10px;
-           object-fit: cover;
-       }
-       #lowP1{
-           
-           margin-top: 40px;
-           margin-left: 60px;
-       }
-       #lowP2{
-           
-           margin-top: 40px;
-           margin-left: 50px;
-       }
-
-       /*Bar Chart CSS*/
-
-
-   .barChart-container {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 300px;
-       width: 400px;
-       margin-top: 40px;
-       margin-left: 175px;
-       border: 2px solid #fff;
-       border-radius: 10px;
-       background-color: #fff;
-   }
-
-   .chartBar-container {
-       position: relative;
-       width: 80%;
-       max-width: 800px;
-       
-   }
-
-   .barChartHeadOne {
-       text-align: left;
-       margin-bottom: 10px;
-   }
-
-   .canvasBar-container {
-       border: 2px solid #333; /* Border for the whole graph */
-       border-radius: 15px; /* Border radius for the graph */
-       padding: 20px;
-       background-color: #fff; /* Background color of the chart container */
-       height: 180px;
-   }
-
-   canvas {
-       border-radius: 15px; /* Border radius for the bars */
-   }
-
-   /*LINE CHARTS CSS*/
-
-
-   .lineAreaChart{
-       display: inline-flex;
-       
-   }
-   .chartLine-container {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 300px;
-       width: 350px;
-       margin-top: 40px;
-       margin-left: 30px;
-       border: 2px solid #fff;
-       border-radius: 10px;
-       background-color: #fff;
-   }
-
-   .lneChart-container {
-       position: relative;
-       width: 100%;
-       max-width: 800px;
-   }
-
-   #salesHead{
-       text-align: left;
-       margin-bottom: 10px;
-       
-   }
-
-   .canvasLine-container {
-       border: 2px solid #333; /* Border for the whole chart area */
-       border-radius: 15px; /* Border radius for the chart area */
-       padding: 20px;
-       background-color: #fff; /* Background color of the chart container */
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
-       height: 185px;
-       width: 300px;
-   }
-
-   canvas {
-       display: block;
-       border-radius: 15px; /* Border radius for the chart area */
-       height: 600px;
-       width: 600px;
-   }
-   }
     
-    @media screen and (max-width: 1024px) {
-        
-         /* SALES OVERVIEW CSS */
-
-        .salesOverview{
-            width: 400px;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            height: 200px;
-            width: 400px;
-            max-width: 800px;
-            margin-top: 20px;
-            margin-left: 175px;
-            background-color: #fff;
-        }
-
-        #salesHead{
-           
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        .salesBord{
-            display: flex;
-        }
-        .salesImage{
-            height: 35px;
-            width: 35px;
-            margin-left: 40px;
-            margin-top: 20px;
-        }
-        #salesNum{
-            margin-left: 20px;
-            margin-top: 20px;
-            font-weight: bold;
-            
-        }
-        #salesPara{
-            margin-left: 20px;
-            margin-top: 20px;
-            font-weight: bold;
-            
-        }
-
-        /* INVENTORY SUM CSS */
-
-        .inventorySummary{
-            height: 200px;
-            width: 350px;
-            margin-top: 20px;
-            margin-left: 30px; 
-            
-        }
-        #inventoryHead{
-            
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        .inventoryBord{
-            display: flex;
-        }
-        .inventImage{
-            height: 35px;
-            width: 35px;
-            margin-left: 25px;
-            margin-top: 20px;
-        }
-        #inventNum{
-            margin-left: 10px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        #inventPara{
-            margin-left: 10px;
-            margin-top: 20px;
-            font-weight: bold;
-            
-        }
-
-        /*Top Selling Products CSS*/
-        .topSellingDiv{
-            background-color: #fff;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            height: 400px;
-            width: 400px;
-            margin-top: 40px;
-            margin-left: 175px;
-            overflow: hidden;
-        }
-        #topHead{
-            
-            margin-top: 20px;
-            margin-left: 100px;
-            font-weight: normal;
-        }
-        .heading{
-            display: flex;
-            margin-top: 30px;
-        }
-        #head{
-            
-            margin-left: 50px;
-        }
-        
-
-        /*Low Stocks CSS*/
-
-        
-        .lowStockDiv{
-            border: 2px solid #fff;
-            border-radius: 10px;
-            height: 400px;
-            width: 350px;
-            margin-top: 40px;
-            margin-left: 30px;
-            background-color: #fff;
-            overflow: hidden;
-            overflow-y: scroll;
-        }
-        #lowHead{
-            
-            margin-left: 45px;
-            margin-top: 20px;
-        }
-        .lowHeading{
-            display: flex;
-            margin-top: 15px;
-        }
-        .lowBody {
-            display: flex;
-            align-items: center; /* Vertically centers the items */
-            justify-content: space-between; /* Evenly spaces items across the container */
-            padding: 10px 30px; /* Optional: adds padding for better spacing */
-        }
-
-        .lowImage, #lowP1, #lowP2 {
-            margin: 0; /* Resets margin to avoid extra spacing */
-            flex: 1; /* Allows each item to take up equal space within .lowBody */
-            text-align: center; /* Centers the text inside each item */
-        }
-        
-        
-        .lowImage{
-            height: 35px;
-            width: 35px;
-            margin-left: 20px;
-            margin-top: 10px;
-            object-fit: cover;
-        }
-        #lowP1{
-            
-            margin-top: 40px;
-            margin-left: 60px;
-        }
-        #lowP2{
-            
-            margin-top: 40px;
-            margin-left: 50px;
-        }
-
-        /*Bar Chart CSS*/
-
-
-    .barChart-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 300px;
-        width: 400px;
-        margin-top: 40px;
-        margin-left: 175px;
-        border: 2px solid #fff;
-        border-radius: 10px;
-        background-color: #fff;
-    }
-
-    .chartBar-container {
-        position: relative;
-        width: 80%;
-        max-width: 800px;
-    }
-
-    .barChartHeadOne {
-        text-align: left;
-        margin-bottom: 10px;
-    }
-
-    .canvasBar-container {
-        border: 2px solid #333; /* Border for the whole graph */
-        border-radius: 15px; /* Border radius for the graph */
-        padding: 20px;
-        background-color: #fff; /* Background color of the chart container */
-        height: 180px;
-    }
-
-    canvas {
-        border-radius: 15px; /* Border radius for the bars */
-    }
-
-    /*LINE CHARTS CSS*/
-
-
-    .lineAreaChart{
-        display: inline-flex;
-        
-    }
-    .chartLine-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 300px;
-        width: 350px;
-        margin-top: 40px;
-        margin-left: 30px;
-        border: 2px solid #fff;
-        border-radius: 10px;
-        background-color: #fff;
-    }
-
-    .lneChart-container {
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-    }
-
-    #salesHead{
-        text-align: left;
-        margin-bottom: 10px;
-        
-    }
-
-    .canvasLine-container {
-        border: 2px solid #333; /* Border for the whole chart area */
-        border-radius: 15px; /* Border radius for the chart area */
-        padding: 20px;
-        background-color: #fff; /* Background color of the chart container */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
-        height: 185px;
-        width: 300px;
-    }
-
-    canvas {
-        display: block;
-        border-radius: 15px; /* Border radius for the chart area */
-        height: 600px;
-        width: 600px;
-    }
-    }
-
-    @media screen and (max-width: 988px) {
-        
-        
-        
-        /* SALES OVERVIEW CSS */
-
-       .salesOverview{
-           width: 400px;
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 200px;
-           width: 400px;
-           max-width: 800px;
-           margin-top: 20px;
-           margin-left: 110px;
-           background-color: #fff;
-       }
-
-       #salesHead{
-          
-           margin-left: 20px;
-           margin-top: 10px;
-       }
-       .salesBord{
-           display: flex;
-       }
-       .salesImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 40px;
-           margin-top: 20px;
-       }
-       #salesNum{
-           margin-left: 20px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
-       #salesPara{
-           margin-left: 20px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
-
-       /* INVENTORY SUM CSS */
-
-       .inventorySummary{
-           height: 200px;
-           width: 350px;
-           margin-top: 20px;
-           margin-left: 30px; 
-           
-       }
-       #inventoryHead{
-           
-           margin-left: 20px;
-           margin-top: 10px;
-       }
-       .inventoryBord{
-           display: flex;
-       }
-       .inventImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 25px;
-           margin-top: 20px;
-       }
-       #inventNum{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-       }
-       #inventPara{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
-
-       /*Top Selling Products CSS*/
-       .topSellingDiv{
-           background-color: #fff;
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 400px;
-           width: 400px;
-           margin-top: 40px;
-           margin-left: 110px;
-           overflow: hidden;
-       }
-       #topHead{
-           
-           margin-top: 20px;
-           margin-left: 100px;
-           font-weight: normal;
-       }
-       .heading{
-           display: flex;
-           margin-top: 30px;
-       }
-       #head{
-           
-           margin-left: 50px;
-       }
-       
-
-       /*Low Stocks CSS*/
-
-       
-       .lowStockDiv{
-           border: 2px solid #fff;
-           border-radius: 10px;
-           height: 400px;
-           width: 350px;
-           margin-top: 40px;
-           margin-left: 30px;
-           background-color: #fff;
-           overflow: hidden;
-           overflow-y: scroll;
-       }
-       #lowHead{
-           
-           margin-left: 45px;
-           margin-top: 20px;
-       }
-       .lowHeading{
-           display: flex;
-           margin-top: 15px;
-       }
-       .lowBody {
-           display: flex;
-           align-items: center; /* Vertically centers the items */
-           justify-content: space-between; /* Evenly spaces items across the container */
-           padding: 10px 30px; /* Optional: adds padding for better spacing */
-       }
-
-       .lowImage, #lowP1, #lowP2 {
-           margin: 0; /* Resets margin to avoid extra spacing */
-           flex: 1; /* Allows each item to take up equal space within .lowBody */
-           text-align: center; /* Centers the text inside each item */
-       }
-       
-       
-       .lowImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 20px;
-           margin-top: 10px;
-           object-fit: cover;
-       }
-       #lowP1{
-           
-           margin-top: 40px;
-           margin-left: 60px;
-       }
-       #lowP2{
-           
-           margin-top: 40px;
-           margin-left: 50px;
-       }
-
-       /*Bar Chart CSS*/
-
-
-   .barChart-container {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 300px;
-       width: 400px;
-       margin-top: 40px;
-       margin-left: 110px;
-       border: 2px solid #fff;
-       border-radius: 10px;
-       background-color: #fff;
-   }
-
-   .chartBar-container {
-       position: relative;
-       width: 80%;
-       max-width: 800px;
-   }
-
-   .barChartHeadOne {
-       text-align: left;
-       margin-bottom: 10px;
-   }
-
-   .canvasBar-container {
-       border: 2px solid #333; /* Border for the whole graph */
-       border-radius: 15px; /* Border radius for the graph */
-       padding: 20px;
-       background-color: #fff; /* Background color of the chart container */
-       height: 180px;
-   }
-
-   canvas {
-       border-radius: 15px; /* Border radius for the bars */
-   }
-
-   /*LINE CHARTS CSS*/
-
-
-   .lineAreaChart{
-       display: inline-flex;
-       
-   }
-   .chartLine-container {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 300px;
-       width: 350px;
-       margin-top: 40px;
-       margin-left: 30px;
-       border: 2px solid #fff;
-       border-radius: 10px;
-       background-color: #fff;
-   }
-
-   .lneChart-container {
-       position: relative;
-       width: 100%;
-       max-width: 800px;
-   }
-
-   #salesHead{
-       text-align: left;
-       margin-bottom: 10px;
-       
-   }
-
-   .canvasLine-container {
-       border: 2px solid #333; /* Border for the whole chart area */
-       border-radius: 15px; /* Border radius for the chart area */
-       padding: 20px;
-       background-color: #fff; /* Background color of the chart container */
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a lifted effect */
-       height: 185px;
-       width: 300px;
-   }
-
-   canvas {
-       display: block;
-       border-radius: 15px; /* Border radius for the chart area */
-       height: 600px;
-       width: 600px;
-   }
-   }

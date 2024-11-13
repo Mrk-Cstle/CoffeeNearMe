@@ -65,7 +65,11 @@ checkLogin();
                         </a>
                      </li>
 
-
+                     <li>
+                        <a href="#" class="dropdown__link">
+                           <i class="ri-lock-line"></i> History
+                        </a>
+                     </li>
 
                      <li>
                         <a id="signoutbtn" class="dropdown__link">
@@ -84,7 +88,7 @@ checkLogin();
       <ul>
          <li>
             <a href="adminDashboard.php">
-               <h2 class="bi bi-house-fill ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
                   Dashboard
                </span>
@@ -92,7 +96,7 @@ checkLogin();
          </li>
          <li>
             <a href="product.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
                   Product
                </span>
@@ -100,24 +104,15 @@ checkLogin();
          </li>
          <li>
             <a href="ingredients.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
-                  Inventory
-               </span>
-            </a>
-         </li>
-
-         <li>
-            <a href="expenses.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
-               <span class="nav-text">
-                  Expenses
+                  Ingredients
                </span>
             </a>
          </li>
          <li>
             <a href="user.php">
-               <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-house ms-3 me-3"></h2>
                <span class="nav-text">
                   Users
                </span>
@@ -157,23 +152,6 @@ checkLogin();
             });
          });
       })
-
-
-      // Apply selected class on page load based on saved item
-      document.addEventListener("DOMContentLoaded", function() {
-         const selectedMenuItem = localStorage.getItem('selectedMenuItem');
-         if (selectedMenuItem) {
-            document.querySelectorAll('.main-menu li, .dropdown-menu > li')[selectedMenuItem].classList.add('selected');
-         }
-      });
-
-      // Attach click event to all menu items
-      document.querySelectorAll('.main-menu li > a, .dropdown-menu > li > a').forEach((item, index) => {
-         item.addEventListener('click', function() {
-            // Store the selected item index in local storage
-            localStorage.setItem('selectedMenuItem', index);
-         });
-      });
    </script>
 </body>
 

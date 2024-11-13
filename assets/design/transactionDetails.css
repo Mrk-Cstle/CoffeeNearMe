@@ -21,7 +21,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative; 
     margin: 100px auto;
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: 0.9rem;
 }
 
 .transaction-table {
@@ -40,7 +40,6 @@ body {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
-    font-size: clamp(0.7rem, 1vw, 1rem);
 }
 
 .transaction-table th {
@@ -95,7 +94,7 @@ body {
 #currentPage {
     margin: 0 10px; 
     font-weight: bold; 
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: 16px; 
 }
 
 
@@ -192,70 +191,10 @@ body {
     align-items: center;
     padding: 15px 20px;
     border-top: 2px solid #D76614;
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: 1.2em;
     font-weight: bold;
     background-color: #ffffff;
     margin-top: 10px;
-}
-
-
-@media (max-width: 1200px) {
-    .container{
-        width: 58%;
-        height: 100%;
-        max-height: 655px;
-        margin: 80px 0 0 280px;
-        
-    }
-    .transaction-table-container {
-        width: 100%;
-        overflow-x: auto;
-        text-overflow: ellipsis;
-    }
-    
-    .transaction-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        table-layout: fixed; /* Ensures equal column widths */
-    }
-
-    .receipt-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .receipt-table-container {
-        width: 60%;
-        margin: 20px auto;
-        max-height: 100%;
-        overflow: visible; /* Change to visible */
-        border-radius: 8px;
-        background-color: #f9f9f9;
-    }
-
-    .modal-content {
-        margin-top: 100px;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 40%; 
-        max-width: 600px; 
-        border-radius: 8px;
-    }
-
-    .close {
-        color: #D76614;
-        margin-left: 380px;
-        font-size: 40px;
-        font-weight: bold;
-    }
-
-    .pagination {
-        margin-left: 20px;
-        margin-bottom: 10px;
-    }
-
-    
 }
 
 @media (max-width: 1024px) {
