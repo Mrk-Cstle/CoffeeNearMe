@@ -42,6 +42,10 @@
     height: 30px;
     width: 30px;
   }
+
+  #addExpen{
+    font-size: clamp(0.8rem, 1vw, 1.5rem);
+  }
   
   
   
@@ -50,7 +54,7 @@
     padding: 8px;
     margin-left: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   
   .product-table {
@@ -66,7 +70,7 @@
     padding: 10px;
     text-align: center;
     font-weight: bold;
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.8rem, 1vw, 1rem);
   }
   
   .product-table th {
@@ -102,6 +106,12 @@
     margin-top: 15px;
   }
 
+  #dateRangePicker{
+    border: 1px solid transparent;
+    border-radius: 10px;
+    height: 4vh;
+    text-align: center;
+  }
 
 
   
@@ -148,3 +158,58 @@
     font-size: clamp(0.7rem, 1vw, 1rem);
   }
   
+  @media screen and (max-width: 1200px) {
+    .container{
+      width: 80%;
+      margin-left: 200px;
+      margin-top: 200px;
+    }
+
+    /* Pagination */
+  #paginationControls {
+    position: absolute;
+    top: 63%;
+    left: 35%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+  }
+  .delete-icon{
+    height: 25px;
+    width: 25px;
+  }
+
+  }
+
+  @media screen and (max-width: 868px) {
+    .container{
+      width: 80%;
+      margin-left: 185px;
+      margin-top: 200px;
+    }
+
+    /* Pagination */
+  #paginationControls {
+    position: absolute;
+    top: 63%;
+    left: 40%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+  }
+  .delete-icon{
+    height: 25px;
+    width: 25px;
+  }
+
+  
+
+  }

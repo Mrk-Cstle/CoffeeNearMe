@@ -39,7 +39,7 @@
         max-width: 900px;
         position: relative;
         margin-top: 100px;
-        padding-left: 100px;
+        padding-left: 150px;
 
     }
 

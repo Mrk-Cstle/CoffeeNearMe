@@ -912,17 +912,20 @@
     }
 
     .modal-content {
-      width: 80%;
-      height: 570px;
+      width: 70%;
+      height: 550px;
       overflow: hidden;
+      margin-left: 100px;
     }
 
     #ingredients_image {
       height: 40px;
+      width: 92px;
     }
 
     .imageButton {
       width: 60px;
+      margin-left: 200px;
     }
 
     .ingredientProfile {
@@ -1020,20 +1023,20 @@
     }
 
     .modal-content {
-      width: 80%;
-      height: 570px;
+      width: 70%;
+      height: 550px;
       overflow: hidden;
-      margin-left: 25px;
-      padding: 15px;
+      margin-left: 100px;
     }
 
     #ingredients_image {
       height: 40px;
-      
+      width: 92px;
     }
 
     .imageButton {
       width: 60px;
+      margin-left: 150px;
     }
 
     .ingredientProfile {
