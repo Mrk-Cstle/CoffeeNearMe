@@ -799,7 +799,7 @@
 
     .modal-content {
       width: 80%;
-      height: 620px;
+      height: 560px;
       overflow: hidden;
     }
 
@@ -944,8 +944,8 @@
       background-color: #d9d9d9;
       border: 1px solid #d9d9d9;
       border-radius: 10px;
-      height: 400px;
-      width: 400px;
+      height: 380px;
+      width: 360px;
       position: absolute;
       margin-top: 400px;
       top: 50%;
@@ -972,8 +972,8 @@
 
     /*ADD INGREDIENT MODAL */
     .add-content {
-      width: 40vw;
-      height: 490px;
+      width: 55vw;
+      height: 470px;
       
       margin: 0px;
 
@@ -1055,7 +1055,7 @@
       background-color: #d9d9d9;
       border: 1px solid #d9d9d9;
       border-radius: 10px;
-      height: 400px;
+      height: 380px;
       width: 350px;
       position: absolute;
       margin-top: 400px;
@@ -1086,9 +1086,9 @@
 
     /*ADD INGREDIENT MODAL */
     .add-content {
-      width: 40vw;
+      width: 55vw;
       height: 490px;
-      
+      left: 100px;
       margin: 0px;
 
     }
