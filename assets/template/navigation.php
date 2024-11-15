@@ -116,12 +116,16 @@ checkLogin();
             </a>
          </li>
          <li>
-            <a href="user.php">
-               <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
-               <span class="nav-text">
-                  Users
-               </span>
-            </a>
+            <?php if ($_SESSION['account_type'] == 'admin') { ?>
+               <a href="user.php">
+                  <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
+                  <span class="nav-text">
+                     Users
+                  </span>
+               </a><?php
+                  } ?>
+
+
          </li>
       </ul>
    </nav>
