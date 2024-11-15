@@ -295,9 +295,9 @@
         justify-content: center;
         align-items: center;
         height: 490px;
-        width: 600px;
+        width: 800px;
         margin-top: 40px;
-        margin-left: 100px;
+        margin-left: 380px;
         border: 2px solid #fff;
         border-radius: 10px;
         background-color: #fff;
@@ -320,7 +320,7 @@
         border-radius: 15px; /* Border radius for the graph */
         padding: 20px;
         background-color: #fff; /* Background color of the chart container */
-        height: 300px;
+        height: 350px;
     }
 
     canvas {
