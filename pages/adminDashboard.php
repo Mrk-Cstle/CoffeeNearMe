@@ -197,7 +197,7 @@
                 </div>
 
                 <!--LINE CHART-->
-
+                <!--
                 <div class="chartLine-container">
                     <div class="lineChart-container">
                         <h3 id="salesHead">Sales</h3>
@@ -206,6 +206,7 @@
                         </div>
                     </div>
                 </div>
+        -->
 
             </div>
         <?php endif; ?>
