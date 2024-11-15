@@ -264,9 +264,9 @@
         justify-content: center;
         align-items: center;
         height: 490px;
-        width: 600px;
+        width: 1000px;
         margin-top: 40px;
-        margin-left: 100px;
+        margin-left: 250px;
         border: 2px solid #fff;
         border-radius: 10px;
         background-color: #fff;
@@ -289,7 +289,7 @@
         border-radius: 15px; /* Border radius for the graph */
         padding: 20px;
         background-color: #fff; /* Background color of the chart container */
-        height: 300px;
+        height: 400px;
     }
 
     canvas {
@@ -378,19 +378,24 @@
            display: flex;
        }
        .salesImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 40px;
-           margin-top: 20px;
+           height: 30px;
+           width: 30px;
+           margin-left: 60px;
+           margin-top: 5px;
        }
        #salesNum{
-           margin-left: 20px;
+           margin-left: 50px;
            margin-top: 20px;
            font-weight: bold;
            ;
        }
+       #salesTrans {
+        margin-left: 71px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
        #salesPara{
-           margin-left: 20px;
+           margin-left: 40px;
            margin-top: 20px;
            font-weight: bold;
            
@@ -413,23 +418,50 @@
        .inventoryBord{
            display: flex;
        }
-       .inventImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 25px;
-           margin-top: 20px;
-       }
-       #inventNum{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-       }
-       #inventPara{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
+        .inventImage{
+            height: 35px;
+            width: 35px;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .inventHis{
+            height: 30px;
+            width: 30px;
+            margin-left: 40px;
+            margin-top: 16px;
+        }
+
+        .inventSum{
+            height: 35px;
+            width: 35px;
+            margin-left: 40px;
+            margin-top: 14px; 
+        }
+        .inventStock{
+            height: 35px;
+            width: 35px;
+            margin-left: 20px;
+            margin-top: 10px;
+            
+        }
+        #inventNumStock{
+            margin-left: 30px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #inventNum{
+            margin-left: 40px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #inventPara{
+            margin-left: 5px;
+            margin-top: 0px;
+            font-weight: bold;
+            text-align: center;
+            font-size: clamp(0.7rem, 1vw, 1rem);
+            color: #000;
+        }
 
        /*Top Selling Products CSS*/
        .topSellingDiv{
@@ -520,10 +552,10 @@
        display: flex;
        justify-content: center;
        align-items: center;
-       height: 300px;
-       width: 400px;
+       height: 350px;
+       width: 600px;
        margin-top: 40px;
-       margin-left: 175px;
+       margin-left: 260px;
        border: 2px solid #fff;
        border-radius: 10px;
        background-color: #fff;
@@ -546,7 +578,7 @@
        border-radius: 15px; /* Border radius for the graph */
        padding: 20px;
        background-color: #fff; /* Background color of the chart container */
-       height: 180px;
+       height: 250px;
    }
 
    canvas {
@@ -763,17 +795,17 @@
             margin-left: 50px;
         }
 
-        /*Bar Chart CSS*/
+       /*Bar Chart CSS*/
 
 
     .barChart-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 300px;
-        width: 400px;
+        height: 350px;
+        width: 600px;
         margin-top: 40px;
-        margin-left: 175px;
+        margin-left: 260px;
         border: 2px solid #fff;
         border-radius: 10px;
         background-color: #fff;
@@ -783,6 +815,7 @@
         position: relative;
         width: 80%;
         max-width: 800px;
+        
     }
 
     .barChartHeadOne {
@@ -795,7 +828,7 @@
         border-radius: 15px; /* Border radius for the graph */
         padding: 20px;
         background-color: #fff; /* Background color of the chart container */
-        height: 180px;
+        height: 250px;
     }
 
     canvas {
@@ -863,10 +896,10 @@
            border: 2px solid #fff;
            border-radius: 10px;
            height: 200px;
-           width: 400px;
+           width: 350px;
            max-width: 800px;
            margin-top: 20px;
-           margin-left: 110px;
+           margin-left: 122px;
            background-color: #fff;
        }
 
@@ -879,17 +912,24 @@
            display: flex;
        }
        .salesImage{
-           height: 35px;
-           width: 35px;
+           height: 30px;
+           width: 30px;
            margin-left: 40px;
            margin-top: 20px;
        }
        #salesNum{
-           margin-left: 20px;
+           margin-left: 33px;
            margin-top: 20px;
            font-weight: bold;
            
        }
+
+       #salesTrans {
+        margin-left: 57px;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+}
        #salesPara{
            margin-left: 20px;
            margin-top: 20px;
@@ -901,7 +941,7 @@
 
        .inventorySummary{
            height: 200px;
-           width: 350px;
+           width: 380px;
            margin-top: 20px;
            margin-left: 30px; 
            
@@ -915,22 +955,49 @@
            display: flex;
        }
        .inventImage{
-           height: 35px;
-           width: 35px;
-           margin-left: 25px;
-           margin-top: 20px;
-       }
-       #inventNum{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-       }
-       #inventPara{
-           margin-left: 10px;
-           margin-top: 20px;
-           font-weight: bold;
-           
-       }
+            height: 35px;
+            width: 35px;
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+        .inventHis{
+            height: 30px;
+            width: 30px;
+            margin-left: 40px;
+            margin-top: 15px;
+        }
+
+        .inventSum{
+            height: 35px;
+            width: 35px;
+            margin-left: 40px;
+            margin-top: 15px; 
+        }
+        .inventStock{
+            height: 35px;
+            width: 35px;
+            margin-left: 20px;
+            margin-top: 15px;
+            
+        }
+        #inventNumStock{
+            margin-left: 30px;
+            margin-top: 17px;
+            font-weight: bold;
+        }
+        #inventNum{
+            margin-left: 40px;
+            margin-top: 17px;
+            font-weight: bold;
+        }
+        #inventPara{
+            margin-left: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+            font-size: clamp(0.7rem, 1vw, 1rem);
+            color: #000;
+        }
 
        /*Top Selling Products CSS*/
        .topSellingDiv{
@@ -938,9 +1005,9 @@
            border: 2px solid #fff;
            border-radius: 10px;
            height: 400px;
-           width: 400px;
+           width: 350px;
            margin-top: 40px;
-           margin-left: 110px;
+           margin-left: 122px;
            overflow: hidden;
        }
        #topHead{
@@ -966,7 +1033,7 @@
            border: 2px solid #fff;
            border-radius: 10px;
            height: 400px;
-           width: 350px;
+           width: 380px;
            margin-top: 40px;
            margin-left: 30px;
            background-color: #fff;
@@ -1022,9 +1089,9 @@
        justify-content: center;
        align-items: center;
        height: 300px;
-       width: 400px;
+       width: 500px;
        margin-top: 40px;
-       margin-left: 110px;
+       margin-left: 255px;
        border: 2px solid #fff;
        border-radius: 10px;
        background-color: #fff;
@@ -1065,7 +1132,7 @@
        justify-content: center;
        align-items: center;
        height: 300px;
-       width: 350px;
+       width: 380px;
        margin-top: 40px;
        margin-left: 30px;
        border: 2px solid #fff;
@@ -1101,4 +1168,4 @@
        height: 600px;
        width: 600px;
    }
-   }
+   
