@@ -37,7 +37,7 @@ $(document).ready(function () {
                   if (ingredients.picture) {
                     pictureHtml = `<img  class="lowImage" src="uploads/ingredients/${ingredients.picture}" data-product-img="${ingredients.picture}">`;
                   } else {
-                    pictureHtml = ` <img src="../assets/images/coffee.png" class="lowImage">`;
+                    pictureHtml = ` <img src="uploads/ingredients/default.png" class="lowImage">`;
                   }
 
                  

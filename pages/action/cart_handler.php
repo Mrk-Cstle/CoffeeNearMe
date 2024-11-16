@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $updateStmt->bind_param("di", $newQuantity, $ingredientId);
                 $updateStmt->execute();
             }
-            echo json_encode(['status' => 'success',  'cart' => $_SESSION['cart']]);
+            echo json_encode(['status' => 'success',  'cart' => $_SESSION['cart'], 'message' => $newQuantity]);
             break;
 
         case 'fetch':
@@ -200,13 +200,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                 // Calculate the total quantity to be added back based on the number of products removed
-                $quantityToAdd = $todeduct * $quantity;
-                $newQuantity = $availableQuantity + $quantityToAdd;
+                $quantityToAdd = $quantity * $todeduct;
+                $newQuantity = $quantityToAdd + $availableQuantity;
 
                 // Update the ingredient's stock
                 $updateQuery = "UPDATE ingredients SET quantity = ? WHERE ingredients_id = ?";
                 $updateStmt = $conn->prepare($updateQuery);
-                $updateStmt->bind_param("ii", $newQuantity, $ingredientId);
+                $updateStmt->bind_param("di", $newQuantity, $ingredientId);
 
                 if (!$updateStmt->execute()) {
                     echo json_encode(['status' => 'error', 'message' => $updateStmt->error]);
@@ -237,7 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $stmt->close(); // Close delete statement
 
-            echo json_encode(['status' => 'success', 'cart' => $_SESSION['cart']]);
+            echo json_encode(['status' => 'success', 'cart' => $_SESSION['cart'], 'message' => $newQuantity]);
             break;
 
 
