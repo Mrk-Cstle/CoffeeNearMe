@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     borderRadius: 10,
                     borderColor: 'rgba(45, 43, 43, 100)',
                     borderWidth: 1,
-                    barPercentage: 0.4, // Adjust the width of bars
-                    categoryPercentage: 0.5 // Adjust the width of the groups
+                    barPercentage: 0.5, // Adjust the width of bars
+                    categoryPercentage: 0.6 // Adjust the width of the groups
                 },
                 {
                     label: 'Sale',
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     borderRadius: 10,
                     borderColor: 'rgba(215, 102, 20, 80)',
                     borderWidth: 1,
-                    barPercentage: 0.4, // Adjust the width of bars
-                    categoryPercentage: 0.5 // Adjust the width of the groups
+                    barPercentage: 0.5, // Adjust the width of bars
+                    categoryPercentage: 0.6 // Adjust the width of the groups
                 }
             ]
         },

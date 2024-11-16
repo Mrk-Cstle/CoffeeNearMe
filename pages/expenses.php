@@ -17,7 +17,7 @@
 <body>
   <div class="container">
     <div class="top-bar">
-      <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1">Add Expenses Name</button>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1" id="addExpen">Add Expenses Name</button>
       <div class="dropdown">
         <input type="text" id="dateRangePicker" placeholder="Select Date Range" />
 

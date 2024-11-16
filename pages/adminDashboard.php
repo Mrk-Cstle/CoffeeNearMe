@@ -83,7 +83,7 @@
                     <div class="inventoryBord">
 
                         <div class="inventorySum">
-                            <p id="inventPara">Stocks</p>
+                            <p id="inventPara1">Stocks</p>
                             <img src="../assets/images/stockBlack.png" class="inventStock">
                             <div class="paragraphInvent">
                                 <p id="inventNumStock"><?php echo $total_ingredients; ?></p>
@@ -92,8 +92,8 @@
                         <div class="borderRight"></div>
 
                         <div class="inventorySum">
-                            <p id="inventPara">Low Stocks</p>
-                            <img src="../assets/images/lowStockBlack.png" class="inventImage">
+                            <p id="inventPara2">Low Stocks</p>
+                            <img src="../assets/images/lowStockBlack.png" class="inventLowStock">
                             <div class="paragraphInvent">
                                 <p id="inventNum"><?php echo $low_stock_count; ?></p>
                             </div>
@@ -101,7 +101,7 @@
                         <div class="borderRight"></div>
 
                         <a href="actionInventory.php" class="inventorySum">
-                            <p id="inventPara">Inventory History</p>
+                            <p id="inventPara3">Inventory History</p>
                             <img src="../assets/images/inventoryHistoryBlak.png" class="inventHis">
                             <div class="paragraphInvent">
 
@@ -111,8 +111,8 @@
                         <div class="borderRight"></div>
 
                         <a href="transactionDetails.php" class="inventorySum">
-                            <p id="inventPara">Transaction History</p>
-                            <img src="../assets/images/transactionBlack.png" class="inventSum">
+                            <p id="inventPara4">Transaction History</p>
+                            <img src="../assets/images/transactionBlack.png" class="inventTransac">
                             <div class="paragraphInvent">
 
 
@@ -203,6 +203,7 @@
 
                 <!--LINE CHART-->
 
+            <!--
                 <div class="chartLine-container">
                     <div class="lineChart-container">
                         <h3 id="salesHead">Sales</h3>
@@ -213,6 +214,7 @@
                 </div>
 
             </div>
+            -->
         <?php endif; ?>
     </div>
 
