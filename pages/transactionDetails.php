@@ -31,6 +31,7 @@
                         <th>User</th>
                         <th>Total Amount</th>
                         <th>Date</th>
+                        <th>Transaction Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -119,6 +120,7 @@
             var usertd = $row.find('.usertd').text().trim();
             var totaltd = $row.find('.totaltd').text().trim();
             var timetd = $row.find('.timetd').text().trim();
+            var typetd = $row.find('.typetd').text().trim();
 
 
             $.ajax({
@@ -143,7 +145,8 @@
                             <h2>Coffee Near Me</h2>
                             <p><strong>Transaction:</strong> ${transaction_id}</p>
                             <p><strong>Date:</strong> ${timetd}</p>
-                            <p><strong>Cashier:</strong> ${usertd}</p>`
+                            <p><strong>Cashier:</strong> ${usertd}</p>
+                            <p><strong>Type:</strong> ${typetd}</p>`
                         totalcontent += `
                             <p>Total</p>
                             <p>${totaltd}</p>
@@ -252,6 +255,7 @@
                                 <td class ="usertd">${item.user}</td>
                                   <td class="totaltd">₱${Number(item.total_amount).toLocaleString()}</td>
                                 <td class = "timetd">${item.timestamp}</td>
+                                 <td class = "typetd">${item.transaction_type}</td>
                                
                                 <td><button id="btn-view" onclick="openModal(this,${item.transaction_id})">View</button></td>
                             </tr>`

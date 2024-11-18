@@ -19,9 +19,6 @@
             height: 400px;
             /* Fixed height */
         }
-
-        
-        
     </style>
 </head>
 
@@ -44,29 +41,37 @@
                                 <p id="salesNum">₱<?php echo number_format($total_sales_today, 2); ?></p>
                             </div>
                         </div>
-                        
+
 
                         <div class="salesOver">
                             <p id="salesPara">Transaction Today</p>
                             <img src="../assets/images/revenueIcon.png" class="salesImage">
                             <div class="paragraphSales">
                                 <p id="salesTrans"><?php echo $total_transactions_today; ?></p>
-                                
+
                             </div>
                         </div>
 
-                        
+
 
                         <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
                             <div class="salesOver">
                                 <p id="salesPara">Today's Report</p>
                                 <img src="../assets/images/reportBlack.png" class="salesImage">
                                 <div class="paragraphSales">
-                                    
+
                                 </div>
                             </div>
                         </a>
+                        <a href="reportHistory.php" class="salesOverLink" target="_blank">
+                            <div class="salesOver">
+                                <p id="salesPara">History Report</p>
+                                <img src="../assets/images/reportBlack.png" class="salesImage">
+                                <div class="paragraphSales">
 
+                                </div>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -78,7 +83,7 @@
                     <div class="inventoryBord">
 
                         <div class="inventorySum">
-                            <p id="inventPara">Stocks</p>
+                            <p id="inventPara1">Stocks</p>
                             <img src="../assets/images/stockBlack.png" class="inventStock">
                             <div class="paragraphInvent">
                                 <p id="inventNumStock"><?php echo $total_ingredients; ?></p>
@@ -87,8 +92,8 @@
                         <div class="borderRight"></div>
 
                         <div class="inventorySum">
-                             <p id="inventPara">Low Stocks</p>
-                            <img src="../assets/images/lowStockBlack.png" class="inventImage">
+                            <p id="inventPara2">Low Stocks</p>
+                            <img src="../assets/images/lowStockBlack.png" class="inventLowStock">
                             <div class="paragraphInvent">
                                 <p id="inventNum"><?php echo $low_stock_count; ?></p>
                             </div>
@@ -96,21 +101,21 @@
                         <div class="borderRight"></div>
 
                         <a href="actionInventory.php" class="inventorySum">
-                            <p id="inventPara">Inventory History</p>
+                            <p id="inventPara3">Inventory History</p>
                             <img src="../assets/images/inventoryHistoryBlak.png" class="inventHis">
                             <div class="paragraphInvent">
 
-                               
+
                             </div>
                         </a>
                         <div class="borderRight"></div>
 
                         <a href="transactionDetails.php" class="inventorySum">
-                            <p id="inventPara">Transaction History</p>
-                            <img src="../assets/images/transactionBlack.png" class="inventSum">
+                            <p id="inventPara4">Transaction History</p>
+                            <img src="../assets/images/transactionBlack.png" class="inventTransac">
                             <div class="paragraphInvent">
 
-                                
+
                             </div>
                         </a>
                     </div>
@@ -198,6 +203,7 @@
 
                 <!--LINE CHART-->
 
+            <!--
                 <div class="chartLine-container">
                     <div class="lineChart-container">
                         <h3 id="salesHead">Sales</h3>
@@ -208,6 +214,7 @@
                 </div>
 
             </div>
+            -->
         <?php endif; ?>
     </div>
 

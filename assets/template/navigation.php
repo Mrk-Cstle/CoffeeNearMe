@@ -108,20 +108,27 @@ checkLogin();
          </li>
 
          <li>
-            <a href="expenses.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
-               <span class="nav-text">
-                  Expenses
-               </span>
-            </a>
+            <?php if ($_SESSION['account_type'] == 'admin') { ?>
+               <a href="expenses.php">
+                  <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+                  <span class="nav-text">
+                     Expenses
+                  </span>
+               </a>
+            <?php
+            } ?>
          </li>
          <li>
-            <a href="user.php">
-               <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
-               <span class="nav-text">
-                  Users
-               </span>
-            </a>
+            <?php if ($_SESSION['account_type'] == 'admin') { ?>
+               <a href="user.php">
+                  <h2 class="bi bi-people-fill ms-3 me-3" style="color: #fff;"></h2>
+                  <span class="nav-text">
+                     Users
+                  </span>
+               </a><?php
+                  } ?>
+
+
          </li>
       </ul>
    </nav>

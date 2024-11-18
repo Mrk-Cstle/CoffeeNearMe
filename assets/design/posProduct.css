@@ -161,7 +161,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: clamp(0.8rem, 1vw, 0.9rem);
     width: calc(100% - 200px);
 }
 
@@ -311,7 +311,7 @@ body {
         width: 75%;
         left: 640px;
         grid-template-columns: 2fr 1fr;
-        height: 700px;
+        height: 720px;
     }
 
     .product-grid {
@@ -325,6 +325,35 @@ body {
 
     .order-summary {
         height: 600px;
+    }
+
+    .pay-now {
+        position: absolute;
+        bottom: 20px;
+        left: 128px;
+        right: 20px;
+        padding: 10px;
+        background-color: #D76614;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: calc(120% - 200px);
+    }
+
+    .discount-button{
+        width: 8vw;
+        height: 4vh;
+        margin-left: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .normal-button{
+        margin-right: 0px;
+        width: 8vw;
+        height: 4vh;
+        margin-left: 35px;
+        font-size: clamp(0.7rem , 1vw , 0.9rem);
     }
 }
 
@@ -349,9 +378,24 @@ body {
         height: auto;
     }
 
+    .discount-button{
+        width: 9vw;
+        height: 4vh;
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .normal-button{
+        margin-right: 0px;
+        width: 9vw;
+        height: 4vh;
+        margin-left: 35px;
+        font-size: clamp(0.7rem , 1vw , 0.9rem);
+    }
+
     .pay-now {
         width: 60%;
-        left: 30px;
+        left: 50px;
         right: 0;
     }
 }

@@ -235,7 +235,7 @@ function attachQuantityControl() {
         success: function (response) {
          console.log(response)
             const data = JSON.parse(response);
-            console.log(data.message)
+            // console.log(data.message)
             if (data.status === 'success') {
                 updateCartDisplay(data.cart); // Refresh the cart after deletion
                 console.log(data.message)

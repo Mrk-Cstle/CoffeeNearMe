@@ -37,13 +37,13 @@ try {
 
 
         // Prepare and bind SQL statement using prepared statement
-        $stmt = $conn->prepare("INSERT INTO product (product_name, product_category, price,cost,margin) VALUES (?, ?, ?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO product (product_name, product_category, price,cost) VALUES (?, ?, ?,?)");
         if (!$stmt) {
             die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
         }
 
         // Bind parameters
-        $stmt->bind_param("ssddd", $products, $categorys, $prices, $costadd, $margin);
+        $stmt->bind_param("ssdd", $products, $categorys, $prices, $costadd);
 
         // Execute the statement
         try {

@@ -130,7 +130,7 @@
     }
 
     .discount-div button.active {
-        background-color: #3085d6;
+        background-color: #1f1f1f;
         /* Highlight color */
         color: white;
     }
