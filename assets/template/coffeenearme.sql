@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2024 at 08:12 AM
+-- Generation Time: Nov 18, 2024 at 01:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -80,7 +80,7 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`ingredients_id`, `raw_name`, `category`, `quantity`, `unit`, `ideal_quantity`, `picture`) VALUES
-(64, '1', 'Food', 58939, 'kg', 4, '64.png'),
+(64, '1', 'Food', 0.994, 'kg', 4, '64.png'),
 (66, '2', 'Food', 0, 'kg', 2, ''),
 (67, '3', 'Food', 1, 'kg', 6, ''),
 (69, '5', 'Food', 385, 'pcs', 1, '');
@@ -245,7 +245,9 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `price`
 (93, '5', 'Water Based', 222, 30, NULL),
 (94, 'qweqwe', 'Water Based', 22.22, 0, NULL),
 (95, '3333', 'Water Based', 333, 333, NULL),
-(96, '333331', 'Water Based', 100, 50, NULL);
+(96, '333331', 'Water Based', 100, 50, NULL),
+(97, 'qwe', 'Water Based', 123, 123, NULL),
+(99, 'qwe2', 'Water Based', 123, 123, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,7 +289,8 @@ CREATE TABLE `product_ingredients` (
 INSERT INTO `product_ingredients` (`product_raw_id`, `product_id`, `ingredients_id`, `quantity`, `unit`) VALUES
 (58, 90, 66, 2, 'g'),
 (59, 93, 69, 2, 'pcs'),
-(61, 94, 69, 1, 'pcs');
+(61, 94, 69, 1, 'pcs'),
+(76, 89, 64, 2, 'g');
 
 -- --------------------------------------------------------
 
@@ -435,7 +438,20 @@ INSERT INTO `transaction` (`transaction_id`, `user`, `total_amount`, `transactio
 (169, 'qwe', 222, 'discount', '2024-11-14 07:24:18'),
 (170, 'qwe', 222, 'regular', '2024-11-14 07:25:37'),
 (171, 'qwe', 178, 'discount', '2024-11-14 07:26:15'),
-(172, 'qwe', 178, 'discount', '2024-11-14 07:44:30');
+(172, 'qwe', 178, 'discount', '2024-11-14 07:44:30'),
+(173, 'qwe', 80, 'discount', '2024-11-16 14:08:11'),
+(174, 'qwe', 80, 'discount', '2024-11-16 14:09:57'),
+(175, 'qwe', 80, 'discount', '2024-11-16 14:10:05'),
+(176, 'qwe', 80, 'discount', '2024-11-16 14:12:05'),
+(177, 'qwe', 80, 'discount', '2024-11-16 14:38:54'),
+(178, 'qwe', 80, 'discount', '2024-11-16 14:40:52'),
+(179, 'qwe', 80, 'discount', '2024-11-16 14:43:27'),
+(180, 'qwe', 80, 'discount', '2024-11-16 14:44:00'),
+(181, 'qwe', 80, 'discount', '2024-11-16 14:45:56'),
+(182, 'qwe', 160, 'discount', '2024-11-16 14:47:14'),
+(183, 'qwe', 80, 'discount', '2024-11-16 14:48:54'),
+(184, 'qwe', 80, 'discount', '2024-11-16 14:49:24'),
+(185, 'qwe', 80, 'discount', '2024-11-16 14:49:49');
 
 -- --------------------------------------------------------
 
@@ -592,7 +608,20 @@ INSERT INTO `transaction_item` (`item_id`, `transaction_id`, `product_name`, `qu
 (188, 169, '5', 1, 222),
 (189, 170, '5', 1, 222),
 (190, 171, '5', 1, 222),
-(191, 172, '5', 1, 222);
+(191, 172, '5', 1, 222),
+(192, 173, '1', 1, 100),
+(193, 174, '1', 1, 100),
+(194, 175, '1', 1, 100),
+(195, 176, '1', 1, 100),
+(196, 177, '1', 1, 100),
+(197, 178, '1', 1, 100),
+(198, 179, '1', 1, 100),
+(199, 180, '1', 1, 100),
+(200, 181, '1', 1, 100),
+(201, 182, '1', 2, 100),
+(202, 183, '1', 1, 100),
+(203, 184, '1', 1, 100),
+(204, 185, '1', 1, 100);
 
 -- --------------------------------------------------------
 
@@ -709,7 +738,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=589;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=631;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -739,7 +768,7 @@ ALTER TABLE `inventory_action`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -751,19 +780,19 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `product_ingredients`
 --
 ALTER TABLE `product_ingredients`
-  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `product_raw_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `transaction_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `transaction_item`
 --
 ALTER TABLE `transaction_item`
-  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `item_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `user`
