@@ -20,6 +20,7 @@ body {
     gap: 20px;
     max-width: 1000px;
     width: 90%;
+    max-height: 750px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -78,7 +79,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     overflow-y: auto;
-    max-height: calc(100vh - 180px);
+    max-height: calc(85vh - 180px);
 }
 
 .product {
@@ -97,8 +98,16 @@ body {
 }
 
 .product h3 {
-    font-size: 1rem;
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
     margin-bottom: 8px;
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    height: 2.6em; /* Fix the height to accommodate 2 lines */
+
 }
 
 .product p {
@@ -112,7 +121,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    height: 740px;
+    height: 680px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -170,7 +179,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .quantity-control button {
@@ -180,6 +189,7 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
 }
 
 .quantity-control input {

@@ -217,7 +217,7 @@
                 <p>Total: <span id="total">₱0.00</span></p>
                 <p>Change: <span id="change">₱0.00</span></p>
 
-                <button class="pay-now" disabled>Pay Now</button>
+                <button class="pay-now" disabled>Confirm</button>
 
             </div>
         </div>
