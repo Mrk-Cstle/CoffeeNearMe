@@ -37,9 +37,10 @@
 
   tbody {
     background-color: #fff;
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
     font-weight: bold;
     font-style: italic;
+    padding: 10px;
   }
 
   #picture,
@@ -389,19 +390,26 @@
     color: #000;
     margin: 0px;
     display: flex;
-    justify-content: start;
-
+    justify-content: space-between;
+    
   }
 
   .ingredientBodyModal {
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
     font-weight: bold;
     font-style: normal;
     background-color: #d9d9d9;
     height: 36vh;
     background-color: transparent;
-    height: auto;
     max-height: fit-content;
+    margin-left: -35px;
+     /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    height: 2.6em; /* Fix the height to accommodate 2 lines */
   }
 
   .prod-ingredients {
@@ -409,15 +417,15 @@
   }
 
   .spanquantity {
-    font-size: clamp(0.7rem, 1vw, 1rem);
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
     font-weight: bold;
     position: fixed;
-    margin-left: 17%;
+    margin-left: 19%;
   }
 
   .trashIcon {
-    font-size: clamp(0.7rem, 1vw, 1rem);
-    margin-left: 32%;
+    font-size: clamp(0.6rem, 1vw, 1rem);
+    margin-left: 33%;
     position: fixed;
   }
 
@@ -742,11 +750,11 @@
     }
 
     .spanquantity {
-      margin-left: 13%;
+      margin-left: 22%;
     }
 
     .trashIcon {
-      margin-left: 26%;
+      margin-left: 38%;
       position: fixed;
     }
 
@@ -903,11 +911,11 @@
 
     .spanquantity {
       position: fixed;
-      margin-left: 19%;
+      margin-left: 27%;
     }
 
     .trashIcon {
-      margin-left: 36%;
+      margin-left: 45%;
       position: fixed;
     }
 
@@ -1052,9 +1060,14 @@
       padding: 10px;
     }
 
+    .spanquantity {
+      position: fixed;
+      margin-left: 31%;
+    }
+
     .trashIcon {
 
-      margin-left: 32%;
+      margin-left: 48%;
       position: fixed;
     }
 
@@ -1070,12 +1083,12 @@
 
   @media screen and (max-width: 768px) {
     .container {
-      margin: 0px 0 0 130px;
+      margin: -64px 0 0 130px;
       position: relative;
       width: 80%;
       max-width: 900px;
-      overflow: hidden;
       position: fixed;
+      overflow: hidden;
     }
 
     .tableProductsInfo {
@@ -1205,6 +1218,18 @@
         border-radius: 50px;
         width: 150px;
         padding: 2px;
+    }
+
+    .spanquantity {
+      position: fixed;
+      margin-left: 31%;
+      width: 2.6em;
+    }
+
+    .trashIcon {
+
+      margin-left: 48%;
+      position: fixed;
     }
 
   }
