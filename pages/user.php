@@ -563,6 +563,34 @@
             text-align: center;
             font-size: 1.5rem;
         }
+
+          /* Hide spin buttons for Chrome, Edge, and Safari */
+            #contactNum::-webkit-inner-spin-button,
+            #contactNum::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+            }
+
+            /* Hide spin buttons for Firefox */
+            #contactNum[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+            }
+
+            /* Hide spin buttons for Chrome, Edge, and Safari */
+            #contact_number::-webkit-inner-spin-button,
+            #contact_number::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            appearance: none;
+            margin: 0;
+            }
+
+            /* Hide spin buttons for Firefox */
+            #contact_number[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+            }
 </style>
 
 
@@ -714,7 +742,7 @@
                                                 <input type="text" class="input form-control w-100 mt-1" aria-label="Username" name="address" required>
                                             </div>
                                             <div class="input-group mb-1 mt-1">Contact Number
-                                                <input type="number" class="input form-control w-100 mt-1" aria-label="Username" name="contact_number" required>
+                                                <input type="number" class="input form-control w-100 mt-1" aria-label="Username" name="contact_number" id="contactNum" required>
                                             </div>
                                             <div class="input-group mb-1 mt-1">Account Date
                                                 <input type="text" class="input form-control w-100 mt-1" aria-label="Username" name="account_date" required readonly>

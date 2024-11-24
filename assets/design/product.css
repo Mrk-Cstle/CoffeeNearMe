@@ -679,6 +679,35 @@
     font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
+  /* Hide spin buttons for Chrome, Edge, and Safari */
+#priceadd::-webkit-inner-spin-button,
+#priceadd::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* Hide spin buttons for Firefox */
+#priceadd[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+  /* Hide spin buttons for Chrome, Edge, and Safari */
+  #costadd::-webkit-inner-spin-button,
+  #costadd::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+  
+  /* Hide spin buttons for Firefox */
+  #costadd[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+
   @media screen and (max-width: 1400px) {
     .container {
       margin: 20px 0 0 130px;

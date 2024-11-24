@@ -47,10 +47,13 @@
     }
     
     .salesImage1:hover {
-        background-color: #ff9100; /* Baguhin ang kulay depende sa gusto mo */
-        cursor: pointer; /* Magiging pointer ang cursor kapag nasa hover */
+        transform: scale(1.2); /* Lumalaki ang image */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Dagdag shadow para sa lifting effect */
+        cursor: pointer; /* Ipinapakita na clickable ang icon */
+        background-color: transparent;
         border-radius: 5px;
     }
+    
 
     .salesImage2 {
         height: 40px;
@@ -58,13 +61,17 @@
         margin-left: 60px;
         margin-top: 10px;
         transition: background-color 0.3s ease; /* Para may smooth transition */
+        
     }
     
     .salesImage2:hover {
-        background-color: #ff9100; /* Baguhin ang kulay depende sa gusto mo */
-        cursor: pointer; /* Magiging pointer ang cursor kapag nasa hover */
+        transform: scale(1.2); /* Lumalaki ang image */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Dagdag shadow para sa lifting effect */
+        cursor: pointer; /* Ipinapakita na clickable ang icon */
+        background-color: transparent;
         border-radius: 5px;
     }
+    
     
     
     
@@ -301,7 +308,7 @@
     }
     #lowP1{
         margin-top: 40px;
-        margin-left: 120px;
+        margin-left: 60px;
         font-size: clamp(0.7rem, 1vw, 1rem);
     }
     #lowP2{

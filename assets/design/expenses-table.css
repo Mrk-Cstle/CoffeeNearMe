@@ -136,7 +136,7 @@
   #paginationControls {
     position: absolute;
     top: 60%;
-    left: 35%;
+    left: 33%;
     transform: translateX(-50%);
     padding: 10px;
     background-color: #f2f2f2;
@@ -173,6 +173,20 @@
     margin: 0 10px;
     font-weight: bold;
     font-size: clamp(0.7rem, 1vw, 1rem);
+  }
+
+  /* Hide spin buttons for Chrome, Edge, and Safari */
+  #payment::-webkit-inner-spin-button,
+  #payment::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  }
+
+  /* Hide spin buttons for Firefox */
+  #payment[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
   }
   
   @media screen and (max-width: 1200px) {
