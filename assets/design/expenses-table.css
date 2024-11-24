@@ -11,11 +11,15 @@
     padding: 20px;
   }
   
+  /* To avoid overlapping and responsive layout */
   .container {
-    width: 800px;
-    margin-top: 150px;
-    left: 250px;
+    width: 100%;
+    max-width: 900px;
+    margin: 150px auto;
+    left: 0;
+    right: 0;
   }
+
   
   .top-bar {
     display: flex;
@@ -63,6 +67,7 @@
     background-color: white;
     margin-bottom: 10px;
     margin-top: 20px;
+    table-layout: fixed; /* Ensures all columns are of equal width */
   }
   
   .product-table th, .product-table td {
@@ -71,7 +76,15 @@
     text-align: center;
     font-weight: bold;
     font-size: clamp(0.8rem, 1vw, 1rem);
+    overflow: hidden; /* Prevents content from spilling out */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    
   }
+
+  .product-table td {
+    word-wrap: break-word; /* Allows text to break onto the next line if wrapping is allowed */
+}
   
   .product-table th {
     background-color: #333;
@@ -122,8 +135,8 @@
   /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 58%;
-    left: 35%;
+    top: 60%;
+    left: 33%;
     transform: translateX(-50%);
     padding: 10px;
     background-color: #f2f2f2;
@@ -161,6 +174,20 @@
     font-weight: bold;
     font-size: clamp(0.7rem, 1vw, 1rem);
   }
+
+  /* Hide spin buttons for Chrome, Edge, and Safari */
+  #payment::-webkit-inner-spin-button,
+  #payment::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  }
+
+  /* Hide spin buttons for Firefox */
+  #payment[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  }
   
   @media screen and (max-width: 1200px) {
     .container{
@@ -172,8 +199,8 @@
     /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 63%;
-    left: 35%;
+    top: 65%;
+    left: 15%;
     transform: translateX(-50%);
     padding: 10px;
     background-color: #f2f2f2;
@@ -181,6 +208,37 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
+    position: relative;
+    width: 200px;
+  }
+  .delete-icon{
+    height: 25px;
+    width: 25px;
+  }
+
+  }
+
+  @media screen and (max-width: 968px) {
+    .container{
+      width: 80%;
+      margin-left: 200px;
+      margin-top: 200px;
+    }
+
+    /* Pagination */
+  #paginationControls {
+    position: absolute;
+    top: 65%;
+    left: 20%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 200px;
   }
   .delete-icon{
     height: 25px;
@@ -199,8 +257,34 @@
     /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 63%;
+    top: 65%;
     left: 40%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+  }
+  .delete-icon{
+    height: 25px;
+    width: 25px;
+  }
+
+  }
+  @media screen and (max-width: 768px) {
+    .container{
+      width: 80%;
+      margin-left: 185px;
+      margin-top: 200px;
+    }
+
+    /* Pagination */
+  #paginationControls {
+    position: absolute;
+    top: 68%;
+    left: 48%;
     transform: translateX(-50%);
     padding: 10px;
     background-color: #f2f2f2;

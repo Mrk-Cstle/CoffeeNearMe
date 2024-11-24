@@ -57,7 +57,7 @@
                         <a href="salesReportPrint.php" class="salesOverLink" target="_blank">
                             <div class="salesOver">
                                 <p id="salesPara">Today's Report</p>
-                                <img src="../assets/images/reportBlack.png" class="salesImage">
+                                <img src="../assets/images/reportBlack.png" class="salesImage salesImage1">
                                 <div class="paragraphSales">
 
                                 </div>
@@ -66,7 +66,7 @@
                         <a href="reportHistory.php" class="salesOverLink" target="_blank">
                             <div class="salesOver">
                                 <p id="salesPara">History Report</p>
-                                <img src="../assets/images/reportBlack.png" class="salesImage">
+                                <img src="../assets/images/reportBlack.png" class="salesImage salesImage2">
                                 <div class="paragraphSales">
 
                                 </div>
