@@ -679,6 +679,176 @@
     font-size: clamp(0.7rem, 1vw, 1rem);
   }
 
+  @media screen and (max-width: 1400px) {
+    .container {
+      margin: 20px 0 0 130px;
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      position: fixed;
+      overflow: hidden;
+    }
+
+    .tableProductsInfo {
+      width: 70vw;
+
+    }
+
+    .topbtn {
+      display: flex;
+    }
+
+    .pluscontent {
+      background-color: #fff;
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .viewProduct {
+      width: 50vw;
+    }
+
+    .viewContent {
+      width: 60%;
+      height: 570px;
+    }
+
+    .viewIngredient {
+      margin-top: 409px;
+    }
+
+    .productInput {
+        color: #2D2B2B;
+        font-size: clamp(0.7rem, 1vw, 1rem);
+        padding: 10px;
+        font-weight: bold;
+        display: flex;
+    }
+
+    .ingredientBody {
+      width: 47%;
+      height: 400px;
+      margin-left: 12px;
+    }
+
+    .headerRow tr {
+      text-align: center;
+      display: grid;
+      grid-template-columns: 100px 90px 1fr;
+      gap: 0px;
+    }
+
+    .grid-cell {
+      display: grid;
+      grid-template-columns: 39px 0px 1fr;
+      gap: 0px;
+      padding: 8px;
+    }
+
+    .spanquantity {
+      margin-left: 22%;
+    }
+
+    .trashIcon {
+      margin-left: 38%;
+      position: fixed;
+    }
+
+    .imageButton {
+      border: 2px solid #D76614;
+      background-color: #D76614;
+      border-radius: 10px;
+      margin-top: 0px;
+      height: 35px;
+      width: 71px;
+      color: white;
+      font-size: clamp(0.7rem, 1vw, 1rem);
+      margin-left: 0px;
+    }
+
+    .ingredientBtn {
+      left: -120px;
+      margin-top: 5px;
+    }
+
+    /*View Picture Edit*/
+    .productPicture {
+      width: 182px;
+      height: 182px;
+      background-color: #D9D9D9;
+      border-radius: 50%;
+      margin-left: 50px;
+      margin-top: -360px;
+    }
+
+    #product_image {
+      margin-left: 35px;
+      border-radius: 50px;
+      width: 93px;
+      padding: 2px;
+    }
+
+    .productDetails {
+      border: 3px solid #2D2B2B;
+      background-color: #EEEEEE;
+      height: 215px;
+      width: 23vw;
+      margin-top: 18px;
+      margin-left: 15px;
+    }
+
+    #paginationControls {
+      margin-left: 50px;
+    }
+
+    .add-ingredient {
+      max-width: 600px;
+    }
+
+    .add-category {
+      max-width: 600px;
+    }
+
+    .add-title {
+      margin-left: 75px;
+    }
+    .add-body {
+      margin-left: 25px;
+      color: #000;
+      font-weight: bold;
+      width: 45vw;
+  }
+
+    .add-quantity {
+      max-width: 600px;
+    }
+
+    /* Category List Modal Styling */
+    .categorycontent {
+      background-color: #fff;
+      width: 30vw;
+      height: 365px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #plusbtn {
+      float: right;
+      border: 1px white;
+      background-color: white;
+      margin-left: 40%;
+    }
+
+    
+
+
+  }
+
 
   @media screen and (max-width: 1200px) {
     .container {
@@ -1083,7 +1253,7 @@
 
   @media screen and (max-width: 768px) {
     .container {
-      margin: -64px 0 0 130px;
+      margin: 0px 0 0 130px;
       position: relative;
       width: 80%;
       max-width: 900px;

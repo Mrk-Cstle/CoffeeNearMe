@@ -92,7 +92,7 @@ checkLogin();
          </li>
          <li>
             <a href="product.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-box2-fill ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Product
                </span>
@@ -100,7 +100,7 @@ checkLogin();
          </li>
          <li>
             <a href="ingredients.php">
-               <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+               <h2 class="bi bi-boxes ms-3 me-3" style="color: #fff;"></h2>
                <span class="nav-text">
                   Inventory
                </span>

@@ -18,7 +18,7 @@
         height: 200px;
         width: 600px;
         max-width: 800px;
-        margin-top: 50px;
+        margin-top: 20px;
         margin-left: 100px;
         background-color: #fff;
 
@@ -31,12 +31,44 @@
     .salesBord{
         display: flex;
     }
-    .salesImage{
+
+    .salesImage {
         height: 40px;
         width: 40px;
         margin-left: 60px;
         margin-top: 10px;
     }
+    .salesImage1 {
+        height: 40px;
+        width: 40px;
+        margin-left: 60px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease; /* Para may smooth transition */
+    }
+    
+    .salesImage1:hover {
+        background-color: #ff9100; /* Baguhin ang kulay depende sa gusto mo */
+        cursor: pointer; /* Magiging pointer ang cursor kapag nasa hover */
+        border-radius: 5px;
+    }
+
+    .salesImage2 {
+        height: 40px;
+        width: 40px;
+        margin-left: 60px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease; /* Para may smooth transition */
+    }
+    
+    .salesImage2:hover {
+        background-color: #ff9100; /* Baguhin ang kulay depende sa gusto mo */
+        cursor: pointer; /* Magiging pointer ang cursor kapag nasa hover */
+        border-radius: 5px;
+    }
+    
+    
+    
+
     #salesNum{
         margin-left: 50px;
         margin-top: 20px;
@@ -66,7 +98,7 @@
         border-radius: 10px;
         height: 200px;
         width: 650px;
-        margin-top: 50px;
+        margin-top: 20px;
         margin-left: 30px;
         background-color: #fff;
         
@@ -381,7 +413,8 @@
         margin-top: 100px;
         width: 15%;
         text-align: center;
-        font-size: clamp(1rem, 1vw, 1.5rem);
+        font-size: clamp(1.5rem, 1vw, 2rem);
+        font-weight: bold;
     }
 
     @media screen and (max-width: 1200px) {
@@ -394,7 +427,7 @@
            height: 200px;
            width: 345px;
            max-width: 800px;
-           margin-top: 20px;
+           margin-top: 10px;
            margin-left: 175px;
            background-color: #fff;
        }
@@ -436,7 +469,7 @@
        .inventorySummary{
            height: 200px;
            width: 350px;
-           margin-top: 20px;
+           margin-top: 10px;
            margin-left: 30px; 
            
        }
@@ -698,7 +731,7 @@
        height: 200px;
        width: 345px;
        max-width: 800px;
-       margin-top: 20px;
+       margin-top: 10px;
        margin-left: 175px;
        background-color: #fff;
    }
@@ -740,7 +773,7 @@
    .inventorySummary{
        height: 200px;
        width: 320px;
-       margin-top: 20px;
+       margin-top: 10px;
        margin-left: 30px; 
        
    }
@@ -990,6 +1023,12 @@ canvas {
    height: 600px;
    width: 600px;
 }
+
+.headDash {
+    margin-left: 200px;
+    
+}
+
 }
 
 @media screen and (max-width: 968px) {
@@ -1293,5 +1332,10 @@ canvas {
    border-radius: 15px; /* Border radius for the chart area */
    height: 600px;
    width: 600px;
+}
+
+.headDash {
+    margin-left: 200px;
+    
 }
 }
