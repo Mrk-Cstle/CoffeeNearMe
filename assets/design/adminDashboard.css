@@ -123,12 +123,32 @@
         width: 50px;
         margin-left: 70px;
         margin-top: 10px;
+        transition: background-color 0.3s ease; /* Para may smooth transition */
     }
+
+    .inventTransac:hover {
+        transform: scale(1.2); /* Lumalaki ang image */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Dagdag shadow para sa lifting effect */
+        cursor: pointer; /* Ipinapakita na clickable ang icon */
+        background-color: transparent;
+        border-radius: 5px;
+    }
+
+    
     .inventHis{
         height: 40px;
         width: 40px;
         margin-left: 80px;
         margin-top: 10px;
+        transition: background-color 0.3s ease; /* Para may smooth transition */
+    }
+
+    .inventHis:hover {
+        transform: scale(1.2); /* Lumalaki ang image */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Dagdag shadow para sa lifting effect */
+        cursor: pointer; /* Ipinapakita na clickable ang icon */
+        background-color: transparent;
+        border-radius: 5px;
     }
 
     .inventSum{
@@ -423,6 +443,8 @@
         font-size: clamp(1.5rem, 1vw, 2rem);
         font-weight: bold;
     }
+
+    
 
     @media screen and (max-width: 1200px) {
         
