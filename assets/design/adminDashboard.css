@@ -252,6 +252,7 @@
     #head{
         font-size: clamp(0.7rem, 1vw, 1rem);
         margin-left: 100px;
+        font-weight: bold;
     }
     #borderDown{
         border-bottom: 1px solid rgb(185, 179, 179);
@@ -300,6 +301,7 @@
         font-size: clamp(0.7rem, 1vw, 1rem);
         margin-left: 100px;
         margin-top: 20px;
+        font-weight: bold;
     }
     .lowHeading{
         display: flex;
@@ -330,6 +332,7 @@
         margin-top: 40px;
         margin-left: 60px;
         font-size: clamp(0.7rem, 1vw, 1rem);
+        font-weight: bold;
     }
     #lowP2{
         margin-top: 40px;

@@ -18,7 +18,7 @@ body {
     display: grid;
     grid-template-columns: 4fr 2fr;
     gap: 20px;
-    max-width: 1000px;
+    max-width: 1100px;
     width: 90%;
     max-height: 750px;
     background-color: white;
@@ -76,10 +76,10 @@ body {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    overflow-y: auto;
-    max-height: calc(85vh - 180px);
+    overflow-y: scroll;
+    max-height: calc(88vh - 180px);
 }
 
 .product {
@@ -98,8 +98,9 @@ body {
 }
 
 .product h3 {
-    font-size: clamp(0.6rem, 1vw, 0.7rem);
-    margin-bottom: 8px;
+    font-size: clamp(0.6rem, 1vw, 1rem);
+    font-weight: bold;
+    margin-bottom: 0px;
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis for long text */
     display: -webkit-box;
@@ -326,7 +327,7 @@ body {
 
     .product-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Adjust columns based on screen size */
+        grid-template-columns: repeat(3, 1fr); /* Adjust columns based on screen size */
         gap: 20px;
         overflow-y: auto; /* Enable vertical scrolling */
         max-height: 620px; /* Adjust this value to control how many products are visible */
@@ -334,7 +335,7 @@ body {
     
 
     .order-summary {
-        height: 600px;
+        height: 680px;
     }
 
     .pay-now {
