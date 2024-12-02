@@ -142,7 +142,7 @@
 <body>
 
     <div class="container">
-        <h1>DAILY SALES REPORT</h1>
+        <h1>HISTORY SALES REPORT</h1>
         <div class="header">
             <!-- Left Section -->
             <div class="left-section">
