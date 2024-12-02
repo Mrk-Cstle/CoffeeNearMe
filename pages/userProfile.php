@@ -349,11 +349,11 @@
                     </div>
                 </div>
                 <div class="user-info">
-                    <input type="hidden" id="users-id" name="users_id">
+                    <input type="hidden" id="users-id" name="users_id" >
                     <p class="info">Username</p>
-                    <input type="text" name="user" class="info-text">
+                    <input type="text" name="user" class="info-text" readonly>
                     <p class="info">Password</p>
-                    <input type="password" name="password" class="info-text">
+                    <input type="password" name="password" class="info-text" readonly>
                     <p class="info">Address</p>
                     <input type="text" name="address" class="info-text">
                     <p class="info">Contact Number</p>

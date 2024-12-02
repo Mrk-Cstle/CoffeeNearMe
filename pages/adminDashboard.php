@@ -66,7 +66,7 @@
                         <a href="reportHistory.php" class="salesOverLink" target="_blank">
                             <div class="salesOver">
                                 <p id="salesPara">History Report</p>
-                                <img src="../assets/images/reportBlack.png" class="salesImage salesImage2">
+                                <img src="../assets/images/historyReport.png" class="salesImage salesImage2">
                                 <div class="paragraphSales">
 
                                 </div>
@@ -102,7 +102,7 @@
 
                         <a href="actionInventory.php" class="inventorySum">
                             <p id="inventPara3">Inventory History</p>
-                            <img src="../assets/images/inventoryHistoryBlak.png" class="inventHis">
+                            <img src="../assets/images/inventoryHistory.png" class="inventHis">
                             <div class="paragraphInvent">
 
 

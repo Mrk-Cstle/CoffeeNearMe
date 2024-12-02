@@ -110,7 +110,7 @@ checkLogin();
          <li>
             <?php if ($_SESSION['account_type'] == 'admin') { ?>
                <a href="expenses.php">
-                  <h2 class="bi bi-list-check ms-3 me-3" style="color: #fff;"></h2>
+                  <h2 class="bi bi-file-spreadsheet  ms-3 me-2" style="color: #fff;"></h2>
                   <span class="nav-text">
                      Expenses
                   </span>
