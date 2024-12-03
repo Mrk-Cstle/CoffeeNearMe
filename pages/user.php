@@ -58,7 +58,7 @@
         margin: 0 0 0 auto;
         justify-content: space-evenly;
         font-size: 1rem;
-        margin-left: -54px;
+        margin-left: -20px;
 
     }
 
@@ -607,7 +607,7 @@
         <h3 class="headDash">User</h3>
         <div>
             <div class="topbtn">
-            <select class="btn btn-dark me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
+            <select class="btn btn-dark w-25  me-1" aria-label="categoryFilter" name="categoryFilter" id="categoryFilter">
                 <option value="">Filter</option>
                 <option value="admin">Admin</option>
                 <option value="staff">Staff</option>
@@ -616,8 +616,8 @@
             
             
             
-                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-auto  add-user">Add User</button>
-                <input id="search-user" class="form-control mr-sm-2 me-1" type="search" placeholder="Search" aria-label="Search">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-dark me-5 w-25  add-user">Add User</button>
+                <input id="search-user" class="form-control mr-sm-2 me-1 w-25" type="search" placeholder="Search" aria-label="Search">
 
                 </div>
                 <!-- Modal -->

@@ -127,7 +127,7 @@ $(document).ready(function () {
                 });
             } else {
                 
-                listItems += `<p class="no-data">${response.message}</p>`;
+                listItems += `<p class="no-data" style="text-align: center; font-size: 20px; font-weight: bold; margin-top: 20px;">${response.message}</p>`;
             }
                 
                 $('.selling').html(listItems);
