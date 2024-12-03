@@ -135,7 +135,7 @@
   /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 60%;
+    top: 63%;
     left: 33%;
     transform: translateX(-50%);
     padding: 10px;
@@ -257,7 +257,7 @@
     /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 65%;
+    top: 69%;
     left: 40%;
     transform: translateX(-50%);
     padding: 10px;
@@ -283,7 +283,7 @@
     /* Pagination */
   #paginationControls {
     position: absolute;
-    top: 68%;
+    top: 72%;
     left: 48%;
     transform: translateX(-50%);
     padding: 10px;
@@ -301,3 +301,12 @@
   
 
   }
+
+  .headDash{
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 15%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

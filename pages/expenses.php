@@ -16,6 +16,7 @@
 
 <body>
   <div class="container">
+  <h3 class="headDash">Expenses</h3>
     <div class="top-bar">
       <button type="button" data-bs-toggle="modal" data-bs-target="#Add" class=" btn btn-dark me-1" id="addExpen">Add Expenses Name</button>
       <div class="dropdown">

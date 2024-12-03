@@ -58,6 +58,7 @@
         margin: 0 0 0 auto;
         justify-content: space-evenly;
         font-size: 1rem;
+        margin-left: -54px;
 
     }
 
@@ -66,9 +67,10 @@
         color: white;
         border: none;
         font-weight: 600;
-        height: 35px;
+        height: 40px;
         text-align: center;
         margin-top: 25px;
+        font-size: clamp(0.7rem, 1vw, 1.5rem);
     }
 
     .btnnnn {
@@ -557,11 +559,12 @@
     }
 
     .headDash{
-            margin-left: 50px;
+            margin-left: 0px;
             margin-top: 0px;
             width: 15%;
             text-align: center;
             font-size: 1.5rem;
+            font-weight: bold;
         }
 
           /* Hide spin buttons for Chrome, Edge, and Safari */
