@@ -194,7 +194,9 @@
                     }
 
                     if (response.success) {
-                        $('#errorhandling').text(response.message);
+                        $('#errorhandling')
+                            .text(response.message)
+                            .css('color', 'green');
                         // Optionally, redirect to dashboard
                         window.location.href = "pages/adminDashboard.php";
                     } else {

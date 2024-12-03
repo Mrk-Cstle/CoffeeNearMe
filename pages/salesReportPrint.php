@@ -260,9 +260,9 @@
             tableBody.append(`
                 <tr>
                     <td>${item.product_name}</td>
-                    <td>$${parseFloat(item.price).toFixed(2)}</td>
+                    <td>₱${parseFloat(item.price).toFixed(2)}</td>
                     <td>${item.total_qty_sold_today}</td>
-                    <td>$${amount}</td>
+                    <td>₱${amount}</td>
                 </tr>
             `);
           });
